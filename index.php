@@ -13,6 +13,9 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Angular core -->
+    <script src="bower_components/angular/angular.js"></script>
+
 
 </head>
 
