@@ -20,6 +20,7 @@
 
 
 <div class="full-width-image-2">
+ <!--   <div class="overlay"></div> -->
    <!-- <h1 style="margin:0">Titulo del articulo</h1> -->
          <!-- box content goes here if you want to put text or a button in here -->
 </div>
