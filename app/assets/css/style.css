@@ -1,4 +1,62 @@
+/*--------------------------------------------------------*/
+/*ESTILOS GENERALES*/
+/*--------------------------------------------------------*/
 
+
+body{
+	margin-top: 80px;
+}
+
+
+
+/*NGPROGRESS  */
+/* Styling for the ngProgress itself */
+/*#ngProgress {
+    margin: 0;
+    padding: 0;
+    z-index: 99998;
+    background-color: green;
+    color: green;
+    box-shadow: 0 0 10px 0; /* Inherits the font color 
+    height: 2px;
+    opacity: 0;*/
+
+    /* Add CSS3 styles for transition smoothing */
+/*    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}*/
+
+/* Styling for the ngProgress-container */
+/*#ngProgress-container {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+}*/
+/*NGPROGRESS*/
+
+/*--------------------------------------------------------*/
+/*END ESTILOS GENERALES*/
+/*--------------------------------------------------------*/
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------*/
+/*ESTILOS PARA LAS PRUEBAS QUE SE HICIERON*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*START MAPAFOTO*/
+/*--------------------------------------------------------*/
 #map-canvas {
     width:100%;
     height:550px;
@@ -23,9 +81,6 @@
 }
 
 
-
-
-
 #outer_container {
     position: relative;
     margin: auto;
@@ -48,19 +103,22 @@
     margin: -51px -391px 0
 }*/
 
+/*--------------------------------------------------------*/
+/*END MAPAFOTO*/
+/*--------------------------------------------------------*/
 
 
-
-/*posteo*/
-
+/*--------------------------------------------------------*/
+/*START POSTEO*/
+/*--------------------------------------------------------*/
 
 p{
 	color: gray;
 }
 
-.container {
+/*.container {
 width: 980px;
-}
+}*/
 
 
 .full-width-image-2 {
@@ -99,13 +157,14 @@ h1{
 	/*color: white;*/
 	font-size: 60px;
 }
+/*--------------------------------------------------------*/
+/*END POSTEO*/
+/*--------------------------------------------------------*/
 
-
-/*eventos*/
-
-
-
-    
+/*--------------------------------------------------------*/
+/*START EVENTOS*/
+/*--------------------------------------------------------*/
+  /*  
     .event-list {
 		list-style: none;
 		font-family: 'Lato', sans-serif;
@@ -289,59 +348,26 @@ h1{
 			width: 40px;
 			padding: 10px 0px 9px;
 		}
-	}
+	}*/
+/*--------------------------------------------------------*/
+	/*END EVENTOS*/
+/*--------------------------------------------------------*/
 
-
-
-
+/*--------------------------------------------------------*/
 	/*home*/
-
-	.navmenu, .navbar-offcanvas {
-		width: 275px;
-		height: auto;
-		border-width: 1px;
-		border-style: solid;
-		border-radius: 4px;
-	}
+/*--------------------------------------------------------*/	
 
 
-	.navmenu-default, .navbar-default .navbar-offcanvas{
-		background-color: rgba(25, 25, 24, 1);
-	}
-
-	.navmenu-default .navmenu-nav>li>a, .navbar-default .navbar-offcanvas .navmenu-nav>li>a {
-	color: #BEBEBE;
-	font-size: 16px;
-	font-weight: 200;
-	}
-
-	.navmenu-default .navmenu-nav>li>a:hover, .navbar-default .navbar-offcanvas .navmenu-nav>li>a:hover, .navmenu-default .navmenu-nav>li>a:focus, .navbar-default .navbar-offcanvas .navmenu-nav>li>a:focus {
-		color: white;
-		/*background-color: transparent;*/
-	}
-
-	.navmenu-nav>li>a>span{
-		margin-right: 7px;
-	}
-
-	.navmenu-nav>li>a>span.rightsearch{
-		float: right;
-	}
-
-	.navmenu-default .navmenu-brand, .navbar-default .navbar-offcanvas .navmenu-brand {
-	color: white;
-	}
-
-	.nav > li > a {
-		position: relative;
-		display: block;
-		padding: 11px 18px;
-	}
-
-	.navmenu-nav {
-		margin-bottom: 10px;
-		margin-top: 10px;
-	}
 
 
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------*/
 	/*home*/
+/*--------------------------------------------------------*/
