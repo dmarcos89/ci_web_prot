@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularJS Tutorials</title>
+  <!-- <link rel="stylesheet" href="vendor/foundation/foundation.min.css"> -->
+</head>
+
+<body>
+
+  <div ng-app="myApp">
+    <div ng-controller="PostsController">
+      <input type="text" ng-model="search">
+      <table>
+        <tr ng-repeat="post in posts | filter:search">
+            <td>{{post.id}}</td>
+            <td>{{post.title}}</td>
+            <td>{{post.description}}</td>
+            <td>{{post.author}}</td>
+        </tr>
+      </table>
+    </div>
+
+
+
+
+  </div>
+
+  <script src="../../lib/angular/angular.js"></script>
+  <script type="text/javascript" src="posts.js"></script>
+</body>
+</html>

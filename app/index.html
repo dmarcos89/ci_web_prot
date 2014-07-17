@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sampleApp">
+  <head>
+    <title>AngularJS Routing example</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/navmenu-reveal.css" >
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
+  </head>
+ 
+
+<div class="navmenu navmenu-default navmenu-fixed-left">
+      <!-- <a class="navmenu-brand" href="#">Ciudad Invisible</a> -->
+      <ul class="nav navmenu-nav">
+         <li>
+            <a href="#home">
+                <span class="glyphicon glyphicon-home"></span>
+                Inicio
+                <span class="rightsearch glyphicon glyphicon-search"></span>
+            </a>
+
+        </li>
+        <li>
+            <a href="#listado">
+                <span class="glyphicon glyphicon-inbox"></span>
+                Listado
+            </a>
+        </li>
+        <li>
+            <a href="#about">
+                <span class="glyphicon glyphicon-edit"></span>
+                About
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span class="glyphicon glyphicon-th"></span>
+                Mis categorias
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span class="glyphicon glyphicon-book"></span>
+                Mis destacados
+            </a>
+        </li>
+        <!-- <li class="active"><a href="./">Reveal</a></li> -->
+        <button class="btn-md btn-primary">Cerrar Sesión</button>
+        </ul>
+
+
+     </div>
+
+  <div class="canvas" >
+ 
+      <div class="navbar navbar-default navbar-fixed-top">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+        <div class="container">
+            <div ng-view></div>
+        
+        </div><!-- /.container -->
+            
+
+    </div>
+
+
+
+ 
+ 
+
+    <script src="assets/js/jquery-1.10.2.js"></script>
+     <script src="assets/js/jasny-bootstrap.min.js"></script>
+    
+    <script src="app.js"></script>
+
+   
+ 
+  
+</html>

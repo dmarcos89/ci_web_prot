@@ -7,12 +7,20 @@
 	</head>
 
 	<body>
-		<div ng-controller="Hello">
-			<p>ID {{greeting.id}}</p>
-			<p>The content is {{greeting.title}}</p>
-		</div>
+		<!-- <div ng-controller="Hello" ng-repeat="post in posts">
+			<p>ID {{post.id}}</p>
+			<p>The content is {{post.title}}</p>
+		</div> -->
 
-		<div ng-init="friends = [
+
+<div ng-controller="MyController">
+    <button type="button" ng-click="getItems()">Get Items</button>
+    <ul>
+       <li ng-repeat="item in items"> item.firstName </li>
+    </ul>
+</div>
+
+		<!-- <div ng-init="friends = [
   {name:'John', age:25, gender:'boy'},
   {name:'Jessie', age:30, gender:'girl'},
   {name:'Johanna', age:28, gender:'girl'},
@@ -31,6 +39,6 @@
       [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.
     </li>
   </ul>
-</div>
+</div> -->
 	</body>
 </html>
