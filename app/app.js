@@ -84,7 +84,7 @@ sampleApp.controller("CreateController", function($scope, Posts) {
   $scope.message = "Crear un nuevo post";
 
   $scope.Create = function() {
-    data = {title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category };
+    data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category }};
     Posts.save(data, successPostCallback, errorCallback);
 
     function successPostCallback(){
