@@ -1,5 +1,5 @@
 //Define an angular module for our app
-var sampleApp = angular.module('sampleApp', ['ngRoute']);
+var sampleApp = angular.module('sampleApp', ['ngRoute', 'ngResource']);
  
 sampleApp.config(['$routeProvider', function($routeProvider) {
     
@@ -20,6 +20,10 @@ sampleApp.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'views/create/create.html',
         controller: 'CreateController'
       }).
+      when('/post', {
+        templateUrl: 'views/detail/detail.html',
+        controller: 'PostById'
+      }).
       otherwise({
         redirectTo: '/home'
       });
@@ -39,44 +43,84 @@ sampleApp.controller('AboutController', function($scope) {
     $scope.message = 'About page';
 });
 
-sampleApp.controller('PostsController', function($scope, $http) {
+
+
+
+
+sampleApp.factory("Posts", function ($resource) {
+    return $resource(
+        "http://ciudadinvisible.herokuapp.com/posts/:Id.json",
+        {Id: "@Id" },
+        {
+            "update": {method: "PUT"}
+            // "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true}
+ 
+        }
+    );
+});
+
+
+// controlador para cargar todos los posteos
+sampleApp.controller('PostsController', function($scope, Posts) {
       // ngProgress.complete();
       $scope.message = 'Listado de posteos';
-      $scope.posts = [];
-      return $http.get('http://ciudadinvisible.herokuapp.com/posts.json').
-            success(function(data) {
-              $scope.posts = data;
-              return $scope.posts;
-            }).
-            error(function(data) {
-            
-            });
+      Posts.query(function(data) {
+        // alert(data);
+        $scope.posts = data;
+      });
 
 });
 
-
-sampleApp.controller('CreateController', function($scope , $http) {
-    // ngProgress.complete();
-              $scope.message = 'Crear un nuevo post';
-
-                $scope.errors = [];
-                $scope.msgs = [];
- 
-                $scope.Create = function() {
-                    // alert("envio de datos para crear post")
-                    $scope.errors.splice(0, $scope.errors.length); // remove all error messages
-                    $scope.msgs.splice(0, $scope.msgs.length);
- 
-                    $http.post('http://ciudadinvisible.herokuapp.com/posts/new', {'Title': $scope.title, 'Author': $scope.author, 'Description': $scope.description, 'Image': $scope.image, 'Date': $scope.date, 'Location': $scope.location, 'Category': $scope.category }
-                    ).success(function(data, status, headers, config) {
-                            $scope.msgs.push(data.msg);
-                        
-                    }).error(function(data, status) { // called asynchronously if an error occurs
-// or server returns response with an error status.
-                        $scope.errors.push(status);
-                    });
-                };
-
-
-
+// controlador para cargar un post a partir de un id. Se hardcodea id=1
+sampleApp.controller("PostById", function($scope, Posts) {
+  Posts.get({ Id: 1 }, function(data) {
+    $scope.post = data;
+  });
 });
+
+
+sampleApp.controller("CreateController", function($scope, Posts) {
+  
+  $scope.message = "Crear un nuevo post";
+
+  $scope.Create = function() {
+    data = {title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category };
+    Posts.save(data, successPostCallback, errorCallback);
+
+    function successPostCallback(){
+      alert("ok");
+    }
+    function errorCallback(){
+      alert("error");
+    }
+
+  };
+});
+
+
+
+
+// esta era la forma desprolija, usando http... hay que borrarlo despues
+// sampleApp.controller('CreateController', function($scope , $http) {
+//     // ngProgress.complete();
+//               $scope.message = 'Crear un nuevo post';
+
+//                 $scope.errors = [];
+//                 $scope.msgs = [];
+ 
+//                 $scope.Create = function() {
+//                     // alert("envio de datos para crear post");
+//                     $scope.errors.splice(0, $scope.errors.length); // remove all error messages
+//                     $scope.msgs.splice(0, $scope.msgs.length);
+ 
+//                     $http.post('http://ciudadinvisible.herokuapp.com/posts/create/', {title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category }
+//                     ).success(function(data, status, headers, config) {
+//                         $scope.msgs.push(data.msg);
+//                         alert(status);
+//                     }).error(function(data, status) { // called asynchronously if an error occurs
+// // or server returns response with an error status.
+//                         $scope.errors.push(data);
+//                         alert(status);
+//                     });
+//                 };
+// });
