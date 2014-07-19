@@ -1,13 +1,16 @@
-/*--------------------------------------------------------*/
+--------------------------------------------------------*/
 /*ESTILOS GENERALES*/
 /*--------------------------------------------------------*/
 
 
 body{
-	margin-top: 80px;
+	margin-top: 50px;
 }
 
-
+.navbar-default {
+background-color: white;
+border-color: white;
+}
 
 /*NGPROGRESS  */
 /* Styling for the ngProgress itself */
@@ -47,6 +50,29 @@ body{
 
 
 
+/*POST DETAIL*/
+
+.postcover{
+	width:100%; 
+	position:absolute;
+	top:0;
+    left:0;
+}
+
+.posttitle{
+	position: relative;
+	margin-top: 300px;
+	margin-left: 100px;
+
+	border: none;
+	background: transparent;
+}
+
+.posttitle:focus{
+	color:red;
+}
+
+/*POST DETAIL*/
 
 
 
@@ -59,7 +85,7 @@ body{
 /*--------------------------------------------------------*/
 #map-canvas {
     width:100%;
-    height:550px;
+    height:500px;
 }
 
 
@@ -370,4 +396,4 @@ h1{
 
 /*--------------------------------------------------------*/
 	/*home*/
-/*--------------------------------------------------------*/
+/*--------------------------------------------------------

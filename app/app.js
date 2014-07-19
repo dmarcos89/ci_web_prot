@@ -73,7 +73,7 @@ sampleApp.controller('PostsController', function($scope, Posts) {
 
 // controlador para cargar un post a partir de un id. Se hardcodea id=1
 sampleApp.controller("PostById", function($scope, Posts) {
-  Posts.get({ Id: 1 }, function(data) {
+  Posts.get({ Id: 2 }, function(data) {
     $scope.post = data;
   });
 });

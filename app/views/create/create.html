@@ -1,4 +1,4 @@
-<h1>{{ message }}</h1>
+<!-- <h1>{{ message }}</h1>
 
 <br><br>
 
@@ -13,6 +13,54 @@
     <input type="text" ng-model="category" placeholder="Categoria"> 
 
 	<button ng-click='Create();'>Crear</button>
-</form>
+</form> -->
 
 
+<div class="container-fluid">
+    <div class="row">
+        <img ng-src="http://www.placehold.it/800x300/EFEFEF/AAAAAA&text=selecciona una cover" class="postcover" >
+        <div class="col-lg-12">
+            <input type="text" class="posttitle form-control input-lg" placeholder="Crea un titulo para tu post">
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="google-map-canvas" id="map-canvas"></div>  
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=true&extension=.js&output=embed"></script>
+
+<script type='text/javascript'>
+        
+            $(document).ready(function() {
+        
+                function initialize() {
+                    var mapOptions = {
+                        center: new google.maps.LatLng(-34.920027, -56.155041),
+                        zoom: 16,
+                        scrollwheel: false,
+                        mapTypeControlOptions: {
+                            mapTypeIds: [google.maps.MapTypeId.ROADMAP]
+                        }
+                    };
+                    var map = new google.maps.Map(document.getElementById("map-canvas"),
+                    mapOptions);
+                    
+                }
+                // Inicializar mapa
+                google.maps.event.addDomListener(window, 'load', initialize);
+        
+            });
+        
+        </script>
