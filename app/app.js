@@ -1,5 +1,5 @@
 //Define an angular module for our app
-var sampleApp = angular.module('sampleApp', ['ngRoute', 'ngResource']);
+var sampleApp = angular.module('sampleApp', ['ngRoute', 'ngResource', 'ngMap']);
  
 sampleApp.config(['$routeProvider', function($routeProvider) {
     
@@ -83,6 +83,20 @@ sampleApp.controller("CreateController", function($scope, Posts) {
   
   $scope.message = "Crear un nuevo post";
 
+  $scope.categories = [ {
+                          title:"Arte",
+                          photo: "http://placeimg.com/300/350/arch"
+                        },
+                        {
+                          title:"Musica",
+                          photo: "http://placeimg.com/300/350/arch"
+                        },
+                        {
+                          title:"Arquitectura",
+                          photo: "http://placeimg.com/300/350/arch"
+                        }
+                      ];
+
   $scope.Create = function() {
     data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category }};
     Posts.save(data, successPostCallback, errorCallback);
@@ -95,32 +109,14 @@ sampleApp.controller("CreateController", function($scope, Posts) {
     }
 
   };
+
+
+  $scope.category = "";
+  $scope.catselect = function($var){
+    $scope.category = $var;
+
+  };
+
 });
 
 
-
-
-// esta era la forma desprolija, usando http... hay que borrarlo despues
-// sampleApp.controller('CreateController', function($scope , $http) {
-//     // ngProgress.complete();
-//               $scope.message = 'Crear un nuevo post';
-
-//                 $scope.errors = [];
-//                 $scope.msgs = [];
- 
-//                 $scope.Create = function() {
-//                     // alert("envio de datos para crear post");
-//                     $scope.errors.splice(0, $scope.errors.length); // remove all error messages
-//                     $scope.msgs.splice(0, $scope.msgs.length);
- 
-//                     $http.post('http://ciudadinvisible.herokuapp.com/posts/create/', {title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category }
-//                     ).success(function(data, status, headers, config) {
-//                         $scope.msgs.push(data.msg);
-//                         alert(status);
-//                     }).error(function(data, status) { // called asynchronously if an error occurs
-// // or server returns response with an error status.
-//                         $scope.errors.push(data);
-//                         alert(status);
-//                     });
-//                 };
-// });

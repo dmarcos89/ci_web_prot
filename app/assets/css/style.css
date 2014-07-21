@@ -1,15 +1,22 @@
---------------------------------------------------------*/
+/*--------------------------------------------------------*//**/
 /*ESTILOS GENERALES*/
 /*--------------------------------------------------------*/
 
 
 body{
-	margin-top: 50px;
+	/*margin-top: 50px;*/
+	/*font-family: "Times New Roman";*/
+	font-weight: 300;
 }
 
 .navbar-default {
 background-color: white;
 border-color: white;
+margin: 0;
+}
+
+.centered{
+	text-align: center;
 }
 
 /*NGPROGRESS  */
@@ -51,25 +58,72 @@ border-color: white;
 
 
 /*POST DETAIL*/
+.postcover {
+/* background: url(http://lorempixel.com/g/1920/500/) no-repeat center center; */
+background-size: cover;
+text-align: center;
+/*padding: 100px 0;*/
+}
 
-.postcover{
-	width:100%; 
-	position:absolute;
-	top:0;
-    left:0;
+.logo-wrapper {
+display: inline-block;
+}
+
+.postdescription{
+	width: 100%;
+	outline: none;
+  	border:none !important;
+  	box-shadow:none !important;
+	font-size: 25px;
+	margin-top: 20px;
 }
 
 .posttitle{
-	position: relative;
-	margin-top: 300px;
-	margin-left: 100px;
-
-	border: none;
-	background: transparent;
+/*	position: relative;
+	margin-top: 150px;
+	margin-left: 100px;*/
+	
+	/*margin-top: 300px;*/
+	outline: none;
+  	border:none !important;
+  	box-shadow:none !important;
+  	background-color: transparent;
+	font-size: 45px;
+	height: 90px;
 }
 
-.posttitle:focus{
-	color:red;
+.postphotoselect{
+	margin-top: 300px;
+}
+
+span.glyphicon-camera {
+    font-size: 2.5em;
+    color: gray;
+}
+span.glyphicon-camera:hover {
+    font-size: 2.5em;
+    color: black;
+}
+
+
+.wrap {
+    /*width: 1060px;*/
+    height:auto;
+    margin: auto;
+    text-align:center;
+    position:relative;
+}
+
+.text_over_image {
+    position: absolute;
+ 	margin: auto;
+    top: 50%;
+    left:0;
+    right:0;
+    bottom:0;
+    color:#fff;
+   /*height:100px;*/
+   font-size: 30px;
 }
 
 /*POST DETAIL*/
@@ -83,9 +137,15 @@ border-color: white;
 /*--------------------------------------------------------*/
 /*START MAPAFOTO*/
 /*--------------------------------------------------------*/
+
+.mapcontainer{
+	padding: 0;
+}
+
 #map-canvas {
     width:100%;
-    height:500px;
+    height:400px;
+    display: block;
 }
 
 
