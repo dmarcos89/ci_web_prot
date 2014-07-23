@@ -1,7 +1,7 @@
 //Define an angular module for our app
 var sampleApp = angular.module('sampleApp', ['ngRoute', 'ngResource', 'ngMap']);
  
-sampleApp.config(['$routeProvider', function($routeProvider) {
+sampleApp.config(['$routeProvider', function($routeProvider, $routeParams) {
     
     $routeProvider.
       when('/home', {
@@ -20,7 +20,7 @@ sampleApp.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'views/create/create.html',
         controller: 'CreateController'
       }).
-      when('/post', {
+      when('/post/:postid', {
         templateUrl: 'views/detail/detail.html',
         controller: 'PostById'
       }).
@@ -71,9 +71,9 @@ sampleApp.controller('PostsController', function($scope, Posts) {
 
 });
 
-// controlador para cargar un post a partir de un id. Se hardcodea id=1
-sampleApp.controller("PostById", function($scope, Posts) {
-  Posts.get({ Id: 2 }, function(data) {
+sampleApp.controller("PostById", function($scope, Posts, $routeParams) {
+  var postid = $routeParams.postid;
+  Posts.get({ Id: postid }, function(data) {
     $scope.post = data;
   });
 });
@@ -82,7 +82,6 @@ sampleApp.controller("PostById", function($scope, Posts) {
 sampleApp.controller("CreateController", function($scope, Posts) {
   
   $scope.message = "Crear un nuevo post";
-
   $scope.categories = [ {
                           title:"Arte",
                           photo: "http://placeimg.com/300/350/arch"
@@ -114,7 +113,10 @@ sampleApp.controller("CreateController", function($scope, Posts) {
   $scope.category = "";
   $scope.catselect = function($var){
     $scope.category = $var;
+  };
 
+  $scope.dragEnd = function(){
+    alert(this.getPosition());
   };
 
 });
