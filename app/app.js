@@ -49,7 +49,8 @@ sampleApp.controller('AboutController', function($scope) {
 
 sampleApp.factory("Posts", function ($resource) {
     return $resource(
-        "http://ciudadinvisible.herokuapp.com/posts/:Id.json",
+        // "http://ciudadinvisible.herokuapp.com/posts/:Id.json",
+        "http://localhost:3000/posts:Id.json",
         {Id: "@Id" },
         {
             "update": {method: "PUT"}
@@ -96,18 +97,19 @@ sampleApp.controller("CreateController", function($scope, Posts) {
                         }
                       ];
 
-  $scope.Create = function() {
-    data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category }};
-    Posts.save(data, successPostCallback, errorCallback);
+    $scope.Create = function() {
+      data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category,"assets_images":[{"data": "DATA DE PRUEBA PARA DEBUGEAR", "filename": "01.png","content_type": "image/png"},
+      {"data": "DATA DE PRUEBA PARA DEBUGEAR", "filename": "02.png","content_type": "image/png"}]  }};
+      Posts.save(data, successPostCallback, errorCallback);
 
-    function successPostCallback(){
-      alert("ok");
-    }
-    function errorCallback(){
-      alert("error");
-    }
+      function successPostCallback(){
+        alert("ok");
+      }
+      function errorCallback(){
+        alert("error");
+      }
 
-  };
+    };
 
 
   $scope.category = "";
