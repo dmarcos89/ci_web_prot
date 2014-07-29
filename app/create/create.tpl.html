@@ -1,0 +1,142 @@
+<!-- <h1>{{ message }}</h1>
+
+<br><br> -->
+
+<form action="">
+	
+<!-- 	<input type="text" ng-model="title" placeholder="Titulo"> 
+    <input type="text" ng-model="author" placeholder="Autor"> 
+    <input type="text" ng-model="description" placeholder="Descripcion">
+    <input type="text" ng-model="image" placeholder="Imagen"> 
+    <input type="text" ng-model="date" placeholder="Fecha"> 
+    <input type="text" ng-model="location" placeholder="Locacion">
+    <input type="text" ng-model="category" placeholder="Categoria">  -->
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <span class="glyphicon postphotoselect glyphicon-picture"> </span>
+            <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Crea un titulo para tu post">
+        </div>
+    </div>
+</div> -->
+
+
+
+<!-- <div class="postcover" style="background: url(http://placehold.it/1920x500) no-repeat center center;"> -->
+<!-- <div class="postcover" style="background: url(http://placehold.it/1920x500) no-repeat center center;">
+        <div class="logo-wrapper">
+            <span class="glyphicon postphotoselect glyphicon-camera"> </span>
+            <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Titulo">
+        </div>
+</div> -->
+
+    
+<header id="coverimg" background-image="{{imageSrc}}">
+        <div class="container-fluid" style="background-color:rgba(0, 0, 0, 0.3)">
+            <div class="createwraper">
+                <div class="createposttitle">
+                    <!-- <span class="glyphicon postphotoselect glyphicon-camera"> </span> -->
+                    <!-- <input type="file" flow-btn /> -->
+                    <div class="col-lg-12 centered">
+                        <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Titulo" style="text-align:center;">
+                        
+                        <input type="file" ng-file-select="onFileSelect($files)" multiple>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+</header>
+
+<!-- <b>Preview:</b><br />
+   <i ng-hide="imageSrc">No image choosed</i>
+   <img ng-src="{{imageSrc}}" /><br/>
+   <b>Progress:</b>
+  <progress value="{{progress}}"></progress> -->
+
+
+<div class="container">
+    <div class="row centered">
+        <div class="col-lg-12">
+            <img src="" alt="" class="img-responsive">
+            <img src="" alt="" class="img-responsive">
+            <img src="" alt="" class="img-responsive">
+            <img src="" alt="" class="img-responsive">
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row centered">
+        <div class="col-lg-8 col-lg-offset-2">
+            <textarea name="" id="" rows="10" ng-model="description" class="postdescription" placeholder="Cuenta aqui tu historia..."></textarea>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+     <div class="row">
+        <div class="col-lg-12 mapcontainer">
+            <div class="mapinstruction">
+                <p>
+                    Ubica el marcador hasta la ubicación exacta, bla bla..
+                </p>
+            </div>
+            <map id="map-canvas" scrollwheel="false" center="Montevideo, Uruguay">
+                <!-- position="current" no funciona bien en safari -->
+                <marker position="Montevideo, Uruguay" animation="Animation.BOUNCE" centered="true" draggable="true"on-dragend="dragEnd()" >
+            </map>  
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <h2>Selecciona una categoria</h2>
+                    {{ category }}
+                    <br>
+                    <br>
+
+                    <div class="col-lg-3 wrap" ng-repeat="c in categories" ng-click="catselect(c.title);">
+                        <img ng-src=" {{ c.photo }} " class="img-responsive catphoto" alt="">
+                        <p class="text_over_image">{{c.title}}</p>  
+                    </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ESTO ESTÁ ACA POR AHORA PARA HARDCODEAR LSO DATOS -->
+<br><br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 centered">
+
+            <input type="text" ng-model="author" placeholder="Autor"> 
+            <input type="text" ng-model="image" placeholder="Imagen"> 
+            <input type="text" ng-model="date" placeholder="Fecha"> 
+            <input type="text" ng-model="location" placeholder="Locacion">
+            <!-- <input type="text" ng-model="category" placeholder="Categoria"> -->
+            <br><br>
+
+            <button class="btn btn-primary btn-lg" style="width:150px; margin-top:50px;" ng-click='Create();'>Publicar</button> 
+        </div>
+    </div>
+</div>
+
+    
+</form>
+
+
+
+
+
+

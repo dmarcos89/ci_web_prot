@@ -1,0 +1,29 @@
+
+    <div>
+      {{ message }}
+      <input type="text" ng-model="search">
+      <table>
+        
+          <tr>
+              <td> <a href="#/post/{{post.id}}"> {{post.id}} </a></td>
+              <td><b>Titulo</b></td>
+              <td><b>Location</b></td>
+              <!-- <td>Description</td> -->
+              <td><b>Author</b></td>
+              <td><b>Image</b></td>
+              <td><b>Category</b></td>
+          </tr>
+       
+
+        <tr ng-repeat="post in posts | filter:search">
+            <td> <a href="#/post/{{post.id}}"> {{post.id}} </a></td>
+            <td>{{post.title}}</td>
+            <td>{{post.location}}</td>
+            <!-- <td>{{post.description}}</td> -->
+            <td>{{post.author}}</td>
+            <td>{{post.image}}</td>
+             <td>{{post.category}}</td>
+
+        </tr>
+      </table>
+    </div>
