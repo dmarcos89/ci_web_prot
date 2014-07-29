@@ -2,8 +2,8 @@
 
 angular.module('MainApp').factory('Posts', function ($resource) {
     return $resource(
-        'http://ciudadinvisible.herokuapp.com/posts/:Id.json',
-        // 'http://localhost:3000/posts:Id.json',
+        // 'http://ciudadinvisible.herokuapp.com/posts/:Id.json',
+        'http://localhost:3000/posts:Id.json',
         {Id: '@Id' },
         {
       'update': {method: 'PUT'}

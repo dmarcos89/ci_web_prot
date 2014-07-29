@@ -41,7 +41,7 @@
                     <div class="col-lg-12 centered">
                         <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Titulo" style="text-align:center;">
                         
-                        <input type="file" ng-file-select="onFileSelect($files)" multiple>
+                        <input type="file" ng-file-select="onFileSelect($files)">
                         
                     </div>
                 </div>
@@ -59,10 +59,32 @@
 <div class="container">
     <div class="row centered">
         <div class="col-lg-12">
-            <img src="" alt="" class="img-responsive">
-            <img src="" alt="" class="img-responsive">
-            <img src="" alt="" class="img-responsive">
-            <img src="" alt="" class="img-responsive">
+
+    
+    <!-- FOTO 1 base64: {{imageSrc}} <br> -->
+
+            
+            <div class="col-lg-3">
+                <input type="file" ng-file-select2="onFileSelect($files)">
+                <img ng-src="{{imageSrc2}}" alt="" class="img-responsive">
+            </div>
+            <div class="col-lg-3">
+                <input type="file" ng-file-select3="onFileSelect($files)">
+                <img ng-src="{{imageSrc3}}" alt="" class="img-responsive">
+            </div>
+            <div class="col-lg-3">
+                <input type="file" ng-file-select4="onFileSelect($files)">
+                <img ng-src="{{imageSrc4}}" alt="" class="img-responsive">
+            </div>
+            <div class="col-lg-3">
+                <input type="file" ng-file-select5="onFileSelect($files)">
+                <img ng-src="{{imageSrc5}}" alt="" class="img-responsive">
+            </div>
+            
+
+            
+
+
         </div>
     </div>
 </div>
