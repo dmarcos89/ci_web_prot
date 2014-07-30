@@ -20,12 +20,12 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts,
     $scope.Create = function() {
 
       // json nueva version con varias imagenes
-      data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.location, category: $scope.category, assets_images:[
-        {data: $scope.imageSrc, filename: "01.jpg",content_type: "image/jpg"},
-        {data: $scope.imageSrc2, filename: "02.jpg",content_type: "image/jpg"},
-        {data: $scope.imageSrc3, filename: "03.jpg",content_type: "image/jpg"},
-        {data: $scope.imageSrc4, filename: "04.jpg",content_type: "image/jpg"},
-        {data: $scope.imageSrc5, filename: "05.jpg",content_type: "image/jpg"}
+      data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.markers[0].position, category: $scope.category, assets_images:[
+        {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1}
+        // {data: $scope.imageSrc2, filename: "02.jpg",content_type: "image/jpg"},
+        // {data: $scope.imageSrc3, filename: "03.jpg",content_type: "image/jpg"},
+        // {data: $scope.imageSrc4, filename: "04.jpg",content_type: "image/jpg"},
+        // {data: $scope.imageSrc5, filename: "05.jpg",content_type: "image/jpg"}
         ]}};
       
       // json version vieja
@@ -48,12 +48,32 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts,
   };
 
 
+  // $scope.markerposition = $scope.markers[0].position;
+  $scope.dragEnd = function(){
+    // alert(this.getPosition());
+    alert($scope.markers[0].position);
+    // $scope.location = this.getPosition();
+  };
+
+// $scope.markers
+
+// $scope.$on('markersInitialized', function(event, map) {
+//     alert($scope.markers[0].lat);
+// });
+
 
 $scope.getFile = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
+
+                          // Separo el string para obtener solo el base64
+                          var splited = result.split(";base64,");
+
                           $scope.imageSrc = result;
+                          $scope.Type_1 = splited[0];
+                          $scope.Base64_1 = splited[1];
+
                       });
 };
 
