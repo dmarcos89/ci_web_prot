@@ -9,24 +9,25 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts,
                         },
                         {
                           title:"Musica",
-                          photo: "http://placeimg.com/300/350/arch"
+                          photo: "http://placeimg.com/300/350/tech"
                         },
                         {
                           title:"Arquitectura",
-                          photo: "http://placeimg.com/300/350/arch"
+                          photo: "http://placeimg.com/300/350/hist"
                         }
                       ];
 
     $scope.Create = function() {
 
       // json nueva version con varias imagenes
-      data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.markers[0].position, category: $scope.category, assets_images:[
-        {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1}
-        // {data: $scope.imageSrc2, filename: "02.jpg",content_type: "image/jpg"},
-        // {data: $scope.imageSrc3, filename: "03.jpg",content_type: "image/jpg"},
-        // {data: $scope.imageSrc4, filename: "04.jpg",content_type: "image/jpg"},
-        // {data: $scope.imageSrc5, filename: "05.jpg",content_type: "image/jpg"}
-        ]}};
+      data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: "Foto vieja", date: $scope.date, location: $scope.markers[0].position, category: $scope.category}
+        , assets_images:[
+        {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1},
+        {data: $scope.Base64_2, filename: "02.png", content_type: $scope.Type_2},
+        {data: $scope.Base64_3, filename: "03.png", content_type: $scope.Type_3},
+        {data: $scope.Base64_4, filename: "04.png", content_type: $scope.Type_4},
+        {data: $scope.Base64_5, filename: "05.png", content_type: $scope.Type_5}
+        ]};
       
       // json version vieja
       // data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.imageSrc, date: $scope.date, location:$scope.location , category: $scope.category}};
@@ -71,8 +72,11 @@ $scope.getFile = function () {
                           var splited = result.split(";base64,");
 
                           $scope.imageSrc = result;
-                          $scope.Type_1 = splited[0];
                           $scope.Base64_1 = splited[1];
+
+                          // Separa el string para quedarse unicamente con el tipo
+                          var splitedType = splited[0].split("data:");
+                          $scope.Type_1 = splitedType[1];
 
                       });
 };
@@ -83,7 +87,15 @@ $scope.getFile2 = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
+                           // Separo el string para obtener solo el base64
+                          var splited = result.split(";base64,");
+
                           $scope.imageSrc2 = result;
+                          $scope.Base64_2 = splited[1];
+
+                          // Separa el string para quedarse unicamente con el tipo
+                          var splitedType = splited[0].split("data:");
+                          $scope.Type_2 = splitedType[1];
                       });
 };
 
@@ -91,7 +103,14 @@ $scope.getFile3 = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
+                          var splited = result.split(";base64,");
+
                           $scope.imageSrc3 = result;
+                          $scope.Base64_3 = splited[1];
+
+                          // Separa el string para quedarse unicamente con el tipo
+                          var splitedType = splited[0].split("data:");
+                          $scope.Type_3 = splitedType[1];
                       });
 };
 
@@ -99,7 +118,14 @@ $scope.getFile4 = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
+                          var splited = result.split(";base64,");
+
                           $scope.imageSrc4 = result;
+                          $scope.Base64_4 = splited[1];
+
+                          // Separa el string para quedarse unicamente con el tipo
+                          var splitedType = splited[0].split("data:");
+                          $scope.Type_4 = splitedType[1];
                       });
 };
 
@@ -107,7 +133,14 @@ $scope.getFile5 = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
+                          var splited = result.split(";base64,");
+
                           $scope.imageSrc5 = result;
+                          $scope.Base64_5 = splited[1];
+
+                          // Separa el string para quedarse unicamente con el tipo
+                          var splitedType = splited[0].split("data:");
+                          $scope.Type_5 = splitedType[1];
                       });
 };
 
