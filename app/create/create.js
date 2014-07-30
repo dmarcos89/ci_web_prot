@@ -20,13 +20,14 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts,
     $scope.Create = function() {
 
       // json nueva version con varias imagenes
-      data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.markers[0].position, category: $scope.category, assets_images:[
+      data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.image, date: $scope.date, location: $scope.markers[0].position, category: $scope.category}
+        , assets_images:[
         {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1}
         // {data: $scope.imageSrc2, filename: "02.jpg",content_type: "image/jpg"},
         // {data: $scope.imageSrc3, filename: "03.jpg",content_type: "image/jpg"},
         // {data: $scope.imageSrc4, filename: "04.jpg",content_type: "image/jpg"},
         // {data: $scope.imageSrc5, filename: "05.jpg",content_type: "image/jpg"}
-        ]}};
+        ]};
       
       // json version vieja
       // data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.imageSrc, date: $scope.date, location:$scope.location , category: $scope.category}};
@@ -71,8 +72,11 @@ $scope.getFile = function () {
                           var splited = result.split(";base64,");
 
                           $scope.imageSrc = result;
-                          $scope.Type_1 = splited[0];
                           $scope.Base64_1 = splited[1];
+
+                          // Separa el string para quedarse unicamente con el tipo
+                          var splitedType = splited[0].split("data:");
+                          $scope.Type_1 = splitedType[1];
 
                       });
 };
