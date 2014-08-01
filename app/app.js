@@ -5,7 +5,8 @@ angular.module('MainApp',
   [
     'ngRoute',
     'ngResource',
-    'ngMap'
+    'ngMap',
+    'Security'
   ]
 );
  
