@@ -41,7 +41,7 @@
                       <li><a href="#/post">Detalle post</a></li> -->
                         
                         <li><a href="">Registrarte</a></li>
-                        <li><a href="">Iniciar Sesión</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#myModal">Iniciar Sesión</a></li>
                         
 
 
@@ -62,3 +62,50 @@
         </div>
         <!-- /.container -->
     </nav>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        
+        <h4>
+            ¡Ingresar en Ciudad Invisible!    
+        </h4>
+        <br>
+        <a class="btn btn-block btn-social btn-facebook">
+            <i class="fa fa-facebook"></i> Inicia sesión con Facebook
+        </a>
+        <a class="btn btn-block btn-social btn-twitter">
+            <i class="fa fa-twitter"></i> Inicia sesión con Twitter
+        </a>
+
+
+        <hr>
+
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input type="email" class="form-control" id="" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input type="password" class="form-control" id="" placeholder="Password">
+              <!-- <br> -->
+              <input type="checkbox"> Recordarme
+              <button type="submit" class="btn btn-block btn-warning">Iniciar sesión</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
