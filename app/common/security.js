@@ -18,11 +18,12 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 	
 
   // Here, usually you should watch for when Facebook is ready and loaded
-  $scope.$watch(function() {
-    return Facebook.isReady(); // This is for convenience, to notify if Facebook is loaded and ready to go.
-  }, function(newVal) {
-    $scope.facebookReady = true; // You might want to use this to disable/show/hide buttons and else
-  });
+  
+  // $scope.$watch(function() {
+  //   return Facebook.isReady(); // This is for convenience, to notify if Facebook is loaded and ready to go.
+  // }, function(newVal) {
+  //   $scope.facebookReady = true; // You might want to use this to disable/show/hide buttons and else
+  // });
 
   // From now on you can use the Facebook service just as Facebook api says
   // Take into account that you will need $scope.$apply when inside a Facebook function's scope and not angular
