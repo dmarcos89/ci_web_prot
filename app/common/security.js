@@ -31,10 +31,17 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     Facebook.login(function(response) {
       if (response.status === 'connected') {
         $scope.status = 'yes';
-        alert('yes');
+        alert('permisos aceptados por el usaurio...');
+        $scope.isAuthenticated = true;
+
+        // Aqui hay que hacer lo siguiente:
+        // - enviar datos al server para login/registrar
+        // - enviar al usuario a la siguiente pagina (o recargar donde está pero ahora esta logueado)
+        
+        
       } else {
         $scope.status = 'no';
-        alert('no');
+        alert('el usuario no acepta los permisos de facebook...');
       }
     });
   };
