@@ -29,7 +29,13 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   // Take into account that you will need $scope.$apply when inside a Facebook function's scope and not angular
   $scope.login = function() {
     Facebook.login(function(response) {
-      // Do something with response. Don't forget here you are on Facebook scope so use $scope.$apply
+      if (response.status === 'connected') {
+        $scope.status = 'yes';
+        alert('yes');
+      } else {
+        $scope.status = 'no';
+        alert('no');
+      }
     });
   };
 
