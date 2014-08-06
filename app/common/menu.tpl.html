@@ -40,7 +40,7 @@
                       <li><a href="#/crear">Nuevo post</a></li>
                       <li><a href="#/post">Detalle post</a></li> -->
                         
-                        <li><a href="">Registrarte</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#myModal2">Registrarte</a></li>
                         <li><a href="" data-toggle="modal" data-target="#myModal">Iniciar Sesión</a></li>
                         
 
@@ -97,6 +97,65 @@
               <!-- <br> -->
               <input type="checkbox"> Recordarme
               <button type="submit" class="btn btn-block btn-warning">Iniciar sesión</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        
+        <h4>
+            ¡Registrate en Ciudad Invisible!    
+        </h4>
+        <br>
+        <a class="btn btn-block btn-social btn-facebook" ng-click="login()">
+            <i class="fa fa-facebook"></i> Registrate con Facebook
+        </a>
+        <a class="btn btn-block btn-social btn-twitter">
+            <i class="fa fa-twitter"></i> Registrate con Twitter
+        </a>
+
+
+        <hr>
+        <p>
+          Puedes registrate también utilizando tu correo electronico.
+        </p>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input type="text" class="form-control" id="" placeholder="Nombre">
+            </div>
+            <br><br>
+            <div class="col-sm-12">
+              <input type="text" class="form-control" id="" placeholder="Apellido">
+            </div>
+            <br><br>
+            <div class="col-sm-12">
+              <input type="email" class="form-control" id="" placeholder="Email">
+            </div>
+            <br><br>
+            <div class="col-sm-12">
+               <input type="password" class="form-control" id="" placeholder="Contraseña">
+            </div>
+            <br><br>
+            <div class="col-sm-12">
+               <input type="password" class="form-control" id="" placeholder="Repetir contraseña">
+            </div>
+            <br><br>
+            <div class="col-sm-12">
+              <input type="checkbox"> Quiero recibir novedades de Ciudad Invisible <br><br>
+              <button type="submit" class="btn btn-block btn-warning">Registrate</button>
             </div>
           </div>
         </form>
