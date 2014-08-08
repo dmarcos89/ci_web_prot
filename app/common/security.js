@@ -69,7 +69,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         // Here you could re-check for user status (just in case)
         $scope.user = response;
 
-        alert($scope.user);
+        alert($scope.user['username']);
 
       });
     });
