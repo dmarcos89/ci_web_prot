@@ -64,7 +64,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   };
 
   $scope.me = function() {
-    Facebook.api('/me', {fields: 'last_name'} function(response) {
+    Facebook.api('/me', {fields: 'last_name'}, function(response) {
       $scope.$apply(function() {
         // Here you could re-check for user status (just in case)
         $scope.user = response;
