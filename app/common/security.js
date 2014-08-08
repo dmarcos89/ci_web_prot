@@ -45,7 +45,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
       $scope.me();
 
-    });
+    }, {scope: 'email'} );
   };
 
   $scope.getLoginStatus = function() {
@@ -71,7 +71,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         alert('Good to see you, ' + response.name + ':' + response.email);
 
       });
-    }, {scope: 'email'});
+    });
   };
 
 
