@@ -1,1 +1,40 @@
-{{ msg }}
+
+
+<div class="container firstwrap">
+	<div class="row">
+		<div class="col-lg-4 centrado">
+			
+				<img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=200 class="img-circle img-responsive center-block">	
+
+			<h2>Lucia Martinez</h2>
+			<p>Montevideo, Uruguay</p>
+			
+			<a href="" class="btn btn-primary">
+				Seguir
+			</a>
+		</div>
+		<div class="col-lg-7 col-lg-offset-1 centrado">
+		 <tabset>
+		    <!-- <tab heading="Static title">Static content</tab> -->
+		    <!-- <tab select="alertMe()">
+		      <tab-heading>
+		        <i class="glyphicon glyphicon-bell"></i> Alert!
+		      </tab-heading>
+		      I've got an HTML heading, and a select callback. Pretty cool!
+		    </tab> -->
+		    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+		      {{tab.content}}
+		    </tab>
+		    
+		  </tabset>
+
+		
+			{{ user.email }}
+
+		</div>	
+	</div>
+
+
+<!-- {{ fbuser }} -->
+
+</div>

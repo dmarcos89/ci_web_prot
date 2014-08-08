@@ -10,12 +10,11 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
     }]);
 
 
-angular.module('Security').controller('LoginController', ['$scope', 'Facebook', function($scope, Facebook) {
+angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter) {
 
 	$scope.isAuthenticated = false;
 	// $scope.isAuthenticated = true;
-
-	
+	$scope.username = 'Juancito';
 
   // Here, usually you should watch for when Facebook is ready and loaded
   
@@ -34,6 +33,8 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         alert('permisos aceptados por el usaurio...');
         $scope.isAuthenticated = true;
 
+
+        me();
         // Aqui hay que hacer lo siguiente:
         // - enviar datos al server para login/registrar
         // - enviar al usuario a la siguiente pagina (o recargar donde está pero ahora esta logueado)
@@ -66,7 +67,56 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       $scope.$apply(function() {
         // Here you could re-check for user status (just in case)
         $scope.user = response;
+
+        alert($scope.user);
+
       });
     });
   };
+
+
+
+
+  $scope.doLoginCommon = function(){
+    // alert("se apreta boton para hacer login comun" + $scope.login_email + " - " + $scope.login_password);
+
+  // json nueva version con varias imagenes
+      data = {username: $scope.login_email, password: $scope.login_password};
+      Login_Common.save(data, successPostCallback, errorCallback);
+
+    function successPostCallback(){
+        alert("login ok");
+      }
+    function errorCallback(){
+        alert("login error");
+      }
+
+  };
+
+
+
+  $scope.doLoginFacebook = function(){
+    // alert("se apreta boton para hacer login comun" + $scope.login_email + " - " + $scope.login_password);
+
+  // json nueva version con varias imagenes
+      data = {username: $scope.login_email, password: $scope.login_password};
+      Login_Facebook.save(data, successPostCallback, errorCallback);
+
+    function successPostCallback(){
+        alert("login ok");
+      }
+    function errorCallback(){
+        alert("login error");
+      }
+
+  };
+
+
+
+
+
 }]);
+
+
+
+

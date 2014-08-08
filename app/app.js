@@ -6,7 +6,8 @@ angular.module('MainApp',
     'ngRoute',
     'ngResource',
     'ngMap',
-    'Security'
+    'Security',
+    'ui.bootstrap'
   ]
 );
  
@@ -32,6 +33,10 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
       when('/post/:postid', {
         templateUrl: 'detail/detail.tpl.html',
         controller: 'PostById'
+      }).
+      when('/user/:postid', {
+        templateUrl: 'user/profile.tpl.html',
+        controller: 'ViewUser'
       }).
       when('/user/', {
         templateUrl: 'user/profile.tpl.html',
