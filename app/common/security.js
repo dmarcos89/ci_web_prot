@@ -33,8 +33,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         alert('permisos aceptados por el usaurio...');
         $scope.isAuthenticated = true;
 
-
-        me();
         // Aqui hay que hacer lo siguiente:
         // - enviar datos al server para login/registrar
         // - enviar al usuario a la siguiente pagina (o recargar donde está pero ahora esta logueado)
@@ -44,6 +42,9 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         $scope.status = 'no';
         alert('el usuario no acepta los permisos de facebook...');
       }
+
+      $scope.me();
+
     });
   };
 
