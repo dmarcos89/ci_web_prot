@@ -68,6 +68,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       $scope.$apply(function() {
         // Here you could re-check for user status (just in case)
         $scope.user = response;
+        $scope.username = response;
         alert('Good to see you, ' + response.name + ':' + response.email);
 
       });
