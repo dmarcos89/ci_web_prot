@@ -51,3 +51,20 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
       });
   } ]);
 
+
+
+
+
+
+// ---------- START LOCAL VARIABLES -----------
+angular.module('MainApp').constant('API_URL', 'http://localhost:3000/posts/:Id.json');
+
+
+// ------------- END LOCAL VARIABLES --------
+
+
+
+// ---------- START PRODUCTION VARIABLES -----------
+
+
+// ------------- END PRODUCTION VARIABLES --------
