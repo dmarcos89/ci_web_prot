@@ -67,7 +67,7 @@ angular.module('app.config', [])
 .constant('CONFIG', {
   'GOOGLE_ANALYTICS_ID' : '',
   'BASE_URL' : '',
-  'API_URL' : 'http://ciudadinvisible.herokuapp.com/'
+  'API_URL' : 'http://ciudadinvisible.herokuapp.com/',
   'FACEBOOK_ID' : '494836457286098'
 });
 
