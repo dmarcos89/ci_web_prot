@@ -4,9 +4,11 @@
 	<div class="row">
 		<div class="col-lg-4 centrado">
 			
-				<img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=200 class="img-circle img-responsive center-block">	
+				<!-- <img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=200 class="img-circle img-responsive center-block">	 -->
 
-			<h2>Lucia Martinez</h2>
+				<img ng-src="{{ user.url_avatar }}" alt="" width=200 class="img-circle img-responsive center-block">
+
+			<h2>{{ user.first_name + " " +user.last_name}} </h2>
 			<p>Montevideo, Uruguay</p>
 			
 			<a href="" class="btn btn-primary">
@@ -29,11 +31,12 @@
 		  </tabset>
 
 		
-			{{ user.email }}
+			
 
 		</div>	
 	</div>
 
+{{ user }}
 
 <!-- {{ fbuser }} -->
 

@@ -146,28 +146,28 @@
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <div class="col-sm-12">
-              <input type="text" class="form-control" id="" placeholder="Nombre">
+              <input type="text" class="form-control" id="" placeholder="Nombre" ng-model="reg_first_name">
             </div>
             <br><br>
             <div class="col-sm-12">
-              <input type="text" class="form-control" id="" placeholder="Apellido">
+              <input type="text" class="form-control" id="" placeholder="Apellido" ng-model="reg_last_name">
             </div>
             <br><br>
             <div class="col-sm-12">
-              <input type="email" class="form-control" id="" placeholder="Email">
+              <input type="email" class="form-control" id="" placeholder="Email" ng-model="reg_email">
             </div>
             <br><br>
             <div class="col-sm-12">
-               <input type="password" class="form-control" id="" placeholder="Contraseña">
+               <input type="password" class="form-control" id="" placeholder="Contraseña" ng-model="reg_password">
             </div>
             <br><br>
             <div class="col-sm-12">
-               <input type="password" class="form-control" id="" placeholder="Repetir contraseña">
+               <input type="password" class="form-control" id="" placeholder="Repetir contraseña" ng-model="reg_repeat_password">
             </div>
             <br><br>
             <div class="col-sm-12">
               <input type="checkbox"> Quiero recibir novedades de Ciudad Invisible <br><br>
-              <button type="submit" class="btn btn-block btn-warning">Registrate</button>
+              <button type="submit" class="btn btn-block btn-warning" ng-click="doRegisterCommon()">Registrate</button>
             </div>
           </div>
         </form>

@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('MainApp').factory('Posts', function ($resource) {
+angular.module('MainApp').factory('Posts', function ($resource, CONFIG) {
     return $resource(
         // 'http://ciudadinvisible.herokuapp.com/posts/:Id.json',
-        'http://localhost:3000/posts/:Id.json',
+        CONFIG.API_URL+'posts/:Id.json',
+        // 'http://localhost:3000/posts/:Id.json',
         {Id: '@Id' },
         {
       'update': {method: 'PUT'}

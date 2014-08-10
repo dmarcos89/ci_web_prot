@@ -7,14 +7,12 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
         FacebookProvider.init('494836457286098');
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter) {
+angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common',function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common) {
 
 
   angular.element(document).ready(function () {
         $scope.checkLogin();
       });
-
-
 
 	$scope.isAuthenticated = false;
 	// $scope.isAuthenticated = true;
@@ -27,33 +25,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   // }, function(newVal) {
   //   $scope.facebookReady = true; // You might want to use this to disable/show/hide buttons and else
   // });
-
-  // From now on you can use the Facebook service just as Facebook api says
-  // Take into account that you will need $scope.$apply when inside a Facebook function's scope and not angular
-  $scope.login = function() {
-    Facebook.login(function(response) {
-      if (response.status === 'connected') {
-        $scope.status = 'yes';
-        alert('permisos aceptados por el usaurio...');
-        $scope.isAuthenticated = true;
-
-        // Aqui hay que hacer lo siguiente:
-        // - enviar datos al server para login/registrar
-        // - enviar al usuario a la siguiente pagina (o recargar donde está pero ahora esta logueado)
-        $scope.me();
-
-
-
-        
-      } else {
-        $scope.status = 'no';
-        alert('el usuario no acepta los permisos de facebook...');
-      }
-
-      
-
-    }, {scope: 'email'} );
-  };
 
   $scope.getLoginStatus = function() {
     Facebook.getLoginStatus(function(response) {
@@ -85,7 +56,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         $scope.gender = response.gender;
         $scope.locale = response.locale;
 
-        alert('Good to see you, ' + response.name + ':' + response.email);
+        // alert('Good to see you, ' + response.name + ':' + response.email);
 
       });
     });
@@ -94,22 +65,43 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
 
-  $scope.doLoginCommon = function(){
-    // alert("se apreta boton para hacer login comun" + $scope.login_email + " - " + $scope.login_password);
 
-  // json nueva version con varias imagenes
+
+
+  $scope.doLoginCommon = function(){
       data = {email: $scope.login_email, password: $scope.login_password};
       Login_Common.save(data, successPostCallback, errorCallback);
 
+      // ---------------------------
+      // ESTO ES PARA PROBAR EL LOGIN CON FACEBOOK PERO DE FORMA MANUAL
+      // data = {username: 'Ndsaaaaaa2', email: 'haaaaaaaola@dada.com', first_name: 'Naasdaae3', last_name: 'Aao3', facebook_id: 'F21312312okId3', avatar:'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/t1.0-1/c13.0.50.50/p50x50/10376166_10152166623504436_3969573622742641215_n.jpg'};
+      // Login_Facebook.save(data, successPostCallback, errorCallback);
+      // ------------------------
+
     function successPostCallback(){
-        alert("login ok");
+        alert('login MANUAL ok');
       }
     function errorCallback(){
-      alert("error al hacer login");
+      alert('error al hacer login MANUAL');
       }
 
   };
 
+
+
+
+  $scope.doRegisterCommon = function(){
+      data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"Ciudad", country:"Pais"};
+      Register_Common.save(data, successPostCallback, errorCallback);
+
+      function successPostCallback(){
+        alert('registro MANUAL ok');
+      }
+      function errorCallback(){
+      alert('error al hacer registro MANUAL');
+      }
+
+    };
 
 
   $scope.doLoginFacebook = function(){
@@ -120,12 +112,14 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         alert('permisos aceptados por el usaurio...');
         // $scope.isAuthenticated = true;
         $scope.me();
-        // Aqui hay que hacer lo siguiente:
-        // - enviar datos al server para login/registrar
-        data = {user:{ username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid}};
-        Login_Facebook.save(data, successPostCallback, errorCallback);
-        // - enviar al usuario a la siguiente pagina (o recargar donde está pero ahora esta logueado)
+
+        alert('Good to see you, ' + response.name + ':' + response.email);
         
+        var photoUrl = 'http://graph.facebook.com/';
+        data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
+        Login_Facebook.save(data, successPostCallback, errorCallback);
+        
+
       } else {
         $scope.status = 'no';
         alert('el usuario no acepta los permisos de facebook...');
@@ -135,19 +129,20 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       
 
     function successPostCallback(){
-        alert("login ok con fb");
-      }
+          alert("login ok con fb");
+        }
     function errorCallback(){
-        alert("login error al login con fb");
-      }
+          alert("login error al login con fb");
+        }
+    
 
   };
 
 
 
-  $scope.checkLogin = function(){
-    alert("chequear la cookie al cargar la pantalla...");
-  };
+  // $scope.checkLogin = function(){
+  //   alert("chequear la cookie al cargar la pantalla...");
+  // };
 
 
 }]);

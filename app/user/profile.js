@@ -22,11 +22,6 @@ angular.module('MainApp').controller('ViewUser', function($scope, $routeParams, 
     //   });
     // };
 
-    Users.query(function(data) {
-        // alert(data);
-        $scope.users = data;
-      });
-
     Users.get({ Id: userid }, function(data) {
       $scope.user = data;
       // $scope.lat = data["location"];

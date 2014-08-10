@@ -1,36 +1,28 @@
 'use strict';
 
-angular.module('MainApp').factory('Login_Common', function ($resource) {
+angular.module('MainApp').factory('Login_Common', function ($resource, CONFIG) {
     return $resource(
-        'http://ciudadinvisible.herokuapp.com/login_common/'
-        // 'http://localhost:3000/login_common/'
-        // {'update': {method: 'PUT'}
-      // "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true}
- 
-    // }
+        CONFIG.API_URL+'login_common/'
     );
   });
 
 
-angular.module('MainApp').factory('Login_Facebook', function ($resource) {
+angular.module('MainApp').factory('Login_Facebook', function ($resource, CONFIG) {
     return $resource(
-        'http://ciudadinvisible.herokuapp.com/login_facebook/'
-        // 'http://localhost:3000/login_facebook/'
-        // {'update': {method: 'PUT'}
-      // "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true}
- 
-    // }
+        CONFIG.API_URL+'login_facebook/'
     );
   });
 
 
-angular.module('MainApp').factory('Login_Twitter', function ($resource) {
+angular.module('MainApp').factory('Login_Twitter', function ($resource, CONFIG) {
     return $resource(
-        'http://ciudadinvisible.herokuapp.com/login_twitter/'
-        // 'http://localhost:3000/login_twitter/'
-        // {'update': {method: 'PUT'}
-      // "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true}
- 
-    // }
+        CONFIG.API_URL+'login_twitter/'
+    );
+  });
+
+
+angular.module('MainApp').factory('Register_Common', function ($resource, CONFIG) {
+    return $resource(
+        CONFIG.API_URL+'register_common/'
     );
   });
