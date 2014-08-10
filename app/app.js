@@ -42,6 +42,10 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         templateUrl: 'user/profile.tpl.html',
         controller: 'ViewUser'
       }).
+      when('/myuser/', {
+        templateUrl: 'user/myuser.tpl.html',
+        controller: 'MyUser'
+      }).
       otherwise({
         redirectTo: '/home'
       });
