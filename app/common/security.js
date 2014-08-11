@@ -30,13 +30,14 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     Facebook.getLoginStatus(function(response) {
       if(response.status === 'connected') {
         $scope.$apply(function() {
-          $scope.loggedIn = true;
-          alert("Usuario logueado:"+$scope.facebookid+"-"+$scope.fullname+"-"+$scope.username+"-"+$scope.lastname+"-"+$scope.email+"-"+$scope.gender+"-"+$scope.locale);
+          $scope.fblogin = true;
+          // alert("Usuario logueado:"+$scope.facebookid+"-"+$scope.fullname+"-"+$scope.username+"-"+$scope.lastname+"-"+$scope.email+"-"+$scope.gender+"-"+$scope.locale);
+          alert("usuario logueado");
         });
       }
       else {
         $scope.$apply(function() {
-          $scope.loggedIn = false;
+          $scope.fblogin = false;
           alert("el usuario no está logueado con facebook");
         });
       }
@@ -109,11 +110,9 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     Facebook.login(function(response) {
       if (response.status === 'connected') {
         $scope.status = 'yes';
-        alert('permisos aceptados por el usaurio...');
+        // alert('permisos aceptados por el usaurio...');
         // $scope.isAuthenticated = true;
         $scope.me();
-
-        
         
         var photoUrl = 'http://graph.facebook.com/';
         data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
@@ -142,9 +141,20 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
 
-  // $scope.checkLogin = function(){
-  //   alert("chequear la cookie al cargar la pantalla...");
-  // };
+  $scope.checkLogin = function(){
+    // alert("chequear la cookie al cargar la pantalla...");
+
+  // Chequeo para ver si hay un usuario de facebook logueado
+    $scope.getLoginStatus();
+    if($scope.fblogin === true){
+      // Hay un usuario logueado con facebook. Levanto su info mediante la api para actualizar el menu superior
+      alert("Hay un usuario logueado con FB");
+      $scope.me();
+      $scope.isAuthenticated = true;
+    }
+
+
+  };
 
 
 }]);
