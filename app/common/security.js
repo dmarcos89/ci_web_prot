@@ -7,16 +7,24 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
         FacebookProvider.init('494836457286098');
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common',function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common) {
+angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common',function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common){
+
+
+  $scope.isAuthenticated = false;
+  // $scope.isAuthenticated = true;
+  $scope.username = '';
 
 
   angular.element(document).ready(function () {
         $scope.checkLogin();
       });
 
-	$scope.isAuthenticated = false;
-	// $scope.isAuthenticated = true;
-	$scope.username = '';
+  $scope.checkLogin = function(){
+    $scope.getLoginStatus();
+  
+  };
+
+
 
   // Here, usually you should watch for when Facebook is ready and loaded
   
@@ -108,7 +116,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
   $scope.doLoginFacebook = function(){
-
     Facebook.login(function(response) {
       if (response.status === 'connected') {
         $scope.status = 'yes';
@@ -130,26 +137,22 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
     }, {scope: 'email'} );
       
-
     function successPostCallback(){
           alert("login ok con fb");
         }
     function errorCallback(){
           alert("login error al login con fb");
         }
-    
-
   };
 
 
 
-  $scope.checkLogin = function(){
-    // alert("chequear la cookie al cargar la pantalla...");
-
-  // Chequeo para ver si hay un usuario de facebook logueado
-    $scope.getLoginStatus();
-  
+  $scope.doLogoutFacebook = function(){
+    Facebook.logout(function(response){
+      $scope.isAuthenticated = false;
+    });
   };
+
 
 
 }]);
