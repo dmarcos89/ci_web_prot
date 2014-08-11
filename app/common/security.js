@@ -113,12 +113,14 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         // $scope.isAuthenticated = true;
         $scope.me();
 
-        alert('Good to see you, ' + response.name + ':' + response.email);
+        
         
         var photoUrl = 'http://graph.facebook.com/';
         data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
         Login_Facebook.save(data, successPostCallback, errorCallback);
         
+        alert('Good to see you, ' + response.name + ':' + response.email);
+        $scope.isAuthenticated = true;
 
       } else {
         $scope.status = 'no';
