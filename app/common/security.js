@@ -30,9 +30,11 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     Facebook.getLoginStatus(function(response) {
       if(response.status === 'connected') {
         $scope.$apply(function() {
-          $scope.fblogin = true;
           // alert("Usuario logueado:"+$scope.facebookid+"-"+$scope.fullname+"-"+$scope.username+"-"+$scope.lastname+"-"+$scope.email+"-"+$scope.gender+"-"+$scope.locale);
           alert("usuario logueado");
+          $scope.me();
+          $scope.isAuthenticated = true;
+          $scope.fblogin = true;
         });
       }
       else {
@@ -146,14 +148,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
   // Chequeo para ver si hay un usuario de facebook logueado
     $scope.getLoginStatus();
-    if($scope.fblogin === true){
-      // Hay un usuario logueado con facebook. Levanto su info mediante la api para actualizar el menu superior
-      alert("Hay un usuario logueado con FB");
-      $scope.me();
-      $scope.isAuthenticated = true;
-    }
-
-
+  
   };
 
 
