@@ -31,7 +31,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       if(response.status === 'connected') {
         $scope.$apply(function() {
           $scope.loggedIn = true;
-          alert("Usuario logueado:"+$scope.user);
+          alert("Usuario logueado:"+$scope.facebookid+"-"+$scope.fullname+"-"+$scope.username+"-"+$scope.lastname+"-"+$scope.email+"-"+$scope.gender+"-"+$scope.locale+
         });
       }
       else {
