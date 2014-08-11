@@ -31,7 +31,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       if(response.status === 'connected') {
         $scope.$apply(function() {
           $scope.loggedIn = true;
-          alert("el usuario ya está logueado con facebook...");
+          alert("Usuario logueado:"+$scope.user);
         });
       }
       else {
