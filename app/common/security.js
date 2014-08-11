@@ -11,7 +11,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
   $scope.isAuthenticated = false;
-  // $scope.isAuthenticated = true;
   $scope.username = '';
 
 
@@ -20,6 +19,8 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       });
 
   $scope.checkLogin = function(){
+    
+    // Aqui primero deberia revisar por la cookie, y a partir de ahi ver si es usuario comun, fb o tw. Por ahora vamos directo a fb
     $scope.getLoginStatus();
   
   };
@@ -42,12 +43,11 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
           alert("usuario logueado");
           $scope.me();
           $scope.isAuthenticated = true;
-          $scope.fblogin = true;
+          $scope.loginType = 'FB';
         });
       }
       else {
         $scope.$apply(function() {
-          $scope.fblogin = false;
           alert("el usuario no está logueado con facebook");
         });
       }
@@ -91,6 +91,8 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
     function successPostCallback(){
         alert('login MANUAL ok');
+        $scope.isAuthenticated = true;
+        $scope.loginType = 'COMMON';
       }
     function errorCallback(){
       alert('error al hacer login MANUAL');
@@ -129,6 +131,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         
         alert('Good to see you, ' + response.name + ':' + response.email);
         $scope.isAuthenticated = true;
+        $scope.loginType = 'FB';
 
       } else {
         $scope.status = 'no';
@@ -146,13 +149,27 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   };
 
 
-
   $scope.doLogoutFacebook = function(){
     Facebook.logout(function(response){
       $scope.isAuthenticated = false;
+      $scope.loginType = '';
     });
   };
 
+
+
+
+  $scope.doLogout = function(){
+    if($scope.loginType==='FB'){
+      $scope.doLogoutFacebook();
+    }
+    // if($scope.loginType="TW"){
+
+    // }
+    // if($scope.loginType="COMMON"){
+
+    // }  
+  };
 
 
 }]);
