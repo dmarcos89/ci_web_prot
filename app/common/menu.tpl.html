@@ -28,7 +28,7 @@
                         Welcome, {{ username }} 
                         <b class="caret"></b>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" id="dropdown">
                             <li><a href=""><i class="icon-cog"></i> Link 1</a></li>
                             <li><a href=""><i class="icon-envelope"></i> Link 2</a></li>
                             <li class="divider"></li>
@@ -113,7 +113,7 @@
               <input type="password" class="form-control" id="" placeholder="Password" ng-model="login_password" required>
               <!-- <br> -->
               <input type="checkbox"> Recordarme
-              <button type="submit" class="btn btn-block btn-warning" ng-click="doLoginCommon()" >Iniciar sesión</button>
+              <button class="btn btn-block btn-warning" ng-click="doLoginCommon()">Iniciar sesión</button>
             </div>
           </div>
         </form>
@@ -172,7 +172,7 @@
             <br><br>
             <div class="col-sm-12">
               <input type="checkbox"> Quiero recibir novedades de Ciudad Invisible <br><br>
-              <button type="submit" class="btn btn-block btn-warning" ng-click="doRegisterCommon()">Registrate</button>
+              <a class="btn btn-block btn-warning" ng-click="doRegisterCommon()">Registrate</a>
             </div>
           </div>
         </form>

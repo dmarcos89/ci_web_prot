@@ -5,6 +5,7 @@ angular.module('MainApp',
   [
     'ngRoute',
     'ngResource',
+    'ngCookies',
     'ngMap',
     'Security',
     'ui.bootstrap',

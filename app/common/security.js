@@ -7,9 +7,10 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
         FacebookProvider.init('494836457286098');
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common',function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common){
+angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies',function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies){
 
 
+ 
   $scope.isAuthenticated = false;
   $scope.username = '';
 
@@ -104,11 +105,14 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
   $scope.doRegisterCommon = function(){
+    
       data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"Ciudad", country:"Pais"};
       Register_Common.save(data, successPostCallback, errorCallback);
 
       function successPostCallback(){
         alert('registro MANUAL ok');
+        $scope.loginType = 'COMMON';
+        $scope.isAuthenticated = true;
       }
       function errorCallback(){
       alert('error al hacer registro MANUAL');
@@ -125,7 +129,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         // $scope.isAuthenticated = true;
         $scope.me();
         alert('Good to see you, ' + $scope.username + ':' + $scope.lastname);
-        
+
         var photoUrl = 'http://graph.facebook.com/';
         data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
         Login_Facebook.save(data, successPostCallback, errorCallback);
@@ -171,6 +175,12 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
     // }  
   };
+
+
+  // // Retrieving a cookie
+  //   var favoriteCookie = $cookies.myFavorite;
+  //   // Setting a cookie
+  //   $cookies.myFavorite = 'oatmeal';
 
 
 }]);
