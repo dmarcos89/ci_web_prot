@@ -40,7 +40,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       // $scope.isAuthenticated = true;
       // $scope.username = cookieUser;
       // $scope.loginType = 'COMMON';
-      updateLoginVars('true','COMMON',cookieUser);
+      updateLoginVars(true,'COMMON',cookieUser);
     }
 
     if(cookieLoginType === 'FB'){
@@ -48,7 +48,15 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       // $scope.isAuthenticated = true;
       // $scope.username = cookieUser;
       // $scope.loginType = 'FB';
-      updateLoginVars('true','FB',cookieUser);
+      updateLoginVars(true,'FB',cookieUser);
+    }
+
+    if(cookieLoginType === 'TW'){
+      // $scope.getLoginStatus();
+      // $scope.isAuthenticated = true;
+      // $scope.username = cookieUser;
+      // $scope.loginType = 'FB';
+      updateLoginVars(true,'TW',cookieUser);
     }
   };
 
@@ -117,7 +125,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       
     function successPostCallback(){
         alert('login MANUAL ok');
-        updateLoginVars('true','COMMON','Nombre del user');
+        updateLoginVars(true,'COMMON','Nombre del user');
 
       }
     function errorCallback(){
@@ -146,7 +154,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
       function successPostCallback(){
         alert('registro MANUAL ok');
-        updateLoginVars('true','COMMON',$scope.reg_first_name+" "+$scope.reg_last_name);
+        updateLoginVars(true,'COMMON',$scope.reg_first_name+" "+$scope.reg_last_name);
       }
       function errorCallback(){
       alert('error al hacer registro MANUAL');
@@ -175,7 +183,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         // $cookies.isAuthenticated = true;
         // $cookies.loginType = 'FB';
         // $cookies.username = $scope.fullname;
-        updateLoginVars('true','FB',$scope.fullname);
+        updateLoginVars(true,'FB',$scope.fullname);
 
       } else {
         $scope.status = 'no';
@@ -203,7 +211,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       // $cookies.isAuthenticated = false;
       // $cookies.loginType = '';
       // $cookies.username = '';
-      updateLoginVars('false','','');
+      updateLoginVars(false,'','');
     });
   };
 
@@ -227,13 +235,12 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     // }
     if($scope.loginType === 'COMMON'){
       //Actualizo variables
-      $scope.isAuthenticated = false;
-      $scope.loginType = '';
-      $scope.username = '';
-      //Actualizo cookies
-      $cookies.isAuthenticated = false;
-      $cookies.loginType = '';
-      $cookies.username = '';
+      updateLoginVars(false,'','');
+    }
+
+    if($scope.loginType === 'COMMON'){
+      
+      updateLoginVars(false,'','');
     }
   };
 
@@ -291,7 +298,8 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       }, function(auth, status) {
 
           hello( 'twitter' ).api('me').success(function(json){
-            alert('Your name is '+ json.name);
+            alert('Your name is '+ json.name + json.email);
+            updateLoginVars(true,'TW',json.name);
           }).error(function(){
             alert('Whoops!');
           });
