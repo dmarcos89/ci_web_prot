@@ -25,6 +25,7 @@
                      
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img ng-src="{{  }}" alt="" width=20 class="img-circle img-responsive center-block">
                         Welcome, {{ username }} 
                         <b class="caret"></b>
                         </a>
@@ -95,7 +96,7 @@
         <a class="btn btn-block btn-social btn-facebook" ng-click="doLoginFacebook()">
             <i class="fa fa-facebook"></i> Inicia sesión con Facebook
         </a>
-        <a class="btn btn-block btn-social btn-twitter">
+        <a class="btn btn-block btn-social btn-twitter" ng-click="doLoginTwitter()">
             <i class="fa fa-twitter"></i> Inicia sesión con Twitter
         </a>
 
@@ -136,7 +137,7 @@
             ¡Registrate en Ciudad Invisible!    
         </h4>
         <br>
-        <a class="btn btn-block btn-social btn-facebook" ng-click="login()">
+        <a class="btn btn-block btn-social btn-facebook" ng-click="doLoginFacebook()">
             <i class="fa fa-facebook"></i> Registrate con Facebook
         </a>
         <a class="btn btn-block btn-social btn-twitter">
