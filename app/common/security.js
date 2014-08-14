@@ -289,7 +289,15 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         scope: 'email',
         display: 'popup'
       }, function(auth, status) {
-      });
+
+          hello( 'twitter' ).api('me').success(function(json){
+            alert('Your name is '+ json.name);
+          }).error(function(){
+            alert('Whoops!');
+          });
+
+        });
+
 
   };
 
