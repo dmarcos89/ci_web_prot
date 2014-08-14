@@ -285,7 +285,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     // hello( 'twitter', []).login( function(){
     //   alert('You are signed in to Twitter');
     // });
-
     hello.login('twitter', {
         scope: 'email',
         display: 'page'
