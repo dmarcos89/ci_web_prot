@@ -238,7 +238,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       updateLoginVars(false,'','');
     }
 
-    if($scope.loginType === 'COMMON'){
+    if($scope.loginType === 'TW'){
       
       updateLoginVars(false,'','');
     }
