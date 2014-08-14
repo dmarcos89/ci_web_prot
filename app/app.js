@@ -51,25 +51,25 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
 
 
 // ---------- START LOCAL VARIABLESS -----------
-// angular.module('app.config', [])
-// .constant('CONFIG', {
-//   'GOOGLE_ANALYTICS_ID' : '',
-//   'BASE_URL' : '',
-//   'API_URL' : 'http://localhost:3000/',
-//   'FACEBOOK_ID' : '494836457286098'
-// });
+angular.module('app.config', [])
+.constant('CONFIG', {
+  'GOOGLE_ANALYTICS_ID' : '',
+  'BASE_URL' : '',
+  'API_URL' : 'http://localhost:3000/',
+  'FACEBOOK_ID' : '494836457286098'
+});
 // ------------- END LOCAL VARIABLES --------
 
 
 
 
 // ---------- START PRODUCTION VARIABLES -----------
-angular.module('app.config', [])
-.constant('CONFIG', {
-  'GOOGLE_ANALYTICS_ID' : '',
-  'BASE_URL' : '',
-  'API_URL' : 'http://ciudadinvisible.herokuapp.com/',
-  'FACEBOOK_ID' : '494836457286098'
-});
+// angular.module('app.config', [])
+// .constant('CONFIG', {
+//   'GOOGLE_ANALYTICS_ID' : '',
+//   'BASE_URL' : '',
+//   'API_URL' : 'http://ciudadinvisible.herokuapp.com/',
+//   'FACEBOOK_ID' : '494836457286098'
+// });
 
 // ------------- END PRODUCTION VARIABLES --------

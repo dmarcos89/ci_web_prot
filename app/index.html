@@ -15,8 +15,9 @@
     <script src="../lib/angular/angular-resource.min.js"></script>
     <script src="../lib/angular/angular-cookies.min.js"></script>
     <script src="../lib/facebook/angular-facebook.js"></script>  
-    <script src="../lib/oauth/oauth.min.js"></script>
-    <script src="../lib/oauth/angular-oauth.io.min.js  "></script>
+    <!-- // <script src="../lib/oauth/oauth.min.js"></script> -->
+    <!-- // <script src="../lib/oauth/angular-oauth.io.min.js  "></script> -->
+    <script src="../lib/hello/hello.min.js"></script>
     <script src="../lib/angular-bootstrap/ui-bootstrap.min.js"></script>   
     <script src="../assets/js/jquery-1.10.2.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
@@ -36,7 +37,14 @@
     <script src="common/users.js"></script>
     <script src="user/profile.js"></script>
 
-    
+    <script>
+        hello.init({ 
+        // facebook : FACEBOOK_CLIENT_ID,
+        // windows  : WINDOWS_CLIENT_ID,
+        // google   : GOOGLE_CLIENT_ID
+        twitter : 'nv6hhlpywFVppJCcX1ZRR9SNE'
+    },{redirect_uri:'https://ciudadinvisibleweb.herokuapp.com/app/'});
+    </script>
   </head>
  
     <body>

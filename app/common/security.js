@@ -1,21 +1,23 @@
 'use strict';
 
-angular.module('Security',['facebook', 'oauth.io']);
+angular.module('Security',['facebook']);
 
 
-angular.module('Security').config(['FacebookProvider', 'OAuthProvider', function(FacebookProvider, OAuthProvider) {
+angular.module('Security').config(['FacebookProvider', function(FacebookProvider) {
         FacebookProvider.init('494836457286098');
-        OAuthProvider.setPublicKey('wQumgTM0FsHymnnG7nBJk1yIiVQ');
+        
+        // OAuthProvider.setPublicKey('wQumgTM0FsHymnnG7nBJk1yIiVQ');
+
       
-        OAuthProvider.setHandler('twitter', function (OAuthData) {
-          alert(OAuthData.result.access_token);
-        });
+        // OAuthProvider.setHandler('twitter', function (OAuthData) {
+        //   alert(OAuthData.result.access_token);
+        // });
 
 
 
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', 'OAuth' ,function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, OAuth){
+angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies',function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies){
 
 
  
@@ -35,16 +37,18 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
     if(cookieLoginType === 'COMMON'){
-      $scope.isAuthenticated = true;
-      $scope.username = cookieUser;
-      $scope.loginType = 'COMMON';
+      // $scope.isAuthenticated = true;
+      // $scope.username = cookieUser;
+      // $scope.loginType = 'COMMON';
+      updateLoginVars('true','COMMON',cookieUser);
     }
 
     if(cookieLoginType === 'FB'){
       // $scope.getLoginStatus();
-      $scope.isAuthenticated = true;
-      $scope.username = cookieUser;
-      $scope.loginType = 'FB';
+      // $scope.isAuthenticated = true;
+      // $scope.username = cookieUser;
+      // $scope.loginType = 'FB';
+      updateLoginVars('true','FB',cookieUser);
     }
   };
 
@@ -69,6 +73,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
           $scope.isAuthenticated = true;
           $cookies.loginType = 'FB';
           $cookies.isAuthenticated = true;
+
 
         });
       }
@@ -112,12 +117,8 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       
     function successPostCallback(){
         alert('login MANUAL ok');
-        $scope.loginType = 'COMMON';
-        $scope.isAuthenticated = true;
-        $scope.username = 'Nombre del usuario';
-        $cookies.loginType = 'COMMON';
-        $cookies.isAuthenticated = true;
-        $cookies.username = 'Nombre del usuario';
+        updateLoginVars('true','COMMON','Nombre del user');
+
       }
     function errorCallback(){
       alert('error al hacer login MANUAL');
@@ -145,13 +146,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
       function successPostCallback(){
         alert('registro MANUAL ok');
-        $scope.loginType = 'COMMON';
-        $scope.isAuthenticated = true;
-        $scope.username = $scope.reg_first_name+" "+$scope.reg_last_name;
-        
-        $cookies.loginType = 'COMMON';
-        $cookies.isAuthenticated = true;
-        $cookies.username = $scope.reg_first_name+" "+$scope.reg_last_name;
+        updateLoginVars('true','COMMON',$scope.reg_first_name+" "+$scope.reg_last_name);
       }
       function errorCallback(){
       alert('error al hacer registro MANUAL');
@@ -174,12 +169,13 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         Login_Facebook.save(data, successPostCallback, errorCallback);
         
         
-        $scope.isAuthenticated = true;
-        $scope.loginType = 'FB';
-        $scope.username = $scope.fullname;
-        $cookies.isAuthenticated = true;
-        $cookies.loginType = 'FB';
-        $cookies.username = $scope.fullname;
+        // $scope.isAuthenticated = true;
+        // $scope.loginType = 'FB';
+        // $scope.username = $scope.fullname;
+        // $cookies.isAuthenticated = true;
+        // $cookies.loginType = 'FB';
+        // $cookies.username = $scope.fullname;
+        updateLoginVars('true','FB',$scope.fullname);
 
       } else {
         $scope.status = 'no';
@@ -200,13 +196,14 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   $scope.doLogoutFacebook = function(){
     Facebook.logout(function(response){
       //Actualizo variables
-      $scope.isAuthenticated = false;
-      $scope.loginType = '';
-      $scope.username = '';
-      //Actualizo cookies
-      $cookies.isAuthenticated = false;
-      $cookies.loginType = '';
-      $cookies.username = '';
+      // $scope.isAuthenticated = false;
+      // $scope.loginType = '';
+      // $scope.username = '';
+      // //Actualizo cookies
+      // $cookies.isAuthenticated = false;
+      // $cookies.loginType = '';
+      // $cookies.username = '';
+      updateLoginVars('false','','');
     });
   };
 
@@ -217,37 +214,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 //   alert ("logueado?");
 // }
 
-$scope.doLoginTwitter = function(){
-  // alert("goldsa");
-  
 
-  data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
-        Login_Facebook.save(data, successPostCallback, errorCallback);
-        
-        
-        $scope.isAuthenticated = true;
-        $scope.loginType = 'FB';
-        $scope.username = $scope.fullname;
-        $cookies.isAuthenticated = true;
-        $cookies.loginType = 'FB';
-        $cookies.username = $scope.fullname;
-
-      } else {
-        $scope.status = 'no';
-        alert('el usuario no acepta los permisos de facebook...');
-      }
-
-    }, {scope: 'email'} );
-      
-    function successPostCallback(){
-          alert("login ok con fb");
-        }
-    function errorCallback(){
-          alert("login error al login con fb");
-        }
-
-
-};
 
 
 
@@ -276,6 +243,58 @@ $scope.doLoginTwitter = function(){
   //   // Setting a cookie
   //   $cookies.myFavorite = 'oatmeal';
 
+
+  function updateLoginVars(isAuthenticated, loginType, username){
+      $scope.isAuthenticated = isAuthenticated;
+      $scope.loginType = loginType;
+      $scope.username = username;
+      //Actualizo cookies
+      $cookies.isAuthenticated = isAuthenticated;
+      $cookies.loginType = loginType;
+      $cookies.username = username;
+    }
+
+
+
+  // $scope.doLoginTwitter = function(){
+
+  //   // var provider = 'twitter';
+  //   // OAuth.popup = function (provider) {};
+
+  //   OAuth.popup('twitter')
+  //   .done(function(result) {
+  //     result.me()
+  //     .done(function (response) {
+  //           alert('Firstname: ', response.firstname);
+  //           alert('Lastname: ', response.lastname);
+  //         })
+  //       .fail(function (err) {
+  //           //handle error with err
+  //     });
+  //   })
+  //   .fail(function (err) {
+  //     //handle error with err
+  //     alert(err);
+  //   });
+
+  // };
+
+
+  // $scope.doLoginTwitter = function(){
+    // alert("DSA");
+  hello.on('auth.login', function(auth){
+      // call user information, for the given network
+      hello( auth.twitter ).api( '/me' ).success(function(r){
+        alert(auth.twitter);
+        alert(r.name);
+        // var $target = $("#profile_"+ auth.network );
+        // if($target.length==0){
+        //   $target = $("<div id='profile_"+auth.network+"'></div>").appendTo("#profile");
+        // }
+        // $target.html('<img src="'+ r.thumbnail +'" /> Hey '+r.name).attr('title', r.name + " on "+ auth.network);
+      });
+    });
+  // };
 
 }]);
 
