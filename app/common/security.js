@@ -280,21 +280,12 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   // };
 
 
-  // $scope.doLoginTwitter = function(){
+  $scope.doLoginTwitter = function(){
     // alert("DSA");
-  hello.on('auth.login', function(auth){
-      // call user information, for the given network
-      hello( auth.twitter ).api( '/me' ).success(function(r){
-        alert(auth.twitter);
-        alert(r.name);
-        // var $target = $("#profile_"+ auth.network );
-        // if($target.length==0){
-        //   $target = $("<div id='profile_"+auth.network+"'></div>").appendTo("#profile");
-        // }
-        // $target.html('<img src="'+ r.thumbnail +'" /> Hey '+r.name).attr('title', r.name + " on "+ auth.network);
-      });
+    hello( 'twitter').login( function(){
+      alert('You are signed in to Twitter');
     });
-  // };
+  };
 
 }]);
 
