@@ -187,7 +187,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
       } else {
         $scope.status = 'no';
-        alert('el usuario no acepta los permisos de facebook...');
+        // alert('el usuario no acepta los permisos de facebook...');
       }
 
     }, {scope: 'email'} );
@@ -263,30 +263,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
 
-  // $scope.doLoginTwitter = function(){
-
-  //   // var provider = 'twitter';
-  //   // OAuth.popup = function (provider) {};
-
-  //   OAuth.popup('twitter')
-  //   .done(function(result) {
-  //     result.me()
-  //     .done(function (response) {
-  //           alert('Firstname: ', response.firstname);
-  //           alert('Lastname: ', response.lastname);
-  //         })
-  //       .fail(function (err) {
-  //           //handle error with err
-  //     });
-  //   })
-  //   .fail(function (err) {
-  //     //handle error with err
-  //     alert(err);
-  //   });
-
-  // };
-
-
   $scope.doLoginTwitter = function(){
     // alert("DSA");
     // hello( 'twitter', []).login( function(){
@@ -298,10 +274,14 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       }, function(auth, status) {
 
           hello( 'twitter' ).api('me').success(function(json){
-            alert('Your name is '+ json.name + json.email);
             updateLoginVars(true,'TW',json.name);
+
+            alert('Your name is '+ json.name);
+            data = {username: json.name, email: "email", first_name: "nombre", last_name: "apellido", facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
+            Login_Twitter.save(data, successPostCallback, errorCallback);
+            
           }).error(function(){
-            alert('Whoops!');
+            alert('Whoops! Error Login Twitter');
           });
 
         });
