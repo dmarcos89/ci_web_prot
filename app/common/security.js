@@ -287,7 +287,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     // });
     hello.login('twitter', {
         scope: 'email',
-        display: 'page'
+        display: 'popup'
       }, function(auth, status) {
       });
 
