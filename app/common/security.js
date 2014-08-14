@@ -282,9 +282,16 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
   $scope.doLoginTwitter = function(){
     // alert("DSA");
-    hello( 'twitter').login( function(){
-      alert('You are signed in to Twitter');
-    });
+    // hello( 'twitter', []).login( function(){
+    //   alert('You are signed in to Twitter');
+    // });
+
+    hello.login('twitter', {
+        scope: 'email',
+        display: 'page'
+      }, function(auth, status) {
+      });
+
   };
 
 }]);
