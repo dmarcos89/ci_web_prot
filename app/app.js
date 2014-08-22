@@ -7,6 +7,7 @@ angular.module('MainApp',
     'ngResource',
     'ngCookies',
     'ngMap',
+    'ngProgress',
     'Security',
     'ui.bootstrap',
     'app.config'
