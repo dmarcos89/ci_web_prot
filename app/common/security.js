@@ -109,7 +109,13 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
   $scope.doLoginCommon = function(){
       data = {email: $scope.login_email, password: $scope.login_password};
-      Login_Common.save(data, successPostCallback, errorCallback);
+      Login_Common.save(data, function(data, status, headers){ 
+      // alert(headers('content-length'));
+      alert(data);
+      console.log(data);
+      // console.log(headers);
+    });
+
 
       
     function successPostCallback(){
