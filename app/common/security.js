@@ -37,25 +37,14 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
     if(cookieLoginType === 'COMMON'){
-      // $scope.isAuthenticated = true;
-      // $scope.username = cookieUser;
-      // $scope.loginType = 'COMMON';
-      updateLoginVars(true,'COMMON',cookieUser);
+     updateLoginVars(true,'COMMON',cookieUser);
     }
 
     if(cookieLoginType === 'FB'){
-      // $scope.getLoginStatus();
-      // $scope.isAuthenticated = true;
-      // $scope.username = cookieUser;
-      // $scope.loginType = 'FB';
       updateLoginVars(true,'FB',cookieUser);
     }
 
     if(cookieLoginType === 'TW'){
-      // $scope.getLoginStatus();
-      // $scope.isAuthenticated = true;
-      // $scope.username = cookieUser;
-      // $scope.loginType = 'FB';
       updateLoginVars(true,'TW',cookieUser);
     }
   };
@@ -70,28 +59,28 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   //   $scope.facebookReady = true; // You might want to use this to disable/show/hide buttons and else
   // });
 
-  $scope.getLoginStatus = function() {
-    Facebook.getLoginStatus(function(response) {
-      if(response.status === 'connected') {
-        $scope.$apply(function() {
-          // alert("Usuario logueado:"+$scope.facebookid+"-"+$scope.fullname+"-"+$scope.username+"-"+$scope.lastname+"-"+$scope.email+"-"+$scope.gender+"-"+$scope.locale);
-          alert("usuario logueado");
-          $scope.me();
-          $scope.loginType = 'FB';
-          $scope.isAuthenticated = true;
-          $cookies.loginType = 'FB';
-          $cookies.isAuthenticated = true;
+  // $scope.getLoginStatus = function() {
+  //   Facebook.getLoginStatus(function(response) {
+  //     if(response.status === 'connected') {
+  //       $scope.$apply(function() {
+  //         // alert("Usuario logueado:"+$scope.facebookid+"-"+$scope.fullname+"-"+$scope.username+"-"+$scope.lastname+"-"+$scope.email+"-"+$scope.gender+"-"+$scope.locale);
+  //         alert("usuario logueado");
+  //         $scope.me();
+  //         $scope.loginType = 'FB';
+  //         $scope.isAuthenticated = true;
+  //         $cookies.loginType = 'FB';
+  //         $cookies.isAuthenticated = true;
 
 
-        });
-      }
-      else {
-        $scope.$apply(function() {
-          alert("el usuario no está logueado con facebook");
-        });
-      }
-    });
-  };
+  //       });
+  //     }
+  //     else {
+  //       $scope.$apply(function() {
+  //         alert("el usuario no está logueado con facebook");
+  //       });
+  //     }
+  //   });
+  // };
 
   $scope.me = function() {
     Facebook.api('/me', function(response) {
@@ -176,13 +165,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
         Login_Facebook.save(data, successPostCallback, errorCallback);
         
-        
-        // $scope.isAuthenticated = true;
-        // $scope.loginType = 'FB';
-        // $scope.username = $scope.fullname;
-        // $cookies.isAuthenticated = true;
-        // $cookies.loginType = 'FB';
-        // $cookies.username = $scope.fullname;
         updateLoginVars(true,'FB',$scope.fullname);
 
       } else {
@@ -203,24 +185,10 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
   $scope.doLogoutFacebook = function(){
     Facebook.logout(function(response){
-      //Actualizo variables
-      // $scope.isAuthenticated = false;
-      // $scope.loginType = '';
-      // $scope.username = '';
-      // //Actualizo cookies
-      // $cookies.isAuthenticated = false;
-      // $cookies.loginType = '';
-      // $cookies.username = '';
       updateLoginVars(false,'','');
     });
   };
 
-
-// OauthProvider.setHandler = function ("twitter", logtwitter) {}
-
-// function logtwitter(){
-//   alert ("logueado?");
-// }
 
 
 
@@ -245,12 +213,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   };
 
 
-  // // Retrieving a cookie
-  //   var favoriteCookie = $cookies.myFavorite;
-  //   // Setting a cookie
-  //   $cookies.myFavorite = 'oatmeal';
-
-
   function updateLoginVars(isAuthenticated, loginType, username){
       $scope.isAuthenticated = isAuthenticated;
       $scope.loginType = loginType;
@@ -264,10 +226,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
   $scope.doLoginTwitter = function(){
-    // alert("DSA");
-    // hello( 'twitter', []).login( function(){
-    //   alert('You are signed in to Twitter');
-    // });
+   
     hello.login('twitter', {
         scope: 'email',
         display: 'popup'

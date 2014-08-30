@@ -10,6 +10,7 @@ body{
 	font-weight: 200;
 }
 
+
 .navbar-default {
 	background-color: white;
 	margin: 0;
@@ -22,6 +23,13 @@ body{
 	text-align: center;
 }
 
+
+.btn{
+	-webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
 /*NGPROGRESS  */
 /* Styling for the ngProgress itself */
 /*#ngProgress {
@@ -71,7 +79,7 @@ background-size: cover;
 }
 
 .intro-text {
-padding-top: 450px;
+padding-top: 360px;
 padding-bottom: 20px;
 }
 
@@ -167,6 +175,38 @@ span.glyphicon-picture:hover {
 	color: white;
 	font-size: 20px;
 }
+
+
+.authorinfo{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.authorinfo p{
+	margin-top: 7px;
+}
+
+.postnav{
+	position: absolute;
+	top: 200px;
+}
+
+.postnav .left{
+	float: left;
+}
+
+.postnav .right: {
+	float: right;
+}
+
+/*.carousel-control{
+	height: 440px;
+	margin-top: 52px;
+	transition: 0.5s ease-out;
+    -moz-transition: 0.5s ease-out;
+    -webkit-transition: 0.5s ease-out;
+    -o-transition: 0.5s ease-out;
+}*/
 
 /*POST DETAIL*/
 
@@ -266,6 +306,7 @@ span.glyphicon-picture:hover {
 
 p{
 	color: gray;
+	font-size: 16px;
 }
 
 /*.container {

@@ -1,11 +1,36 @@
 
 <header style="background-image: url( {{ post.assets[0].file_url }} )">
-        <div class="container-fluid" style="background-color:rgba(0, 0, 0, 0.3)">
+        <div class="container-fluid" >
+            
+            
             <div class="intro-text">
                 <div class="viewposttitle">{{ post.title }}</div>
             </div>
         </div>
+        <!-- Controls -->
+            
+          
 </header>
+
+<div class="container">
+    <div class="row authorinfo">
+        <div class="col-lg-2 col-lg-offset-1 centrado">
+            <img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=80 class="img-circle img-responsive center-block">   
+            <p>{{ post.author }}</p> 
+
+            <button class="btn btn-primary btn-block">Seguir</button>
+        </div>
+
+        <div class="col-lg-4">
+            <p>
+                Categoria: {{ post.category }} <br>
+                Fecha: {{ post.date }} <br>    
+                Ubicación: {{ post.location }} 
+            </p>
+        </div>
+    </div>
+</div>
+
 
 
 <div class="container">

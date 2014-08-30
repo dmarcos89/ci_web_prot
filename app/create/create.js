@@ -53,7 +53,7 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts,
   $scope.dragEnd = function(){
     // alert(this.getPosition());
     alert($scope.markers[0].position);
-    // $scope.location = this.getPosition();
+    $scope.location = this.getPosition();
   };
 
 // $scope.markers
