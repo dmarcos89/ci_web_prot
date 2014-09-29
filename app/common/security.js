@@ -83,6 +83,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
       Login_Common.save(data, successPostCallback, errorCallback);
 
       
+
     function successPostCallback(data){
         alert('login MANUAL ok');
         var r = JSON.stringify(data);
@@ -103,7 +104,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     function errorCallback(getResponseHeaders){
         alert('error al hacer login MANUAL');
         var r = JSON.stringify(getResponseHeaders);
-        // alert(r);
+        alert(r);
         alert(getResponseHeaders['data']);
       }
 
@@ -163,7 +164,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
         Login_Facebook.save(data, successPostCallback, errorCallback);
         
-        updateLoginVars(true,'FB',$scope.fullname,'1');
+        
 
       } else {
         $scope.status = 'no';
@@ -176,6 +177,8 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
           alert("login ok con fb");
           var r = JSON.stringify(data);
           alert(r);
+          var id = data['id'];
+          updateLoginVars(true,'FB',$scope.fullname,id);
         }
     function errorCallback(getResponseHeaders){
           alert("login error al login con fb");
