@@ -23,6 +23,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
  
   $scope.isAuthenticated = '';
   $scope.username = '';
+  $scope.userid = '';
 
 
   angular.element(document).ready(function () {
@@ -34,18 +35,19 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     //Primero chequeamos las cookies del navegador para ver si hay algun usuario logueado, y en caso positivo ver que tipo es
     var cookieLoginType = $cookies.loginType;
     var cookieUser = $cookies.username;
+    var cookieId = $cookies.userid;
 
 
     if(cookieLoginType === 'COMMON'){
-      updateLoginVars(true,'COMMON',cookieUser);
+      updateLoginVars(true,'COMMON',cookieUser,cookieId);
     }
 
     if(cookieLoginType === 'FB'){
-      updateLoginVars(true,'FB',cookieUser);
+      updateLoginVars(true,'FB',cookieUser,cookieId);
     }
 
     if(cookieLoginType === 'TW'){
-      updateLoginVars(true,'TW',cookieUser);
+      updateLoginVars(true,'TW',cookieUser,cookieId);
     }
   };
 

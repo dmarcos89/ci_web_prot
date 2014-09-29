@@ -1,6 +1,7 @@
 <!-- <h1>{{ message }}</h1>
 
 <br><br> -->
+<div style="background-color:white;">
 
 <form action="">
 	
@@ -33,15 +34,15 @@
 
     
 <header id="coverimg" background-image="{{imageSrc}}">
-        <div class="container-fluid" style="background-color:rgba(0, 0, 0, 0.3)">
+        <div class="container-fluid" style="background-color:rgba(241, 236, 236, 0.3)">
             <div class="createwraper">
                 <div class="createposttitle">
                     <!-- <span class="glyphicon postphotoselect glyphicon-camera"> </span> -->
                     <!-- <input type="file" flow-btn /> -->
                     <div class="col-lg-12 centered">
-                        <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Titulo" style="text-align:center;">
+                        <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Elije un titulo" style="text-align:center;">
                         
-                        <input type="file" ng-file-select="onFileSelect($files)">
+                        <input type="file" class="filestyle" data-badge="false" ng-file-select="onFileSelect($files)">
                         
                     </div>
                 </div>
@@ -147,7 +148,7 @@
 </form>
 
 
-
+</div>
 
 
 

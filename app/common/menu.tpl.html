@@ -19,7 +19,7 @@
             <div class="col-sm-3 col-md-3" style="margin-top:3px">
                     <form class="navbar-form" role="search">
                     <div class="input-group" >
-                        <input type="text" class="form-control input-sm" placeholder="Explorar" name="q" style="width:100%">
+                        <input type="text" class="form-control input-sm" placeholder="Que estás buscando?" name="q" style="width:100%">
                         <div class="input-group-btn" >
                             <button class="btn btn-default btn-sm" type="submit" ><i class="glyphicon glyphicon-search"></i></button>
                         </div>
@@ -33,17 +33,18 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse pull-right">
                 
                 <ul class="nav navbar-nav" ng-show="isAuthenticated">
-                     <li><a href="#/link">link privado</a></li>
+                     <li><a href="#/link">Explorar</a></li>
+                     <li><a href="#/link">Ayuda</a></li>
                      
                       <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" on-toggle="toggled(open)">
-                        <img ng-src="{{  }}" alt="" width=20 class="img-circle img-responsive center-block">
-                        Hola, {{ username }} !
+                        <img ng-src="{{  }}" src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=30 class="img-circle img-responsive pull-left" style="margin-top: -5px; margin-right: 5px">
+                        {{ username }}
                         <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="dropdown">
-                            <li><a href=""><i class="icon-cog"></i> Link 1</a></li>
-                            <li><a href=""><i class="icon-envelope"></i> Link 2</a></li>
+                            <li><a href="#/dashboard"><i class="icon-cog"></i> Dashboard</a></li>
+                            <li><a href="#/user/{{ userid }}"><i class="icon-envelope"></i> Perfil</a></li>
                             <li class="divider"></li>
                             <li><a href="" ng-click="doLogout()" ><i class="icon-off"></i>Cerrar Sesión</a></li>
                         </ul>
@@ -191,17 +192,16 @@
 </div>
 
 
-
-
-
-
-
-
-
-
     </nav>
 
 
+<script type="text/javascript-lazy">
+  $('.navbar .dropdown').hover(function() {
+      $(this).find('.dropdown-menu').first().stop(true, true).slideDown(150);
+    }, function() {
+      $(this).find('.dropdown-menu').first().stop(true, true).slideUp(105)
+    });
+</script>
 
 
 
