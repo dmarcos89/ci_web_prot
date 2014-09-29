@@ -46,6 +46,10 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         templateUrl: 'user/dashboard.tpl.html',
         controller: 'ProfileController'
       }).
+      when('/mapa/', {
+        templateUrl: 'map/map.tpl.html',
+        controller: 'MapController'
+      }).
       otherwise({
         redirectTo: '/home'
       });
