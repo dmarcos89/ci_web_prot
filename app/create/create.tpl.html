@@ -104,7 +104,7 @@
             </div>
             <map id="map-canvas" scrollwheel="false" center="Montevideo, Uruguay">
                 <!-- position="current" no funciona bien en safari -->
-                <marker position="Montevideo, Uruguay" animation="Animation.BOUNCE" centered="true" draggable="true"on-dragend="dragEnd()" >
+                <marker position="Montevideo, Uruguay" animation="Animation.BOUNCE" centered="true" draggable="true" on-dragend="dragEnd()" >
             </map>  
 
         </div>
@@ -136,12 +136,7 @@
     <div class="row">
         <div class="col-lg-12 centered">
 
-            <input type="text" ng-model="author" placeholder="Autor"> 
-            <!-- <input type="text" ng-model="image" placeholder="Imagen"> Esta Foto  no se usa mas -->
-            <input type="text" ng-model="date" placeholder="Fecha"> 
-            <input type="text" ng-model="location" placeholder="Locacion">
-            <!-- <input type="text" ng-model="category" placeholder="Categoria"> -->
-            <br><br>
+         
 
             <button class="btn btn-primary btn-lg" style="width:150px; margin-top:50px;" ng-click='Create();'>Publicar</button> 
         </div>

@@ -24,15 +24,17 @@ angular.module('MainApp').controller('ViewUser', function($scope, $routeParams, 
 
     Users.get({ Id: userid }, function(data) {
       $scope.user = data;
-      // $scope.lat = data["location"];
-
+    
 	  });
-    // Facebook.me(function(data){
-	   //  $scope.fbuser = data;
-    // });
+    
+  });
 
 
 
+angular.module('MainApp').controller('ProfileController', function($scope) {
+    
+    $scope.txt = 'Perfil de usuario';
+    
   });
 
 

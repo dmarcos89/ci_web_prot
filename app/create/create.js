@@ -20,25 +20,31 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts,
     $scope.Create = function() {
 
       // json nueva version con varias imagenes
-      data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: "Foto vieja", date: $scope.date, location: $scope.markers[0].position, category: $scope.category}
+      data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
         , assets_images:[
         {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1},
-        {data: $scope.Base64_2, filename: "02.png", content_type: $scope.Type_2},
-        {data: $scope.Base64_3, filename: "03.png", content_type: $scope.Type_3},
-        {data: $scope.Base64_4, filename: "04.png", content_type: $scope.Type_4},
-        {data: $scope.Base64_5, filename: "05.png", content_type: $scope.Type_5}
+        {data: $scope.Base64_2, filename: "02.jpg", content_type: $scope.Type_2},
+        {data: $scope.Base64_3, filename: "03.jpg", content_type: $scope.Type_3},
+        {data: $scope.Base64_4, filename: "04.jpg", content_type: $scope.Type_4},
+        {data: $scope.Base64_5, filename: "05.jpg", content_type: $scope.Type_5}
         ]};
       
       // json version vieja
       // data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.imageSrc, date: $scope.date, location:$scope.location , category: $scope.category}};
       Posts.save(data, successPostCallback, errorCallback);
 
-      function successPostCallback(){
-        alert("ok");
-      }
-      function errorCallback(){
-        alert("error");
-      }
+        function successPostCallback(data){
+          alert("articulo creado correctamente");
+          var r = JSON.stringify(data);
+          alert(r);
+        }
+    function errorCallback(getResponseHeaders){
+          alert("error al crear articulo");
+          var r = JSON.stringify(getResponseHeaders);
+          alert(r);
+        }
+
+
 
     };
 
@@ -53,7 +59,7 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts,
   $scope.dragEnd = function(){
     // alert(this.getPosition());
     alert($scope.markers[0].position);
-    $scope.location = this.getPosition();
+    $scope.$parent.location = this.getPosition();
   };
 
 // $scope.markers

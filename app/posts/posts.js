@@ -16,13 +16,16 @@ angular.module('MainApp').factory('Posts', function ($resource, CONFIG) {
 
 
 // controlador para cargar todos los posteos
-angular.module('MainApp').controller('PostsController', function($scope, Posts) {
+angular.module('MainApp').controller('PostsController', function($scope, Posts, $timeout) {
       // ngProgress.complete();
       $scope.message = 'Listado de posteos';
-      Posts.query(function(data) {
-        // alert(data);
-        $scope.posts = data;
-      });
+      
+      $timeout(function(){
+        Posts.query(function(data) {
+          // alert(data);
+          $scope.posts = data;
+        });
+      }, 100);
 
     });
 

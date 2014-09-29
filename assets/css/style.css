@@ -11,12 +11,68 @@ body{
 }
 
 
+
+
+
+/*.navbar {
+    position: relative;
+    min-height: 90px;
+    margin-bottom: 0px;
+    border: 1px solid white;
+    border-radius: 0px;
+}
+
+
 .navbar-default {
-	background-color: white;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: white;
+font-weight: 500;
+font-size: 14px;
+text-transform: uppercase;
+-webkit-font-smoothing: antialiased;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: gray;
+ -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+.claseMenu{
+    min-height: 50px;
+    margin-top: 18px;
+}
+
+.itemsmenu{
+    margin-top: 5px;
+}
+
+.logo{
+    margin-top: -3px;
+}
+
+.menuHomefijo{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+}*/
+
+
+
+.navbar-default {
+	background-color: transparent;
 	margin: 0;
 	-webkit-box-shadow: 0 1px 3px 0px rgba(0,0,0,0.1);
 	-moz-box-shadow: 0 1px 3px 0px rgba(0,0,0,0.1);
 	box-shadow: 0 1px 3px 0px rgba(0,0,0,0.1);
+	position: relative;
 }
 
 .centered{
@@ -572,21 +628,8 @@ h1{
 	font-size: 18px;
 }
 
-.carousel-indicators{
-	display: none;
-}
 
-.carousel-caption{
-	background-color: rgba(0, 0, 0, 0.30);
-	width: 100%;
-	bottom: 0px;
-	left:0px;
-	/*padding: 0 10px 0 20px;*/
-}
 
-.caption-text{
-	margin: 10px 0 0 0;
-}
 
 /*.carousel-control{
 	transition: 0.5s ease-out;
@@ -595,10 +638,14 @@ h1{
     -o-transition: 0.5s ease-out;
 }
 */
-.carousel-control:hover{
-	cursor: pointer;
-}
 
+.carousel-caption{
+	/*padding-bottom: 200px;*/
+	-webkit-box-shadow: 0 1px 3px 0px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 1px 3px 0px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 3px 0px rgba(0,0,0,0.1);
+
+}
 .post-content {
     background: none repeat scroll 0 0 ;
     top:0;

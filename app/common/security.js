@@ -17,7 +17,7 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
 
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies',function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies){
+angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location){
 
 
  
@@ -37,7 +37,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
     if(cookieLoginType === 'COMMON'){
-     updateLoginVars(true,'COMMON',cookieUser);
+      updateLoginVars(true,'COMMON',cookieUser);
     }
 
     if(cookieLoginType === 'FB'){
@@ -50,37 +50,6 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   };
 
 
-
-  // Here, usually you should watch for when Facebook is ready and loaded
-  
-  // $scope.$watch(function() {
-  //   return Facebook.isReady(); // This is for convenience, to notify if Facebook is loaded and ready to go.
-  // }, function(newVal) {
-  //   $scope.facebookReady = true; // You might want to use this to disable/show/hide buttons and else
-  // });
-
-  // $scope.getLoginStatus = function() {
-  //   Facebook.getLoginStatus(function(response) {
-  //     if(response.status === 'connected') {
-  //       $scope.$apply(function() {
-  //         // alert("Usuario logueado:"+$scope.facebookid+"-"+$scope.fullname+"-"+$scope.username+"-"+$scope.lastname+"-"+$scope.email+"-"+$scope.gender+"-"+$scope.locale);
-  //         alert("usuario logueado");
-  //         $scope.me();
-  //         $scope.loginType = 'FB';
-  //         $scope.isAuthenticated = true;
-  //         $cookies.loginType = 'FB';
-  //         $cookies.isAuthenticated = true;
-
-
-  //       });
-  //     }
-  //     else {
-  //       $scope.$apply(function() {
-  //         alert("el usuario no está logueado con facebook");
-  //       });
-  //     }
-  //   });
-  // };
 
   $scope.me = function() {
     Facebook.api('/me', function(response) {
@@ -108,23 +77,34 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
   $scope.doLoginCommon = function(){
-      data = {email: $scope.login_email, password: $scope.login_password};
-      Login_Common.save(data, function(data, status, headers){ 
-      // alert(headers('content-length'));
-      alert(data);
-      console.log(data);
-      // console.log(headers);
-    });
+    console.log("probando login");
 
+      data = {email: $scope.login_email, password: $scope.login_password};
+      Login_Common.save(data, successPostCallback, errorCallback);
 
       
-    function successPostCallback(){
+    function successPostCallback(data){
         alert('login MANUAL ok');
-        updateLoginVars(true,'COMMON','Nombre del user');
+        var r = JSON.stringify(data);
+        alert(r);
+        var name = data['first_name'];
+        var id = data['id'];
+        updateLoginVars(true,'COMMON',name, id);
+
+        
+        // Cerramos el login modal a mano
+        $("#myModal").modal('toggle');
+
+
+        $location.path('/dashboard');
+
 
       }
-    function errorCallback(){
-      alert('error al hacer login MANUAL');
+    function errorCallback(getResponseHeaders){
+        alert('error al hacer login MANUAL');
+        var r = JSON.stringify(getResponseHeaders);
+        // alert(r);
+        alert(getResponseHeaders['data']);
       }
 
   };
@@ -147,12 +127,24 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
 
 
-      function successPostCallback(){
+      function successPostCallback(data){
         alert('registro MANUAL ok');
-        updateLoginVars(true,'COMMON',$scope.reg_first_name+" "+$scope.reg_last_name);
+        var r = JSON.stringify(data);
+        // alert(r);
+        // alert(data['id'])
+        var id = data['id'];
+        updateLoginVars(true,'COMMON',$scope.reg_first_name,id);
+
+        // Cerramos el register modal a mano
+        $('#myModal2').modal('toggle');
+
+        // Luego de registrar al usuario, lo enviamos a su dashboard
+        $location.path('/dashboard');
+       
       }
-      function errorCallback(){
-      alert('error al hacer registro MANUAL');
+      function errorCallback(getResponseHeaders){
+        alert('error al hacer registro MANUAL');
+        alert(getResponseHeaders['data']);
       }
 
     };
@@ -171,7 +163,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
         Login_Facebook.save(data, successPostCallback, errorCallback);
         
-        updateLoginVars(true,'FB',$scope.fullname);
+        updateLoginVars(true,'FB',$scope.fullname,'1');
 
       } else {
         $scope.status = 'no';
@@ -180,23 +172,24 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
     }, {scope: 'email'} );
       
-    function successPostCallback(){
+    function successPostCallback(data){
           alert("login ok con fb");
+          var r = JSON.stringify(data);
+          alert(r);
         }
-    function errorCallback(){
+    function errorCallback(getResponseHeaders){
           alert("login error al login con fb");
+          var r = JSON.stringify(getResponseHeaders);
+          alert(r);
         }
   };
 
 
   $scope.doLogoutFacebook = function(){
     Facebook.logout(function(response){
-      updateLoginVars(false,'','');
+      updateLoginVars(false,'','','');
     });
   };
-
-
-
 
 
 
@@ -209,31 +202,32 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     // }
     if($scope.loginType === 'COMMON'){
       //Actualizo variables
-      updateLoginVars(false,'','');
+      updateLoginVars(false,'','','');
     }
 
     if($scope.loginType === 'TW'){
       
-      updateLoginVars(false,'','');
+      updateLoginVars(false,'','','');
     }
   };
 
 
-  function updateLoginVars(isAuthenticated, loginType, username){
+  function updateLoginVars(isAuthenticated, loginType, username, userid){
       $scope.isAuthenticated = isAuthenticated;
       $scope.loginType = loginType;
       $scope.username = username;
+      $scope.userid = userid;
       //Actualizo cookies
       $cookies.isAuthenticated = isAuthenticated;
       $cookies.loginType = loginType;
       $cookies.username = username;
+      $cookies.userid = userid;
     }
 
 
 
   $scope.doLoginTwitter = function(){
-   
-    hello.login('twitter', {
+   hello.login('twitter', {
         scope: 'email',
         display: 'popup'
       }, function(auth, status) {
@@ -255,6 +249,8 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
   };
 
 }]);
+
+
 
 
 

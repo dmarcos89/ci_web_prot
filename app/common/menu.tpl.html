@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation" ng-controller="LoginController">
+<nav class="navbar navbar-default " role="navigation" ng-controller="LoginController">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -9,13 +9,25 @@
                 </button>
                 <a class="" href="#home">
                     <img src="../assets/img/RI_azul.png" style="margin-top:5px;" width=80 alt="">
-
-                    <!-- <button class="btn-primary" ng-click="getLoginStatus()">
-                      Chequear estado facebook
-                    </button> -->
+                   <!-- <h3> Ciudad Invisible </h3> -->
+                   
 
                 </a>
             </div>
+            
+
+            <div class="col-sm-3 col-md-3" style="margin-top:3px">
+                    <form class="navbar-form" role="search">
+                    <div class="input-group" >
+                        <input type="text" class="form-control input-sm" placeholder="Explorar" name="q" style="width:100%">
+                        <div class="input-group-btn" >
+                            <button class="btn btn-default btn-sm" type="submit" ><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+
+
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse pull-right">
@@ -24,9 +36,9 @@
                      <li><a href="#/link">link privado</a></li>
                      
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" on-toggle="toggled(open)">
                         <img ng-src="{{  }}" alt="" width=20 class="img-circle img-responsive center-block">
-                        Welcome, {{ username }} 
+                        Hola, {{ username }} !
                         <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="dropdown">
@@ -37,7 +49,6 @@
                         </ul>
                       </li>
 
-                    <!-- <a href="" class="btn btn-primary">Crea tu historia</a> -->
                     <li>
                         <div>
                             <a href="#/crear">
@@ -49,21 +60,17 @@
                     </li>
                 </ul>
 
+                
+                 
+
 
                 <ul class="nav navbar-nav" ng-hide="isAuthenticated">
-                     
-                     <!-- <li><a href="#/home">Home</a></li>
-                      <li><a href="#/about">About</a></li>
-                      <li><a href="#/listado">Listado</a></li>
-                      <li><a href="#/crear">Nuevo post</a></li>
-                      <li><a href="#/post">Detalle post</a></li> -->
+                    
                         
                         <li><a href="" data-toggle="modal" data-target="#myModal2">Registrarte</a></li>
                         <li><a href="" data-toggle="modal" data-target="#myModal">Iniciar Sesión</a></li>
                         
                         
-
-                    <!-- <a href="" class="btn btn-primary">Crea tu historia</a> -->
                     <li>
                         <div>
                             <a href="#/crear">

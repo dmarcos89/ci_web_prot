@@ -21,17 +21,24 @@
             <button class="btn btn-primary btn-block">Seguir</button>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-7">
             <p>
-                Categoria: {{ post.category }} <br>
-                Fecha: {{ post.date }} <br>    
-                Ubicación: {{ post.location }} 
+                <b>Info sobre Lucia Perez:</b><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi tempora iusto maxime, qui vero fugiat sit doloremque accusamus, assumenda architecto pariatur commodi delectus! Obcaecati, odit totam voluptate nisi nostrum culpa?</p>
             </p>
         </div>
     </div>
 </div>
 
 
+<div class="container">
+    <div class="row centered">
+        <hr>
+        <div class="col-lg-8 col-lg-offset-2 descriptionwraper">
+            <span name="" id="" class="postdescription">{{ post.description }}</span>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row centered">
@@ -56,28 +63,24 @@
 </div>
 
 
-<div class="container">
-    <div class="row centered">
-        <div class="col-lg-8 col-lg-offset-2 descriptionwraper">
-            <span name="" id="" class="postdescription">{{ post.description }}</span>
-        </div>
-    </div>
-</div>
-
+<br><br>
+<!-- 
 {{ lat }}
+{{ lng }} -->
 
 <div class="container-fluid">
      <div class="row">
         <div class="col-lg-12 mapcontainer">
-            <map id="map-canvas" scrollwheel="false" center="Montevideo, Uruguay">
-                <marker position=" {{lat}} " centered="true">
+            <map id="map-canvas" scrollwheel="false" center="Montevideo, Uruguay" zoom="12">
+                <!-- <marker position="{{$parent.lat}}" centered="true"> -->
+           
             </map>  
 
         </div>
     </div>
 </div>
 
-
+<!-- 
 <div class="container-fluid">
      <div class="row">
         <div class="col-lg-12 ">
@@ -87,5 +90,5 @@
 
         </div>
     </div>
-</div>
+</div> -->
 

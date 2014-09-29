@@ -10,6 +10,7 @@ angular.module('MainApp',
     'ngProgress',
     'Security',
     'ui.bootstrap',
+    'ngAnimate',
     'app.config'
   ]
 );
@@ -38,8 +39,12 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         controller: 'PostById'
       }).
       when('/user/:userid', {
-        templateUrl: 'user/profile.tpl.html',
+        templateUrl: 'user/user.tpl.html',
         controller: 'ViewUser'
+      }).
+      when('/dashboard/', {
+        templateUrl: 'user/dashboard.tpl.html',
+        controller: 'ProfileController'
       }).
       otherwise({
         redirectTo: '/home'
