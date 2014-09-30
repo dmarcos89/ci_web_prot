@@ -704,7 +704,7 @@ h1{
 	background:rgba(0, 0, 0, 0.40);
 }
 
-.caption h4{
+.caption h2{
 	margin-top: 160px;
 }
 
@@ -728,9 +728,8 @@ h1{
 
 /*FOOTER START*/
 
-.footer {
+/*.footer {
     background-color: #333;
-    /*background-color: gainsboro;*/
 }
 
 .footer p{
@@ -785,6 +784,14 @@ h1{
 .copyright{
 	color: white;
 	margin-top: 30px;
+}*/
+
+footer{
+	margin: 50px 0 0 0;
+ padding: 40px 0 40px 0;
+font-size: 13px;
+ background-color: #f7f7f7;
+ border-top: 1px solid #dbdbdb;
 }
 
 /*FOOTER END*/
@@ -839,4 +846,33 @@ border-bottom: 2px white solid;
 }
 
 
+
+/*SLIDER FADE*/
+
+
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/*SLIDER FADE*/
 

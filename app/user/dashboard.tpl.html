@@ -1,16 +1,67 @@
-<div class="container-fluid" >
+<div ng-include="'common/secondary.tpl.html'"></div>
+
+<div class="container firstwrap">
 	<div class="row">
-		<nav class="navbar navbar-default dashboard-bar" role="navigation">
-		  	<div class="container">
-		  		<ul class="nav navbar-nav">
-			        <li class="activo"><a  href="#">Dashboard</a></li>
-			        <li><a href="#">Bandeja de entrada</a></li>
-			        <li><a href="#">Mis posts</a></li>
-			        <li><a href="#">Mis favoritos</a></li>
-			        <li><a href="#">Perfil</a></li>
-			        <li><a href="#">Ajustes</a></li>
-			      </ul>
-		  	</div>
-		</nav>	
+		<div class="col-lg-3 ">
+			
+			<img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" class="img-thumbnail img-responsive">	
+				<!-- <img ng-src="{{ user.url_avatar }}" alt="" width=200 class="img-thumbnail img-responsive center-block"> -->
+			<h4>{{ user.first_name + " " +user.last_name}} </h4>
+			<!-- <p>{{ user.city + ", " +user.country}} </p> -->
+			
+			<a href="" class="btn btn-primary btn-block">
+				Ver perfil
+			</a>
+			<a href="" class="btn btn-primary btn-block">
+				Editar perfil
+			</a>
+			<br>
+
+			<div class="panel">
+		    	<div class="panel-header">
+		        	<h3>Lorem ipsum</h3>
+		        </div>
+		        <div class="panel-body">
+		          	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima mollitia est optio sequi cumque, hic asperiores odit iusto aliquid accusantium dicta praesentium, ipsum quam, velit sunt. Alias doloribus recusandae, deserunt.
+		        </div>
+		     </div>
+		     
+      
+
+			
+		</div>
+		<div class="col-lg-9">
+			<div class="panel-body">
+					
+					<div class="panel">
+				    	<div class="panel-header">
+				        	<h4> Mensajes (0 nuevos)</h4> 	
+				        </div>
+				        <div class="panel-body">
+				        	<!-- <div class="row"> -->
+				        		<!-- <div class="col-lg-11"> -->
+				        			<p> No tiene mensajes nuevos por leer. </p>
+				        		<!-- </div> -->
+				        		<!-- <div class="col-lg-1">
+				        			<button class="btn btn-primary btn-xs" type="submit" ><i class="glyphicon glyphicon-search"></i></button>
+				          			<button class="btn btn-danger btn-xs" type="submit" ><i class="glyphicon glyphicon-remove"></i></button>
+				        		</div> -->
+				        	<!-- </div> -->
+
+
+				          	
+				          	
+				        </div>
+
+
+		     		</div>
+		     </div>	
+
+		</div>	
 	</div>
+
+{{ user }}
+
+<!-- {{ fbuser }} -->
+
 </div>
