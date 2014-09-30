@@ -12,3 +12,9 @@ angular.module('MainApp').factory('Users', function ($resource, CONFIG) {
     // }
     );
   });
+
+angular.module('MainApp').factory('Follow', function ($resource, CONFIG) {
+    return $resource(
+        CONFIG.API_URL+'follow_user/'
+    );
+  });

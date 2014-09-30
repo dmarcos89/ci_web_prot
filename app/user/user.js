@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('ViewUser', function($scope, $routeParams, Users, Posts, $timeout) {
+angular.module('MainApp').controller('ViewUser', function($scope, $routeParams, Users, Posts, $timeout, Follow) {
 	  
 	  var userid = $routeParams.userid;
 
@@ -34,6 +34,27 @@ angular.module('MainApp').controller('ViewUser', function($scope, $routeParams, 
         });
       }, 100);
     
+
+    $scope.follow = function(){
+      alert("Seguir usuario");
+
+      var data = {follower:1 , followed:1};
+      // alert(JSON.stringify(data));
+       Follow.save(data, successPostCallback, errorCallback);
+
+        function successPostCallback(data){
+          alert("follow correcto");
+          var r = JSON.stringify(data);
+          alert(r);
+        }
+      function errorCallback(getResponseHeaders){
+          alert('follow error');
+          var r = JSON.stringify(getResponseHeaders);
+          alert(r);
+        }
+
+    };
+
   });
 
 

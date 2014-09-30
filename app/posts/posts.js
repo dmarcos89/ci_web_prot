@@ -29,3 +29,11 @@ angular.module('MainApp').controller('PostsController', function($scope, Posts, 
 
     });
 
+
+
+
+angular.module('MainApp').factory('Favorite', function ($resource, CONFIG) {
+    return $resource(
+        CONFIG.API_URL+'favorite/'
+    );
+  });

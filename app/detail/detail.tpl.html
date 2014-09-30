@@ -1,11 +1,11 @@
 
-<header style="background-image: url( {{ post.assets[0].file_url }} )">
+<header style="background-image: url( {{ post.assets[0].file_url.replace('original','large') }} );height:500px;">
         <div class="container-fluid" >
             
             
-            <div class="intro-text">
+            <!-- <div class="intro-text">
                 <div class="viewposttitle">{{ post.title }}</div>
-            </div>
+            </div> -->
         </div>
         <!-- Controls -->
             
@@ -18,7 +18,7 @@
             <img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=80 class="img-circle img-responsive center-block">   
             <p>{{ post.author }}</p> 
 
-            <button class="btn btn-primary btn-block">Seguir</button>
+            <button class="btn btn-primary btn-block" ng-click="doFavorite()">FAV</button>
         </div>
 
         <div class="col-lg-7">
@@ -92,3 +92,4 @@
     </div>
 </div> -->
 
+{{ post }}
