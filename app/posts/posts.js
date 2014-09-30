@@ -15,6 +15,16 @@ angular.module('MainApp').factory('Posts', function ($resource, CONFIG) {
   });
 
 
+angular.module('MainApp').factory('PostsByUser', function ($resource, CONFIG) {
+    return $resource(
+        // 'http://ciudadinvisible.herokuapp.com/posts/:Id.json',
+        CONFIG.API_URL+'posts_by_user/:Id.json',
+        // 'http://localhost:3000/posts/:Id.json',
+        {Id: '@Id' }
+    );
+  });
+
+
 // controlador para cargar todos los posteos
 angular.module('MainApp').controller('PostsController', function($scope, Posts, $timeout) {
       // ngProgress.complete();

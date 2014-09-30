@@ -5,7 +5,7 @@ angular.module('MainApp').controller('ViewUser', function($scope, $routeParams, 
 	  var userid = $routeParams.userid;
 
 	  $scope.msg = 'Detalle de un usuario';
-	
+	  $scope.isFollower = false;
 
 	  // $scope.tabs = [
    //    { title:'Posteos', content:'Listado de Posteos creados por el usuario' },
@@ -54,6 +54,11 @@ angular.module('MainApp').controller('ViewUser', function($scope, $routeParams, 
         }
 
     };
+
+    $scope.unfollow = function(){
+      alert("dejar de seguir");
+      $scope.isFollower = false;
+    }
 
   });
 
