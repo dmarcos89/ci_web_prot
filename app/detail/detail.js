@@ -1,12 +1,32 @@
 'use strict';
 
-angular.module('MainApp').controller('PostById', function($scope, Posts, $routeParams, Favorite) {
+angular.module('MainApp').controller('PostById', function($scope, Posts, Users, $routeParams, Favorite) {
 	  
 	  // $scope.msg = "Detalle de un post";
 	  var postid = $routeParams.postid;
 
 	  Posts.get({ Id: postid }, function(data) {
 	  	$scope.post = data;
+
+	  	var userid = data['user_id']
+			Users.get({ Id: userid }, function(data) {
+      		$scope.user = data;
+
+          // Chequeamos si el posteo ha sido favoriteado por el user
+          var favoritos = data['favorites_posts'];
+          var fav = false;          
+          for (var i = 0; i < favoritos.length && !fav; i++) {
+              var idaux = favoritos[i].id;
+              if(idaux == postid){ 
+                fav = true;
+                $scope.fav = true;
+              }
+          }
+
+
+
+    	});
+
 		$scope.dynMarkers = [];
      
           $scope.dynMarkers[0] = new google.maps.Marker({
@@ -24,6 +44,7 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, $routeP
       });
 	
 
+	  
 
 	  $scope.doFavorite = function(){
 	  	// alert("dar favorito");
@@ -36,13 +57,35 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, $routeP
           var r = JSON.stringify(data);
           alert(r);
         }
-      function errorCallback(getResponseHeaders){
+        
+        function errorCallback(getResponseHeaders){
           alert('error');
           var r = JSON.stringify(getResponseHeaders);
           alert(r);
         }
 
 	  };
+
+
+    $scope.unFavorite = function(){
+      // alert("dar favorito");
+      var data = {user_id:1 , post_id:postid};
+      // alert(JSON.stringify(data));
+       Favorite.remove(data, successPostCallback, errorCallback);
+
+        function successPostCallback(data){
+          alert("fav correcto");
+          var r = JSON.stringify(data);
+          alert(r);
+        }
+        
+        function errorCallback(getResponseHeaders){
+          alert('error');
+          var r = JSON.stringify(getResponseHeaders);
+          alert(r);
+        }
+
+    };
 
 	
 	});
