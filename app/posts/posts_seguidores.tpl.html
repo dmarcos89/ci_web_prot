@@ -1,0 +1,33 @@
+<header class="intro-header" style="background-image: url('../assets/img/explore-bg-2.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Titulo para sección</h1>
+                        <!-- <hr class="small"> -->
+                        <span class="subheading">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <h2>Listado de posteos</h2>
+    <hr>
+    <br>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+    <div ng-repeat="post in posts | filter:search" class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fx-fade-down fx-easing-bounce fx-speed-800">
+      <a href="#/post/{{post.id}}">
+        <img ng-src=" {{ post.assets[0].file_url.replace('original','small') }} " alt="" class="img-responsive" style="height:300px; width:100%; margin-bottom:15px;">
+        </a>
+    </div>
+
+  </div>
+</div>

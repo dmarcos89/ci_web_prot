@@ -1,13 +1,31 @@
+<div class="container">
+  <div class="row">
+    <h2>Listado de posteos</h2>
+    <hr>
+    <br>
+  </div>
+</div>
+
 <div class="container-fluid">
      <div class="row">
         <div class="col-lg-12 mapcontainer">
             <map id="map-view" scrollwheel="false" center="Montevideo, Uruguay" zoom="12">
-                <!-- <marker position="{{$parent.lat}}" centered="true"> -->
-           
+                
+                <marker position="[40.71, -74.21]" title="hello"></marker>
+			      <marker position="[40.72, -74.20]" title="marker" animation="Animation.DROP"></marker>
+			      <marker position="[40.73, -74.19]" title="drag me" draggable="true"></marker>
+			      <marker position="[40.74, -74.18]" title="how" animation="Animation.BOUNCE"></marker>
+			      <marker position="[40.75, -74.17]" title="are"></marker>
+			      <marker position="[40.76, -74.16]" title="you" icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"></marker>
+			      <marker position="[40.77, -74.15]" title="from"></marker>
+			      <marker position="[40.78, -74.14]" title="allen"></marker>
+
+			      <!-- <marker ng-repeat="p in posts" position="p.latitude"></marker> -->
+
             </map>  
 
         </div>
     </div>
 </div>
 
-{{ posts }}
+<!-- {{ posts }} -->

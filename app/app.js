@@ -22,13 +22,17 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         templateUrl: 'home/home.tpl.html',
         controller: 'HomeController'
       }).
-      when('/about', {
-        templateUrl: 'about/about.tpl.html',
-        controller: 'AboutController'
-      }).
-      when('/listado', {
-        templateUrl: 'posts/posts.tpl.html',
+      when('/explorar/populares', {
+        templateUrl: 'posts/posts_populares.tpl.html',
         controller: 'PostsController'
+      }).
+      when('/explorar/seguidores', {
+        templateUrl: 'posts/posts_seguidores.tpl.html',
+        controller: 'PostsController'
+      }).
+      when('/explorar/mapa/', {
+        templateUrl: 'map/map.tpl.html',
+        controller: 'MapController'
       }).
       when('/crear', {
         templateUrl: 'create/create.tpl.html',
@@ -42,13 +46,29 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         templateUrl: 'user/user.tpl.html',
         controller: 'ViewUser'
       }).
+      when('/user/:userid/seguidores', {
+        templateUrl: 'user/seguidores.tpl.html',
+        controller: 'ViewUser'
+      }).
+      when('/user/:userid/siguiendo', {
+        templateUrl: 'user/siguiendo.tpl.html',
+        controller: 'ViewUser'
+      }).
+      when('/user/:userid/favoritos', {
+        templateUrl: 'user/siguiendo.tpl.html',
+        controller: 'ViewUser'
+      }).
+      when('/perfil/editar', {
+        templateUrl: 'user/editar.tpl.html',
+        controller: 'ViewUser'
+      }).
       when('/dashboard/', {
         templateUrl: 'user/dashboard.tpl.html',
         controller: 'ProfileController'
       }).
-      when('/mapa/', {
-        templateUrl: 'map/map.tpl.html',
-        controller: 'MapController'
+      when('/about/', {
+        templateUrl: 'statics/about.tpl.html',
+        controller: 'StaticPagesController'
       }).
       otherwise({
         redirectTo: '/home'

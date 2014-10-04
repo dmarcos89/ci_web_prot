@@ -17,14 +17,23 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
 
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', function($scope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location){
+angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location){
 
 
  
-  $scope.isAuthenticated = '';
-  $scope.username = '';
-  $scope.userid = '';
+  // $scope.isAuthenticated = '';
+  // $scope.username = '';
+  // $scope.userid = '';
 
+
+  $rootScope.isAuthenticated = '';
+  $rootScope.username = '';
+  $rootScope.userid = '';
+  $rootScope.userjson = '';
+
+   $rootScope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
 
   angular.element(document).ready(function () {
         $scope.checkLogin();
@@ -36,18 +45,19 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     var cookieLoginType = $cookies.loginType;
     var cookieUser = $cookies.username;
     var cookieId = $cookies.userid;
+    var cookiejson = $cookies.userjson;
 
 
     if(cookieLoginType === 'COMMON'){
-      updateLoginVars(true,'COMMON',cookieUser,cookieId);
+      updateLoginVars(true,'COMMON',cookieUser,cookieId, cookiejson);
     }
 
     if(cookieLoginType === 'FB'){
-      updateLoginVars(true,'FB',cookieUser,cookieId);
+      updateLoginVars(true,'FB',cookieUser,cookieId, cookiejson);
     }
 
     if(cookieLoginType === 'TW'){
-      updateLoginVars(true,'TW',cookieUser,cookieId);
+      updateLoginVars(true,'TW',cookieUser,cookieId, cookiejson);
     }
   };
 
@@ -92,7 +102,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         alert(r);
         var name = data['first_name'];
         var id = data['id'];
-        updateLoginVars(true,'COMMON',name, id);
+        updateLoginVars(true,'COMMON',name, id, data);
 
         
         // Cerramos el login modal a mano
@@ -136,7 +146,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
         // alert(r);
         // alert(data['id'])
         var id = data['id'];
-        updateLoginVars(true,'COMMON',$scope.reg_first_name,id);
+        updateLoginVars(true,'COMMON',$scope.reg_first_name,id, data);
 
         // Cerramos el register modal a mano
         $('#myModal2').modal('toggle');
@@ -170,7 +180,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
       } else {
         $scope.status = 'no';
-        // alert('el usuario no acepta los permisos de facebook...');
+        alert('el usuario no acepta los permisos de facebook...');
       }
 
     }, {scope: 'email'} );
@@ -180,7 +190,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
           var r = JSON.stringify(data);
           alert(r);
           var id = data['id'];
-          updateLoginVars(true,'FB',$scope.fullname,id);
+          updateLoginVars(true,'FB',$scope.fullname,id, data);
         }
     function errorCallback(getResponseHeaders){
           alert("login error al login con fb");
@@ -192,7 +202,7 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
 
   $scope.doLogoutFacebook = function(){
     Facebook.logout(function(response){
-      updateLoginVars(false,'','','');
+      updateLoginVars(false,'','','','');
     });
   };
 
@@ -207,26 +217,31 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
     // }
     if($scope.loginType === 'COMMON'){
       //Actualizo variables
-      updateLoginVars(false,'','','');
+      updateLoginVars(false,'','','','');
     }
 
     if($scope.loginType === 'TW'){
       
-      updateLoginVars(false,'','','');
+      updateLoginVars(false,'','','','');
     }
+
+    $location.path('/home');
+
   };
 
 
-  function updateLoginVars(isAuthenticated, loginType, username, userid){
-      $scope.isAuthenticated = isAuthenticated;
-      $scope.loginType = loginType;
-      $scope.username = username;
-      $scope.userid = userid;
+  function updateLoginVars(isAuthenticated, loginType, username, userid, json){
+      $rootScope.isAuthenticated = isAuthenticated;
+      $rootScope.loginType = loginType;
+      $rootScope.username = username;
+      $rootScope.userid = userid;
+      $rootScope.userjson = json;
       //Actualizo cookies
       $cookies.isAuthenticated = isAuthenticated;
       $cookies.loginType = loginType;
       $cookies.username = username;
       $cookies.userid = userid;
+      $cookies.userjson = json;
     }
 
 
@@ -249,9 +264,10 @@ angular.module('Security').controller('LoginController', ['$scope', 'Facebook', 
           });
 
         });
-
-
   };
+
+
+
 
 }]);
 

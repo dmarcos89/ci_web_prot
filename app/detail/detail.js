@@ -27,6 +27,20 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
 
     	});
 
+
+
+      var postidrelacionado = 27; 
+      Posts.get({ Id: postidrelacionado }, function(data2) {
+          $scope.postrelacionado = data2;
+          // var userid2 = data2['user_id']
+          // Users.get({ Id: userid2 }, function(data3) {
+          //   $scope.userrelacionado = data3;
+          // }
+      });
+
+
+
+
 		$scope.dynMarkers = [];
      
           $scope.dynMarkers[0] = new google.maps.Marker({
@@ -41,10 +55,16 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
           $scope.dynMarkers[0].setMap($scope.map);
 
           $scope.map.setCenter(loc);
+
+
+
+
+
       });
 	
 
-	  
+
+
 
 	  $scope.doFavorite = function(){
 	  	// alert("dar favorito");
@@ -74,7 +94,7 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
        Favorite.remove(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
-          alert("fav correcto");
+          alert("desfav correcto");
           var r = JSON.stringify(data);
           alert(r);
         }
