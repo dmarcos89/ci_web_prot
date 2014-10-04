@@ -11,12 +11,16 @@ angular.module('MainApp',
     'Security',
     'ui.bootstrap',
     'ngAnimate',
-    'app.config'
+    'app.config',
+    'angular-google-analytics'
   ]
 );
  
-angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
+angular.module('MainApp').config(['$routeProvider', function($routeProvider, AnalyticsProvider) {
     
+    AnalyticsProvider.setAccount('UA-55347762-1');
+    AnalyticsProvider.trackPages(true);
+
     $routeProvider.
       when('/home', {
         templateUrl: 'home/home.tpl.html',

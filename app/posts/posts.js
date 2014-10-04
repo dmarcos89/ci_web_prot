@@ -14,6 +14,12 @@ angular.module('MainApp').factory('Posts', function ($resource, CONFIG) {
     );
   });
 
+angular.module('MainApp').factory('Posts2', function ($resource, CONFIG) {
+    return $resource(
+        CONFIG.API_URL+'posts.json'
+    );
+  });
+
 
 angular.module('MainApp').factory('PostsByUser', function ($resource, CONFIG) {
     return $resource(

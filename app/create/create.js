@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller("CreateController", function($scope, Posts, fileReader) {
+angular.module('MainApp').controller("CreateController", function($scope, Posts2, fileReader) {
   
   $scope.message = "Crear un nuevo post";
   $scope.categories = [ {
@@ -31,7 +31,7 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts,
       
       // json version vieja
       // data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.imageSrc, date: $scope.date, location:$scope.location , category: $scope.category}};
-      Posts.save(data, successPostCallback, errorCallback);
+      Posts2.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
           alert("articulo creado correctamente");
