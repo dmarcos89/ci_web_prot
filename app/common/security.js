@@ -61,34 +61,6 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     }
   };
 
-
-
-  $scope.me = function() {
-    Facebook.api('/me', function(response) {
-      $scope.$apply(function() {
-        // Here you could re-check for user status (just in case)
-        console.log("entro al me");
-        $scope.user = response;
-        $scope.facebookid = response.id;
-        $scope.fullname = response.name;
-        $scope.username = response.first_name;
-        $scope.lastname = response.last_name;
-        $scope.email = response.email;
-        $scope.gender = response.gender;
-        $scope.locale = response.locale;
-
-        // alert('Good to see you, ' + response.name + ':' + response.email);
-
-      });
-    });
-  };
-
-
-
-
-
-
-
   $scope.doLoginCommon = function(){
     console.log("probando login");
 
@@ -199,6 +171,27 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
           var r = JSON.stringify(getResponseHeaders);
           alert(r);
         }
+  };
+
+  $scope.me = function() {
+    Facebook.api('/me', function(response) {
+      $scope.$apply(function() {
+        // Here you could re-check for user status (just in case)
+        console.log("entro al me");
+        console.log(response);
+        $scope.user = response;
+        $scope.facebookid = response.id;
+        $scope.fullname = response.name;
+        $scope.username = response.first_name;
+        $scope.lastname = response.last_name;
+        $scope.email = response.email;
+        $scope.gender = response.gender;
+        $scope.locale = response.locale;
+
+        // alert('Good to see you, ' + response.name + ':' + response.email);
+
+      });
+    });
   };
 
 
