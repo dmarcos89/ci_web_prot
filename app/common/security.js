@@ -164,7 +164,8 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
 
   $scope.doLoginFacebook = function(){
-    Facebook.login(function(response) {
+    if(Facebook.isReady()){
+      Facebook.login(function(response) {
       if (response.status === 'connected') {
         $scope.status = 'yes';
         // alert('permisos aceptados por el usaurio...');
@@ -197,6 +198,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
           var r = JSON.stringify(getResponseHeaders);
           alert(r);
         }
+    }
   };
 
 
