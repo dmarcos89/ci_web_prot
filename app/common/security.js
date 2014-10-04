@@ -257,7 +257,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
             updateLoginVars(true,'TW',json.name);
 
             alert('Your name is '+ json.name);
-            alert(json);
+            alert(JSON.stringify(json));
             var data = {username: json.name, email: "email", first_name: json.name, last_name: json.lastname, twitter_id: json.id, avatar: photoUrl+$scope.facebookid };
             Login_Twitter.save(data, successPostCallback, errorCallback);
             
