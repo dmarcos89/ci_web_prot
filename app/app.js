@@ -15,8 +15,9 @@ angular.module('MainApp',
   ]
 );
  
-angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
+angular.module('MainApp').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
+  config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
     $routeProvider.
       when('/home', {
@@ -74,6 +75,9 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
       otherwise({
         redirectTo: '/home'
       });
+
+      $locationProvider.html5Mode(true);
+
   } ]);
 
 
