@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('PostById', function($scope, Posts, Users, $routeParams, Favorite) {
+angular.module('MainApp').controller('PostById', function($scope, Posts, Users, $routeParams, Favorite, $location) {
 	  
 	  // $scope.msg = "Detalle de un post";
 	  var postid = $routeParams.postid;
@@ -38,6 +38,10 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
           // }
       });
 
+
+      $scope.nextPost = function(){
+        $location.path('/post/'+postidrelacionado);
+      }
 
 
 

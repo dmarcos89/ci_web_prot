@@ -126,36 +126,29 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
 
 
 
-angular.module('MainApp').controller('DashboardController', function($scope, $timeout, Users, $routeParams, $rootScope) {
-    
-    $scope.txt = 'Perfil de usuario';
-
-    // var userid = $routeParams.userid;
-
-    $scope.msg = 'Detalle de un usuario';
-    // $scope.isFollower = false;
-    // $scope.sameUser = false;
-
-     
-     // alert(logueado);
-
+angular.module('MainApp').controller('DashboardController', function($scope, $timeout, Users, $routeParams, $rootScope, $location) {
       $timeout(function(){
         var logueado = $rootScope.userid;
-      Users.get({ Id: logueado }, function(data) {
-      $scope.user = data;
-      // Chequeamos si el usuario logueado es SEGUIDOR de userid que se visita:
-      var x = chequearSeguidor(logueado, userid, data);
-      if(x == -1){
-        $scope.sameUser = true;
-        $scope.isFollower = false;
-      }
-      if(x == 1){
-        $scope.sameUser = false;
-        $scope.isFollower = true;
-      }
-      // alert($scope.checkFollow);
+        if(logueado == ''){
+            $location.path('/home');
+        }else{
 
-    });
+            Users.get({ Id: logueado }, function(data) {
+            $scope.user = data;
+            // Chequeamos si el usuario logueado es SEGUIDOR de userid que se visita:
+            var x = chequearSeguidor(logueado, userid, data);
+            if(x == -1){
+              $scope.sameUser = true;
+              $scope.isFollower = false;
+            }
+            if(x == 1){
+              $scope.sameUser = false;
+              $scope.isFollower = true;
+            }
+            // alert($scope.checkFollow);
+
+          });
+      }
     
     }, 1200);
     
