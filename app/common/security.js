@@ -260,6 +260,32 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
             var data = {username: json.name, email: "email", first_name: "nombre", last_name: "apellido", facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
             Login_Twitter.save(data, successPostCallback, errorCallback);
             
+
+            function successPostCallback(data){
+                alert('login MANUAL ok');
+                var r = JSON.stringify(data);
+                alert(r);
+                var name = data['first_name'];
+                var id = data['id'];
+                updateLoginVars(true,'COMMON',name, id, data);
+
+                
+                // Cerramos el login modal a mano
+                $("#myModal").modal('toggle');
+
+
+                $location.path('/dashboard');
+
+
+              }
+            function errorCallback(getResponseHeaders){
+                alert('error al hacer login MANUAL');
+                var r = JSON.stringify(getResponseHeaders);
+                alert(r);
+                alert(getResponseHeaders['data']);
+              }
+
+
           }).error(function(){
             alert('Whoops! Error Login Twitter');
           });

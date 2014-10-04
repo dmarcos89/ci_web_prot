@@ -20,7 +20,7 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts2
     $scope.Create = function() {
 
       // json nueva version con varias imagenes
-      data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
+      var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
         , assets_images:[
         {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1},
         {data: $scope.Base64_2, filename: "02.jpg", content_type: $scope.Type_2},

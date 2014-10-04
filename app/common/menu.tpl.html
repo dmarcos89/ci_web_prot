@@ -82,8 +82,8 @@
                 <ul class="nav navbar-nav" ng-hide="isAuthenticated">
                     
                         
-                        <li><a href="" data-toggle="modal" data-target="#myModal2">Registrarte</a></li>
-                        <li><a href="" data-toggle="modal" data-target="#myModal">Iniciar Sesión</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#myModal2" onClick="ga('send', 'event', 'ButtonRegistrarme', 'click', 'nav-buttons');">Registrarte</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#myModal" onClick="ga('send', 'event', 'ButtonIniciarSesion', 'click', 'nav-buttons');">Iniciar Sesión</a></li>
                         
                         
                     <li>
@@ -115,10 +115,10 @@
             ¡Ingresar en Ciudad Invisible!    
         </h4>
         <br>
-        <a class="btn btn-block btn-social btn-facebook" ng-click="doLoginFacebook()">
+        <a class="btn btn-block btn-social btn-facebook" ng-click="doLoginFacebook()" onClick="ga('send', 'event', 'FacebookLogin', 'click', 'nav-buttons');">
             <i class="fa fa-facebook"></i> Inicia sesión con Facebook
         </a>
-        <a class="btn btn-block btn-social btn-twitter" ng-click="doLoginTwitter()">
+        <a class="btn btn-block btn-social btn-twitter" ng-click="doLoginTwitter()" onClick="ga('send', 'event', 'TwitterLogin', 'click', 'nav-buttons');">
             <i class="fa fa-twitter"></i> Inicia sesión con Twitter
         </a>
 
@@ -136,7 +136,7 @@
               <input type="password" class="form-control" id="" placeholder="Password" ng-model="login_password" required>
               <!-- <br> -->
               <input type="checkbox"> Recordarme
-              <button class="btn btn-block btn-warning" ng-click="doLoginCommon()">Iniciar sesión</button>
+              <button class="btn btn-block btn-warning" ng-click="doLoginCommon()" onClick="ga('send', 'event', 'LoginManual', 'click', 'nav-buttons');">Iniciar sesión</button>
             </div>
           </div>
         </form>
