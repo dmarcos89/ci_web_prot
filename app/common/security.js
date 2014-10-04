@@ -186,6 +186,8 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
     }, {scope: 'email'} );
       
+    
+    }
     function successPostCallback(data){
           alert("login ok con fb");
           var r = JSON.stringify(data);
@@ -198,7 +200,6 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
           var r = JSON.stringify(getResponseHeaders);
           alert(r);
         }
-    }
   };
 
 
