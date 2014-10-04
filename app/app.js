@@ -55,7 +55,7 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         controller: 'ViewUser'
       }).
       when('/user/:userid/favoritos', {
-        templateUrl: 'user/siguiendo.tpl.html',
+        templateUrl: 'user/favoritos.tpl.html',
         controller: 'ViewUser'
       }).
       when('/perfil/editar', {
@@ -64,7 +64,7 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
       }).
       when('/dashboard/', {
         templateUrl: 'user/dashboard.tpl.html',
-        controller: 'ProfileController'
+        controller: 'DashboardController'
       }).
       when('/about/', {
         templateUrl: 'statics/about.tpl.html',

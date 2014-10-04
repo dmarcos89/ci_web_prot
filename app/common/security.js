@@ -35,6 +35,10 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         return viewLocation === $location.path();
     };
 
+    $rootScope.getLoggedUser = function(){
+      return $rootScope.userid;
+    };
+
   angular.element(document).ready(function () {
         $scope.checkLogin();
       });

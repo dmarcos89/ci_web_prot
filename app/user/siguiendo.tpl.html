@@ -2,59 +2,9 @@
 
 <div class="container firstwrap">
 	<div class="row">
-		<div class="col-lg-3 ">
-			
-			<img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" class="img-thumbnail img-responsive">	
-				<!-- <img ng-src="{{ user.url_avatar.replace('original','small') }}" alt="" width=200 class="img-thumbnail img-responsive center-block"> -->
-			<h4>{{ user.first_name + " " +user.last_name}} </h4>
-			<!-- <p>{{ user.city + ", " +user.country}} </p> -->
-			<p>Montevideo, Uruguay
-			<br>Miembro desde Agosto 2014</p>
+		
+		<div ng-include="'common/left_column.tpl.html'"></div>
 
-			<btn ng-click="follow()" class="btn btn-primary btn-block" ng-hide="isFollower" >
-				Seguir
-			</btn>
-			<btn ng-click="unfollow()" class="btn btn-primary btn-block btn-unfollow" ng-show="isFollower" ng-class="overclass" ng-mouseover="overclass='btn-danger';txtFollow='Dejar de seguir'" ng-mouseleave="overclass='btn-primary';txtFollow='Siguiendo'" ng-init="txtFollow = 'Siguiendo';">
-				{{ txtFollow }}
-			</btn>
-			<br>
-
-			<div class="panel">
-		    	<div class="panel-header">
-		        	<h3>Sobre mi</h3>
-		        </div>
-		        <div class="panel-body">
-		          	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima mollitia est optio sequi cumque, hic asperiores odit iusto aliquid accusantium dicta praesentium, ipsum quam, velit sunt. Alias doloribus recusandae, deserunt.
-		        </div>
-		     </div>
-		     <div class="panel">
-		    	<div class="panel-header">
-		        	<h3>Seguidores</h3>
-		        </div>
-		        <div class="panel-body">
-		          	<h2 style="margin:5px 0 5px 0 ;"> {{ user.followers.length }} </h2>
-		        </div>
-		     </div>
-		      <div class="panel">
-		    	<div class="panel-header">
-		        	<h3>Sigiuendo</h3>
-		        </div>
-		        <div class="panel-body">
-		          	<h2 style="margin:5px 0 5px 0 ;">{{ user.followed_users.length }}</h2>
-		        </div>
-		     </div>
-		     <div class="panel">
-		    	<div class="panel-header">
-		        	<h3>Posts favoritos</h3>
-		        </div>
-		        <div class="panel-body">
-		          	<h2 style="margin:5px 0 5px 0 ;">{{ user.favorites_posts.length }}</h2>
-		        </div>
-		     </div>
-      
-
-			
-		</div>
 		<div class="col-lg-9">
 		 <!-- <tabset>
 		    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">

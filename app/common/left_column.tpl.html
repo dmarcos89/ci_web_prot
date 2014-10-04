@@ -1,0 +1,56 @@
+<div class="col-lg-3 ">
+			
+			<img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" class="img-thumbnail img-responsive">	
+				<!-- <img ng-src="{{ user.url_avatar.replace('original','small') }}" alt="" width=200 class="img-thumbnail img-responsive center-block"> -->
+			<h4>{{ user.first_name + " " +user.last_name}} </h4>
+			<!-- <p>{{ user.city + ", " +user.country}} </p> -->
+			<p>Montevideo, Uruguay
+			<br>Miembro desde Agosto 2014</p>
+			
+
+			<div ng-hide="sameUser">
+				<btn ng-click="follow()" class="btn btn-primary btn-block" ng-hide="isFollower" >
+					Seguir
+				</btn>
+				<btn ng-click="unfollow()" class="btn btn-primary btn-block btn-unfollow" ng-show="isFollower" ng-class="overclass" ng-mouseover="overclass='btn-danger';txtFollow='Dejar de seguir'" ng-mouseleave="overclass='btn-primary';txtFollow='Siguiendo'" ng-init="txtFollow = 'Siguiendo';">
+					{{ txtFollow }}
+				</btn>
+			</div>
+			<br>
+
+			<div class="panel">
+		    	<div class="panel-header">
+		        	<h3>Sobre mi</h3>
+		        </div>
+		        <div class="panel-body">
+		          	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima mollitia est optio sequi cumque, hic asperiores odit iusto aliquid accusantium dicta praesentium, ipsum quam, velit sunt. Alias doloribus recusandae, deserunt.
+		        </div>
+		     </div>
+		     <div class="panel">
+		    	<div class="panel-header">
+		        	<h3>Seguidores</h3>
+		        </div>
+		        <div class="panel-body">
+		          	<h2 style="margin:5px 0 5px 0 ;"> <a href="#/user/{{user.id}}/seguidores"> {{ user.followers.length }} </a></h2>
+		        </div>
+		     </div>
+		      <div class="panel">
+		    	<div class="panel-header">
+		        	<h3>Sigiuendo</h3>
+		        </div>
+		        <div class="panel-body">
+		          	<h2 style="margin:5px 0 5px 0 ;">  <a href="#/user/{{user.id}}/siguiendo"> {{ user.followed_users.length }}</a></h2>
+		        </div>
+		     </div>
+		     <div class="panel">
+		    	<div class="panel-header">
+		        	<h3>Posts favoritos</h3>
+		        </div>
+		        <div class="panel-body">
+		          	<h2 style="margin:5px 0 5px 0 ;">  <a href="#/user/{{user.id}}/favoritos"> {{ user.favorites_posts.length }}</a></h2>
+		        </div>
+		     </div>
+      
+
+			
+		</div>
