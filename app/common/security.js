@@ -166,8 +166,8 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         $scope.user = response;
         $scope.facebookid = response.id;
         $scope.fullname = response.name;
-        $scope.username = response.first_name;
-        $scope.lastname = response.last_name;
+        $scope.first_name = response.first_name;
+        $scope.last_name = response.last_name;
         $scope.email = response.email;
         $scope.gender = response.gender;
         $scope.locale = response.locale;
