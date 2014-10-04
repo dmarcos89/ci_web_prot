@@ -267,7 +267,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
                 alert(r);
                 var name = data['first_name'];
                 var id = data['id'];
-                updateLoginVars(true,'COMMON',name, id, data);
+                updateLoginVars(true,'Tw',name, id, data);
 
                 
                 // Cerramos el login modal a mano
