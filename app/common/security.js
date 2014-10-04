@@ -65,37 +65,10 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     }
   };
 
-
-
-  $scope.me = function() {
-    Facebook.api('/me', function(response) {
-      $scope.$apply(function() {
-        // Here you could re-check for user status (just in case)
-        $scope.user = response;
-        $scope.facebookid = response.id;
-        $scope.fullname = response.name;
-        $scope.username = response.first_name;
-        $scope.lastname = response.last_name;
-        $scope.email = response.email;
-        $scope.gender = response.gender;
-        $scope.locale = response.locale;
-
-        // alert('Good to see you, ' + response.name + ':' + response.email);
-
-      });
-    });
-  };
-
-
-
-
-
-
-
   $scope.doLoginCommon = function(){
     console.log("probando login");
 
-      data = {email: $scope.login_email, password: $scope.login_password};
+      var data = {email: $scope.login_email, password: $scope.login_password};
       Login_Common.save(data, successPostCallback, errorCallback);
 
       
@@ -131,7 +104,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
   $scope.doRegisterCommon = function(){
     
-      data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"Ciudad", country:"Pais"};
+      var data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"Ciudad", country:"Pais"};
       Register_Common.save(data, successPostCallback, errorCallback);
 
 
@@ -168,20 +141,14 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
 
   $scope.doLoginFacebook = function(){
-    Facebook.login(function(response) {
+    if(Facebook.isReady()){
+      Facebook.login(function(response) {
       if (response.status === 'connected') {
         $scope.status = 'yes';
+        console.log(response);
         // alert('permisos aceptados por el usaurio...');
         // $scope.isAuthenticated = true;
         $scope.me();
-        alert('Good to see you, ' + $scope.username + ':' + $scope.lastname);
-
-        var photoUrl = 'http://graph.facebook.com/';
-        data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
-        Login_Facebook.save(data, successPostCallback, errorCallback);
-        
-        
-
       } else {
         $scope.status = 'no';
         alert('el usuario no acepta los permisos de facebook...');
@@ -189,18 +156,45 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
     }, {scope: 'email'} );
       
-    function successPostCallback(data){
+    
+    }
+
+  };
+
+  $scope.me = function() {
+    Facebook.api('/me', function(response) {
+      $scope.$apply(function() {
+        // Here you could re-check for user status (just in case)
+        console.log("entro al me");
+        console.log(response);
+        $scope.user = response;
+        $scope.facebookid = response.id;
+        $scope.fullname = response.name;
+        $scope.first_name = response.first_name;
+        $scope.last_name = response.last_name;
+        $scope.email = response.email;
+        $scope.gender = response.gender;
+        $scope.locale = response.locale;
+        alert('Good to see you, ' + response.name + ':' + response.email);
+        var photoUrl = 'http://graph.facebook.com/';
+        var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
+        Login_Facebook.save(data, successPostCallback, errorCallback);
+
+        function successPostCallback(data){
           alert("login ok con fb");
           var r = JSON.stringify(data);
           alert(r);
           var id = data['id'];
           updateLoginVars(true,'FB',$scope.fullname,id, data);
         }
-    function errorCallback(getResponseHeaders){
+        function errorCallback(getResponseHeaders){
           alert("login error al login con fb");
           var r = JSON.stringify(getResponseHeaders);
           alert(r);
         }
+
+      });
+    });
   };
 
 
@@ -260,7 +254,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
             updateLoginVars(true,'TW',json.name);
 
             alert('Your name is '+ json.name);
-            data = {username: json.name, email: "email", first_name: "nombre", last_name: "apellido", facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
+            var data = {username: json.name, email: "email", first_name: "nombre", last_name: "apellido", facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
             Login_Twitter.save(data, successPostCallback, errorCallback);
             
           }).error(function(){
