@@ -2,7 +2,7 @@
 
 angular.module('MainApp').factory('Login_Common', function ($resource, CONFIG) {
     return $resource(
-        CONFIG.API_URL+'/login_common'
+        CONFIG.API_URL+'login_common'
     );
   });
 
