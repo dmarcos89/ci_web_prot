@@ -127,7 +127,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
   $scope.doRegisterCommon = function(){
     
-      data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"Ciudad", country:"Pais"};
+      var data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"Ciudad", country:"Pais"};
       Register_Common.save(data, successPostCallback, errorCallback);
 
 
@@ -173,7 +173,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         alert('Good to see you, ' + $scope.username + ':' + $scope.lastname);
 
         var photoUrl = 'http://graph.facebook.com/';
-        data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
+        var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
         Login_Facebook.save(data, successPostCallback, errorCallback);
         
         
@@ -256,7 +256,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
             updateLoginVars(true,'TW',json.name);
 
             alert('Your name is '+ json.name);
-            data = {username: json.name, email: "email", first_name: "nombre", last_name: "apellido", facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
+            var data = {username: json.name, email: "email", first_name: "nombre", last_name: "apellido", facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
             Login_Twitter.save(data, successPostCallback, errorCallback);
             
           }).error(function(){
