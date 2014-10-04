@@ -17,8 +17,6 @@ angular.module('MainApp',
  
 angular.module('MainApp').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
-  config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-
     $routeProvider.
       when('/home', {
         templateUrl: 'home/home.tpl.html',
