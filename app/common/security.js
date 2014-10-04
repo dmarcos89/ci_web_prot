@@ -91,7 +91,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   $scope.doLoginCommon = function(){
     console.log("probando login");
 
-      data = {email: $scope.login_email, password: $scope.login_password};
+      var data = {email: $scope.login_email, password: $scope.login_password};
       Login_Common.save(data, successPostCallback, errorCallback);
 
       
