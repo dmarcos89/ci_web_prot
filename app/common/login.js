@@ -1,9 +1,7 @@
 'use strict';
 
-angular.module('MainApp').factory('Login_Common', function ($resource, CONFIG) {
-    return $resource(
-        CONFIG.API_URL+'login_common/'
-    );
+angular.module('MainApp').factory('Login_Common', function ($resource) {
+    return $resource('/login_common');
   });
 
 
