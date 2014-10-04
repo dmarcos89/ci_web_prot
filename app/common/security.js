@@ -67,6 +67,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     Facebook.api('/me', function(response) {
       $scope.$apply(function() {
         // Here you could re-check for user status (just in case)
+        console.log("entro al me");
         $scope.user = response;
         $scope.facebookid = response.id;
         $scope.fullname = response.name;
@@ -168,6 +169,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       Facebook.login(function(response) {
       if (response.status === 'connected') {
         $scope.status = 'yes';
+        console.log(response);
         // alert('permisos aceptados por el usaurio...');
         // $scope.isAuthenticated = true;
         $scope.me();
@@ -176,9 +178,6 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         var photoUrl = 'http://graph.facebook.com/';
         var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid };
         Login_Facebook.save(data, successPostCallback, errorCallback);
-        
-        
-
       } else {
         $scope.status = 'no';
         alert('el usuario no acepta los permisos de facebook...');
