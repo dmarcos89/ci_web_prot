@@ -258,10 +258,13 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
             alert('Your name is '+ json.name);
             var r = JSON.stringify(json);
-            alert(r);
-            console.log(r);
+            // alert(r);
+            // console.log(r);
             console.log(json);
-            var data = {username: json.name, email: "email", first_name: json.name, last_name: json.lastname, twitter_id: json.id, avatar: photoUrl+$scope.facebookid };
+            var ubicacion = json.location.split(", ");
+
+            var data = {username: json.screen_name, email: "email", first_name: json.name, last_name: "", twitter_id: json.id, city: ubicacion[0] , country: ubicacion[1]  };
+            console.log(data);
             Login_Twitter.save(data, successPostCallback, errorCallback);
             
 
