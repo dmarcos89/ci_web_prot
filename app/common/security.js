@@ -249,12 +249,11 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
   $scope.doLoginTwitter = function(){
    hello.login('twitter', {
-        scope: 'email',
+        scope: '',
         display: 'popup'
       }, function(auth, status) {
 
           hello( 'twitter' ).api('me').success(function(json){
-            updateLoginVars(true,'TW',json.name);
 
             alert('Your name is '+ json.name);
             var r = JSON.stringify(json);
@@ -263,7 +262,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
             console.log(json);
             var ubicacion = json.location.split(", ");
 
-            var data = {username: json.screen_name, email: json.email, first_name: json.first_name, last_name: json.first_name, twitter_id: json.id, city: ubicacion[0] , country: ubicacion[1], avatar: json.profile_image_url  };
+            var data = {username: json.screen_name, email: "null@null.com", first_name: json.first_name, last_name: json.last_name, twitter_id: json.id, city: ubicacion[0] , country: ubicacion[1], avatar: json.profile_image_url  };
             console.log(data);
             Login_Twitter.save(data, successPostCallback, errorCallback);
             
@@ -279,7 +278,6 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
                 
                 // Cerramos el login modal a mano
                 $("#myModal").modal('toggle');
-
 
                 $location.path('/dashboard');
 
