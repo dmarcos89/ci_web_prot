@@ -177,7 +177,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         $scope.locale = response.locale;
         alert('Good to see you, ' + response.name + ':' + response.email);
         var photoUrl = 'http://graph.facebook.com/';
-        var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid+'/picture' };
+        var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid+'/picture?width=300' };
         Login_Facebook.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
