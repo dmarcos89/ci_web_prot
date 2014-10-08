@@ -262,7 +262,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
             console.log(json);
             var ubicacion = json.location.split(", ");
 
-            var data = {username: json.screen_name, email: 'null@null.com', first_name: json.first_name, last_name: json.last_name, twitter_id: json.id, city: ubicacion[0] , country: ubicacion[1], avatar: json.profile_image_url  };
+            var data = {username: json.screen_name, first_name: json.first_name, last_name: json.last_name, twitter_id: json.id, city: ubicacion[0] , country: ubicacion[1], avatar: json.profile_image_url  };
             console.log(data);
             Login_Twitter.save(data, successPostCallback, errorCallback);
             
