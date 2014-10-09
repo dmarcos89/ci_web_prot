@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller("CreateController", function($scope, Posts2, fileReader) {
+angular.module('MainApp').controller("CreateController", function($scope, Posts2, fileReader, Assets) {
   
   $scope.message = "Crear un nuevo post";
   $scope.categories = [ {
@@ -17,17 +17,23 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts2
                         }
                       ];
 
+
+    $scope.data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
+        , images:[]};            
+
+
+
     $scope.Create = function() {
 
       // json nueva version con varias imagenes
-      var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
-        , assets_images:[
-        {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1},
-        {data: $scope.Base64_2, filename: "02.jpg", content_type: $scope.Type_2},
-        {data: $scope.Base64_3, filename: "03.jpg", content_type: $scope.Type_3},
-        {data: $scope.Base64_4, filename: "04.jpg", content_type: $scope.Type_4},
-        {data: $scope.Base64_5, filename: "05.jpg", content_type: $scope.Type_5}
-        ]};
+      // var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
+      //   , assets_images:[
+      //   {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1},
+      //   {data: $scope.Base64_2, filename: "02.jpg", content_type: $scope.Type_2},
+      //   {data: $scope.Base64_3, filename: "03.jpg", content_type: $scope.Type_3},
+      //   {data: $scope.Base64_4, filename: "04.jpg", content_type: $scope.Type_4},
+      //   {data: $scope.Base64_5, filename: "05.jpg", content_type: $scope.Type_5}
+      //   ]};
       
       // json version vieja
       // data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.imageSrc, date: $scope.date, location:$scope.location , category: $scope.category}};
@@ -83,6 +89,22 @@ $scope.getFile = function () {
                           // Separa el string para quedarse unicamente con el tipo
                           var splitedType = splited[0].split("data:");
                           $scope.Type_1 = splitedType[1];
+
+                          var foto = {assets_images:{data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1}};
+
+                          Assets.save(foto, successPostCallback, errorCallback);
+
+                              function successPostCallback(data){
+                                alert("se subio foto correctamente");
+                                var r = JSON.stringify(data);
+                                alert(r);
+                              }
+                          function errorCallback(getResponseHeaders){
+                                alert("error al subir foto");
+                                var r = JSON.stringify(getResponseHeaders);
+                                alert(r);
+                              }
+
 
                       });
 };

@@ -1,0 +1,41 @@
+<div ng-include="'common/secondary.tpl.html'"></div>
+
+<div class="container firstwrap">
+	<div class="row">
+		
+		<div ng-include="'common/left_column.tpl.html'"></div>
+
+		<div class="col-lg-9">
+		 <!-- <tabset>
+		    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+		      {{tab.content}}
+		    </tab>
+		  </tabset> -->
+			<h2>Mis posteos:{{ posts.length }}   {{ sameUser }}  {{ isFollower }} </h2>
+			<hr>
+			
+			<p ng-show="!posts"> No tienes posteos </p>
+
+			<div ng-repeat="post in posts | filter:search" class="col-lg-6">
+		      <a href="#/post/{{post.id}}">
+		        <img ng-src=" {{ post.assets[0].file_url.replace('original','small') }} " alt="" class="img-responsive" style="height:300px; width: 100%; margin-bottom:15px; background-size: contain;">
+		        </a>
+		    </div>
+
+		</div>	
+	</div>
+
+JSON DEL USER QUE SE ESTA VIENDO:
+{{ user }}
+
+<br><br><br>
+
+JSON CON LOS POSTEOS DEL USAURIO (FALTA RECIBIR LA URL A LAS FOTOS!!) <br>
+{{ posts }}
+
+<!-- {{ fbuser }} -->
+<br><br><br>
+usuerio logueado <br>
+{{ userid }}
+
+</div>

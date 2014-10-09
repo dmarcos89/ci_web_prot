@@ -52,8 +52,10 @@
                      
                       <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                        <img ng-src="{{  }}" src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=30 class="img-circle img-responsive pull-left" style="margin-top: -5px; margin-right: 5px">
+                        <img ng-src="{{ user.url_avatar.replace('original','small') }}"  alt="" width=30 class="img-circle img-responsive pull-left" style="margin-top: -5px; margin-right: 5px">
                         {{ username }}
+
+                        <!-- src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" -->
                         <!-- <b class="caret"></b> -->
                         </a>
                         <ul class="dropdown-menu" id="dropdown">
@@ -125,18 +127,25 @@
 
         <hr>
 
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
+        <form class="form-horizontal" name="loginform" ng-submit="doLoginCommon()">
+          <div class="form-group" >
             <div class="col-sm-12">
-              <input type="email" class="form-control" id="" placeholder="Email" ng-model="login_email" required>
+              <input type="email" class="form-control" id="emaillogin" placeholder="Email" ng-model="login_email" >
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-12">
-              <input type="password" class="form-control" id="" placeholder="Password" ng-model="login_password" required>
+              <input type="password" class="form-control" id="passwordlogin" placeholder="Password" ng-model="login_password" required>
+              
               <!-- <br> -->
-              <input type="checkbox"> Recordarme
-              <button class="btn btn-block btn-warning" ng-click="doLoginCommon()" onClick="ga('send', 'event', 'LoginManual', 'click', 'nav-buttons');">Iniciar sesión</button>
+              <!-- <input type="checkbox"> Recordarme -->
+
+              <br>
+              <button type="submit" class="btn btn-block btn-warning" onClick="ga('send', 'event', 'LoginManual', 'click', 'nav-buttons');">Iniciar sesión
+              </button>
+              
+              <p style="color:red; font-size:13px;" class="text-center">{{ errormsg }}</p>
+              
             </div>
           </div>
         </form>

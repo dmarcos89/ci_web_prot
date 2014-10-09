@@ -859,12 +859,15 @@ border-bottom: 2px white solid;
 	color: #565a5c;
 	font-size: 16px;
 	padding-top: 2px;
-	padding-bottom: 5px;
-	padding-left: 15px;
+	padding-bottom: 3px;
+	/*padding-left: 15px;*/
 	border-bottom: 1px solid #dce0e0;
 
 }
 
+.panel-body{
+	padding: 0;
+}
 
 
 /*SLIDER FADE*/

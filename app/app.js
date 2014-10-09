@@ -9,7 +9,7 @@ angular.module('MainApp',
     'ngMap',
     'ngProgress',
     'Security',
-    'ui.bootstrap',
+    // 'ui.bootstrap',
     'ngAnimate',
     'app.config'
   ]

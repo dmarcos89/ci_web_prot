@@ -31,6 +31,8 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   $rootScope.userid = '';
   $rootScope.userjson = '';
 
+  $scope.errormsg = '';
+
    $rootScope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
@@ -66,7 +68,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   };
 
   $scope.doLoginCommon = function(){
-    console.log("probando login");
+      console.log("probando login");
 
       var data = {email: $scope.login_email, password: $scope.login_password};
       Login_Common.save(data, successPostCallback, errorCallback);
@@ -91,10 +93,11 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
       }
     function errorCallback(getResponseHeaders){
-        alert('error al hacer login MANUAL');
-        var r = JSON.stringify(getResponseHeaders);
-        alert(r);
-        alert(getResponseHeaders['data']);
+        // alert('error al hacer login MANUAL');
+        // var r = JSON.stringify(getResponseHeaders);
+        // alert(r);
+        // alert(getResponseHeaders['data']);
+         $scope.errormsg = getResponseHeaders['data'];
       }
 
   };
