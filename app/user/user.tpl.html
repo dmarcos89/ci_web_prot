@@ -1,9 +1,9 @@
 <!-- <div ng-include="'common/secondary.tpl.html'"></div> -->
 
-<div class="container-fluid" style="background-color:#f5f5f5">
-	<div class="row">
-		<div class="col-lg-2 col-lg-offset-2 text-center" style="margin-top:30px;margin-bottom:30px;">
-			<img ng-src="{{ user.file_url.replace('original','medium') }}" alt="" class="img-circle img-responsive" width="200">	
+<div class="container-fluid" style="background-color:#f5f5f5; ">
+	<div class="row" style="margin-top:40px;margin-bottom:40px;">
+		<div class="col-lg-2 col-lg-offset-2 text-center" >
+			<img ng-src="{{ user.file_url }}" alt="" class="img-circle img-responsive" width="200">	
 				<!-- <img ng-src="{{ user.url_avatar.replace('original','small') }}" alt="" width=200 class="img-thumbnail img-responsive center-block"> -->
 			
 			<!-- <p>Montevideo, Uruguay
@@ -12,7 +12,7 @@
 			<button class="btn btn-primary btn-sm" style="margin-top:10px;">Cambiar foto</button>
 
 		</div>
-		<div class="col-lg-6" style="margin-top:40px;">
+		<div class="col-lg-6" style="margin-left:20px; margin-top:10px;">
 			<div class="row">
 				<div>
 					<h2 style="display:inline">{{ user.first_name + " " +user.last_name}} </h2>
@@ -20,8 +20,9 @@
 						<i class="fa fa-check"></i>
 						Siguiendo
 					</a>
+					<p style="font-size:13px;">{{ user.city + ", " +user.country}}</p>
 				</div>
-				<br>
+				<!-- <br> -->
 				<p style="font-size:14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque at autem dolores quam impedit eligendi perspiciatis, ipsa repellendus ut placeia consectetur, asperiores itaque excepturi ab!</p>	
 				<hr>
 			</div>
@@ -79,7 +80,16 @@
 </div>
 
 
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div ng-repeat="post as posts">
+				<img ng-src="" class="thumbnail" alt="">
+			</div>
+		</div>
+	</div>
 
+</div>
 
 
 

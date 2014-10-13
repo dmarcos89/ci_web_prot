@@ -1,4 +1,9 @@
-<nav class="navbar navbar-default " role="navigation" ng-controller="LoginController">
+<!-- {{isAuthenticated}}
+{{username}}
+{{userid}}
+{{userthumb}} -->
+
+<nav class="navbar navbar-default" role="navigation" ng-controller="LoginController">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -52,9 +57,9 @@
                      
                       <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                        <img ng-src="{{ user.url_avatar.replace('original','small') }}"  alt="" width=30 class="img-circle img-responsive pull-left" style="margin-top: -5px; margin-right: 5px">
+                        <img ng-src="{{ userthumb.replace('original','medium') }}"  alt="" width=30 class="img-circle img-responsive pull-left" style="margin-top: -5px; margin-right: 5px">
                         {{ username }}
-
+                        
                         <!-- src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" -->
                         <!-- <b class="caret"></b> -->
                         </a>
@@ -224,6 +229,8 @@
     }, function() {
       $(this).find('.dropdown-menu').first().stop(true, true).slideUp(105)
     });
+
+  $(".navbar-fixed-top").autoHidingNavbar();
 </script>
 
 

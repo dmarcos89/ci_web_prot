@@ -18,12 +18,15 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts2
                       ];
 
 
-    $scope.data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
-        , images:[]};            
-
-
+var fotos = [];
 
     $scope.Create = function() {
+
+
+
+    var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category, images: fotos}};            
+
+
 
       // json nueva version con varias imagenes
       // var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
@@ -39,6 +42,10 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts2
       // data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.imageSrc, date: $scope.date, location:$scope.location , category: $scope.category}};
       Posts2.save(data, successPostCallback, errorCallback);
 
+        var r = JSON.stringify(data);
+          alert(r);
+
+          
         function successPostCallback(data){
           alert("articulo creado correctamente");
           var r = JSON.stringify(data);
@@ -75,6 +82,7 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts2
 // });
 
 
+
 $scope.getFile = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
@@ -98,6 +106,10 @@ $scope.getFile = function () {
                                 alert("se subio foto correctamente");
                                 var r = JSON.stringify(data);
                                 alert(r);
+                                // alert(data['0']);
+                                var jsonfoto = data['0'];
+                                // alert(jsonfoto);
+                                fotos.push(jsonfoto);
                               }
                           function errorCallback(getResponseHeaders){
                                 alert("error al subir foto");

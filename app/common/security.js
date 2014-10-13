@@ -30,6 +30,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   $rootScope.username = '';
   $rootScope.userid = '';
   $rootScope.userjson = '';
+  $rootScope.userthumb = '';
 
   $scope.errormsg = '';
 
@@ -43,6 +44,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
   angular.element(document).ready(function () {
         $scope.checkLogin();
+
       });
 
   $scope.checkLogin = function(){
@@ -52,18 +54,19 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     var cookieUser = $cookies.username;
     var cookieId = $cookies.userid;
     var cookiejson = $cookies.userjson;
+    var userthumb = $cookies.userthumb;
 
 
     if(cookieLoginType === 'COMMON'){
-      updateLoginVars(true,'COMMON',cookieUser,cookieId, cookiejson);
+      updateLoginVars(true,'COMMON',cookieUser,cookieId, cookiejson, userthumb);
     }
 
     if(cookieLoginType === 'FB'){
-      updateLoginVars(true,'FB',cookieUser,cookieId, cookiejson);
+      updateLoginVars(true,'FB',cookieUser,cookieId, cookiejson, userthumb);
     }
 
     if(cookieLoginType === 'TW'){
-      updateLoginVars(true,'TW',cookieUser,cookieId, cookiejson);
+      updateLoginVars(true,'TW',cookieUser,cookieId, cookiejson, userthumb);
     }
   };
 
@@ -81,9 +84,9 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         alert(r);
         var name = data['first_name'];
         var id = data['id'];
-        updateLoginVars(true,'COMMON',name, id, data);
+        updateLoginVars(true,'COMMON',name, id, r, data['file_url']);
 
-        
+
         // Cerramos el login modal a mano
         $("#myModal").modal('toggle');
 
@@ -93,10 +96,6 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
       }
     function errorCallback(getResponseHeaders){
-        // alert('error al hacer login MANUAL');
-        // var r = JSON.stringify(getResponseHeaders);
-        // alert(r);
-        // alert(getResponseHeaders['data']);
          $scope.errormsg = getResponseHeaders['data'];
       }
 
@@ -111,22 +110,13 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       Register_Common.save(data, successPostCallback, errorCallback);
 
 
-      // ---------------------------
-      // ESTO ES PARA PROBAR EL REGISTRO CON FACEBOOK PERO DE FORMA MANUAL LOCALMENTE
-      // data = {username: 'facebook manual', email: 'face@book.com', first_name: 'facebook', last_name: 'manual', facebook_id: 'da736732864kjahsd', avatar:'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/t1.0-1/c13.0.50.50/p50x50/10376166_10152166623504436_3969573622742641215_n.jpg'};
-      // Login_Facebook.save(data, successPostCallback, errorCallback);
-      // ------------------------
-
-
-
-
       function successPostCallback(data){
         alert('registro MANUAL ok');
         var r = JSON.stringify(data);
         // alert(r);
         // alert(data['id'])
         var id = data['id'];
-        updateLoginVars(true,'COMMON',$scope.reg_first_name,id, data);
+        updateLoginVars(true,'COMMON',$scope.reg_first_name,id, r, data['file_url']);
 
         // Cerramos el register modal a mano
         $('#myModal2').modal('toggle');
@@ -188,7 +178,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
           var r = JSON.stringify(data);
           alert(r);
           var id = data['id'];
-          updateLoginVars(true,'FB',$scope.fullname,id, data);
+          updateLoginVars(true,'FB',$scope.fullname,id, r, data['file_url']);
 
           $location.path('/dashboard');
 
@@ -206,7 +196,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
   $scope.doLogoutFacebook = function(){
     Facebook.logout(function(response){
-      updateLoginVars(false,'','','','');
+      updateLoginVars(false,'','','','','');
     });
   };
 
@@ -221,12 +211,12 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     // }
     if($scope.loginType === 'COMMON'){
       //Actualizo variables
-      updateLoginVars(false,'','','','');
+      updateLoginVars(false,'','','','','');
     }
 
     if($scope.loginType === 'TW'){
       
-      updateLoginVars(false,'','','','');
+      updateLoginVars(false,'','','','','');
     }
 
     $location.path('/home');
@@ -234,18 +224,20 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   };
 
 
-  function updateLoginVars(isAuthenticated, loginType, username, userid, json){
+  function updateLoginVars(isAuthenticated, loginType, username, userid, json, thumburl){
       $rootScope.isAuthenticated = isAuthenticated;
       $rootScope.loginType = loginType;
       $rootScope.username = username;
       $rootScope.userid = userid;
       $rootScope.userjson = json;
+      $rootScope.userthumb = thumburl;
       //Actualizo cookies
       $cookies.isAuthenticated = isAuthenticated;
       $cookies.loginType = loginType;
       $cookies.username = username;
       $cookies.userid = userid;
       $cookies.userjson = json;
+      $cookies.userthumb = thumburl;
     }
 
 
@@ -276,7 +268,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
                 alert(r);
                 var name = data['first_name'];
                 var id = data['id'];
-                updateLoginVars(true,'Tw',name, id, data);
+                updateLoginVars(true,'Tw',name, id, data, data['file_url']);
 
                 
                 // Cerramos el login modal a mano

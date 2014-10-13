@@ -9,7 +9,7 @@ angular.module('MainApp',
     'ngMap',
     'ngProgress',
     'Security',
-    // 'ui.bootstrap',
+    'ui.bootstrap',
     'ngAnimate',
     'app.config'
   ]
@@ -35,8 +35,12 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         templateUrl: 'map/map.tpl.html',
         controller: 'MapController'
       }).
+      when('/explorar/turuta/', {
+        templateUrl: 'map/route.tpl.html',
+        controller: 'MapController'
+      }).
       when('/crear', {
-        templateUrl: 'create/create.tpl.html',
+        templateUrl: 'create/create2.tpl.html',
         controller: 'CreateController'
       }).
       when('/post/:postid', {
@@ -74,6 +78,12 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
       otherwise({
         redirectTo: '/home'
       });
+
+
+      // use the HTML5 History API
+      // $locationProvider.html5Mode(true);
+
+
   } ]);
 
 

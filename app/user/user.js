@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$routeParams, Users, PostsByUser, $timeout, Follow) {
+angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$routeParams, Users, PostsByUser, Posts, $timeout, Follow) {
 	  
 	  var userid = $routeParams.userid;
 
@@ -32,10 +32,7 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
 	  });
 
     PostsByUser.query({ Id: userid }, function(data) {
-      // alert(data);
       $scope.posts = data;
-
-
     });
     
      }, 1500);

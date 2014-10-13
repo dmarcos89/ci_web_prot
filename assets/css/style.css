@@ -870,9 +870,14 @@ border-bottom: 2px white solid;
 }
 
 
+.dashboarditem{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
 /*SLIDER FADE*/
 
-
+/*
 .carousel-fade .carousel-inner .item {
   opacity: 0;
   -webkit-transition-property: opacity;
@@ -896,7 +901,7 @@ border-bottom: 2px white solid;
 .carousel-fade .carousel-control {
   z-index: 2;
 }
-
+*/
 /*SLIDER FADE*/
 
 
@@ -929,4 +934,29 @@ background:white;
 }
 
 /*RELATED*/
+
+
+
+
+.carousel {
+    height: 50%;
+}
+
+.item,
+.active,
+.carousel-inner {
+    height: 100%;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 
