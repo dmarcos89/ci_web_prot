@@ -71,6 +71,10 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         templateUrl: 'user/dashboard.tpl.html',
         controller: 'DashboardController'
       }).
+      when('/notificaciones/', {
+        templateUrl: 'user/notificaciones.tpl.html',
+        controller: 'DashboardController'
+      }).
       when('/about/', {
         templateUrl: 'statics/about.tpl.html',
         controller: 'StaticPagesController'

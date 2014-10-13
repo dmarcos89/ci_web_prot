@@ -122,7 +122,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         $('#myModal2').modal('toggle');
 
         // Luego de registrar al usuario, lo enviamos a su dashboard
-        $location.path('/dashboard');
+        $location.path('/ajustes');
        
       }
       function errorCallback(getResponseHeaders){

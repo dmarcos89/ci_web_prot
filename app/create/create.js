@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller("CreateController", function($scope, Posts2, fileReader, Assets) {
+angular.module('MainApp').controller("CreateController", function($scope, Posts2, fileReader, Assets, ngProgress) {
   
   $scope.message = "Crear un nuevo post";
   $scope.categories = [ {
@@ -19,6 +19,7 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts2
 
 
 var fotos = [];
+$scope.imageSrc = [];
 
     $scope.Create = function() {
 
@@ -88,33 +89,49 @@ $scope.getFile = function () {
         fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
 
+
+                          ngProgress.start();
+
                           // Separo el string para obtener solo el base64
                           var splited = result.split(";base64,");
 
-                          $scope.imageSrc = result;
+                          // $scope.imageSrc = result;
+                          $scope.imageSrc.push(result);
+
+                          // alert($scope.imageSrc);
+
                           $scope.Base64_1 = splited[1];
 
                           // Separa el string para quedarse unicamente con el tipo
                           var splitedType = splited[0].split("data:");
                           $scope.Type_1 = splitedType[1];
 
-                          var foto = {assets_images:{data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1}};
+                          var foto = {assets_images:{data: $scope.Base64_1, filename: "foto", content_type: $scope.Type_1}};
 
+                          // alert(foto);
                           Assets.save(foto, successPostCallback, errorCallback);
 
                               function successPostCallback(data){
                                 alert("se subio foto correctamente");
                                 var r = JSON.stringify(data);
                                 alert(r);
+                                alert(data);
+                                console.log(data);
                                 // alert(data['0']);
                                 var jsonfoto = data['0'];
                                 // alert(jsonfoto);
                                 fotos.push(jsonfoto);
+
+                                ngProgress.complete();
+
                               }
                           function errorCallback(getResponseHeaders){
                                 alert("error al subir foto");
                                 var r = JSON.stringify(getResponseHeaders);
                                 alert(r);
+
+                                ngProgress.complete();
+
                               }
 
 

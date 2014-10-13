@@ -33,7 +33,7 @@
 </div> -->
 
     
-<header id="coverimg" background-image="{{imageSrc}}">
+<header id="coverimg" background-image="{{imageSrc[0]}}">
         <div class="container-fluid" style="background-color:rgba(241, 236, 236, 0.3)">
             <div class="createwraper">
                 <div class="createposttitle">
@@ -63,19 +63,19 @@
 
             
             <div class="col-lg-3">
-                <input type="file" ng-file-select2="onFileSelect($files)">
-                <img ng-src="{{imageSrc2}}" alt="" class="img-responsive">
+                <input type="file" ng-file-select="onFileSelect($files)">
+                <img ng-src="{{imageSrc[1]}}" alt="" class="img-responsive">
             </div>
             <div class="col-lg-3">
-                <input type="file" ng-file-select3="onFileSelect($files)">
+                <input type="file" ng-file-select="onFileSelect($files)">
                 <img ng-src="{{imageSrc3}}" alt="" class="img-responsive">
             </div>
             <div class="col-lg-3">
-                <input type="file" ng-file-select4="onFileSelect($files)">
+                <input type="file" ng-file-select="onFileSelect($files)">
                 <img ng-src="{{imageSrc4}}" alt="" class="img-responsive">
             </div>
             <div class="col-lg-3">
-                <input type="file" ng-file-select5="onFileSelect($files)">
+                <input type="file" ng-file-select="onFileSelect($files)">
                 <img ng-src="{{imageSrc5}}" alt="" class="img-responsive">
             </div>
             
