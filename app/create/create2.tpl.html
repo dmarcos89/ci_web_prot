@@ -62,11 +62,11 @@
         <div class="col-lg-12">
 
             
-            <div class="col-lg-3">
+            <div class="col-lg-12" ng-repeat="img in imageSrc">
                 <input type="file" ng-file-select="onFileSelect($files)">
-                <img ng-src="{{imageSrc[1]}}" alt="" class="img-responsive">
+                <img ng-src="{{img}}" alt="" class="img-responsive">
             </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <input type="file" ng-file-select="onFileSelect($files)">
                 <img ng-src="{{imageSrc3}}" alt="" class="img-responsive">
             </div>
@@ -77,7 +77,7 @@
             <div class="col-lg-3">
                 <input type="file" ng-file-select="onFileSelect($files)">
                 <img ng-src="{{imageSrc5}}" alt="" class="img-responsive">
-            </div>
+            </div> -->
             
 
         </div>

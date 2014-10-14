@@ -132,6 +132,18 @@ hr{
 	border-top: 1px solid #DEDCDC;
 }
 
+.badge{
+	background-color: red;
+	font-size: 10px;
+}
+
+.badge-notify{
+   background:red;
+   position:relative;
+   top: -20px;
+   left: -35px;
+}
+
 
 /*--------------------------------------------------------*/
 /*END ESTILOS GENERALES*/

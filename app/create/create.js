@@ -112,13 +112,13 @@ $scope.getFile = function () {
                           Assets.save(foto, successPostCallback, errorCallback);
 
                               function successPostCallback(data){
-                                alert("se subio foto correctamente");
+                                // alert("se subio foto correctamente");
                                 var r = JSON.stringify(data);
-                                alert(r);
-                                alert(data);
+                                // alert(r);
+                                // alert(data);
                                 console.log(data);
                                 // alert(data['0']);
-                                var jsonfoto = data['0'];
+                                var jsonfoto = data['id'];
                                 // alert(jsonfoto);
                                 fotos.push(jsonfoto);
 
@@ -139,67 +139,6 @@ $scope.getFile = function () {
 };
 
 
-// SE REPITE 4 VECES PARA LAS 4 FOTOS EXTRA QUE SE AGREGAN. HAY QUE EMPROLIJAR ESTA CHANCHADA!!
-$scope.getFile2 = function () {
-        $scope.progress = 0;
-        fileReader.readAsDataUrl($scope.file, $scope)
-                      .then(function(result) {
-                           // Separo el string para obtener solo el base64
-                          var splited = result.split(";base64,");
-
-                          $scope.imageSrc2 = result;
-                          $scope.Base64_2 = splited[1];
-
-                          // Separa el string para quedarse unicamente con el tipo
-                          var splitedType = splited[0].split("data:");
-                          $scope.Type_2 = splitedType[1];
-                      });
-};
-
-$scope.getFile3 = function () {
-        $scope.progress = 0;
-        fileReader.readAsDataUrl($scope.file, $scope)
-                      .then(function(result) {
-                          var splited = result.split(";base64,");
-
-                          $scope.imageSrc3 = result;
-                          $scope.Base64_3 = splited[1];
-
-                          // Separa el string para quedarse unicamente con el tipo
-                          var splitedType = splited[0].split("data:");
-                          $scope.Type_3 = splitedType[1];
-                      });
-};
-
-$scope.getFile4 = function () {
-        $scope.progress = 0;
-        fileReader.readAsDataUrl($scope.file, $scope)
-                      .then(function(result) {
-                          var splited = result.split(";base64,");
-
-                          $scope.imageSrc4 = result;
-                          $scope.Base64_4 = splited[1];
-
-                          // Separa el string para quedarse unicamente con el tipo
-                          var splitedType = splited[0].split("data:");
-                          $scope.Type_4 = splitedType[1];
-                      });
-};
-
-$scope.getFile5 = function () {
-        $scope.progress = 0;
-        fileReader.readAsDataUrl($scope.file, $scope)
-                      .then(function(result) {
-                          var splited = result.split(";base64,");
-
-                          $scope.imageSrc5 = result;
-                          $scope.Base64_5 = splited[1];
-
-                          // Separa el string para quedarse unicamente con el tipo
-                          var splitedType = splited[0].split("data:");
-                          $scope.Type_5 = splitedType[1];
-                      });
-};
 
 // $scope.$on("fileProgress", function(e, progress) {
 //         $scope.progress = progress.loaded / progress.total;
@@ -227,52 +166,6 @@ angular.module('MainApp').directive("ngFileSelect",function(){
     }
   };
 });
-
-// SE REPITE 4 VECES PARA LAS 4 FOTOS EXTRA QUE SE AGREGAN. HAY QUE EMPROLIJAR ESTA CHANCHADA!!
-angular.module('MainApp').directive("ngFileSelect2",function(){
-  return {
-    link: function($scope,el){
-      el.bind("change", function(e){
-        $scope.file = (e.srcElement || e.target).files[0];
-        $scope.getFile2();
-      });
-    }
-  };
-});
-
-angular.module('MainApp').directive("ngFileSelect3",function(){
-  return {
-    link: function($scope,el){
-      el.bind("change", function(e){
-        $scope.file = (e.srcElement || e.target).files[0];
-        $scope.getFile3();
-      });
-    }
-  };
-});
-
-angular.module('MainApp').directive("ngFileSelect4",function(){
-  return {
-    link: function($scope,el){
-      el.bind("change", function(e){
-        $scope.file = (e.srcElement || e.target).files[0];
-        $scope.getFile4();
-      });
-    }
-  };
-});
-
-angular.module('MainApp').directive("ngFileSelect5",function(){
-  return {
-    link: function($scope,el){
-      el.bind("change", function(e){
-        $scope.file = (e.srcElement || e.target).files[0];
-        $scope.getFile5();
-      });
-    }
-  };
-});
-
 
 
 

@@ -8,17 +8,16 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
 	  // $scope.isFollower = false;
     // $scope.sameUser = false;
 
+
      $timeout(function(){
         
-     
-
-     var logueado = $rootScope.userid;
+     // var logueado = $rootScope.userid;
      // alert(logueado);
 
     Users.get({ Id: userid }, function(data) {
       $scope.user = data;
       // Chequeamos si el usuario logueado es SEGUIDOR de userid que se visita:
-      var x = chequearSeguidor(logueado, userid, data);
+      var x = chequearSeguidor($rootScope.userid, userid, data);
       if(x == -1){
         $scope.sameUser = true;
         $scope.isFollower = false;
@@ -40,8 +39,8 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
     $scope.follow = function(){
       alert("Seguir usuario");
 
-      var data = {follower: logueado , followed: userid};
-      // alert(JSON.stringify(data));
+      var data = {follower: $rootScope.userid , followed: userid};
+      alert(JSON.stringify(data));
        Follow.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
@@ -60,7 +59,7 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
     $scope.unfollow = function(){
       alert("Dejar de seguir");
 
-      var data = {follower: logueado , followed: userid};
+      var data = {follower: $rootScope.userid , followed: userid};
       // alert(JSON.stringify(data));
        Follow.remove(data, successPostCallback, errorCallback);
 
@@ -112,9 +111,11 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
             // alert(folls[i].id);
             if(folls[i].id == idLogueado){
               return 1; // 0 significa que el idlogueado es seguidor del idvisitado
+              alert("1");
             }            
         }
         return 0;
+        alert("0");
       }
     }
 
@@ -125,15 +126,14 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
 
 angular.module('MainApp').controller('DashboardController', function($scope, $timeout, Users, $routeParams, $rootScope, $location) {
       $timeout(function(){
-        var logueado = $rootScope.userid;
-        if(logueado == ''){
+        if($rootScope.userid == ''){
             $location.path('/home');
         }else{
 
-            Users.get({ Id: logueado }, function(data) {
+            Users.get({ Id: $rootScope.userid }, function(data) {
             $scope.user = data;
             // Chequeamos si el usuario logueado es SEGUIDOR de userid que se visita:
-            var x = chequearSeguidor(logueado, userid, data);
+            var x = chequearSeguidor($rootScope.userid, userid, data);
             if(x == -1){
               $scope.sameUser = true;
               $scope.isFollower = false;

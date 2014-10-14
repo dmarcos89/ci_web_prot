@@ -16,10 +16,23 @@
 			<div class="row">
 				<div>
 					<h2 style="display:inline">{{ user.first_name + " " +user.last_name}} </h2>
-					<a class="btn btn-primary btn-sm pull-right">
+					
+					
+					<div ng-hide="sameUser">
+						<btn ng-click="follow()" class="btn btn-primary btn-block" ng-hide="isFollower" >
+							Seguir
+						</btn>
+						<btn ng-click="unfollow()" class="btn btn-primary btn-block btn-unfollow" ng-show="isFollower" ng-class="overclass" ng-mouseover="overclass='btn-danger';txtFollow='Dejar de seguir'" ng-mouseleave="overclass='btn-primary';txtFollow='Siguiendo'" ng-init="txtFollow = 'Siguiendo';">
+							{{ txtFollow }}
+						</btn>
+					</div>
+
+					{{ isFollower }}
+
+					<!-- <a class="btn btn-primary btn-sm pull-right">
 						<i class="fa fa-check"></i>
 						Siguiendo
-					</a>
+					</a> -->
 					<p style="font-size:13px;">{{ user.city + ", " +user.country}}</p>
 				</div>
 				<!-- <br> -->
@@ -107,4 +120,5 @@ JSON CON LOS POSTEOS DEL USAURIO (FALTA RECIBIR LA URL A LAS FOTOS!!) <br>
 <br><br><br>
 usuerio logueado <br>
 {{ userid }}
+
 
