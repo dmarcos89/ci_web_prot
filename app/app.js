@@ -92,6 +92,28 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
 
 
 
+angular.module('MainApp').run(['$rootScope', 'ngProgress', function($rootScope, ngProgress) {
+    // You can customize progress bar here.
+    // ngProgress.color('#F1C40F');
+
+    // When route started to change.
+    $rootScope.$on('$routeChangeStart', function() {
+        ngProgress.reset(); // Required to handle all edge cases.
+        ngProgress.start();
+      });
+
+    // When route successfully changed.
+    $rootScope.$on('$routeChangeSuccess', function() {
+        ngProgress.complete();
+      });
+
+    // When some error occured.
+    $rootScope.$on('$routeChangeError', function() {
+        ngProgress.reset();
+      });
+  }]);
+
+
 angular.module('MainApp').directive('script', function() {
     return {
       restrict: 'E',

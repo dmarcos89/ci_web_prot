@@ -53,7 +53,8 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
 
           var lat = data['longitude'];
           var lng = data['latitude'];
-		  var loc = new google.maps.LatLng(lat, lng);
+
+		      var loc = new google.maps.LatLng(lat, lng);
 
           $scope.dynMarkers[0].setPosition(loc);
           $scope.dynMarkers[0].setMap($scope.map);

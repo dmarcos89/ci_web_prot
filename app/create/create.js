@@ -20,12 +20,13 @@ angular.module('MainApp').controller("CreateController", function($scope, Posts2
 
 var fotos = [];
 $scope.imageSrc = [];
+var posicion = "";
 
     $scope.Create = function() {
 
 
 
-    var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category, images: fotos}};            
+    var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: posicion['k'], longitude: posicion['B'], category: $scope.category, images: fotos}};            
 
 
 
@@ -69,19 +70,12 @@ $scope.imageSrc = [];
   };
 
 
-  // $scope.markerposition = $scope.markers[0].position;
   $scope.dragEnd = function(){
-    // alert(this.getPosition());
-    alert($scope.markers[0].position);
-    $scope.$parent.location = this.getPosition();
+    alert(this.getPosition());
+    posicion = this.getPosition();
+    // alert($scope.markers[0].position);
+    // $scope.$parent.location = this.getPosition();
   };
-
-// $scope.markers
-
-// $scope.$on('markersInitialized', function(event, map) {
-//     alert($scope.markers[0].lat);
-// });
-
 
 
 $scope.getFile = function () {
@@ -138,14 +132,6 @@ $scope.getFile = function () {
                       });
 };
 
-
-
-// $scope.$on("fileProgress", function(e, progress) {
-//         $scope.progress = progress.loaded / progress.total;
-// });
-
-
-// $scope.markers
 
 
 });
