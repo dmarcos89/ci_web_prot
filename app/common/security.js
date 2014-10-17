@@ -178,7 +178,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
           var r = JSON.stringify(data);
           alert(r);
           var id = data['id'];
-          updateLoginVars(true,'FB',$scope.fullname,id, r, data['file_url']);
+          updateLoginVars(true,'FB',$scope.fullname,id, r, data['url_avatar']);
 
           $location.path('/dashboard');
 
@@ -268,7 +268,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
                 alert(r);
                 var name = data['first_name'];
                 var id = data['id'];
-                updateLoginVars(true,'Tw',name, id, data, data['file_url']);
+                updateLoginVars(true,'Tw',name, id, data, data['url_avatar']);
 
                 
                 // Cerramos el login modal a mano
