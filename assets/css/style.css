@@ -754,6 +754,21 @@ h1{
    	-o-transition: all 0.1s ease-in-out !important;
    	transition: all 0.1s ease-in-out !important;
 }
+
+.ratio{
+    position:relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100% ; /* % of width, defines aspect ratio*/
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+
+.tensixty{
+    background-position: 10% 60%;
+}
+
+
 /*USER PROFILE*/
 
 

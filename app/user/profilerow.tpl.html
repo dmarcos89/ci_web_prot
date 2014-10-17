@@ -1,0 +1,95 @@
+<!-- <div ng-include="'common/secondary.tpl.html'"></div> -->
+
+<div class="container-fluid" style="background-color:#f5f5f5; ">
+	<div class="row" style="margin-top:40px;margin-bottom:40px;">
+		<div class="col-lg-2 col-lg-offset-2 text-center" >
+			<img ng-src="{{ user.file_url }}" alt="" class="img-rounded img-responsive" width="200" ng-show="{{ user.file_url != '' }}">	
+			<img ng-src="{{ user.url_avatar }}" alt="" class="img-rounded img-responsive" width="200" ng-show="{{ user.url_avatar != '' }}">	
+				<!-- <img ng-src="{{ user.url_avatar.replace('original','small') }}" alt="" width=200 class="img-thumbnail img-responsive center-block"> -->
+			
+			<!-- <p>Montevideo, Uruguay
+			<br>Miembro desde Agosto 2014</p> -->
+			
+			<div ng-hide="sameUser" style="margin-top:10px;">
+						<btn ng-click="follow()" class="btn btn-primary btn-sm" ng-if="!isFollower">
+							Seguir usuario
+						</btn>
+						<btn ng-click="unfollow()" class="btn btn-primary btn-sm btn-unfollow" ng-if="isFollower" ng-class="overclass" ng-mouseover="overclass='btn-danger';txtFollow='Dejar de seguir';iconcheck=false" ng-mouseleave="overclass='btn-primary';txtFollow='Siguiendo';iconcheck=true" ng-init="txtFollow = 'Siguiendo';iconcheck=true">
+							{{ txtFollow }}
+						<i class="fa fa-check" ng-show="iconcheck"></i>
+						<i class="fa fa-times" ng-hide="iconcheck"></i>
+						</btn>
+			</div>
+
+			<a href="#/dashboard/" ng-show="sameUser" class="btn btn-primary btn-sm" style="margin-top:10px;">Editar perfil</a> 
+
+		</div>
+		<div class="col-lg-6" style="margin-left:20px; margin-top:10px;">
+			<div class="row">
+				<div>
+					<h2 style="display:inline">{{ user.first_name + " " +user.last_name}} </h2>
+					
+					
+					<!-- <a class="btn btn-primary btn-sm pull-right">
+						<i class="fa fa-check"></i>
+						Siguiendo
+					</a> -->
+					<p style="font-size:13px;">{{ user.city + ", " +user.country}}</p>
+				</div>
+				<!-- <br> -->
+				<p style="font-size:14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque at autem dolores quam impedit eligendi perspiciatis, ipsa repellendus ut placeia consectetur, asperiores itaque excepturi ab!</p>	
+				<hr>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="panel text-center">
+				    	<div class="panel-header">
+				        	<h5>Seguidores</h5>
+				        </div>
+				        <div class="panel-body">
+				          	<h4> <a href="#/user/{{user.id}}/seguidores"> {{ user.followers_quantity }} </a></h4>
+				        </div>
+				    </div>
+			     </div>
+
+			     <div class="col-lg-3">
+					<div class="panel text-center">
+				    	<div class="panel-header">
+				        	<h5>Siguiendo</h5>
+				        </div>
+				        <div class="panel-body">
+				          	<h4> <a href="#/user/{{user.id}}/siguiendo"> {{ user.followed_quantity }} </a></h4>
+				        </div>
+				    </div>
+			     </div>
+
+			     <div class="col-lg-3">
+					<div class="panel text-center">
+				    	<div class="panel-header">
+				        	<h5>Posteos</h5>
+				        </div>
+				        <div class="panel-body">
+				          	<h4> <a href="#/user/{{user.id}}"> {{ posts.length }} </a></h4>
+				        </div>
+				    </div>
+			     </div>
+
+			      <div class="col-lg-3">
+					<div class="panel text-center">
+				    	<div class="panel-header">
+				        	<h5>Favoritos</h5>
+				        </div>
+				        <div class="panel-body">
+				          	<h4> <a href="#/user/{{user.id}}/favoritos"> {{ user.favorites_posts.length }} </a></h4>
+				        </div>
+				    </div>
+			     </div>
+
+
+			     
+			      
+			</div>
+		</div>
+	</div>
+</div>
+

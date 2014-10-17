@@ -14,7 +14,19 @@
             <div class="col-lg-7 col-md-7">
                 <div class="list-group">
                     <div class="list-group-item">
-                    	<b style="font-size:24px;">Aspectos basicos de la cuenta</b>
+                    	<b style="font-size:24px;">Aspectos basicos de tu cuenta</b>
+                    </div>
+                    <div class="list-group-item dashboarditem">
+                        <p style="margin:0; display:inline;">
+                            Nombre
+                        </p> 
+                        <input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson">
+                    </div>
+                    <div class="list-group-item dashboarditem">
+                        <p style="margin:0; display:inline;">
+                            Apellido
+                        </p> 
+                        <input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
@@ -49,7 +61,9 @@
                     		<option value="">Mujer</option>
                     	</select>
                     </div>
-                    
+                    <div class="list-group-item dashboarditem">
+                        <button class="btn btn-primary" ng-click="editarPerfil()">Guardar</button>
+                    </div>
                 </div>
             </div>
         </div>

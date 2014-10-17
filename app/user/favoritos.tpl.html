@@ -1,24 +1,15 @@
-<div ng-include="'common/secondary.tpl.html'"></div>
-
-<div class="container firstwrap">
-	<div class="row">
-		
-		<div ng-include="'common/left_column.tpl.html'"></div>
+<div ng-include="'user/profilerow.tpl.html'"></div>
 
 
-		<div class="col-lg-9">
-		 <!-- <tabset>
-		    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
-		      {{tab.content}}
-		    </tab>
-		  </tabset> -->
-			<h2>Favoritos</h2>
-			<hr>
-			
-			{{ user.favorites_posts }}
-			
 
-		</div>	
+
+<div class="container">
+	<div class="row" style="margin-top:50px;">
+		<div class="col-lg-4" ng-repeat="post in favoritos">
+					<div class="ratio tensixty img-thumbnail" style="background-image:url({{post.first_image.replace('original','small')}})"></div>
+		</div> 
+		</div>
 	</div>
 
 </div>
+

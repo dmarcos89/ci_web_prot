@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$routeParams, Users, PostsByUser, Posts, $timeout, Follow) {
+angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$routeParams, Users, PostsByUser, Posts, $timeout, Follow, UserFollowed, UserFollowers, UserFavorites) {
 	  
 	  var userid = $routeParams.userid;
 
@@ -9,44 +9,86 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
     // $scope.sameUser = false;
 
 
-     $timeout(function(){
+    $timeout(function(){
         
      // var logueado = $rootScope.userid;
      // alert(logueado);
 
-    Users.get({ Id: userid }, function(data) {
-      $scope.user = data;
-      // Chequeamos si el usuario logueado es SEGUIDOR de userid que se visita:
-      var x = chequearSeguidor($rootScope.userid, userid, data);
-      if(x == -1){
-        $scope.sameUser = true;
-        $scope.isFollower = false;
-      }
-      if(x == 1){
-        $scope.sameUser = false;
-        $scope.isFollower = true;
-      }
-      // alert($scope.checkFollow);
+      Users.get({ Id: userid }, function(data) {
+        $scope.user = data;
 
-	  });
+        $scope.fotoPerfil = 'aaa';
+        
 
-    PostsByUser.query({ Id: userid }, function(data) {
-      $scope.posts = data;
-    });
+        UserFollowed.query({ Id: $rootScope.userid }, function(datos) {
+          $scope.siguiendo = datos;
+          // alert(JSON.stringify(datos));
+
+          // Chequeamos si el usuario logueado es SEGUIDOR de userid que se visita:
+          var x = chequearSeguidor($rootScope.userid, userid, $scope.siguiendo);
+          if(x === -1){
+            $scope.sameUser = true;
+            $scope.isFollower = false;
+          }
+          if(x === 1){
+            $scope.sameUser = false;
+            $scope.isFollower = true;
+          }
+          if(x === 0){
+            $scope.sameUser = false;
+            $scope.isFollower = false;
+          }
+        });
+      
+
+
+        UserFollowers.query({ Id: $rootScope.userid }, function(datos){
+          $scope.seguidores = datos;
+        });
+
+        UserFavorites.query({ Id: $rootScope.userid }, function(datos){
+          $scope.favoritos = datos;
+        });
+
+
+	    });
+
+      // PostsByUser.query({ Id: userid }, function(data) {
+      //   $scope.posts = data;
+      //   if(data){
+      //     alert("con posts");
+      //   }else{
+      //     alert("sin posts;");
+      //   }
+      // });
+
+
+      PostsByUser.query({ Id: userid }, successPostCallback, errorCallback);
+
+       function successPostCallback(data){
+          $scope.posts = data;
+          // alert("con posts");
+        }
+      function errorCallback(getResponseHeaders){
+          var r = JSON.stringify(getResponseHeaders);
+          // alert(r);
+          $scope.posts = [];
+        }
     
-     }, 1500);
+    }, 1500);
 
     $scope.follow = function(){
-      alert("Seguir usuario");
+      // alert('Seguir usuario');
 
       var data = {follower: $rootScope.userid , followed: userid};
-      alert(JSON.stringify(data));
+      // alert(JSON.stringify(data));
        Follow.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
-          alert("follow correcto");
+          // alert("follow correcto");
           var r = JSON.stringify(data);
-          alert(r);
+          // alert(r);
+          $scope.isFollower = true;
         }
       function errorCallback(getResponseHeaders){
           alert('follow error');
@@ -57,19 +99,20 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
     };
 
     $scope.unfollow = function(){
-      alert("Dejar de seguir");
+      // alert("Dejar de seguir");
 
       var data = {follower: $rootScope.userid , followed: userid};
       // alert(JSON.stringify(data));
        Follow.remove(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
-          alert("follow correcto");
+          // alert("follow correcto");
           var r = JSON.stringify(data);
-          alert(r);
+          // alert(r);
+          $scope.isFollower = false;
         }
       function errorCallback(getResponseHeaders){
-          alert('follow error');
+          // alert('follow error');
           var r = JSON.stringify(getResponseHeaders);
           alert(r);
         }
@@ -79,43 +122,27 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
 
 
 
-    $scope.editarPerfil = function(){
-      alert("editar perfil usuario");
-
-      var data = {id: userid, username:$scope.username, first_name:$scope.first_name, last_name:$scope.last_name, email: $scope.email };
-      // alert(JSON.stringify(data));
-       Users.update(data, successPostCallback, errorCallback);
-
-        function successPostCallback(data){
-          alert("edicion de usuario correcto");
-          var r = JSON.stringify(data);
-          alert(r);
-        }
-      function errorCallback(getResponseHeaders){
-          alert('edicion de usuario- error!!');
-          var r = JSON.stringify(getResponseHeaders);
-          alert(r);
-        }
-
-    };
+   
 
 
     function chequearSeguidor(idLogueado, idVisitado, datosUser){
       if(idLogueado === idVisitado){
         return -1; //-1 significa que estoy viendo mi propio perfil
       }else{
-        var folls = datosUser.followers;
+        var folls = datosUser;
         var arrayLength = folls.length;
+        // alert("largo "+arrayLength);
         var esSeguidor = false;
         for (var i = 0; i < arrayLength && !esSeguidor; i++) {
-            // alert(folls[i].id);
-            if(folls[i].id == idLogueado){
-              return 1; // 0 significa que el idlogueado es seguidor del idvisitado
-              alert("1");
-            }            
+          // alert(folls[i].id + "==?" + idVisitado );
+          if(Number(folls[i].id) === Number(idVisitado)){
+            // alert("1");
+            esSeguidor = true;
+            return 1; // 0 significa que el idlogueado es seguidor del idvisitado
+          }
         }
+        // alert("0");
         return 0;
-        alert("0");
       }
     }
 

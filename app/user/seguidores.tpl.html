@@ -1,23 +1,18 @@
-<div ng-include="'common/secondary.tpl.html'"></div>
+<div ng-include="'user/profilerow.tpl.html'"></div>
 
-<div class="container firstwrap">
-	<div class="row">
-		
-		<div ng-include="'common/left_column.tpl.html'"></div>
 
-		<div class="col-lg-9">
-		 <!-- <tabset>
-		    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
-		      {{tab.content}}
-		    </tab>
-		  </tabset> -->
-			<h2>Seguidores</h2>
-			<hr>
-			
-			{{ user.followers }}
-			
 
-		</div>	
+
+<div class="container">
+	<div class="row" style="margin-top:50px;">
+		<div class="col-lg-3" ng-repeat="seguidor in seguidores">
+				<div ng-show="{{ seguidor.url_avatar}}" class="ratio tensixty img-thumbnail" style="background-image:url({{seguidor.url_avatar.replace('original','small')}})" />
+
+				<div ng-show="{{ seguidor.file_url}}" class="ratio tensixty img-thumbnail" style="background-image:url({{seguidor.file_url.replace('original','small')}})" />
+
+            </div> 
+		</div>
 	</div>
 
 </div>
+
