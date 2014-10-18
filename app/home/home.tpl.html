@@ -64,7 +64,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="height:400px; overflow:hidden;">
 		 <!-- <div class="thumbnail">
                 <div class="caption">
                     <h2>{{ posts.title }}</h2>
@@ -72,7 +72,7 @@
                 <img src="http://lorempixel.com/800/385/nature/5" alt="" class="img-responsive">
          </div> -->
   <a href="#/post/{{posts[0].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[0].assets[0].file_url.replace('original','small') }});height:400px">
+    <div class="ratio tensixty" style="background-image:url({{ posts[0].assets[0].file_url.replace('original','small') }});">
       <div class="content">
           <div class="table">
               <div class="table-cell">
@@ -98,7 +98,7 @@
                 <img src="http://lorempixel.com/400/400/nature/4" alt="" class="img-responsive">
          </div> -->
    <a href="#/post/{{posts[1].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[1].assets[0].file_url.replace('original','small') }});height:400px">
+    <div class="ratio tensixty" style="background-image:url({{ posts[1].assets[0].file_url.replace('original','small') }});">
       <div class="content">
           <div class="table">
               <div class="table-cell">
