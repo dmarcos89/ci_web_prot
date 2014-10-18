@@ -1,37 +1,39 @@
-
+<!-- 
 <header style="background-image: url( {{ post.assets[0].file_url.replace('original','large') }} );height:700px;">
         <div class="container-fluid" >
             
             
-            <!-- <div class="intro-text">
+            <div class="intro-text">
                 <div class="viewposttitle">{{ post.title }}</div>
-            </div> -->
+            </div>
         </div>
-        <!-- Controls -->
             
           
-</header>
+</header> -->
 
 
-<style>
-    .postinfo{
-        border: 1px solid #dce0e0;
-        background-color: #fff;
-        border-radius: 0;
-    }
 
-    .categoriesrow{
-        margin-top: 10px;
-    }
 
-    .categoriesrow h5{
-        margin-top: 1px;
-    }
+<div class="container">
+    <div class="row centered">
+        <div class="col-lg-12" ng-repeat="img in post.assets">
+                <img ng-src="{{img.file_url.replace('original','large')}}" alt="" class="img-responsive" style="margin:0 auto;">
+        </div>
+    </div>
+</div>            
 
-    .count{
-        margin-left: 5px;
-    }
-</style>
+
+<div class="container">
+    <div class="row centered">
+        <!-- <hr> -->
+        <div class="col-lg-8 col-lg-offset-2 descriptionwraper">
+            <div class="viewposttitle">{{ post.title }}</div>
+            <span name="" id="" class="postdescription">{{ post.description }}</span>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="container-fluid postinfo">
     <div class="row authorinfo">
@@ -110,15 +112,6 @@
 
 
 
-<div class="container">
-    <div class="row centered">
-        <!-- <hr> -->
-        <div class="col-lg-8 col-lg-offset-2 descriptionwraper">
-            <span name="" id="" class="postdescription">{{ post.description }}</span>
-        </div>
-    </div>
-</div>
-
 
 <div class="container-fluid">
      <div class="row">
@@ -127,28 +120,6 @@
                 <!-- <marker position="{{$parent.lat}}" centered="true"> -->
            
             </map>  
-
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row centered">
-        <div class="col-lg-12">
-
-            <div class="col-lg-3">
-                <img ng-src="{{post.assets[1].file_url.replace('original','small')}}" alt="" class="img-responsive">
-            </div>
-            <div class="col-lg-3">
-                <img ng-src="{{post.assets[2].file_url.replace('original','small')}}" alt="" class="img-responsive">
-            </div>
-            <div class="col-lg-3">
-                <img ng-src="{{post.assets[3].file_url.replace('original','small')}}" alt="" class="img-responsive">
-            </div>
-            <div class="col-lg-3">
-                <img ng-src="{{post.assets[4].file_url.replace('original','small')}}" alt="" class="img-responsive">
-            </div>
-            
 
         </div>
     </div>
@@ -222,5 +193,29 @@
     });
 </script>
 
+
+<script src="jquery.carouFredSel-6.0.4-packed.js" type="text/javascript-lazy"></script>
+        <script type="text/javascript-lazy">
+            $(function() {
+                $('#carousel').carouFredSel({
+                    width: '100%',
+                    items: {
+                        visible: 3,
+                        start: -1
+                    },
+                    scroll: {
+                        items: 1,
+                        duration: 1000,
+                        timeoutDuration: 3000
+                    },
+                    prev: '#prev',
+                    next: '#next',
+                    pagination: {
+                        container: '#pager',
+                        deviation: 1
+                    }
+                });
+            });
+        </script>
 
 <!-- {{ post }} -->

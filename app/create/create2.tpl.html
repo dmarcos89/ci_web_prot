@@ -4,45 +4,15 @@
 <div style="background-color:white;">
 
 <form action="">
-	
-<!-- 	<input type="text" ng-model="title" placeholder="Titulo"> 
-    <input type="text" ng-model="author" placeholder="Autor"> 
-    <input type="text" ng-model="description" placeholder="Descripcion">
-    <input type="text" ng-model="image" placeholder="Imagen"> 
-    <input type="text" ng-model="date" placeholder="Fecha"> 
-    <input type="text" ng-model="location" placeholder="Locacion">
-    <input type="text" ng-model="category" placeholder="Categoria">  -->
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <span class="glyphicon postphotoselect glyphicon-picture"> </span>
-            <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Crea un titulo para tu post">
-        </div>
-    </div>
-</div> -->
-
-
-
-<!-- <div class="postcover" style="background: url(http://placehold.it/1920x500) no-repeat center center;"> -->
-<!-- <div class="postcover" style="background: url(http://placehold.it/1920x500) no-repeat center center;">
-        <div class="logo-wrapper">
-            <span class="glyphicon postphotoselect glyphicon-camera"> </span>
-            <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Titulo">
-        </div>
-</div> -->
-
-    
-<header id="coverimg" background-image="{{imageSrc[0]}}">
-        <div class="container-fluid" style="background-color:rgba(241, 236, 236, 0.3)">
+	    
+<header id="coverimg" background-image="{{imageSrc[0]}}" ng-if="{{imageSrc[0]}}">
+        <div class="container-fluid">
             <div class="createwraper">
                 <div class="createposttitle">
                     <!-- <span class="glyphicon postphotoselect glyphicon-camera"> </span> -->
                     <!-- <input type="file" flow-btn /> -->
                     <div class="col-lg-12 centered">
-                        <input id="posttitle" type="text" ng-model="title" class="posttitle form-control input-lg" placeholder="Elije un titulo" style="text-align:center;">
                         
-                        <input type="file" class="filestyle" data-badge="false" ng-file-select="onFileSelect($files)">
                         
                     </div>
                 </div>
@@ -50,36 +20,55 @@
         </div>
 </header>
 
-<!-- <b>Preview:</b><br />
-   <i ng-hide="imageSrc">No image choosed</i>
-   <img ng-src="{{imageSrc}}" /><br/>
-   <b>Progress:</b>
-  <progress value="{{progress}}"></progress> -->
 
+<style>
+          .file_button_container,
+      .file_button_container input {
+           background: transparent url(http://i.stack.imgur.com/BT5AB.png) left top no-repeat;
+           height: 47px;
+           width: 263px;
+       }
+
+       .file_button_container {
+           background: transparent url(http://i.stack.imgur.com/BT5AB.png) left top no-repeat;
+       }
+    
+       .file_button_container input {
+           opacity: 0;
+       }
+
+       .image-upload > input{
+            display: none;
+        }
+
+        .fa-photo:hover{
+            color:black;
+            cursor: pointer;
+        }
+
+        .image-upload:hover{
+            color: black;
+            cursor: pointer;
+        }
+</style>
+
+
+<!-- <div class="container">
+    <div class="row centered">
+        <div class="image-upload">
+            <label for="file-input">
+                <i class="fa fa-photo fa-3x" style="color:gainsboro"></i>
+            </label>
+            <input id="file-input" type="file" ng-file-select="onFileSelect($files)">
+        </div>
+    </div>
+</div> -->
 
 <div class="container">
     <div class="row centered">
-        <div class="col-lg-12">
-
-            
-            <div class="col-lg-12" ng-repeat="img in imageSrc">
-                <img ng-src="{{img}}" alt="" class="img-responsive">
+            <div class="col-lg-12 centered" ng-repeat="img in imageSrc">
+                <img ng-src="{{img}}" alt="" class="img-responsive" style="margin: 0 auto">
             </div>
-            <!-- <div class="col-lg-3">
-                <input type="file" ng-file-select="onFileSelect($files)">
-                <img ng-src="{{imageSrc3}}" alt="" class="img-responsive">
-            </div>
-            <div class="col-lg-3">
-                <input type="file" ng-file-select="onFileSelect($files)">
-                <img ng-src="{{imageSrc4}}" alt="" class="img-responsive">
-            </div>
-            <div class="col-lg-3">
-                <input type="file" ng-file-select="onFileSelect($files)">
-                <img ng-src="{{imageSrc5}}" alt="" class="img-responsive">
-            </div> -->
-            
-
-        </div>
     </div>
 </div>
 
@@ -87,14 +76,24 @@
 <div class="container">
     <div class="row centered">
         <div class="col-lg-8 col-lg-offset-2">
-            <textarea name="" id="" rows="10" ng-model="description" class="postdescription" placeholder="Cuenta aqui tu historia..."></textarea>
+            
+            <div class="image-upload" style="margin-top:50px;">
+                <label for="file-input">
+                    <i class="fa fa-photo fa-3x" style="color:gainsboro"></i>
+                </label>
+                <input id="file-input" type="file" ng-file-select="onFileSelect($files)">
+            </div>
+
+
+            <input id="posttitle" type="text" ng-model="title" class="posttitle" placeholder="Titulo">
+            <textarea name="" id="" rows="20" ng-model="description" class="postdescription" placeholder="Cuenta aqui tu historia..."></textarea>
         </div>
     </div>
 </div>
 
 
 
-<div class="container-fluid">
+<div class="container">
      <div class="row">
         <div class="col-lg-12 mapcontainer">
             <div class="mapinstruction">
@@ -120,9 +119,9 @@
                     <br>
                     <br>
 
-                    <div class="col-lg-3 wrap" ng-repeat="c in categories" ng-click="catselect(c.title);">
-                        <img ng-src=" {{ c.photo }} " class="img-responsive catphoto" alt="">
-                        <p class="text_over_image">{{c.title}}</p>  
+                    <div class="col-lg-2 wrap" ng-repeat="c in categories" ng-click="catselect(c.name);">
+                        <img src="http://placeimg.com/300/350/arch" class="img-responsive catphoto" alt="">
+                        <p class="text_over_image">{{c.name}}</p>  
                     </div>
         </div>
     </div>
@@ -150,4 +149,3 @@
 </div>
 
 
-{{ data }}

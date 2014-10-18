@@ -6,9 +6,9 @@
 <div class="container">
 	<div class="row" style="margin-top:50px;">
 		<div class="col-lg-3" ng-repeat="seguidor in siguiendo">
-				<div ng-show="{{ seguidor.url_avatar}}" class="ratio tensixty img-thumbnail" style="background-image:url({{seguidor.url_avatar.replace('original','small')}})" />
+				<div ng-show="{{ seguidor.login_type == 'facebook'  }}" class="ratio tensixty img-thumbnail" style="background-image:url({{seguidor.url_avatar.replace('original','small')}})"></div>
 
-				<div ng-show="{{ seguidor.file_url}}" class="ratio tensixty img-thumbnail" style="background-image:url({{seguidor.file_url.replace('original','small')}})" />
+				<div ng-show="{{ seguidor.login_type == null }}" class="ratio tensixty img-thumbnail" style="background-image:url({{seguidor.file_url}})"></div>
 
             </div> 
 		</div>
@@ -16,3 +16,13 @@
 
 </div>
 
+
+
+<br><br><br>
+seguidores: <br>
+{{ seguidores }}
+
+
+<br><br><br>
+siuiendo: <br>
+{{ siguiendo }}

@@ -11,6 +11,7 @@ angular.module('MainApp',
     'Security',
     'ui.bootstrap',
     'ngAnimate',
+    'toaster',
     'app.config'
   ]
 );
@@ -25,11 +26,11 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
       }).
       when('/explorar/populares', {
         templateUrl: 'posts/posts_populares.tpl.html',
-        controller: 'PostsController'
+        controller: 'PopularesController'
       }).
       when('/explorar/seguidores', {
         templateUrl: 'posts/posts_seguidores.tpl.html',
-        controller: 'PostsController'
+        controller: 'FollowersPostsController'
       }).
       when('/explorar/mapa/', {
         templateUrl: 'map/map.tpl.html',

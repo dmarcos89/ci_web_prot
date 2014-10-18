@@ -1,62 +1,65 @@
 'use strict';
 
-angular.module('MainApp').controller("CreateController", function($scope, Posts2, fileReader, Assets, ngProgress) {
+angular.module('MainApp').controller('CreateController', function($scope, $rootScope, $location, Posts2, fileReader, Assets, ngProgress, Categories, toaster) {
   
-  $scope.message = "Crear un nuevo post";
-  $scope.categories = [ {
-                          title:"Arte",
-                          photo: "http://placeimg.com/300/350/arch"
-                        },
-                        {
-                          title:"Musica",
-                          photo: "http://placeimg.com/300/350/tech"
-                        },
-                        {
-                          title:"Arquitectura",
-                          photo: "http://placeimg.com/300/350/hist"
-                        }
-                      ];
+  // var userid = Number($rootScope.userid);
+
+  // $scope.categories = [ {
+  //                         title:"Arte",
+  //                         photo: "http://placeimg.com/300/350/arch"
+  //                       },
+  //                       {
+  //                         title:"Musica",
+  //                         photo: "http://placeimg.com/300/350/tech"
+  //                       },
+  //                       {
+  //                         title:"Arquitectura",
+  //                         photo: "http://placeimg.com/300/350/hist"
+  //                       }
+  //                     ];
 
 
-var fotos = [];
-$scope.imageSrc = [];
-var posicion = "";
-
-    $scope.Create = function() {
+  Categories.query(function(data){
+    $scope.categories = data;
+  });
 
 
+  var fotos = [79];
+  $scope.imageSrc = [];
+  var posicion = '';
 
-    var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: posicion['k'], longitude: posicion['B'], category: $scope.category, images: fotos}};            
+  $scope.Create = function() {
 
+    var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: posicion['k'], longitude: posicion['B'], category: $scope.category, images: fotos}};            
 
+    // var r = JSON.stringify(data);
+    // alert(r);
 
-      // json nueva version con varias imagenes
-      // var data = {post:{title: $scope.title, user_id: "1", description: $scope.description, date: "2014-09-20T00:38:23.000Z" ,latitude: "-34.9087458", longitude:"-56.1614022137041", category: $scope.category}
-      //   , assets_images:[
-      //   {data: $scope.Base64_1, filename: "01.jpg", content_type: $scope.Type_1},
-      //   {data: $scope.Base64_2, filename: "02.jpg", content_type: $scope.Type_2},
-      //   {data: $scope.Base64_3, filename: "03.jpg", content_type: $scope.Type_3},
-      //   {data: $scope.Base64_4, filename: "04.jpg", content_type: $scope.Type_4},
-      //   {data: $scope.Base64_5, filename: "05.jpg", content_type: $scope.Type_5}
-      //   ]};
-      
-      // json version vieja
-      // data = {post:{title: $scope.title, author: $scope.author, description: $scope.description, image: $scope.imageSrc, date: $scope.date, location:$scope.location , category: $scope.category}};
       Posts2.save(data, successPostCallback, errorCallback);
 
-        var r = JSON.stringify(data);
-          alert(r);
-
-          
         function successPostCallback(data){
           alert("articulo creado correctamente");
-          var r = JSON.stringify(data);
-          alert(r);
+          // var r = JSON.stringify(data);
+          // alert(r);
+
+        $location.path('/home');
+
+        toaster.pop('success', "Genial, has creado tu primer post!", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
+
         }
     function errorCallback(getResponseHeaders){
-          alert("error al crear articulo");
+          // alert("error al crear articulo");
           var r = JSON.stringify(getResponseHeaders);
-          alert(r);
+          // alert(r);
+          toaster.pop('error','Ups, ha ocurrido un error',r);
+
+          // toaster.pop('success', "title", 'Its address is https://google.com.', 15000, 'trustedHtml', 'goToLink');
+          // toaster.pop('success', "title", '<ul><li>Render html</li></ul>', 5000, 'trustedHtml');
+          // toaster.pop('error', "title", '<ul><li>Render html</li></ul>', null, 'trustedHtml');
+          // toaster.pop('wait', "title", null, null, 'template');
+          // toaster.pop('warning', "title", "myTemplate.html", null, 'template');
+          // toaster.pop('note', "title", "text");
+          
         }
 
 

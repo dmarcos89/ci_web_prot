@@ -5,26 +5,10 @@ angular.module('Security',['facebook']);
 
 angular.module('Security').config(['FacebookProvider', function(FacebookProvider) {
         FacebookProvider.init('494836457286098');
-        
-        // OAuthProvider.setPublicKey('wQumgTM0FsHymnnG7nBJk1yIiVQ');
-
-      
-        // OAuthProvider.setHandler('twitter', function (OAuthData) {
-        //   alert(OAuthData.result.access_token);
-        // });
-
-
-
+       
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location){
-
-
- 
-  // $scope.isAuthenticated = '';
-  // $scope.username = '';
-  // $scope.userid = '';
-
+angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', 'toaster' ,function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location, toaster){
 
   $rootScope.isAuthenticated = '';
   $rootScope.username = '';
@@ -71,7 +55,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   };
 
   $scope.doLoginCommon = function(){
-      console.log("probando login");
+      // console.log("probando login");
 
       var data = {email: $scope.login_email, password: $scope.login_password};
       Login_Common.save(data, successPostCallback, errorCallback);
@@ -79,9 +63,9 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       
 
     function successPostCallback(data){
-        alert('login MANUAL ok');
+        // alert('login MANUAL ok');
         var r = JSON.stringify(data);
-        alert(r);
+        // alert(r);
         var name = data['first_name'];
         var id = data['id'];
         updateLoginVars(true,'COMMON',name, id, r, data['file_url']);
@@ -93,13 +77,15 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
         $location.path('/dashboard');
 
+        toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
 
       }
-    function errorCallback(getResponseHeaders){
-         $scope.errormsg = getResponseHeaders['data'];
-      }
+      function errorCallback(getResponseHeaders){
+          // $scope.errormsg = getResponseHeaders['data'];
+          toaster.pop('error', "Ha ocurrido un error al iniciar sesion", getResponseHeaders['data']);
+        }
 
-  };
+    };
 
 
 
@@ -123,11 +109,15 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
         // Luego de registrar al usuario, lo enviamos a su dashboard
         $location.path('/ajustes');
+
+        toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
        
       }
       function errorCallback(getResponseHeaders){
         alert('error al hacer registro MANUAL');
-        alert(getResponseHeaders['data']);
+        // alert(getResponseHeaders['data']);
+          toaster.pop('error', "Ha ocurrido un error al iniciar sesion", getResponseHeaders['data']);
+
       }
 
     };
@@ -138,13 +128,14 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       Facebook.login(function(response) {
       if (response.status === 'connected') {
         $scope.status = 'yes';
-        console.log(response);
+        // console.log(response);
         // alert('permisos aceptados por el usaurio...');
         // $scope.isAuthenticated = true;
         $scope.me();
       } else {
         $scope.status = 'no';
-        alert('el usuario no acepta los permisos de facebook...');
+        // alert('el usuario no acepta los permisos de facebook...');
+        toaster.pop('error', "Error al iniciar sesion", 'Debes aceptar los permisos para iniciar sesion con Facebook.');
       }
 
     }, {scope: 'email'} );
@@ -158,8 +149,8 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     Facebook.api('/me', function(response) {
       $scope.$apply(function() {
         // Here you could re-check for user status (just in case)
-        console.log("entro al me");
-        console.log(response);
+        // console.log("entro al me");
+        // console.log(response);
         $scope.user = response;
         $scope.facebookid = response.id;
         $scope.fullname = response.name;
@@ -168,25 +159,28 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         $scope.email = response.email;
         $scope.gender = response.gender;
         $scope.locale = response.locale;
-        alert('Good to see you, ' + response.name + ':' + response.email);
+        // alert('Good to see you, ' + response.name + ':' + response.email);
         var photoUrl = 'http://graph.facebook.com/';
         var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid+'/picture?width=300' };
         Login_Facebook.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
-          alert("login ok con fb");
+          // alert("login ok con fb");
           var r = JSON.stringify(data);
-          alert(r);
+          // alert(r);
           var id = data['id'];
           updateLoginVars(true,'FB',$scope.fullname,id, r, data['url_avatar']);
 
           $location.path('/dashboard');
 
+          toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
+
         }
         function errorCallback(getResponseHeaders){
           alert("login error al login con fb");
-          var r = JSON.stringify(getResponseHeaders);
-          alert(r);
+          // var r = JSON.stringify(getResponseHeaders);
+          // alert(r);
+          toaster.pop('error', "Error al iniciar sesion", 'Ha ocurrido un error al iniciar sesion con Facebook, intentalo nuevamente');
         }
 
       });
@@ -250,22 +244,22 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
           hello( 'twitter' ).api('me').success(function(json){
 
-            alert('Your name is '+ json.name);
+            // alert('Your name is '+ json.name);
             var r = JSON.stringify(json);
             // alert(r);
             // console.log(r);
-            console.log(json);
+            // console.log(json);
             var ubicacion = json.location.split(", ");
 
             var data = {username: json.screen_name, first_name: json.first_name, last_name: json.last_name, twitter_id: json.id, city: ubicacion[0] , country: ubicacion[1], avatar: json.profile_image_url  };
-            console.log(data);
+            // console.log(data);
             Login_Twitter.save(data, successPostCallback, errorCallback);
             
 
             function successPostCallback(data){
-                alert('login MANUAL ok');
+                // alert('login MANUAL ok');
                 var r = JSON.stringify(data);
-                alert(r);
+                // alert(r);
                 var name = data['first_name'];
                 var id = data['id'];
                 updateLoginVars(true,'Tw',name, id, data, data['url_avatar']);
@@ -276,18 +270,22 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
                 $location.path('/dashboard');
 
+                toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
+
 
               }
             function errorCallback(getResponseHeaders){
                 alert('error al hacer login MANUAL');
                 var r = JSON.stringify(getResponseHeaders);
-                alert(r);
-                alert(getResponseHeaders['data']);
+                // alert(r);
+                // alert(getResponseHeaders['data']);
+                toaster.pop('error', "Error al iniciar sesion", getResponseHeaders['data']);
               }
 
 
           }).error(function(){
-            alert('Whoops! Error Login Twitter');
+            // alert('Whoops! Error Login Twitter');
+            toaster.pop('error', "Error al iniciar sesion", getResponseHeaders['data']);
           });
 
         });

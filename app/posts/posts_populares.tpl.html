@@ -5,7 +5,7 @@
                     <div class="page-heading">
                         <h1>Explora tu ciudad.</h1>
                         <!-- <hr class="small"> -->
-                        <span class="subheading">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                        <span class="subheading">Conocé cuales son los lugares favoritos de la comunidad.</span>
                     </div>
                 </div>
             </div>
@@ -14,7 +14,7 @@
 
 <div class="container">
   <div class="row">
-    <h2>Listado de posteos</h2>
+    <h2>Listado de posteos destacados</h2>
     <hr>
     <br>
   </div>
@@ -23,11 +23,40 @@
 <div class="container">
   <div class="row">
     
-    <div ng-repeat="post in posts | filter:search" class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fx-fade-down fx-easing-bounce fx-speed-800">
-      <a href="#/post/{{post.id}}">
+    <div ng-repeat="post in posts | filter:search" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 fx-fade-down fx-easing-bounce fx-speed-800">
+      <!-- <a href="#/post/{{post.id}}">
         <img ng-src=" {{ post.assets[0].file_url.replace('original','small') }} " alt="" class="img-responsive" style="height:300px; width:100%; margin-bottom:15px;">
+        </a> -->
+
+        <a href="#/post/{{post.id}}">
+          <div class="ratio tensixty" style="background-image:url({{ post.assets[0].file_url.replace('original','small') }})">
+            <div class="content">
+                <div class="table">
+                    <div class="table-cell">
+                        <p>
+                          {{ post.title }} 
+                          <!-- <br><span style="font-size:16px;">Juan Perez</span> -->
+                        </p>
+                        <p>
+                          <i class="fa fa-heart fa-1x">20</i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>
         </a>
+
+
     </div>
 
   </div>
 </div>
+
+
+
+<style>
+
+
+</style>
+<!-- 
+{{ posts }} -->

@@ -51,11 +51,11 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
             title: "Marker: "
           });
 
-          var lat = data['longitude'];
-          var lng = data['latitude'];
+          var lat = data['latitude'];
+          var lng = data['longitude'];
 
 		      var loc = new google.maps.LatLng(lat, lng);
-
+          // alert(loc);
           $scope.dynMarkers[0].setPosition(loc);
           $scope.dynMarkers[0].setMap($scope.map);
 
@@ -111,6 +111,8 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
         }
 
     };
+
+
 
 	
 	});
