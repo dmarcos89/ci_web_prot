@@ -12,6 +12,7 @@ angular.module('MainApp',
     'ui.bootstrap',
     'ngAnimate',
     'toaster',
+    'angular-parallax',
     'app.config'
   ]
 );

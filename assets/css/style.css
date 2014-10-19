@@ -56,6 +56,13 @@ body{
   /*-webkit-filter: brightness(95%);*/
   /*opacity: 0.8;*/
 }
+
+.intro-header .page-heading2 {
+  padding: 200px 0 200px 0;
+  /*margin-top: 150px;*/
+  color: white;
+}
+
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
@@ -81,7 +88,8 @@ body{
   font-size: 50px;
 }
 .intro-header .site-heading .subheading,
-.intro-header .page-heading .subheading {
+.intro-header .page-heading .subheading,
+.intro-header .page-heading2 .subheading{
   	font-size: 24px;
   	line-height: 1.1,
 	display: block;
@@ -348,7 +356,7 @@ span.glyphicon-picture:hover {
 
 #map-canvas {
     width:100%;
-    height:400px;
+    height:500px;
     display: block;
 }
 

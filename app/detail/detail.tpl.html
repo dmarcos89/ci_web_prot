@@ -11,12 +11,34 @@
           
 </header> -->
 
+<header class="intro-header" style="background-image: url('{{ post.assets[0].file_url.replace('original','large') }}')" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                   
+                    <div class="post-heading" style="padding: 300px 0 300px 0;">
+                        <h1 style="margin-bottom:10px;">{{ post.title }}</h1>
+                           <!--  <input id="posttitle" type="text" ng-model="title" class="posttitle" placeholder="Elige un titulo para el nuevo post" onClick="ga('send', 'event', 'Crear Post', 'click', 'Titulo');"> -->
+                        <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
+                        <span class="meta" style="margin-bottom:10px;">Post creado por <a href="#">{{ post.author }}</a>  August 24, 2014</span>
+                        
 
+
+                        <i class="fa fa-heart-o fa-2x" style="color:white" ng-click="doFavorite()" ng-hide="fav" ng-class="overclass" ng-mouseover="overclass='fa-heart'" ng-mouseleave="overclass='fa-heart-o'"></i>
+                        <i class="fa fa-heart fa-2x" style="color:white" ng-click="unFavorite()" ng-show="fav" ng-class="overclass" ng-mouseover="overclass='fa-heart-o'" ng-mouseleave="overclass='fa-heart'"></i>
+                        {{ post.favorites_quantity }}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </header>
 
 
 <div class="container">
     <div class="row centered">
-        <div class="col-lg-12" ng-repeat="img in post.assets">
+        <div class="col-lg-3" ng-repeat="img in post.assets">
                 <img ng-src="{{img.file_url.replace('original','large')}}" alt="" class="img-responsive" style="margin:0 auto;">
         </div>
     </div>
@@ -27,7 +49,7 @@
     <div class="row centered">
         <!-- <hr> -->
         <div class="col-lg-8 col-lg-offset-2 descriptionwraper">
-            <div class="viewposttitle">{{ post.title }}</div>
+            <!-- <div class="viewposttitle">{{ post.title }}</div> -->
             <span name="" id="" class="postdescription">{{ post.description }}</span>
         </div>
     </div>
@@ -35,7 +57,7 @@
 
 
 
-<div class="container-fluid postinfo">
+<!-- <div class="container-fluid postinfo">
     <div class="row authorinfo">
         <div class="col-lg-2 col-lg-offset-2 centrado">
             <img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=100 class="img-circle img-responsive center-block">   
@@ -102,12 +124,12 @@
                 </div>
              </div>
             
-            <!-- <button class="btn btn-primary" ng-click="doFavorite()">Fav</button> -->
-            <!-- <a href="#" class="btn btn-default" ng-click="doFavorite()"><span class="glyphicon glyphicon-heart" style="color:red"></span></a> -->
+            <!-- <button class="btn btn-primary" ng-click="doFavorite()">Fav</button>
+            <!-- <a href="#" class="btn btn-default" ng-click="doFavorite()"><span class="glyphicon glyphicon-heart" style="color:red"></span></a>
         </div>
 
     </div>
-</div>
+</div> --> 
 
 
 
@@ -193,29 +215,5 @@
     });
 </script>
 
-
-<script src="jquery.carouFredSel-6.0.4-packed.js" type="text/javascript-lazy"></script>
-        <script type="text/javascript-lazy">
-            $(function() {
-                $('#carousel').carouFredSel({
-                    width: '100%',
-                    items: {
-                        visible: 3,
-                        start: -1
-                    },
-                    scroll: {
-                        items: 1,
-                        duration: 1000,
-                        timeoutDuration: 3000
-                    },
-                    prev: '#prev',
-                    next: '#next',
-                    pagination: {
-                        container: '#pager',
-                        deviation: 1
-                    }
-                });
-            });
-        </script>
 
 {{ post }}
