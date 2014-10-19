@@ -101,12 +101,12 @@
                 <label for="file-input">
                     <i class="fa fa-photo fa-3x" style="color:gainsboro"></i>
                 </label>
-                <input id="file-input" type="file" ng-file-select="onFileSelect($files)">
+                <input id="file-input" type="file" ng-file-select="onFileSelect($files)" onClick="ga('send', 'event', 'Crear Post', 'click', 'Image upload');">
             </div>
 
 
-            <input id="posttitle" type="text" ng-model="title" class="posttitle" placeholder="Titulo">
-            <textarea name="" id="" rows="20" ng-model="description" class="postdescription" placeholder="Cuenta aqui tu historia..."></textarea>
+            <input id="posttitle" type="text" ng-model="title" class="posttitle" placeholder="Titulo" onClick="ga('send', 'event', 'Crear Post', 'click', 'Titulo');">
+            <textarea name="" id="" rows="20" ng-model="description" class="postdescription" placeholder="Cuenta aqui tu historia..." onClick="ga('send', 'event', 'Crear Post', 'click', 'Description');"></textarea>
         </div>
     </div>
 </div>
@@ -123,7 +123,7 @@
             </div>
             <map id="map-canvas" scrollwheel="false" center="Montevideo, Uruguay">
                 <!-- position="current" no funciona bien en safari -->
-                <marker position="Montevideo, Uruguay" animation="Animation.BOUNCE" centered="true" draggable="true" on-dragend="dragEnd()" >
+                <marker position="Montevideo, Uruguay" animation="Animation.BOUNCE" centered="true" draggable="true" on-dragend="dragEnd()" onClick="ga('send', 'event', 'Crear Post', 'click', 'Location');">
             </map>  
 
         </div>
@@ -140,7 +140,7 @@
                     <br>
 
                     <div class="col-lg-2 wrap" ng-repeat="c in categories" ng-click="catselect(c.name);">
-                        <img src="http://placeimg.com/300/350/arch" class="img-responsive catphoto" alt="">
+                        <img src="http://placeimg.com/300/350/arch" class="img-responsive catphoto" alt="" onClick="ga('send', 'event', 'Crear Post', 'click', 'Categoria');">
                         <p class="text_over_image">{{c.name}}</p>  
                     </div>
         </div>
@@ -157,7 +157,7 @@
 
          
 
-            <button class="btn btn-primary btn-lg" style="width:150px; margin-top:50px;" ng-click='Create();'>Publicar</button> 
+            <button class="btn btn-primary btn-lg" style="width:150px; margin-top:50px;" ng-click='Create();' onClick="ga('send', 'event', 'Crear Post', 'click', 'Publicar');">Publicar</button> 
         </div>
     </div>
 </div>

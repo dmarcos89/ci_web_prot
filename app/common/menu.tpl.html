@@ -12,8 +12,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="" href="#home">
-                    <img src="../assets/img/RI_azul.png" style="margin-top:5px;" width=80 alt="">
+                <a class="" href="#home" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Redirect to home by logo');">
+                    <img src="../assets/img/ci_logo.png" style="margin-top:5px;" width=80 alt="">
                    <!-- <h3> Ciudad Invisible </h3> -->
                    
 
@@ -41,22 +41,22 @@
                      <!-- <li><a href="#/listado">Explorar</a></li> -->
 
                     <li class="dropdown">
-                        <a href="#/listado" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#/listado" class="dropdown-toggle" data-toggle="dropdown" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Explorar');">
                         Explorar
                         <!-- <b class="caret"></b> -->
                         </a>
                         <ul class="dropdown-menu" id="dropdown">
-                            <li><a href="#/explorar/populares/">Populares</a></li>
-                            <li><a href="#/explorar/seguidores/">Seguidores</a></li>
-                            <li><a href="#/explorar/mapa/">Mapa</a></li>
+                            <li><a href="#/explorar/populares/" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Populares');">Populares</a></li>
+                            <li><a href="#/explorar/seguidores/" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Seguidores');">Seguidores</a></li>
+                            <li><a href="#/explorar/mapa/" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Mapa');">Mapa</a></li>
                             
                         </ul>
                       </li>
 
-                     <li><a href="#/">Ayuda</a></li>
+                     <li><a href="#/" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ayuda');">Ayuda</a></li>
                      
                       <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'User dropdown menu');">
                         <img ng-src="{{ userthumb.replace('original','medium') }}"  alt="" width=30 class="img-circle img-responsive pull-left" style="margin-top: -5px; margin-right: 5px">
                         {{ username }}
                         <!-- <span class="badge">4</span> -->
@@ -66,18 +66,18 @@
                         <!-- <b class="caret"></b> -->
                         </a>
                         <ul class="dropdown-menu" id="dropdown">
-                            <li><a href="#/notificaciones"><i class="icon-cog"></i> Notificaciones  </li>
-                            <li><a href="#/dashboard"><i class="icon-cog"></i> Ajustes</a></li>
-                            <li><a href="#/user/{{ userid }}"><i class="icon-envelope"></i> Perfil</a></li>
+                            <li><a href="#/notificaciones" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ver Notificaciones');"><i class="icon-cog"></i> Notificaciones  </li>
+                            <li><a href="#/dashboard" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ver Ajustes');"><i class="icon-cog"></i> Ajustes</a></li>
+                            <li><a href="#/user/{{ userid }}" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ver Perfil');"><i class="icon-envelope"></i> Perfil</a></li>
                             <li class="divider"></li>
-                            <li><a href="" ng-click="doLogout()" ><i class="icon-off"></i>Cerrar Sesión</a></li>
+                            <li><a href="" ng-click="doLogout() onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Cerrar Sesion');"" ><i class="icon-off"></i>Cerrar Sesión</a></li>
                         </ul>
                       </li>
 
                     <li>
                         <div>
                             <a href="#/crear">
-                                <button  type="button" class="btn btn-success btn-sm navbar-btn" onClick="ga('send', 'event', 'CrearLogueado', 'click', 'nav-buttons');">
+                                <button  type="button" class="btn btn-success btn-sm navbar-btn" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Crear Post logueado');">
                                     Crea una historia
                                 </button>
                             </a>
@@ -92,14 +92,14 @@
                 <ul class="nav navbar-nav" ng-hide="isAuthenticated">
                     
                         
-                        <li><a href="" data-toggle="modal" data-target="#myModal2" onClick="ga('send', 'event', 'ButtonRegistrarme', 'click', 'nav-buttons');">Registrarte</a></li>
-                        <li><a href="" data-toggle="modal" data-target="#myModal" onClick="ga('send', 'event', 'ButtonIniciarSesion', 'click', 'nav-buttons');">Iniciar Sesión</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#myModal2" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Registrarse');">Registrarte</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#myModal" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Iniciar sesion');">Iniciar Sesión</a></li>
                         
                         
                     <li>
                         <div>
                             <a href="#/crear">
-                                <button  type="button" class="btn btn-success btn-sm navbar-btn" onClick="ga('send', 'event', 'CrearNoLogueado', 'click', 'nav-buttons');">
+                                <button  type="button" class="btn btn-success btn-sm navbar-btn" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Crear Post sin logueo');">
                                     Crea una historia
                                 </button>
                             </a>
@@ -125,10 +125,10 @@
             ¡Ingresar en Ciudad Invisible!    
         </h4>
         <br>
-        <a class="btn btn-block btn-social btn-facebook" ng-click="doLoginFacebook()" onClick="ga('send', 'event', 'FacebookLogin', 'click', 'nav-buttons');">
+        <a class="btn btn-block btn-social btn-facebook" ng-click="doLoginFacebook()" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Facebook Login');">
             <i class="fa fa-facebook"></i> Inicia sesión con Facebook
         </a>
-        <a class="btn btn-block btn-social btn-twitter" ng-click="doLoginTwitter()" onClick="ga('send', 'event', 'TwitterLogin', 'click', 'nav-buttons');">
+        <a class="btn btn-block btn-social btn-twitter" ng-click="doLoginTwitter()" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Twitter Login');">
             <i class="fa fa-twitter"></i> Inicia sesión con Twitter
         </a>
 
@@ -149,7 +149,7 @@
               <!-- <input type="checkbox"> Recordarme -->
 
               <br>
-              <button type="submit" class="btn btn-block btn-warning" onClick="ga('send', 'event', 'LoginManual', 'click', 'nav-buttons');">Iniciar sesión
+              <button type="submit" class="btn btn-block btn-warning" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Log In via email and password');">Iniciar sesión
               </button>
               
               <p style="color:red; font-size:13px;" class="text-center">{{ errormsg }}</p>
@@ -176,10 +176,10 @@
             ¡Registrate en Ciudad Invisible!    
         </h4>
         <br>
-        <a class="btn btn-block btn-social btn-facebook" ng-click="doLoginFacebook()">
+        <a class="btn btn-block btn-social btn-facebook" ng-click="doLoginFacebook()" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Registro con Facebook');">
             <i class="fa fa-facebook"></i> Registrate con Facebook
         </a>
-        <a class="btn btn-block btn-social btn-twitter" ng-click="doLoginTwitter()">
+        <a class="btn btn-block btn-social btn-twitter" ng-click="doLoginTwitter()" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Registro con Twitter');">
             <i class="fa fa-twitter"></i> Registrate con Twitter
         </a>
 
@@ -212,7 +212,7 @@
             <br><br>
             <div class="col-sm-12">
               <input type="checkbox"> Quiero recibir novedades de Ciudad Invisible <br><br>
-              <a class="btn btn-block btn-warning" ng-click="doRegisterCommon()">Registrate</a>
+              <a class="btn btn-block btn-warning" ng-click="doRegisterCommon()" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Registro via formulario');">Registrate</a>
             </div>
           </div>
         </form>

@@ -87,7 +87,7 @@ $scope.getFile = function () {
                       .then(function(result) {
 
 
-                          ngProgress.start();
+                          // ngProgress.start();
 
                           // Separo el string para obtener solo el base64
                           var splited = result.split(";base64,");
@@ -105,31 +105,34 @@ $scope.getFile = function () {
 
                           var foto = {assets_images:{data: $scope.Base64_1, filename: "foto", content_type: $scope.Type_1}};
 
+
+                          // $('#coverimg').show();
+
                           // alert(foto);
-                          Assets.save(foto, successPostCallback, errorCallback);
+                          // Assets.save(foto, successPostCallback, errorCallback);
 
-                              function successPostCallback(data){
-                                // alert("se subio foto correctamente");
-                                var r = JSON.stringify(data);
-                                // alert(r);
-                                // alert(data);
-                                console.log(data);
-                                // alert(data['0']);
-                                var jsonfoto = data['id'];
-                                // alert(jsonfoto);
-                                fotos.push(jsonfoto);
+                          //     function successPostCallback(data){
+                          //       // alert("se subio foto correctamente");
+                          //       var r = JSON.stringify(data);
+                          //       // alert(r);
+                          //       // alert(data);
+                          //       console.log(data);
+                          //       // alert(data['0']);
+                          //       var jsonfoto = data['id'];
+                          //       // alert(jsonfoto);
+                          //       fotos.push(jsonfoto);
 
-                                ngProgress.complete();
+                          //       ngProgress.complete();
 
-                              }
-                          function errorCallback(getResponseHeaders){
-                                alert("error al subir foto");
-                                var r = JSON.stringify(getResponseHeaders);
-                                alert(r);
+                          //     }
+                          // function errorCallback(getResponseHeaders){
+                          //       alert("error al subir foto");
+                          //       var r = JSON.stringify(getResponseHeaders);
+                          //       alert(r);
 
-                                ngProgress.complete();
+                          //       ngProgress.complete();
 
-                              }
+                          //     }
 
 
                       });

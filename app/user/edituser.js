@@ -9,7 +9,7 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
  $scope.editarPerfil = function(){
       alert("editar perfil usuario");
 
-      var data = {id: 4, username:"username", first_name:"nombre", last_name:"apellido", email: "mail@mail.com" };
+      var data = {id: 2, username:"username", first_name:"nombre", last_name:"apellido", email: "mail@mail.com" };
       // alert(JSON.stringify(data));
        Users.update(data, successPostCallback, errorCallback);
 

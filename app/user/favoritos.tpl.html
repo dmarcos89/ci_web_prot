@@ -6,7 +6,20 @@
 <div class="container">
 	<div class="row" style="margin-top:50px;">
 		<div class="col-lg-4" ng-repeat="post in favoritos">
-					<div class="ratio tensixty img-thumbnail" style="background-image:url({{post.first_image.replace('original','small')}})"></div>
+					<div class="ratio tensixty img-thumbnail" style="background-image:url({{post.first_image.replace('original','small')}})">
+						<div class="content">
+				          <div class="table">
+				              <div class="table-cell">
+				                  <p>
+				                    {{ post.title }} 
+				                  </p>
+				                  <p>
+				                    <i class="fa fa-heart fa-1x">20</i>
+				                  </p>
+				              </div>
+				          </div>
+				      </div>
+					</div>
 		</div> 
 		</div>
 	</div>

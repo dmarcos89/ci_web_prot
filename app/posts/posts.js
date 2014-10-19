@@ -83,6 +83,7 @@ angular.module('MainApp').controller('FollowersPostsController', function($scope
       $timeout(function(){
         FollowersPosts.query({ n: 10, Id: 3 },function(data) {
           $scope.posts = data;
+          // alert(data);
         });
       }, 100);
 

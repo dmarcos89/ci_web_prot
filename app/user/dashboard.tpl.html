@@ -4,10 +4,10 @@
             <!-- Sidebar Column -->
             <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-3">
                 <div class="list-group">
-                    <a href="" class="list-group-item">Notificaciones</a>
-                    <a href="" class="list-group-item active">Ajustes de cuenta</a>
-                    <a href="" class="list-group-item">Perfil</a>
-                    <a href="" class="list-group-item">Redes sociales</a>
+                    <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Notificaciones');">Notificaciones</a>
+                    <a href="" class="list-group-item active" onClick="ga('send', 'event', 'Dashboard', 'click', 'Ajustes de cuenta');">Ajustes de cuenta</a>
+                    <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Perfil');">Perfil</a>
+                    <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Redes Sociales');">Redes sociales</a>
                 </div>
             </div>
             <!-- Content Column -->
@@ -20,49 +20,49 @@
                         <p style="margin:0; display:inline;">
                             Nombre
                         </p> 
-                        <input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson">
+                        <input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar nombre');">
                     </div>
                     <div class="list-group-item dashboarditem">
                         <p style="margin:0; display:inline;">
                             Apellido
                         </p> 
-                        <input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson">
+                        <input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar apellido');">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Correo electronico
                     	</p> 
-                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson">
+                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar email');">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Contraseña
                     	</p> 
-                    	<a href="" style="margin-left:70px;">Cambiar contraseña</a>
+                    	<a href="" style="margin-left:70px;" onClick="ga('send', 'event', 'Dashboard', 'click', 'Cambiar contrseña');">Cambiar contraseña</a>
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Ciudad
                     	</p> 
-                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:100px;" value="alkslakslsk">
+                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:100px;" value="alkslakslsk" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar ciudad');">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Pais
                     	</p> 
-                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:120px;" value="alkslakslsk">
+                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:120px;" value="alkslakslsk" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar pais');">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Sexo
                     	</p> 
-                    	<select name="" id="" style="width:200px; margin-left:120px;">
+                    	<select name="" id="" style="width:200px; margin-left:120px;" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar sexo');">
                     		<option value="">Hombre</option>
                     		<option value="">Mujer</option>
                     	</select>
                     </div>
                     <div class="list-group-item dashboarditem">
-                        <button class="btn btn-primary" ng-click="editarPerfil()">Guardar</button>
+                        <button class="btn btn-primary" ng-click="editarPerfil()" onClick="ga('send', 'event', 'Dashboard', 'click', 'Confirmar cambios');">Guardar</button>
                     </div>
                 </div>
             </div>
