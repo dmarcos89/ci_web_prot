@@ -1,26 +1,24 @@
 'use strict';
 
-angular.module('MainApp').controller('CreateController', function($scope, $rootScope, $location, Posts2, fileReader, Assets, ngProgress, Categories, toaster) {
+angular.module('MainApp').controller('CreateController', function($scope, $rootScope, $location, Posts2, fileReader, Assets, ngProgress, Categories, toaster, $filter) {
   
-  // var userid = Number($rootScope.userid);
 
-  // $scope.categories = [ {
-  //                         title:"Arte",
-  //                         photo: "http://placeimg.com/300/350/arch"
-  //                       },
-  //                       {
-  //                         title:"Musica",
-  //                         photo: "http://placeimg.com/300/350/tech"
-  //                       },
-  //                       {
-  //                         title:"Arquitectura",
-  //                         photo: "http://placeimg.com/300/350/hist"
-  //                       }
-  //                     ];
+  $scope.categories2 = [];  
+  $scope.selectCategorie = function () {
+        $scope.categories = $filter('filter')($scope.selectedCategories, {checked: true});
+        
+        $scope.categories2 = [];  
+        
+        for (var i = 0; i <= $scope.categories.length; i++) {
+          $scope.categories2.push($scope.categories[i].name);
+        };
+
+  };
 
 
   Categories.query(function(data){
-    $scope.categories = data;
+    $scope.categories = [];
+    $scope.selectedCategories = data;
   });
 
 
@@ -30,7 +28,7 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
 
   $scope.Create = function() {
 
-    var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: posicion['k'], longitude: posicion['B'], category: $scope.category, images: fotos}};            
+    var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: posicion['k'], longitude: posicion['B'], category: $scope.categories2, images: fotos}};            
 
     // var r = JSON.stringify(data);
     // alert(r);
@@ -87,7 +85,7 @@ $scope.getFile = function () {
                       .then(function(result) {
 
 
-                          // ngProgress.start();
+                          ngProgress.start();
 
                           // Separo el string para obtener solo el base64
                           var splited = result.split(";base64,");
@@ -109,30 +107,30 @@ $scope.getFile = function () {
                           // $('#coverimg').show();
 
                           // alert(foto);
-                          // Assets.save(foto, successPostCallback, errorCallback);
+                          Assets.save(foto, successPostCallback, errorCallback);
 
-                          //     function successPostCallback(data){
-                          //       // alert("se subio foto correctamente");
-                          //       var r = JSON.stringify(data);
-                          //       // alert(r);
-                          //       // alert(data);
-                          //       console.log(data);
-                          //       // alert(data['0']);
-                          //       var jsonfoto = data['id'];
-                          //       // alert(jsonfoto);
-                          //       fotos.push(jsonfoto);
+                              function successPostCallback(data){
+                                // alert("se subio foto correctamente");
+                                var r = JSON.stringify(data);
+                                // alert(r);
+                                // alert(data);
+                                console.log(data);
+                                // alert(data['0']);
+                                var jsonfoto = data['id'];
+                                // alert(jsonfoto);
+                                fotos.push(jsonfoto);
 
-                          //       ngProgress.complete();
+                                ngProgress.complete();
 
-                          //     }
-                          // function errorCallback(getResponseHeaders){
-                          //       alert("error al subir foto");
-                          //       var r = JSON.stringify(getResponseHeaders);
-                          //       alert(r);
+                              }
+                          function errorCallback(getResponseHeaders){
+                                alert("error al subir foto");
+                                var r = JSON.stringify(getResponseHeaders);
+                                alert(r);
 
-                          //       ngProgress.complete();
+                                ngProgress.complete();
 
-                          //     }
+                              }
 
 
                       });

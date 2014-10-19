@@ -45,26 +45,30 @@ body{
 
 
 .intro-header {
-  background-color: #808080;
-  background: no-repeat center center;
+  background-color: #808080 ;
+  background: no-repeat center center ;
   background-attachment: scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+  /*-webkit-filter: brightness(95%);*/
+  /*opacity: 0.8;*/
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
-  padding: 100px 0 50px;
+  /*padding: 100px 0 50px;*/
+  /*margin-top: 150px;*/
   color: white;
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
-    padding: 150px 0;
+    /*padding: 150px 0;*/
+    padding: 0 0 200px 0;
   }
 }
 .intro-header .site-heading,
@@ -78,9 +82,9 @@ body{
 }
 .intro-header .site-heading .subheading,
 .intro-header .page-heading .subheading {
-  font-size: 24px;
-  line-height: 1.1,
-			display: block;
+  	font-size: 24px;
+  	line-height: 1.1,
+	display: block;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
@@ -203,7 +207,7 @@ display: inline-block;
 	outline: none;
   	border:none !important;
   	/*box-shadow:none !important;*/
-	font-size: 30px;
+	font-size: 50px;
 	margin-top: 10px;
 	/*outline: none;
   	border:none !important;
@@ -214,6 +218,7 @@ display: inline-block;
 	padding: 0;
 	text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 	color: white;*/
+	background-color: transparent;
 }
 
 .viewposttitle{
@@ -247,13 +252,15 @@ span.glyphicon-picture:hover {
 }
 
 .text_over_image {
-    position: absolute;
+    /*position: absolute;*/
  	margin: auto;
     top: 50%;
     left:0;
     right:0;
     bottom:0;
-    color:#fff;
+    /*color:#fff;*/
+    color: black;
+    /*padding: 50px 20px 50px 20px;*/
    /*height:100px;*/
    font-size: 30px;
 }
@@ -264,6 +271,7 @@ span.glyphicon-picture:hover {
 	background-color: white;
 	color: white;
 	font-size: 20px;
+	margin: 50px 0 0 50px;
 }
 
 
