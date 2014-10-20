@@ -1,27 +1,46 @@
 'use strict';
 
-angular.module('MainApp').controller('MapController', function($scope, Posts) {
+angular.module('MainApp').controller('MapController', function($scope, $rootScope, Tour) {
 	  
-	  $scope.dynMarkers = [];
+      $scope.dragEnd = function(){
+	    // alert(this.getPosition());
+	    var posicion = this.getPosition();
+	    var latitude = posicion['k'];
+	    var longitude = posicion['B'];
 
-    Posts.query(function(data) {
-          $scope.posts = data;
-	      
-          for (var i = 0; i <= $scope.posts.length; i++) {
-      		$scope.dynMarkers[i] = new google.maps.Marker({
-	            title: "Titulo post"
-	          });
-	          var lat = $scope.posts[i].latitude;
-	          var lng = $scope.posts[i].longitude;
-			  var loc = new google.maps.LatLng(lat, lng);
-	          // alert(loc);
-	          $scope.dynMarkers[i].setPosition(loc);
-	          $scope.dynMarkers[i].setMap($scope.map);
-          };
-          
+	    alert(latitude);
+	    alert(longitude);
 
-          // $scope.map.setCenter(loc);
+	    var consulta = {'latitude':latitude, 'longitude':longitude, 'user_id': $rootScope.userid };
+	    alert(JSON.stringify(consulta));
 
-        });
+	    Tour.save(consulta, successPostCallback, errorCallback);
+
+      function successPostCallback(data){
+        var r = JSON.stringify(data);
+        alert(r);
+      }
+  		function errorCallback(getResponseHeaders){
+        var r = JSON.stringify(getResponseHeaders);
+        alert(r);
+      }
+	    
+
+
+	  };
 
 	});
+
+
+
+
+
+
+angular.module('MainApp').factory('Tour', function ($resource, CONFIG) {
+    return $resource(
+        // 'http://ciudadinvisible.herokuapp.com/users/:Id.json',
+        // 'http://localhost:3000/users/:Id.json',
+        CONFIG.API_URL+'random_tour.json'
+        
+    );
+  });
