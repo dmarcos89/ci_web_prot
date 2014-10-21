@@ -35,8 +35,8 @@
 
 
 
-<div id="dvMap" style="height: 500px">
-</div>
+<!-- <div id="dvMap" style="height: 500px">
+</div> -->
 <!-- {{ posts }} -->
 
 <script type="text/javascript-lazy">
@@ -113,7 +113,7 @@
                 service.route({
                     origin: src,
                     destination: des,
-                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                    travelMode: google.maps.DirectionsTravelMode.WALKING
                 }, function (result, status) {
                     if (status == google.maps.DirectionsStatus.OK) {
                         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
