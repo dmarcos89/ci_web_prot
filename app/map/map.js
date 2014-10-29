@@ -10,13 +10,23 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
 
 
       var markers = [
+        //     {
+        //         "title": 'Alibaug',
+        //         "lat": '-34.903671',
+        //         "lng": '-56.157196',
+        //         "description": 'Alibaug is a coastal town and a municipal council in Raigad District in the Konkan region of Maharashtra, India.'
+        //     }
+        // ,
+            
             {
-                "title": 'Alibaug',
-                "lat": '-34.903671',
-                "lng": '-56.157196',
-                "description": 'Alibaug is a coastal town and a municipal council in Raigad District in the Konkan region of Maharashtra, India.'
+                "title": 'Pune',
+                "lat": '-34.909619',
+                "lng": '-56.154428',
+                "description": 'Pune is the seventh largest metropolis in India, the second largest in the state of Maharashtra after Mumbai.'
             }
-        ,
+
+            ,
+
             {
                 "title": 'Mumbai',
                 "lat": '-34.906452',
@@ -24,13 +34,16 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
                 "description": 'Mumbai formerly Bombay, is the capital city of the Indian state of Maharashtra.'
             }
         ,
+
+        
             {
                 "title": 'Pune',
-                "lat": '-34.907948',
-                "lng": '-56.15638',
+                "lat": '-34.898709',
+                "lng": '-56.134214',
                 "description": 'Pune is the seventh largest metropolis in India, the second largest in the state of Maharashtra after Mumbai.'
             }
     ];
+
 
 
 // for (var i = 0; i <= markers.length; i++) {
@@ -86,7 +99,7 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
                 service.route({
                     origin: src,
                     destination: des,
-                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                    travelMode: google.maps.DirectionsTravelMode.WALKING
                 }, function (result, status) {
                     if (status == google.maps.DirectionsStatus.OK) {
                         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
