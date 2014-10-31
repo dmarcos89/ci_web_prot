@@ -68,18 +68,22 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
 
 
       PostsByUser.query({ Id: userid }, successPostCallback, errorCallback);
-
+       $scope.cantidadposteos = 0;
+ 
        function successPostCallback(data){
-          $scope.posts = data;
+            $scope.posts = data;
+            $scope.cantidadposteos = data.length;
           // alert("con posts");
         }
       function errorCallback(getResponseHeaders){
           var r = JSON.stringify(getResponseHeaders);
           // alert(r);
-          $scope.posts = [];
+          // $scope.posts = [];
         }
     
     }, 1500);
+
+
 
     $scope.follow = function(){
       // alert('Seguir usuario');
