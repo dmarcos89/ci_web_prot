@@ -53,7 +53,7 @@
                         </ul>
                       </li>
 
-                     <li><a href="#/" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ayuda');">Ayuda</a></li>
+                     <li><a href="#/ayuda" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ayuda');">Ayuda</a></li>
                      
                       <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'User dropdown menu');">
@@ -91,7 +91,7 @@
 
                 <ul class="nav navbar-nav" ng-hide="isAuthenticated">
                     
-                        
+                        <li><a href="#/ayuda" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ayuda');">Ayuda</a></li>
                         <li><a href="" data-toggle="modal" data-target="#myModal2" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Registrarse');">Registrarte</a></li>
                         <li><a href="" data-toggle="modal" data-target="#myModal" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Iniciar sesion');">Iniciar Sesión</a></li>
                         
@@ -151,6 +151,8 @@
               <br>
               <button type="submit" class="btn btn-block btn-warning" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Log In via email and password');">Iniciar sesión
               </button>
+
+              <p style="margin-top:15px;">¿No tienes una cuenta aún? Registrate <a href="" ng-click="noaccount()">aquí</a></p>
               
               <p style="color:red; font-size:13px;" class="text-center">{{ errormsg }}</p>
               

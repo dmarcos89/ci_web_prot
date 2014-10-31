@@ -8,7 +8,7 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
        
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', 'toaster' ,function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location, toaster){
+angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', 'toaster' ,function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location, toaster, $timeout){
 
   $rootScope.isAuthenticated = '';
   $rootScope.username = '';
@@ -300,6 +300,19 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   };
 
 
+
+  $scope.noaccount = function(){
+    
+    $('#myModal').modal('hide');
+
+    $('#myModal2').modal('show');
+
+    // $timeout(function(){
+    //     $('#myModal2').modal('show');
+    //   }, 1000);
+
+    
+  };
 
 
 }]);
