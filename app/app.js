@@ -77,8 +77,12 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
         templateUrl: 'user/notificaciones.tpl.html',
         controller: 'DashboardController'
       }).
-      when('/about/', {
+      when('/acerca/', {
         templateUrl: 'statics/about.tpl.html',
+        controller: 'StaticPagesController'
+      }).
+      when('/ayuda/', {
+        templateUrl: 'statics/help.tpl.html',
         controller: 'StaticPagesController'
       }).
       otherwise({
