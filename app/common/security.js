@@ -72,10 +72,11 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
 
         // Cerramos el login modal a mano
-        $("#myModal").modal('toggle');
+        $('#myModal').modal('hide');
+        $('#myModal2').modal('hide');
 
 
-        $location.path('/dashboard');
+        // $location.path('/dashboard');
 
         toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
 
@@ -97,7 +98,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
 
       function successPostCallback(data){
-        alert('registro MANUAL ok');
+        // alert('registro MANUAL ok');
         var r = JSON.stringify(data);
         // alert(r);
         // alert(data['id'])
@@ -105,10 +106,11 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         updateLoginVars(true,'COMMON',$scope.reg_first_name,id, r, data['file_url']);
 
         // Cerramos el register modal a mano
-        $('#myModal2').modal('toggle');
+        $('#myModal').modal('hide');
+        $('#myModal2').modal('hide');
 
         // Luego de registrar al usuario, lo enviamos a su dashboard
-        $location.path('/ajustes');
+        // $location.path('/ajustes');
 
         toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
        
@@ -170,8 +172,11 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
           // alert(r);
           var id = data['id'];
           updateLoginVars(true,'FB',$scope.fullname,id, r, data['url_avatar']);
-
-          $location.path('/dashboard');
+          
+          // Cerramos el register modal a mano
+          $('#myModal').modal('hide');
+          $('#myModal2').modal('hide');
+          // $location.path('/dashboard');
 
           toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
 
@@ -266,9 +271,12 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
                 
                 // Cerramos el login modal a mano
-                $("#myModal").modal('toggle');
+                // $("#myModal").modal('toggle');
 
-                $location.path('/dashboard');
+                // $location.path('/dashboard');
+
+                $('#myModal').modal('hide');
+                $('#myModal2').modal('hide');
 
                 toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
 
