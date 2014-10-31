@@ -82,7 +82,7 @@ angular.module('MainApp').controller('FollowersPostsController', function($scope
       $scope.message = 'Listado de posteos';
       $timeout(function(){
         FollowersPosts.query({ n: 10, Id: 3 },function(data) {
-          $scope.posts = data;
+          $scope.posts = data[0];
           // alert(data);
         });
       }, 100);
