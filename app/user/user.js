@@ -42,11 +42,15 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
       
 
 
-        UserFollowers.query({ Id: $rootScope.userid }, function(datos){
+        UserFollowed.query({ Id: userid }, function(datos){
+          $scope.siguiendo2 = datos;
+        });
+
+        UserFollowers.query({ Id: userid }, function(datos){
           $scope.seguidores = datos;
         });
 
-        UserFavorites.query({ Id: $rootScope.userid }, function(datos){
+        UserFavorites.query({ Id: userid }, function(datos){
           $scope.favoritos = datos;
         });
 

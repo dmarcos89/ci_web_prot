@@ -6,35 +6,22 @@
 <div class="container">
 	<div class="row" style="margin-top:50px;">
 		<div class="col-lg-3" ng-repeat="seguidor in seguidores">
-				<div ng-show="{{ seguidor.login_type == 'facebook'  }}" class="ratio tensixty" style="background-image:url({{seguidor.url_avatar.replace('original','small')}})">
+				<div class="ratio tensixty" style="background-image:url({{seguidor.url_avatar.replace('original','small')}})">
 					<div class="content">
 				          <div class="table">
 				              <div class="table-cell">
 				                  <p>
-				                    {{ seguidor.title }} 
+				                    {{ seguidor.first_name + ' ' + seguidor.last_name }}  
 				                  </p>
 				                  <p>
-				                    <i class="fa fa-heart fa-1x">20</i>
+				                    <!-- <i class="fa fa-heart fa-1x">20</i> -->
 				                  </p>
 				              </div>
 				          </div>
 				      </div>
 				</div>
 
-				<div ng-show="{{ seguidor.login_type == null }}" class="ratio tensixty" style="background-image:url({{seguidor.file_url}})">
-					<div class="content">
-				          <div class="table">
-				              <div class="table-cell">
-				                  <p>
-				                    {{ seguidor.title }} 
-				                  </p>
-				                  <p>
-				                    <i class="fa fa-heart fa-1x">20</i>
-				                  </p>
-				              </div>
-				          </div>
-				      </div>
-				</div>
+				
 
             </div> 
 		</div>
@@ -42,3 +29,6 @@
 
 </div>
 
+
+
+{{ seguidores }}
