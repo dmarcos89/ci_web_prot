@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('MainApp').controller('HomeController', function($scope, Posts2) {
+angular.module('MainApp').controller('HomeController', function($scope, PopularPosts) {
   $scope.message = 'Esta es la home';
   $scope.dynMarkers = [];
 
-  Posts2.query(function(data){
+  PopularPosts.query( {n:20} , function(data){
     $scope.posts = data;
 	  for (var i = 0; i <= $scope.posts.length; i++) {
 	  	$scope.dynMarkers[i] = new google.maps.Marker({
