@@ -52,7 +52,7 @@ body{
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   /*-webkit-filter: brightness(95%);*/
   /*opacity: 0.8;*/
 }
@@ -1054,4 +1054,6 @@ background:white;
   color: white;
   font-size: 20px;
 }
+
+
 /*POST*/

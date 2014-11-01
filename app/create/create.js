@@ -22,7 +22,7 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
   });
 
 
-  var fotos = [79];
+  var fotos = [];
   $scope.imageSrc = [];
   var posicion = '';
 
@@ -116,11 +116,13 @@ $scope.getFile = function () {
                                 // alert(data);
                                 console.log(data);
                                 // alert(data['0']);
+                                // alert(data['id']);
                                 var jsonfoto = data['id'];
                                 // alert(jsonfoto);
                                 fotos.push(jsonfoto);
 
                                 ngProgress.complete();
+                                console.log(r);
 
                               }
                           function errorCallback(getResponseHeaders){
@@ -129,7 +131,7 @@ $scope.getFile = function () {
                                 alert(r);
 
                                 ngProgress.complete();
-
+                                console.log(r);
                               }
 
 

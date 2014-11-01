@@ -13,6 +13,8 @@ angular.module('MainApp',
     'ngAnimate',
     'toaster',
     'angular-parallax',
+    'monospaced.elastic',
+    'angular-tour',
     'app.config'
   ]
 );

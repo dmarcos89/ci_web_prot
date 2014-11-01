@@ -42,7 +42,7 @@ angular.module('MainApp').factory('PopularPosts', function ($resource, CONFIG) {
 angular.module('MainApp').factory('FollowersPosts', function ($resource, CONFIG) {
     return $resource(
         // 'http://ciudadinvisible.herokuapp.com/posts/:Id.json',
-        CONFIG.API_URL+'followers_posts/:Id/:n',
+        CONFIG.API_URL+'followed_posts/:Id/:n',
         // 'http://localhost:3000/posts/:Id.json',
         {n: '@n', Id: '@Id'}
     );
@@ -70,7 +70,7 @@ angular.module('MainApp').controller('PostsController', function($scope, Posts, 
 angular.module('MainApp').controller('PopularesController', function($scope, PopularPosts, $timeout) {
       $scope.message = 'Listado de posteos';
       $timeout(function(){
-        PopularPosts.query({ n: 10 },function(data) {
+        PopularPosts.query({ n: 100 },function(data) {
           $scope.posts = data;
         });
       }, 100);
@@ -78,12 +78,13 @@ angular.module('MainApp').controller('PopularesController', function($scope, Pop
     });
 
 
-angular.module('MainApp').controller('FollowersPostsController', function($scope, FollowersPosts, $timeout, $routeParams) {
+// Este metodo levanta el userid desde las cookies. No está andando el rootScope
+angular.module('MainApp').controller('FollowersPostsController', function($scope, $cookies, FollowersPosts, $timeout) {
       $scope.message = 'Listado de posteos';
       $timeout(function(){
-        FollowersPosts.query({ n: 10, Id: 3 },function(data) {
-          $scope.posts = data[0];
+        FollowersPosts.query({ n: 100, Id: $cookies.userid },function(data) {
           // alert(data);
+          $scope.posts = data;
         });
       }, 100);
 

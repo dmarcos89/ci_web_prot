@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('PostById', function($scope, Posts, Users, $routeParams, Favorite, $location) {
+angular.module('MainApp').controller('PostById', function($scope, $rootScope, Posts, Users, $routeParams, Favorite, $location) {
 	  
 	  // $scope.msg = "Detalle de un post";
 	  var postid = $routeParams.postid;
@@ -29,7 +29,7 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
 
 
 
-      var postidrelacionado = 27; 
+      var postidrelacionado = parseInt(postid) + 1; 
       Posts.get({ Id: postidrelacionado }, function(data2) {
           $scope.postrelacionado = data2;
           // var userid2 = data2['user_id']
@@ -73,7 +73,7 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
 
 	  $scope.doFavorite = function(){
 	  	// alert("dar favorito");
-	  	var data = {user_id:1 , post_id:postid};
+	  	var data = {user_id: $rootScope.userid , post_id:postid};
 	  	// alert(JSON.stringify(data));
 	  	 Favorite.save(data, successPostCallback, errorCallback);
 
@@ -94,7 +94,7 @@ angular.module('MainApp').controller('PostById', function($scope, Posts, Users, 
 
     $scope.unFavorite = function(){
       // alert("dar favorito");
-      var data = {user_id:1 , post_id:postid};
+      var data = {user_id: $rootScope.userid , post_id:postid};
       // alert(JSON.stringify(data));
        Favorite.remove(data, successPostCallback, errorCallback);
 
