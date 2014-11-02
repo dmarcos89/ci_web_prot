@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('HomeController', function($scope, PopularPosts) {
+angular.module('MainApp').controller('HomeController', function($scope, PopularPosts, Users) {
   $scope.message = 'Esta es la home';
   $scope.dynMarkers = [];
 
@@ -18,6 +18,7 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
           $scope.dynMarkers[i].setMap($scope.map);
       };
   });
+
 
 });
 

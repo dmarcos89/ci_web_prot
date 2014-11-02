@@ -1,13 +1,4 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-<!--   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-   
-  </ol> -->
-
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
@@ -44,9 +35,6 @@
   </a>
 </div>
 
-
-<!-- <h1>{{ message }}</h1> -->
-
 <div class="container home-posts">
 <br><br>
 
@@ -58,215 +46,109 @@
 		</div>
 	</div>
 </div>
-<div class="row" style="overflow:hidden">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="height:400px; overflow:hidden;">
-		 <!-- <div class="thumbnail">
-                <div class="caption">
-                    <h2>{{ posts.title }}</h2>
-                </div>
-                <img src="http://lorempixel.com/800/385/nature/5" alt="" class="img-responsive">
-         </div> -->
-  <a href="#/post/{{posts[0].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[0].assets[0].file_url.replace('original','small') }}); height:400px; height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell" style="vertical-align:middle;">
-                  <p>
-                    {{ posts[0].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x"> {{ posts[0].favorites_quantity }} </i>
-                  </p>
-              </div>
-          </div>
-      </div>
+<div class="row">
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[0].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+    <a href="#/post/{{posts[0].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[0].title }}</h3>
+     <img ng-src="{{posts[0].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[0].favorites_quantity }} </i>
     </div>
-  </a>
-
 	</div>
 
-	<div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-	 <a href="#/post/{{posts[1].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[1].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[1].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[1].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+	<div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[1].assets[0].file_url }}); height:400px; overflow:hidden background-size: cover;;">
+	  <a href="#/post/{{posts[1].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[1].title }}</h3>
+     <img ng-src="{{posts[1].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[1].favorites_quantity }} </i>
     </div>
-  </a>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-		<a href="#/post/{{posts[2].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[2].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[2].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[2].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[2].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+		<a href="#/post/{{posts[2].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[2].title }}</h3>
+     <img ng-src="{{posts[2].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[2].favorites_quantity }} </i>
     </div>
-  </a>
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-		<a href="#/post/{{posts[3].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[3].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[3].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[3].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[3].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+		<a href="#/post/{{posts[3].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[3].title }}</h3>
+     <img ng-src="{{posts[3].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[3].favorites_quantity }} </i>
     </div>
-  </a>
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-	 <a href="#/post/{{posts[4].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[4].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[4].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[4].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[4].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+	  <a href="#/post/{{posts[4].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[4].title }}</h3>
+     <img ng-src="{{posts[4].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[4].favorites_quantity }} </i>
     </div>
-  </a>
 	</div>
 </div>
 
-
-
-
 <div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-    <a href="#/post/{{posts[5].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[5].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[5].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[5].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+  <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[5].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+    <a href="#/post/{{posts[5].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[5].title }}</h3>
+     <img ng-src="{{posts[5].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[5].favorites_quantity }} </i>
     </div>
-  </a>
   </div>
-  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-    <a href="#/post/{{posts[6].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[6].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[6].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[6].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[6].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+    <a href="#/post/{{posts[6].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[6].title }}</h3>
+     <img ng-src="{{posts[6].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[6].favorites_quantity }} </i>
     </div>
-  </a>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-    <a href="#/post/{{posts[7].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[7].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[7].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[7].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[7].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+    <a href="#/post/{{posts[7].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[7].title }}</h3>
+     <img ng-src="{{posts[7].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[7].favorites_quantity }} </i>
     </div>
-  </a>
   </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-   <a href="#/post/{{posts[8].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[8].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[8].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[8].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[8].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+   <a href="#/post/{{posts[8].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[8].title }}</h3>
+     <img ng-src="{{posts[8].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[8].favorites_quantity }} </i>
     </div>
-  </a>
   </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 thumb" style="height:400px; overflow:hidden;">
-    <a href="#/post/{{posts[9].id}}">
-    <div class="ratio tensixty" style="background-image:url({{ posts[9].assets[0].file_url.replace('original','small') }}); height:400px;">
-      <div class="content">
-          <div class="table">
-              <div class="table-cell">
-                  <p>
-                    {{ posts[9].title }} 
-                  </p>
-                  <p>
-                    <i class="fa fa-heart fa-1x">{{ posts[9].favorites_quantity }}</i>
-                  </p>
-              </div>
-          </div>
-      </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[9].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+    <a href="#/post/{{posts[9].id}}"></a>
+    <div class="overlay"></div>
+    <div class="info">
+     <h3>{{ posts[9].title }}</h3>
+     <img ng-src="{{posts[9].author_avatar}}" alt="">
+     <i class="fa fa-heart fa-1x"> {{ posts[9].favorites_quantity }} </i>
     </div>
-  </a>
   </div>
 </div>
 
-<!-- </div>
-
-
-
-<div class="container">
- -->  
 <div class="row">
 	<div class="col-lg-12">
 		<div class="text-center hometitle">
@@ -304,10 +186,6 @@
     </div>
 </div>
 <br><br><br>
-
-
-<!-- <br><br><br> -->
-<!-- {{ posts }} -->
 
 {{ posts }}
 
