@@ -5,9 +5,6 @@ angular.module('MainApp').controller('HomeController', function($scope, Posts2, 
   $scope.dynMarkers = [];
 
   Posts2.query(function(data){
-
-
-
     $scope.posts = data;
 
 
