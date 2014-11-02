@@ -1,33 +1,12 @@
 'use strict';
 
-angular.module('MainApp').controller('PostById', function($scope, $rootScope, Posts, Users, $routeParams, Favorite, $location) {
+angular.module('MainApp').controller('PostById', function($scope, $cookies, Posts, Users, $routeParams, Favorite, $location) {
 	  
 	  // $scope.msg = "Detalle de un post";
 	  var postid = $routeParams.postid;
 
 	  Posts.get({ Id: postid }, function(data) {
 	  	$scope.post = data;
-
-	  	var userid = data['user_id']
-			Users.get({ Id: userid }, function(data) {
-      		$scope.user = data;
-
-          // Chequeamos si el posteo ha sido favoriteado por el user
-          var favoritos = data['favorites_posts'];
-          var fav = false;          
-          for (var i = 0; i < favoritos.length && !fav; i++) {
-              var idaux = favoritos[i].id;
-              if(idaux == postid){ 
-                fav = true;
-                $scope.fav = true;
-              }
-          }
-
-
-
-    	});
-
-
 
       var postidrelacionado = parseInt(postid) + 1; 
       Posts.get({ Id: postidrelacionado }, function(data2) {
@@ -61,26 +40,42 @@ angular.module('MainApp').controller('PostById', function($scope, $rootScope, Po
 
           $scope.map.setCenter(loc);
 
-
-
-
-
       });
 	
+
+
+
+    Users.get({ Id: $cookies.userid }, function(data) {
+          $scope.user = data;
+
+          // Chequeamos si el posteo ha sido favoriteado por el user
+          var favoritos = data.favorites_posts;
+          var fav = false;          
+          for (var i = 0; i < favoritos.length && !fav; i++) {
+              var idaux = favoritos[i].id;
+              if(idaux == postid){ 
+                fav = true;
+                $scope.fav = true;
+              }
+          }
+      });
+
 
 
 
 
 	  $scope.doFavorite = function(){
 	  	// alert("dar favorito");
-	  	var data = {user_id: $rootScope.userid , post_id:postid};
+	  	var data = {user_id: $cookies.userid , post_id:postid};
 	  	// alert(JSON.stringify(data));
 	  	 Favorite.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
-          alert("fav correcto");
+          // alert("fav correcto");
           var r = JSON.stringify(data);
-          alert(r);
+          // alert(r);
+          $scope.post.favorites_quantity ++;
+          $scope.fav = true;
         }
         
         function errorCallback(getResponseHeaders){
@@ -94,14 +89,16 @@ angular.module('MainApp').controller('PostById', function($scope, $rootScope, Po
 
     $scope.unFavorite = function(){
       // alert("dar favorito");
-      var data = {user_id: $rootScope.userid , post_id:postid};
+      var data = {user_id: $cookies.userid , post_id:postid};
       // alert(JSON.stringify(data));
        Favorite.remove(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
-          alert("desfav correcto");
+          // alert("desfav correcto");
           var r = JSON.stringify(data);
-          alert(r);
+          // alert(r);
+          $scope.post.favorites_quantity --;
+          $scope.fav = false;
         }
         
         function errorCallback(getResponseHeaders){
