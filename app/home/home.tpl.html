@@ -36,146 +36,145 @@
 </div>
 
 <div class="container home-posts">
+  <br><br>
+
+  <div class="row">
+  	<div class="col-lg-12">
+  		<div class="text-center hometitle">
+  			<h2>Empieza tu aventura</h2>
+  			<p class="lead">Descubre cuales son los destinos favoritos de nuestra comunidad para conocer tu ciudad.</p>
+  		</div>
+  	</div>
+  </div>
+  <div class="row">
+  	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[0].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+      <a href="#/post/{{posts[0].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[0].title }}</h3>
+       <img ng-src="{{posts[0].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[0].favorites_quantity }} </i>
+      </div>
+  	</div>
+
+  	<div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[1].assets[0].file_url }}); height:400px; overflow:hidden background-size: cover;;">
+  	  <a href="#/post/{{posts[1].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[1].title }}</h3>
+       <img ng-src="{{posts[1].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[1].favorites_quantity }} </i>
+      </div>
+  	</div>
+  </div>
+
+  <div class="row">
+  	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[2].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+  		<a href="#/post/{{posts[2].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[2].title }}</h3>
+       <img ng-src="{{posts[2].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[2].favorites_quantity }} </i>
+      </div>
+  	</div>
+  	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[3].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+  		<a href="#/post/{{posts[3].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[3].title }}</h3>
+       <img ng-src="{{posts[3].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[3].favorites_quantity }} </i>
+      </div>
+  	</div>
+  	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[4].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+  	  <a href="#/post/{{posts[4].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[4].title }}</h3>
+       <img ng-src="{{posts[4].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[4].favorites_quantity }} </i>
+      </div>
+  	</div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[5].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+      <a href="#/post/{{posts[5].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[5].title }}</h3>
+       <img ng-src="{{posts[5].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[5].favorites_quantity }} </i>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[6].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+      <a href="#/post/{{posts[6].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[6].title }}</h3>
+       <img ng-src="{{posts[6].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[6].favorites_quantity }} </i>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[7].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+      <a href="#/post/{{posts[7].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[7].title }}</h3>
+       <img ng-src="{{posts[7].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[7].favorites_quantity }} </i>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[8].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+     <a href="#/post/{{posts[8].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[8].title }}</h3>
+       <img ng-src="{{posts[8].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[8].favorites_quantity }} </i>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[9].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
+      <a href="#/post/{{posts[9].id}}"></a>
+      <div class="overlay"></div>
+      <div class="info">
+       <h3>{{ posts[9].title }}</h3>
+       <img ng-src="{{posts[9].author_avatar}}" alt="">
+       <i class="fa fa-heart fa-1x"> {{ posts[9].favorites_quantity }} </i>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  	<div class="col-lg-12">
+  		<div class="text-center hometitle">
+  			<h3>Nuestra comunidad</h3>
+  			<p class="lead">Conoce quienes son nuestros usuarios destacados.</p>
+  		</div>
+  	</div>
+  </div>
+
+  <div class="row">
+  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+  		<img src="http://lorempixel.com/400/400/people/1" alt="" class="img-responsive">
+  	</div>
+  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+  		<img src="http://lorempixel.com/400/400/people/2" alt="" class="img-responsive">
+  	</div>
+  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+  		<img src="http://lorempixel.com/400/400/people/3" alt="" class="img-responsive">
+  	</div>
+  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+  		<img src="http://lorempixel.com/400/400/people/4" alt="" class="img-responsive">
+  	</div>
+  </div>
+</div>
+
 <br><br>
-
-<div class="row">
-	<div class="col-lg-12">
-		<div class="text-center hometitle">
-			<h2>Empieza tu aventura</h2>
-			<p class="lead">Descubre cuales son los destinos favoritos de nuestra comunidad para conocer tu ciudad.</p>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[0].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-    <a href="#/post/{{posts[0].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[0].title }}</h3>
-     <img ng-src="{{posts[0].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[0].favorites_quantity }} </i>
-    </div>
-	</div>
-
-	<div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[1].assets[0].file_url }}); height:400px; overflow:hidden background-size: cover;;">
-	  <a href="#/post/{{posts[1].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[1].title }}</h3>
-     <img ng-src="{{posts[1].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[1].favorites_quantity }} </i>
-    </div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[2].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-		<a href="#/post/{{posts[2].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[2].title }}</h3>
-     <img ng-src="{{posts[2].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[2].favorites_quantity }} </i>
-    </div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[3].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-		<a href="#/post/{{posts[3].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[3].title }}</h3>
-     <img ng-src="{{posts[3].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[3].favorites_quantity }} </i>
-    </div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[4].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-	  <a href="#/post/{{posts[4].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[4].title }}</h3>
-     <img ng-src="{{posts[4].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[4].favorites_quantity }} </i>
-    </div>
-	</div>
-</div>
-
-<div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[5].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-    <a href="#/post/{{posts[5].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[5].title }}</h3>
-     <img ng-src="{{posts[5].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[5].favorites_quantity }} </i>
-    </div>
-  </div>
-  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 post-image" style="background-image:url({{ posts[6].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-    <a href="#/post/{{posts[6].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[6].title }}</h3>
-     <img ng-src="{{posts[6].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[6].favorites_quantity }} </i>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[7].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-    <a href="#/post/{{posts[7].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[7].title }}</h3>
-     <img ng-src="{{posts[7].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[7].favorites_quantity }} </i>
-    </div>
-  </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[8].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-   <a href="#/post/{{posts[8].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[8].title }}</h3>
-     <img ng-src="{{posts[8].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[8].favorites_quantity }} </i>
-    </div>
-  </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 post-image" style="background-image:url({{ posts[9].assets[0].file_url }}); height:400px;overflow:hidden; background-size: cover;">
-    <a href="#/post/{{posts[9].id}}"></a>
-    <div class="overlay"></div>
-    <div class="info">
-     <h3>{{ posts[9].title }}</h3>
-     <img ng-src="{{posts[9].author_avatar}}" alt="">
-     <i class="fa fa-heart fa-1x"> {{ posts[9].favorites_quantity }} </i>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-	<div class="col-lg-12">
-		<div class="text-center hometitle">
-			<h3>Nuestra comunidad</h3>
-			<p class="lead">Conoce quienes son nuestros usuarios destacados.</p>
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-		<img src="http://lorempixel.com/400/400/people/1" alt="" class="img-responsive">
-	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-		<img src="http://lorempixel.com/400/400/people/2" alt="" class="img-responsive">
-	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-		<img src="http://lorempixel.com/400/400/people/3" alt="" class="img-responsive">
-	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-		<img src="http://lorempixel.com/400/400/people/4" alt="" class="img-responsive">
-	</div>
-</div>
-
-</div>
-
-<br><br><br>
 <div class="container-fluid">
      <div class="row">
         <div class="col-lg-12 mapcontainer">
@@ -188,11 +187,6 @@
         </div>
     </div>
 </div>
-<br><br><br>
-
-{{ posts }}
-
-
 
 <script type="text/javascript-lazy">
   $(document).ready(function() {
