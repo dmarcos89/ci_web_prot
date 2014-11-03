@@ -50,15 +50,16 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
         var marker = new google.maps.Marker({
             map: $scope.map,
             position: new google.maps.LatLng(info.latitude, info.longitude),
-            title: info.title
+            title: info.title,
+            foto: info.assets[0].file_url
           });
 
-        // var foto = info.assets[0].file_url;
-        marker.content = '<div class="infoWindowContent">'
-                          +info.title+'</div>';
+        // marker.content = '<div class="infoWindowContent">'
+        //                   +info.title+
+        //                   '</div>';
         
           google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            infoWindow.setContent('<h3>' + marker.title + '</h3>' + '<img style="width:100%" src="'+marker.foto+'">' + marker.foto);
             infoWindow.open($scope.map, marker);
           });
         
