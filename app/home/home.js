@@ -1,8 +1,12 @@
 'use strict';
 
-angular.module('MainApp').controller('HomeController', function($scope, PopularPosts) {
+angular.module('MainApp').controller('HomeController', function($scope, PopularPosts, TopUsers) {
   $scope.message = 'Esta es la home';
   $scope.dynMarkers = [];
+
+  TopUsers.query( {n: 4},function(data){
+    $scope.topusers = data;
+  });
 
   PopularPosts.query( {n: 10},function(data){
     $scope.posts = data;
