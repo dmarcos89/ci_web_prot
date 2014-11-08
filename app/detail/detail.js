@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('PostById', function($scope, $cookies, Posts, Users, $routeParams, Favorite, $location, UserFavorites) {
+angular.module('MainApp').controller('PostById', function($scope, $cookies, Posts, Users, $routeParams, Favorite, $location, UserFavorites, Comments) {
 	  
 	  // $scope.msg = "Detalle de un post";
 	  var postid = $routeParams.postid;
@@ -29,6 +29,11 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, Post
 
       });
 
+
+
+      // Comments.get({ Id: postid }, function(data){
+      //   alert(data);
+      // });
 
 
       var postidrelacionado = parseInt(postid) + 1; 
@@ -76,7 +81,7 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, Post
           var fav = false;          
           for (var i = 0; i < data.length && !fav; i++) {
               var idaux = data[i].id;
-              alert(idaux);
+              // alert(idaux);
               if(idaux == postid){ 
                 fav = true;
                 $scope.fav = true;

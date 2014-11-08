@@ -20,7 +20,7 @@
                         <h1 style="margin-bottom:10px;">{{ post.title }}</h1>
                            <!--  <input id="posttitle" type="text" ng-model="title" class="posttitle" placeholder="Elige un titulo para el nuevo post" onClick="ga('send', 'event', 'Crear Post', 'click', 'Titulo');"> -->
                         <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
-                        <span class="meta" style="margin-bottom:10px;">Post creado por <a href="#/user/{{ post.user_id }}">{{ post.author }}</a>  August 24, 2014</span>
+                        <span class="meta" style="margin-bottom:10px;">Post creado por <a href="#/user/{{ post.user_id }}">{{ post.author }}</a>  el día {{ post.updated_at | date:'dd' }} de {{ post.updated_at | date:'MMM' }} de {{ post.updated_at | date:'yyyy' }}</span>
                         
 
 
@@ -222,11 +222,10 @@
 </script>
 
 
-<!-- {{ favoritos }} -->
 
-<!-- {{ post }}
+ {{ post }}
 
-
+<!--
 <br><br>
 
 {{user}}
