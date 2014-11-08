@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('PostById', function($scope, $cookies, Posts, Users, $routeParams, Favorite, $location) {
+angular.module('MainApp').controller('PostById', function($scope, $cookies, Posts, Users, $routeParams, Favorite, $location, UserFavorites) {
 	  
 	  // $scope.msg = "Detalle de un post";
 	  var postid = $routeParams.postid;
@@ -68,14 +68,15 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, Post
 
 
 
-    Users.get({ Id: $cookies.userid }, function(data) {
-          $scope.user = data;
-
+    UserFavorites.query({ Id: $cookies.userid }, function(data) {
+          // $scope.user = data;
           // Chequeamos si el posteo ha sido favoriteado por el user
-          var favoritos = data.favorites_posts;
+          $scope.favoritos = data;
+          var favoritos = data;
           var fav = false;          
-          for (var i = 0; i < favoritos.length && !fav; i++) {
-              var idaux = favoritos[i].id;
+          for (var i = 0; i < data.length && !fav; i++) {
+              var idaux = data[i].id;
+              alert(idaux);
               if(idaux == postid){ 
                 fav = true;
                 $scope.fav = true;
@@ -99,6 +100,7 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, Post
           // alert(r);
           $scope.post.favorites_quantity ++;
           $scope.fav = true;
+          toaster.pop('success', "Nuevo favorito", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
         }
         
         function errorCallback(getResponseHeaders){

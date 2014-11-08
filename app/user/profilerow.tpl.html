@@ -10,15 +10,17 @@
 			<!-- <p>Montevideo, Uruguay
 			<br>Miembro desde Agosto 2014</p> -->
 			
-			<div ng-hide="sameUser" style="margin-top:10px;">
-						<btn ng-click="follow()" class="btn btn-primary btn-sm" ng-if="!isFollower">
-							Seguir usuario
-						</btn>
-						<btn ng-click="unfollow()" class="btn btn-primary btn-sm btn-unfollow" ng-if="isFollower" ng-class="overclass" ng-mouseover="overclass='btn-danger';txtFollow='Dejar de seguir';iconcheck=false" ng-mouseleave="overclass='btn-primary';txtFollow='Siguiendo';iconcheck=true" ng-init="txtFollow = 'Siguiendo';iconcheck=true">
-							{{ txtFollow }}
-						<i class="fa fa-check" ng-show="iconcheck"></i>
-						<i class="fa fa-times" ng-hide="iconcheck"></i>
-						</btn>
+			<div ng-show="{{isAuthenticated}}">
+				<div ng-hide="sameUser" style="margin-top:10px;">
+							<btn ng-click="follow()" class="btn btn-primary btn-sm" ng-if="!isFollower">
+								Seguir usuario
+							</btn>
+							<btn ng-click="unfollow()" class="btn btn-primary btn-sm btn-unfollow" ng-if="isFollower" ng-class="overclass" ng-mouseover="overclass='btn-danger';txtFollow='Dejar de seguir';iconcheck=false" ng-mouseleave="overclass='btn-primary';txtFollow='Siguiendo';iconcheck=true" ng-init="txtFollow = 'Siguiendo';iconcheck=true">
+								{{ txtFollow }}
+							<i class="fa fa-check" ng-show="iconcheck"></i>
+							<i class="fa fa-times" ng-hide="iconcheck"></i>
+							</btn>
+				</div>
 			</div>
 
 			<a href="#/dashboard/" ng-show="sameUser" class="btn btn-primary btn-sm" style="margin-top:10px;">Editar perfil</a> 
@@ -81,7 +83,7 @@
 				        	<h5>Favoritos</h5>
 				        </div>
 				        <div class="panel-body">
-				          	<h4> <a href="#/user/{{user.id}}/favoritos"> {{ user.favorites_posts.length }} </a></h4>
+				          	<h4> <a href="#/user/{{user.id}}/favoritos"> {{ user.favorites_quantity }} </a></h4>
 				        </div>
 				    </div>
 			     </div>

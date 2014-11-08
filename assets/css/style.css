@@ -701,6 +701,13 @@ h1{
 	display: table;
 }
 
+.home-posts .row .post-image a{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 100000;
+}
+
 .home-posts .row .post-image:hover .overlay{
 	opacity: .3;
 }
