@@ -8,6 +8,29 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, Post
 	  Posts.get({ Id: postid }, function(data) {
 	  	$scope.post = data;
 
+      var userid2 = data.user_id;
+      Users.get({ Id: userid2 }, function(data3) {
+        $scope.usuariodelpost = data3;
+
+        var tipologueo = data3.login_type;
+        // alert(tipologueo);
+        $scope.fotocreador = '';
+
+        if(tipologueo === 'facebook'){
+          $scope.fotocreador = data3.url_avatar;
+        }
+        if(tipologueo === 'twitter'){
+          $scope.fotocreador = data3.url_avatar;
+        }
+        if(tipologueo === 'common'){
+          $scope.fotocreador = data3.file_url;
+        }
+
+
+      });
+
+
+
       var postidrelacionado = parseInt(postid) + 1; 
       Posts.get({ Id: postidrelacionado }, function(data2) {
           $scope.postrelacionado = data2;
@@ -40,7 +63,7 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, Post
 
           $scope.map.setCenter(loc);
 
-      });
+      } );
 	
 
 

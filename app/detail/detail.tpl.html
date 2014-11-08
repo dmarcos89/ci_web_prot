@@ -48,9 +48,10 @@
 <div class="container">
     <div class="row centered">
         <!-- <hr> -->
-        <div class="col-lg-8 col-lg-offset-2 descriptionwraper">
+        <div class="col-lg-8 col-lg-offset-2 descriptionwraper" style="padding:10px 0 50px 0;">
             <!-- <div class="viewposttitle">{{ post.title }}</div> -->
-            <span name="" id="" class="postdescription">{{ post.description }}</span>
+            <h2 style="margin-top:0;">Descripción</h2>
+            <span name="" id="" class="postdescription" style="text-align: justify; text-justify: inter-word;">{{ post.description }}</span>
         </div>
     </div>
 </div>
@@ -173,11 +174,13 @@
         <div class="col-lg-12">
             <div class="text-center">
                 
-                 <img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=100 class="img-circle img-responsive center-block">  
+                 <img src="{{ fotocreador }}" alt="" width="80" class="img-circle img-responsive center-block">  
 
-                <h1>¿Tenes algo para compartir?</h1>
-                <h3>Escibi tu historia</h3>
-                <button class="btn-default">Crea una historia</button>
+                <h5><b> {{ usuariodelpost.first_name + " " + usuariodelpost.last_name }}</b> </h5>
+
+                
+
+                <!-- <button class="btn-default">Crea una historia</button> -->
             </div>
         </div>
     </div>
@@ -219,9 +222,18 @@
 </script>
 
 
-{{ post }}
+<!-- {{ post }}
 
 
 <br><br>
 
 {{user}}
+
+
+<br><br>
+
+{{ usuariodelpost }}
+
+<br><br>
+
+{{ fotocreador }} -->

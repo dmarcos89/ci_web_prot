@@ -8,7 +8,7 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
     $scope.topusers = data;
   });
 
-  PopularPosts.query( {n: 10},function(data){
+  PopularPosts.query( {n: 100},function(data){
     $scope.posts = data;
 
 
@@ -76,6 +76,8 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
       // console.log(data[i]);
     }
 
+
+  
     $scope.openInfoWindow = function(e, selectedMarker){
         e.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');

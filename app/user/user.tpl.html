@@ -3,7 +3,7 @@
 
 <div class="container">
 	<div class="row" style="margin-top:50px;">
-		<div class="col-lg-4" ng-repeat="post in posts">
+		<div class="col-lg-4" ng-repeat="post in posts" ng-show="{{post.first_image != null }}">
 				<!-- <img ng-src="{{post.first_image.replace('original','small')}}" class="img-thumbnail imageClip" alt="">  -->
 				<a href="#/post/{{post.id}}">
 					<div class="ratio tensixty" style="margin-top:20px; background-image:url({{post.first_image.replace('original','small')}})">
@@ -29,34 +29,5 @@
 </div>
 
 
-
-
 JSON DEL USER QUE SE ESTA VIENDO:
 {{ user }}
-
-<br><br><br>
-
-JSON CON LOS POSTEOS DEL USAURIO (FALTA RECIBIR LA URL A LAS FOTOS!!) <br>
-{{ posts }}
-
-<!-- {{ fbuser }} -->
-<br><br><br>
-usuerio logueado <br>
-{{ userid }}
-
-
-<br><br><br>
-seguidores: <br>
-{{ seguidores }}
-
-
-<br><br><br>
-siuiendo: <br>
-{{ siguiendo }}
-
-
-<br><br><br>
-favs: <br>
-{{ favoritos }}
-
-

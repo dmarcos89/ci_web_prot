@@ -14,7 +14,7 @@ angular.module('MainApp',
     'toaster',
     'angular-parallax',
     'monospaced.elastic',
-    'angular-tour',
+    'bm.bsTour',
     'app.config'
   ]
 );
