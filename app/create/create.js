@@ -5,14 +5,19 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
 
   $scope.categories2 = [];  
   $scope.selectCategorie = function () {
+
+        // alert("a");
+
         $scope.categories = $filter('filter')($scope.selectedCategories, {checked: true});
-        
         $scope.categories2 = [];  
         
-        for (var i = 0; i <= $scope.categories.length; i++) {
+        
+
+        for (var i = 0; i < $scope.categories.length; i++) {
           $scope.categories2.push($scope.categories[i].name);
         };
 
+        alert(JSON.stringify($scope.categories2));
   };
 
 
@@ -30,8 +35,8 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
 
     var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: posicion['k'], longitude: posicion['B'], category: $scope.categories2, images: fotos}};            
 
-    // var r = JSON.stringify(data);
-    // alert(r);
+    var r = JSON.stringify(data);
+    alert(r);
 
       Posts2.save(data, successPostCallback, errorCallback);
 
