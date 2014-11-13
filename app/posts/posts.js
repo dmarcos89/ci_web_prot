@@ -49,8 +49,23 @@ angular.module('MainApp').factory('FollowersPosts', function ($resource, CONFIG)
   });
 
 
+angular.module('MainApp').factory('Favorite', function ($resource, CONFIG) {
+    return $resource(
+        CONFIG.API_URL+'favorite/'
+    );
+  });
 
 
+angular.module('MainApp').factory('Search', function ($resource, CONFIG) {
+    return $resource(
+        CONFIG.API_URL+'search/:Text',
+        {Text: '@Text'}
+    );
+  });
+
+
+
+//CONTROLLERS
 
 
 // controlador para cargar todos los posteos
@@ -68,7 +83,6 @@ angular.module('MainApp').controller('PostsController', function($scope, Posts, 
 
 
 angular.module('MainApp').controller('PopularesController', function($scope, PopularPosts, $timeout) {
-      $scope.message = 'Listado de posteos';
       $timeout(function(){
         PopularPosts.query({ n: 100 },function(data) {
           $scope.posts = data;
@@ -79,7 +93,6 @@ angular.module('MainApp').controller('PopularesController', function($scope, Pop
 
 // Este metodo levanta el userid desde las cookies. No está andando el rootScope
 angular.module('MainApp').controller('FollowersPostsController', function($scope, $rootScope, $cookies, FollowersPosts, $timeout) {
-      $scope.message = 'Listado de posteos';
       $timeout(function(){
         FollowersPosts.query({ n: 100, Id: $rootScope.userid },function(data) {
           // alert(data);
@@ -91,9 +104,26 @@ angular.module('MainApp').controller('FollowersPostsController', function($scope
 
 
 
+angular.module('MainApp').controller('SearchController', function($scope, $routeParams, $timeout, Search, $location) {
+      $scope.textsearch = $routeParams.s;
+      $timeout(function(){
+        Search.query({ Text: $routeParams.s },function(data) {
+          // alert(data);
+          $scope.posts = data;
+          $scope.total = data.length;
+        });
+      }, 100);
 
-angular.module('MainApp').factory('Favorite', function ($resource, CONFIG) {
-    return $resource(
-        CONFIG.API_URL+'favorite/'
-    );
-  });
+
+      $scope.buscar = function(){
+        $location.path('/busqueda/'+$scope.text);
+      };
+
+    });
+
+
+
+
+
+
+

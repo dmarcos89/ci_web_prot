@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Busqueda: {{ textsearch }} </h2>
+      <p> Posteos encontrados en la busqueda: {{ total }}  </p>
+      <hr>
+      <br>
+    </div>
+    <div class="col-lg-8">
+      <input class="form-control" placeholder="Ingresa aqui tu busqueda" ng-model="text">
+    </div>
+    <div class="col-lg-4">
+      <btn class="btn btn-primary" ng-click="buscar()">Buscar</btn>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+    <div ng-repeat="post in posts" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 ">
+      <!-- <a href="#/post/{{post.id}}">
+        <img ng-src=" {{ post.assets[0].file_url.replace('original','small') }} " alt="" class="img-responsive" style="height:300px; width:100%; margin-bottom:15px;">
+        </a> -->
+
+        <a href="#/post/{{post.id}}">
+          <div class="ratio tensixty" style="background-image:url({{ post.assets[0].file_url.replace('original','small') }})">
+            <div class="content">
+                <div class="table">
+                    <div class="table-cell">
+                        <p>
+                          {{ post.title }} 
+                          <!-- <br><span style="font-size:16px;">Juan Perez</span> -->
+                        </p>
+                        <p>
+                          <i class="fa fa-heart fa-1x">{{ post.favorites_quantity }} </i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </a>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<style>
+
+
+</style>
+
+{{ posts }}

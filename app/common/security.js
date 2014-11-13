@@ -300,6 +300,10 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   };
 
 
+  $scope.buscar = function(){
+    $location.path('/busqueda/'+$scope.searchtext);
+  };
+
 
   $scope.noaccount = function(){
     
