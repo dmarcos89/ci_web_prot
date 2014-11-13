@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('PostById', function($scope, $cookies, Posts, Users, $routeParams, Favorite, $location, UserFavorites, Comments) {
+angular.module('MainApp').controller('PostById', function($scope, $cookies, $rootScope, Posts, Users, $routeParams, Favorite, $location, UserFavorites, Comments) {
 	  
 	  // $scope.msg = "Detalle de un post";
 	  var postid = $routeParams.postid;
@@ -140,6 +140,22 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, Post
     };
 
 
+    $scope.comentar = function(){
+      var logueduser = $cookies.userjson.split(",");
+      var aux1 = ((logueduser[3].split(":"))[1]);
+      var nombreusuario = aux1.substring(1, aux1.length-1);
+      var aux2 = ((logueduser[4].split(":"))[1]);
+      var apellidousuario = aux2.substring(1, aux2.length-1);
+      //alert(nombreusuario + ' ' + apellidousuario);
+
+      //Actualizamos el html con el nuevo comentario
+      var comment1 = {"text":$scope.textocomentario,"first_name":nombreusuario,"last_name":apellidousuario,"avatar":$rootScope.userthumb};
+      $scope.post.comments.push(comment1);
+
+      
+
+      $scope.textocomentario = "";
+    };
 
 	
 	});

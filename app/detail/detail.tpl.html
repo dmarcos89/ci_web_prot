@@ -48,91 +48,13 @@
 <div class="container">
     <div class="row centered">
         <!-- <hr> -->
-        <div class="col-lg-8 col-lg-offset-2 descriptionwraper" style="padding:10px 0 50px 0;">
+        <div class="col-lg-8 col-lg-offset-2 descriptionwraper" style="padding:50px 0 50px 0;">
             <!-- <div class="viewposttitle">{{ post.title }}</div> -->
-            <h2 style="margin-top:0;">Descripción</h2>
-            <span name="" id="" class="postdescription" style="text-align: justify; text-justify: inter-word;">{{ post.description }}</span>
+            
+            <p name="" id="" class="postdescription">{{ post.description }}</p>
         </div>
     </div>
 </div>
-
-
-
-<!-- <div class="container-fluid postinfo">
-    <div class="row authorinfo">
-        <div class="col-lg-2 col-lg-offset-2 centrado">
-            <img src="http://mujer.starmedia.com/imagenes/2013/10/Tips-para-la-foto-de-perfil.jpg" alt="" width=100 class="img-circle img-responsive center-block">   
-            <p>{{ user.first_name }}  {{ user.last_name }}</p> 
-
-        </div>
-
-        <div class="col-lg-4">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 style="margin-top:0px;">
-                    {{ post.title }} 
-                    </h2>
-                    <h5> {{ post.location }} </h5>
-                </div>
-            </div>
-            <div class="row text-center categoriesrow">
-                <div class="col-lg-2">
-                    <i class="fa fa-tree fa-2x"></i>
-                    <h5 class="categorytext">Naturaleza</h5>
-                </div>
-                <div class="col-lg-2">
-                    <i class="fa fa-pencil fa-2x"></i>
-                    <h5 class="categorytext">Arte</h5>
-                </div>
-                <div class="col-lg-2">
-                    <i class="fa fa-smile-o fa-2x"></i>
-                    <h5 class="categorytext">Categoria</h5>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="col-lg-2">
-            
-            <div class="panel">
-                <div class="panel-header">
-                    <h5>Social</h5>
-            </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-4 center">
-                            <i class="fa fa-heart-o fa-2x" style="color:red" ng-click="doFavorite()" ng-hide="fav" ng-class="overclass" ng-mouseover="overclass='fa-heart'" ng-mouseleave="overclass='fa-heart-o'"></i>
-                            <i class="fa fa-heart fa-2x" style="color:red" ng-click="unFavorite()" ng-show="fav" ng-class="overclass" ng-mouseover="overclass='fa-heart-o'" ng-mouseleave="overclass='fa-heart'"></i>
-                            <br>
-           
-
-
-                            <div class="count">18</div>  
-                        </div>
-                        <div class="col-lg-4 center">
-                            <i class="fa fa-comment-o fa-2x" ></i>
-                            <br>
-                            <div class="count">18</div> 
-                        </div>
-                        <div class="col-lg-4 center">
-                            <i class="fa fa-share fa-2x" ></i>
-                            <br>
-                            <div class="count">18</div>  
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-             </div>
-            
-            <!-- <button class="btn btn-primary" ng-click="doFavorite()">Fav</button>
-            <!-- <a href="#" class="btn btn-default" ng-click="doFavorite()"><span class="glyphicon glyphicon-heart" style="color:red"></span></a>
-        </div>
-
-    </div>
-</div> --> 
-
-
 
 
 
@@ -150,35 +72,45 @@
 
 
 <br><br>
-<!-- 
-{{ lat }}
-{{ lng }} -->
 
-
-
-<!-- 
-<div class="container-fluid">
-     <div class="row">
-        <div class="col-lg-12 ">
-             Categoria: {{ post.category }} <br>
-             Autor: {{ post.author }} <br>
-             Fecha: {{ post.date }} <br>
-
+<div class="container">
+    <div class="text-center">
+        <h2>Comentarios</h2>
+        <hr style="width:200px; margin-top:0px;">
+    </div>    
+    <div class="row" ng-repeat="comment in post.comments" style="margin-top:15px;">
+            <div class="col-lg-1 col-lg-offset-2">
+                <img src="{{ comment.avatar }}" alt="" width="60" class="img-circle img-responsive pull-right"> 
+            </div>
+            <div class="col-lg-6">
+                <h4>{{comment.first_name + ' ' + comment.last_name}}</h4>
+                <p>
+                    {{comment.text}}
+                </p>
+            </div>
+    </div> 
+    <div class="row" style="margin-top:30px;">
+        <div class="col-lg-6 col-lg-offset-3">
+            <textarea class="form-control" ng-model="textocomentario" rows="3" placeholder="Escribe aqui tu comentario sobre el post"></textarea>
+            <btn ng-click="comentar()" class="btn btn-primary" style="margin-top:20px;">Comentar</btn>
         </div>
-    </div>
-</div> -->
+    </div> 
+</div>
 
 
-<div class="container-fluid" style="background-color:white;">
+<div class="container-fluid">
     <div class="row" style=" margin: 60px 0 60px 0;">
         <div class="col-lg-12">
+            
+            
             <div class="text-center">
-                
+                <h2>Sobre el autor</h2>
+                <hr style="width:200px; margin-top:0px;">
                  <img src="{{ fotocreador }}" alt="" width="80" class="img-circle img-responsive center-block">  
 
                 <h5><b> {{ usuariodelpost.first_name + " " + usuariodelpost.last_name }}</b> </h5>
 
-                
+                <p> {{ usuariodelpost.bio }} </p>
 
                 <!-- <button class="btn-default">Crea una historia</button> -->
             </div>
@@ -222,19 +154,10 @@
 </script>
 
 
-
  {{ post }}
-
-<!--
-<br><br>
-
-{{user}}
-
-
-<br><br>
-
 {{ usuariodelpost }}
+<br><br>
+{{userjson}}
 
 <br><br>
-
-{{ fotocreador }}
+{{userjson.first_name}}
