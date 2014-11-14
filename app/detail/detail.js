@@ -152,7 +152,19 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
       var comment1 = {"text":$scope.textocomentario,"first_name":nombreusuario,"last_name":apellidousuario,"avatar":$rootScope.userthumb};
       $scope.post.comments.push(comment1);
 
+      //Hacer llamado a api para guardar comentario
+      var comment = { "post_id":postid, "user_id":$cookies.userid, "text":$scope.textocomentario };
+      Comments.save(comment, successPostCallback, errorCallback);
+
+      function successPostCallback(data){
+        //alert("comentario agregado correctamente");
+      }
       
+      function errorCallback(getResponseHeaders){
+        var r = JSON.stringify(getResponseHeaders);
+        alert(r);      
+      }
+
 
       $scope.textocomentario = "";
     };
