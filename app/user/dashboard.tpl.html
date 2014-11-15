@@ -4,10 +4,11 @@
             <!-- Sidebar Column -->
             <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-3">
                 <div class="list-group">
-                    <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Notificaciones');">Notificaciones</a>
+                   
                     <a href="" class="list-group-item active" onClick="ga('send', 'event', 'Dashboard', 'click', 'Ajustes de cuenta');">Ajustes de cuenta</a>
-                    <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Perfil');">Perfil</a>
-                    <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Redes Sociales');">Redes sociales</a>
+                    <a href="#/user/{{userid}}" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Perfil');">Perfil</a>
+                     <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Notificaciones');">Notificaciones (Próximamente)</a>
+                    <!-- <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Redes Sociales');">Redes sociales</a> -->
                 </div>
             </div>
             <!-- Content Column -->
@@ -20,37 +21,54 @@
                         <p style="margin:0; display:inline;">
                             Nombre
                         </p> 
-                        <input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar nombre');">
+                        <input type="text" class="form-control" style="width:300px; display:inline; margin-left:90px;" ng-model="nombre" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar nombre');">
                     </div>
                     <div class="list-group-item dashboarditem">
                         <p style="margin:0; display:inline;">
                             Apellido
                         </p> 
-                        <input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar apellido');">
+                        <input type="text" class="form-control" style="width:300px; display:inline; margin-left:90px;" ng-model="apellido" ng-value="apellido" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar apellido');">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Correo electronico
                     	</p> 
-                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-value="userjson" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar email');">
+                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-model="mail" ng-value="mail" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar email');">
+                    </div>
+                    <div class="list-group-item dashboarditem">
+                        <p style="margin:0; display:inline;">
+                            Biografía
+                        </p> 
+                        <textarea class="form-control" ng-model="biografia" ng-value="biografia" style="width:400px; margin-top:-20px; height:70px; margin-left:150px;"></textarea>
+                        <!-- <input type="text" class="form-control" style="width:300px; display:inline; margin-left:20px;" ng-model="biografia" ng-value="biografia" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar email');"> -->
+                    </div>
+                    <div class="list-group-item dashboarditem">
+                        <p style="margin:0; display:inline;">
+                            Foto de perfil
+                        </p> 
+                        <img ng-src="{{fotoperfil}}" class="img-responsive" style="width:150px; margin-left:150px; margin-top:-20px;" alt="">
+                        <!-- <a href="" style="margin-left:150px;">Modificar</a> -->
+                        <input style="margin-left:170px; margin-top:20px;" id="file-input" type="file" ng-file-select="onFileSelect($files)" onClick="ga('send', 'event', 'Crear Post', 'click', 'Image upload');">
+
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Contraseña
                     	</p> 
-                    	<a href="" style="margin-left:70px;" onClick="ga('send', 'event', 'Dashboard', 'click', 'Cambiar contrseña');">Cambiar contraseña</a>
+                    	<a href="" ng-show="!mostrarpassword" ng-click="mostrarpassword = true" style="margin-left:70px;" onClick="ga('send', 'event', 'Dashboard', 'click', 'Cambiar contrseña');">Cambiar contraseña</a>
+                        <input type="password" ng-show="mostrarpassword" class="form-control" style="width:300px; display:inline; margin-left:70px;" ng-model="password" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar Password');">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Ciudad
                     	</p> 
-                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:100px;" value="alkslakslsk" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar ciudad');">
+                    	<input type="text" class="form-control" style="width:300px; display:inline; margin-left:100px;" ng-model="ciudad" ng-value="ciudad" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar ciudad');">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
                     		Pais
                     	</p> 
-                    	<input type="email" class="form-control" style="width:300px; display:inline; margin-left:120px;" value="alkslakslsk" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar pais');">
+                    	<input type="text" class="form-control" style="width:300px; display:inline; margin-left:120px;" ng-model="pais" ng-value="pais" onClick="ga('send', 'event', 'Dashboard', 'click', 'Editar pais');">
                     </div>
                     <div class="list-group-item dashboarditem">
                     	<p style="margin:0; display:inline;">
@@ -62,7 +80,7 @@
                     	</select>
                     </div>
                     <div class="list-group-item dashboarditem">
-                        <button class="btn btn-primary" ng-click="editarPerfil()" onClick="ga('send', 'event', 'Dashboard', 'click', 'Confirmar cambios');">Guardar</button>
+                        <button class="btn btn-warning" ng-click="editarPerfil()" onClick="ga('send', 'event', 'Dashboard', 'click', 'Confirmar cambios');">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -70,4 +88,6 @@
         <!-- /.row -->
 
         {{ userjson }}
+        <br><br>
+        {{ imageSrc }}
 </div>
