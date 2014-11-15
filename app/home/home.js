@@ -1,45 +1,15 @@
 'use strict';
 
-angular.module('MainApp').controller('HomeController', function($scope, PopularPosts, TopUsers) {
+angular.module('MainApp').controller('HomeController', function($scope, PopularPosts, TopUsers, Posts2) {
   $scope.message = 'Esta es la home';
   $scope.dynMarkers = [];
 
-  TopUsers.query( {n: 4},function(data){
-    $scope.topusers = data;
-  });
-
-  PopularPosts.query( {n: 10},function(data){
-    $scope.posts = data;
-
-
-
-
-	  // for (var i = 0; i <= $scope.posts.length; i++) {
-	  //   $scope.dynMarkers[i] = new google.maps.Marker({
-   //      title: 'Titulo post'
-   //    });
-   //    var lat = $scope.posts[i].latitude;
-   //    var lng = $scope.posts[i].longitude;
-		 //  var loc = new google.maps.LatLng(lat, lng);
-
-   //    var infoWindow = new google.maps.InfoWindow({
-   //      content:'Hi<br/>I am an infowindow'
-   //    });
-   //        // alert(loc);
-   //    $scope.dynMarkers[i].setPosition(loc);
-   //    $scope.dynMarkers[i].setMap($scope.map);
-
-   //    $scope.showInfoWindow = function() {
-   //      infoWindow.open($scope.map, $scope.dynMarkers[i]);
-   //    };
-   //  }
-
-
+  Posts2.query(function(data){
+    $scope.todosposts = data;
 
     var mapOptions = {
         zoom: 14,
         center: new google.maps.LatLng(-34.901113, -56.164531),
-        // mapTypeId: google.maps.MapTypeId.TERRAIN
         scrollwheel: false
       };
 
@@ -71,11 +41,11 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
         
         $scope.markers.push(marker);
         
-    }  
+    } 
     
-    for (var i = 0; i < $scope.posts.length; i++){
-      createMarker($scope.posts[i]);
-      console.log($scope.posts[i]);
+    for (var i = 0; i < $scope.todosposts.length; i++){
+      createMarker($scope.todosposts[i]);
+      console.log($scope.todosposts[i]);
     }
 
 
@@ -86,6 +56,17 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
       };
 
 
+
+
+
+  });
+
+  TopUsers.query( {n: 4},function(data){
+    $scope.topusers = data;
+  });
+
+  PopularPosts.query( {n: 10},function(data){
+    $scope.posts = data;
 
 
 

@@ -56,6 +56,7 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
 
 
       alert(JSON.stringify(data));
+      // console.log(data);
       
       Users.update(data, successPostCallback, errorCallback);
 

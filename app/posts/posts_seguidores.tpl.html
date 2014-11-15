@@ -23,23 +23,31 @@
 <div class="container">
   <div class="row">
     
-    <div ng-repeat="post in posts | filter:search" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 fx-fade-down fx-easing-bounce fx-speed-800">
+    <div ng-repeat="post in posts | filter:search" class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-top:20px;">
       <!-- <a href="#/post/{{post.id}}">
         <img ng-src=" {{ post.assets[0].file_url.replace('original','small') }} " alt="" class="img-responsive" style="height:300px; width:100%; margin-bottom:15px;">
         </a> -->
 
         <a href="#/post/{{post.id}}">
-          <div class="ratio tensixty" style="background-image:url({{ post.assets[0].file_url.replace('original','small') }})">
+          <div class="ratio tensixty" style="background-image:url({{ post.first_image.replace('original','small') }})">
             <div class="content">
                 <div class="table">
                     <div class="table-cell">
+                        <div class="row">
                         <p>
                           {{ post.title }} 
                           <!-- <br><span style="font-size:16px;">Juan Perez</span> -->
                         </p>
+                        </div>
+                       <!--  <div class="row">
+                         <img ng-src="{{post.author_avatar}}" alt="">
+                       </div> -->
+                        <div class="row">
                         <p>
                           <i class="fa fa-heart fa-1x">{{ post.favorites_quantity }} </i>
+                          <i class="fa fa-comments fa-1x"> {{ post.comments_quantity }} </i>
                         </p>
+                        </div>
                     </div>
                 </div>
             </div>

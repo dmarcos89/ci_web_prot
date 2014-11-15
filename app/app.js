@@ -87,6 +87,10 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
         templateUrl: 'statics/help.tpl.html',
         controller: 'StaticPagesController'
       }).
+      when('/equipo/', {
+        templateUrl: 'statics/team.tpl.html',
+        controller: 'StaticPagesController'
+      }).
       when('/busqueda/:s', {
         templateUrl: 'posts/busqueda.tpl.html',
         controller: 'SearchController'

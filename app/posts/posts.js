@@ -94,7 +94,7 @@ angular.module('MainApp').controller('PopularesController', function($scope, Pop
 // Este metodo levanta el userid desde las cookies. No está andando el rootScope
 angular.module('MainApp').controller('FollowersPostsController', function($scope, $rootScope, $cookies, FollowersPosts, $timeout) {
       $timeout(function(){
-        FollowersPosts.query({ n: 100, Id: $rootScope.userid },function(data) {
+        FollowersPosts.query({ n: 100, Id: $cookies.userid },function(data) {
           // alert(data);
           $scope.posts = data;
         });

@@ -23,10 +23,11 @@
                         <span class="meta" style="margin-bottom:10px;">Post creado por <a href="#/user/{{ post.user_id }}">{{ post.author }}</a>  el día {{ post.updated_at | date:'dd' }} de {{ post.updated_at | date:'MMM' }} de {{ post.updated_at | date:'yyyy' }}</span>
                         
 
-
-                        <i class="fa fa-heart-o fa-2x" style="color:white" ng-click="doFavorite()" ng-hide="fav" ng-class="overclass" ng-mouseover="overclass='fa-heart'" ng-mouseleave="overclass='fa-heart-o'"></i>
-                        <i class="fa fa-heart fa-2x" style="color:white" ng-click="unFavorite()" ng-show="fav" ng-class="overclass" ng-mouseover="overclass='fa-heart-o'" ng-mouseleave="overclass='fa-heart'"></i>
-                        {{ post.favorites_quantity }}
+                        <div ng-show="isAuthenticated">
+                            <i class="fa fa-heart-o fa-2x" style="color:white" ng-click="doFavorite()" ng-hide="fav" ng-class="overclass" ng-mouseover="overclass='fa-heart'" ng-mouseleave="overclass='fa-heart-o'"></i>
+                            <i class="fa fa-heart fa-2x" style="color:white" ng-click="unFavorite()" ng-show="fav" ng-class="overclass" ng-mouseover="overclass='fa-heart-o'" ng-mouseleave="overclass='fa-heart'"></i>
+                            {{ post.favorites_quantity }}
+                        </div>
                     </div>
 
 
@@ -89,7 +90,7 @@
                 </p>
             </div>
     </div> 
-    <div class="row" style="margin-top:30px;">
+    <div class="row" style="margin-top:30px;" ng-show="isAuthenticated">
         <div class="col-lg-6 col-lg-offset-3">
             <textarea class="form-control" ng-model="textocomentario" rows="3" placeholder="Escribe aqui tu comentario sobre el post"></textarea>
             <btn ng-click="comentar()" class="btn btn-primary" style="margin-top:20px;">Comentar</btn>
@@ -101,14 +102,12 @@
 <div class="container-fluid">
     <div class="row" style=" margin: 60px 0 60px 0;">
         <div class="col-lg-12">
-            
-            
             <div class="text-center">
                 <h2>Sobre el autor</h2>
                 <hr style="width:200px; margin-top:0px;">
                  <img src="{{ fotocreador }}" alt="" width="80" class="img-circle img-responsive center-block">  
 
-                <h5><b> {{ usuariodelpost.first_name + " " + usuariodelpost.last_name }}</b> </h5>
+                <h5><a href="#/user/{{usuariodelpost.id}}"> <b> {{ usuariodelpost.first_name + " " + usuariodelpost.last_name }}</b></a> </h5>
 
                 <p> {{ usuariodelpost.bio }} </p>
 
@@ -154,10 +153,10 @@
 </script>
 
 
- {{ post }}
+<!--  {{ post }}
 {{ usuariodelpost }}
 <br><br>
 {{userjson}}
 
 <br><br>
-{{userjson.first_name}}
+{{userjson.first_name}} -->
