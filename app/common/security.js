@@ -57,9 +57,27 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   $scope.doLoginCommon = function(){
       // console.log("probando login");
 
-      var data = {email: $scope.login_email, password: $scope.login_password};
-      Login_Common.save(data, successPostCallback, errorCallback);
 
+      if(!$scope.login_email){
+          $scope.errorshow = true;
+          $scope.errormsg = "Debes ingresar tu Email";
+      }
+      if(!$scope.login_password){
+          $scope.errorshow = true;
+          $scope.errormsg = "Debes ingresar tu Password";
+      }
+      if(!$scope.login_password && !$scope.login_email){
+          $scope.errorshow = true;
+          $scope.errormsg = "Debes ingresar tu Email y Password";
+      }
+
+
+
+      var data = {email: $scope.login_email, password: $scope.login_password};
+      
+      if($scope.login_password && $scope.login_password){
+        Login_Common.save(data, successPostCallback, errorCallback);
+      }
       
 
     function successPostCallback(data){
@@ -75,15 +93,17 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         $('#myModal').modal('hide');
         $('#myModal2').modal('hide');
 
-
+          $scope.errorshow = false;
         // $location.path('/dashboard');
 
         toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
 
       }
       function errorCallback(getResponseHeaders){
+          $scope.errorshow = true;
           // $scope.errormsg = getResponseHeaders['data'];
-          toaster.pop('error', "Ha ocurrido un error al iniciar sesion", getResponseHeaders['data']);
+          $scope.errormsg = "Email o Password incorrecta";
+
         }
 
     };
@@ -92,9 +112,31 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
 
   $scope.doRegisterCommon = function(){
-    
+      $scope.errormsg2 = [];
+      $scope.errorshow2 = true;
+
+      if(!$scope.reg_first_name){
+        $scope.errormsg2.push({text:'Debes completar tu Nombre de pila'});
+      }
+      if(!$scope.reg_last_name){
+        $scope.errormsg2.push({text:'Debes completar tu Apellido'});
+      }
+      if(!$scope.reg_email){
+        $scope.errormsg2.push({text:'Debes completar tu Email'});
+      }
+      if(!$scope.reg_password){
+        $scope.errormsg2.push({text:'Debes completar tu Contraseña'});
+      }
+      if($scope.reg_password != $scope.reg_repeat_password){
+        $scope.errormsg2.push({text:'No coinciden la Password y su verificacion'});
+      }
+
+
       var data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"Ciudad", country:"Pais"};
-      Register_Common.save(data, successPostCallback, errorCallback);
+      
+      if($scope.reg_first_name && $scope.reg_last_name && $scope.reg_email && $scope.reg_password && $scope.reg_repeat_password && $scope.reg_password === $scope.reg_repeat_password){
+        Register_Common.save(data, successPostCallback, errorCallback);
+      }
 
 
       function successPostCallback(data){
@@ -112,13 +154,14 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         // Luego de registrar al usuario, lo enviamos a su dashboard
         // $location.path('/ajustes');
 
-        toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
+        toaster.pop('success', "Bienvenido a Ciudad Invisible", "Ya estas registrado en Ciudad Invisible! Esperemos que la aplicacion sea de tu agrado.");
        
       }
       function errorCallback(getResponseHeaders){
         alert('error al hacer registro MANUAL');
         // alert(getResponseHeaders['data']);
           toaster.pop('error', "Ha ocurrido un error al iniciar sesion", getResponseHeaders['data']);
+
 
       }
 

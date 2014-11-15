@@ -66,7 +66,7 @@
                         <!-- <b class="caret"></b> -->
                         </a>
                         <ul class="dropdown-menu" id="dropdown">
-                            <li><a href="#/notificaciones" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ver Notificaciones');"><i class="icon-cog"></i> Notificaciones  </li>
+                            <!-- <li><a href="#/notificaciones" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ver Notificaciones');"><i class="icon-cog"></i> Notificaciones  </li> -->
                             <li><a href="#/dashboard" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ver Ajustes');"><i class="icon-cog"></i> Ajustes</a></li>
                             <li><a href="#/user/{{ userid }}" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Ver Perfil');"><i class="icon-envelope"></i> Perfil</a></li>
                             <li class="divider"></li>
@@ -156,7 +156,7 @@
 
               <p style="margin-top:15px;">¿No tienes una cuenta aún? Registrate <a href="" ng-click="noaccount()">aquí</a></p>
               
-              <p style="color:red; font-size:13px;" class="text-center">{{ errormsg }}</p>
+              <p style="color:red; font-size:13px;" class="text-center" ng-show="errorshow">{{ errormsg }}</p>
               
             </div>
           </div>
@@ -216,8 +216,9 @@
             <br><br>
             <div class="col-sm-12">
               <input type="checkbox"> Quiero recibir novedades de Ciudad Invisible <br><br>
-              <a class="btn btn-block btn-warning" ng-click="doRegisterCommon()" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Registro via formulario');">Registrate</a>
+              <a class="btn btn-block btn-warning" ng-click="doRegisterCommon()" onClick="ga('send', 'event', 'Navbar Menu', 'click', 'Registro via formulario');" style="margin-bottom:5px;">Registrate</a>
             </div>
+            <p style="color:red; font-size:13px; margin-bottom:2px;" class="text-center" ng-show="errorshow2" ng-repeat="m in errormsg2">{{ m.text }}</p>
           </div>
         </form>
       </div>
