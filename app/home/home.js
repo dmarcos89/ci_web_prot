@@ -8,7 +8,7 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
     $scope.topusers = data;
   });
 
-  PopularPosts.query( {n: 100},function(data){
+  PopularPosts.query( {n: 10},function(data){
     $scope.posts = data;
 
 
@@ -55,7 +55,9 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
             map: $scope.map,
             position: new google.maps.LatLng(info.latitude, info.longitude),
             title: info.title,
-            foto: info.assets[0].file_url
+            foto: info.assets[0].file_url.replace('original','small'),
+            description : info.description,
+            postid : info.id
           });
 
         // marker.content = '<div class="infoWindowContent">'
@@ -63,7 +65,7 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
         //                   '</div>';
         
           google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent('<h3>' + marker.title + '</h3>' + '<img style="width:100%" src="'+marker.foto+'">' + marker.foto);
+            infoWindow.setContent('<div class="row"><div class="col-lg-12"><h3 style="text-align:center;">'+marker.title+'</h3></div><div class="col-lg-7"><img class="img-responsive" style="width:100%;" src="'+marker.foto+'"></div><div class="col-lg-5"><p>'+marker.description.substring(0,200)+'...<a href="#/post/'+marker.postid+'">Leer mas</a></p></div>');
             infoWindow.open($scope.map, marker);
           });
         
@@ -71,9 +73,9 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
         
     }  
     
-    for (var i = 0; i < data.length; i++){
-      createMarker(data[i]);
-      // console.log(data[i]);
+    for (var i = 0; i < $scope.posts.length; i++){
+      createMarker($scope.posts[i]);
+      console.log($scope.posts[i]);
     }
 
 
