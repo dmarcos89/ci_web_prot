@@ -206,7 +206,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         $scope.locale = response.locale;
         // alert('Good to see you, ' + response.name + ':' + response.email);
         var photoUrl = 'http://graph.facebook.com/';
-        var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid+'/picture?width=300' };
+        var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid+'/picture' };
         Login_Facebook.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
@@ -214,7 +214,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
           var r = JSON.stringify(data);
           // alert(r);
           var id = data['id'];
-          updateLoginVars(true,'FB',$scope.fullname,id, r, data['url_avatar']);
+          updateLoginVars(true,'FB',$scope.fullname,id, r, data['file_url']);
           
           // Cerramos el register modal a mano
           $('#myModal').modal('hide');
@@ -310,7 +310,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
                 // alert(r);
                 var name = data['first_name'];
                 var id = data['id'];
-                updateLoginVars(true,'Tw',name, id, data, data['url_avatar']);
+                updateLoginVars(true,'Tw',name, id, data, data['file_url']);
 
                 
                 // Cerramos el login modal a mano
