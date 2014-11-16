@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MainApp').controller('EditUserController', function($scope, $rootScope ,$routeParams, Users, $timeout, $cookies, fileReader, ngProgress){
+angular.module('MainApp').controller('EditUserController', function($scope, $rootScope ,$routeParams, Users, $timeout, $cookies, fileReader, ngProgress, toaster){
 
 	var userid = $routeParams.userid;
 
@@ -51,8 +51,9 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
 
         function successPostCallback(data){
           alert("edicion de usuario correcto");
-          var r = JSON.stringify(data);
-          alert(r);
+          // var r = JSON.stringify(data);
+          // alert(r);
+          toaster.pop('success', "Perfil actualizado", "Muy bien, has actualizado tu perfil!");
 
           $rootScope.username = $scope.nombre;
           $rootScope.userjson = r;
