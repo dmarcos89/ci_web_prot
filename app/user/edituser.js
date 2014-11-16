@@ -6,27 +6,16 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
 
 
   var logueduser = $cookies.userjson.split(',');
-  
-  var aux = ((logueduser[0].split(':'))[1]);
-  $scope.idusuario = aux.substring(1, aux.length-1);
+  $scope.obj = jQuery.parseJSON($cookies.userjson);
 
-  var aux1 = ((logueduser[3].split(':'))[1]);
-  $scope.nombre = aux1.substring(1, aux1.length-1);
+  $scope.idusuario = $scope.obj.id;
+  $scope.nombre = $scope.obj.first_name;
+  $scope.apellido = $scope.obj.last_name;
+  $scope.mail = $scope.obj.email;
+  $scope.ciudad = $scope.obj.city;
+  $scope.pais = $scope.obj.country;
+  $scope.biografia = $scope.obj.bio;
 
-  var aux2 = ((logueduser[4].split(':'))[1]);
-  $scope.apellido = aux2.substring(1, aux2.length-1);
-
-  var aux3 = ((logueduser[2].split(':'))[1]);
-  $scope.mail = aux3.substring(1, aux3.length-1);
-
-  var aux4 = ((logueduser[7].split(':'))[1]);
-  $scope.ciudad = aux4.substring(1, aux4.length-1);
-
-  var aux5 = ((logueduser[8].split(':'))[1]);
-  $scope.pais = aux5.substring(1, aux5.length-1);
-
-  var aux6 = ((logueduser[10].split(':'))[1]);
-  $scope.biografia = aux6.substring(1, aux6.length-1);
 
   $scope.imageSrc = [];
   $scope.foto = null;
@@ -66,12 +55,12 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
           alert(r);
 
           $rootScope.username = $scope.nombre;
-          $rootScope.userjson = json;
-          $rootScope.userthumb = thumburl;
+          $rootScope.userjson = r;
+          $rootScope.userthumb = data.file_url;
           //Actualizo cookies
-          $cookies.username = username;
-          $cookies.userjson = json;
-          $cookies.userthumb = thumburl;
+          $cookies.username = $scope.nombre;
+          $cookies.userjson = r;
+          $cookies.userthumb = data.file_url;
 
         }
       function errorCallback(getResponseHeaders){
