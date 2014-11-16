@@ -307,7 +307,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
             function successPostCallback(data){
                 // alert('login MANUAL ok');
                 var r = JSON.stringify(data);
-                // alert(r);
+                alert(r);
                 var name = data['first_name'];
                 var id = data['id'];
                 updateLoginVars(true,'TW',name, id, r, data['file_url']);
