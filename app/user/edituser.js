@@ -50,7 +50,7 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
       Users.update(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
-          alert("edicion de usuario correcto");
+          // alert("edicion de usuario correcto");
           // var r = JSON.stringify(data);
           // alert(r);
           toaster.pop('success', "Perfil actualizado", "Muy bien, has actualizado tu perfil!");
@@ -65,7 +65,7 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
 
         }
       function errorCallback(getResponseHeaders){
-          alert('edicion de usuario- error!!');
+          // alert('edicion de usuario- error!!');
           var r = JSON.stringify(getResponseHeaders);
           alert(r);
         }

@@ -99,7 +99,7 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
           $scope.isFollower = true;
         }
       function errorCallback(getResponseHeaders){
-          alert('follow error');
+          // alert('follow error');
           var r = JSON.stringify(getResponseHeaders);
           alert(r);
         }

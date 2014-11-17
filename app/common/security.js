@@ -225,7 +225,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
         }
         function errorCallback(getResponseHeaders){
-          alert("login error al login con fb");
+          // alert("login error al login con fb");
           // var r = JSON.stringify(getResponseHeaders);
           // alert(r);
           toaster.pop('error', "Error al iniciar sesion", 'Ha ocurrido un error al iniciar sesion con Facebook, intentalo nuevamente');
@@ -307,7 +307,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
             function successPostCallback(data){
                 // alert('login MANUAL ok');
                 var r = JSON.stringify(data);
-                alert(r);
+                // alert(r);
                 var name = data['first_name'];
                 var id = data['id'];
                 updateLoginVars(true,'TW',name, id, r, data['file_url']);
@@ -326,7 +326,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
               }
             function errorCallback(getResponseHeaders){
-                alert('error al hacer login MANUAL');
+                // alert('error al hacer login MANUAL');
                 var r = JSON.stringify(getResponseHeaders);
                 // alert(r);
                 // alert(getResponseHeaders['data']);

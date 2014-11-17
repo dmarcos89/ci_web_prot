@@ -14,7 +14,8 @@
 				                    {{ post.title }} 
 				                  </p>
 				                  <p>
-				                    <i class="fa fa-heart fa-1x">20</i>
+				                    <i class="fa fa-heart fa-1x"> {{ post.favorites_quantity }} </i>
+          							<i class="fa fa-comments fa-1x"> {{ post.comments_quantity }} </i>
 				                  </p>
 				              </div>
 				          </div>
@@ -26,4 +27,4 @@
 
 </div>
 
-{{favoritos}}
+<!-- {{favoritos}} -->

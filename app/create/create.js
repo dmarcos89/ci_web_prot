@@ -17,7 +17,7 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
           $scope.categories2.push($scope.categories[i].name);
         };
 
-        alert(JSON.stringify($scope.categories2));
+        // alert(JSON.stringify($scope.categories2));
   };
 
 
@@ -36,25 +36,25 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
     var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: posicion['k'], longitude: posicion['B'], category: $scope.categories2, images: fotos}};            
 
     var r = JSON.stringify(data);
-    alert(r);
+    // alert(r);
 
       Posts2.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
-          alert("articulo creado correctamente");
+          // alert("articulo creado correctamente");
           // var r = JSON.stringify(data);
           // alert(r);
 
         $location.path('/home');
 
-        toaster.pop('success', "Genial, has creado tu primer post!", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
+        toaster.pop('success', "Genial, has creado tu post!", "Compartelo con tus amigos!");
 
         }
     function errorCallback(getResponseHeaders){
           // alert("error al crear articulo");
           var r = JSON.stringify(getResponseHeaders);
           // alert(r);
-          toaster.pop('error','Ups, ha ocurrido un error',r);
+          toaster.pop('error','Ups, ha ocurrido un error al crear el articulo',r);
 
           // toaster.pop('success', "title", 'Its address is https://google.com.', 15000, 'trustedHtml', 'goToLink');
           // toaster.pop('success', "title", '<ul><li>Render html</li></ul>', 5000, 'trustedHtml');
@@ -77,7 +77,7 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
 
 
   $scope.dragEnd = function(){
-    alert(this.getPosition());
+    // alert(this.getPosition());
     posicion = this.getPosition();
     // alert($scope.markers[0].position);
     // $scope.$parent.location = this.getPosition();
@@ -131,7 +131,7 @@ $scope.getFile = function () {
 
                               }
                           function errorCallback(getResponseHeaders){
-                                alert("error al subir foto");
+                                // alert("error al subir foto");
                                 var r = JSON.stringify(getResponseHeaders);
                                 alert(r);
 
