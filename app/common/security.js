@@ -132,7 +132,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       }
 
 
-      var data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"Ciudad", country:"Pais"};
+      var data = {username: $scope.reg_first_name+" "+$scope.reg_last_name, email: $scope.reg_email, first_name: $scope.reg_first_name, last_name: $scope.reg_last_name, password: $scope.reg_password, city:"", country:""};
       
       if($scope.reg_first_name && $scope.reg_last_name && $scope.reg_email && $scope.reg_password && $scope.reg_repeat_password && $scope.reg_password === $scope.reg_repeat_password){
         Register_Common.save(data, successPostCallback, errorCallback);

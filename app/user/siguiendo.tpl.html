@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="row" style="margin-top:50px;">
 		<div class="col-lg-3" ng-repeat="seguidor in siguiendo2">
-				<div class="ratio tensixty img-thumbnail" style="background-image:url({{seguidor.url_avatar.replace('original','small')}})">
+				<div class="ratio tensixty" style="background-image:url({{seguidor.file_url}}?width=300&height=300)">
 					<div class="content">
 				          <div class="table">
 				              <div class="table-cell">
@@ -14,7 +14,7 @@
 				                    {{ seguidor.username }} 
 				                  </p>
 				                  <p>
-				                    <i class="fa fa-heart fa-1x">20</i>
+				                    <i class="fa fa-heart fa-1x"> {{ seguidor.followers_quantity }} </i>
 				                  </p>
 				              </div>
 				          </div>
