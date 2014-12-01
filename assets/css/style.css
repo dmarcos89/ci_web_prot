@@ -63,6 +63,26 @@ body{
   color: white;
 }
 
+.intro-section {
+  background-color: #808080 ;
+  background: no-repeat center center ;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  /*margin-bottom: 50px;*/
+  height: 400px;
+  /*-webkit-filter: brightness(95%);*/
+  /*opacity: 0.8;*/
+}
+
+.intro-section .page-heading2 {
+  padding: 70px 0 70px 0;
+  /*margin-top: 150px;*/
+  color: white;
+}
+
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {

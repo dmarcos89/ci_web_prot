@@ -75,7 +75,7 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
         templateUrl: 'user/dashboard.tpl.html',
         controller: 'EditUserController'
       }).
-      when('/notificaciones/', {
+      when('/notificaciones/:userid', {
         templateUrl: 'user/notificaciones.tpl.html',
         controller: 'DashboardController'
       }).
@@ -94,6 +94,10 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
       when('/busqueda/:s', {
         templateUrl: 'posts/busqueda.tpl.html',
         controller: 'SearchController'
+      }).
+      when('/recuperarcontrasena/', {
+        templateUrl: 'user/passwordrecover.tpl.html',
+        controller: 'Passwordrecover'
       }).
       otherwise({
         redirectTo: '/home'
