@@ -39,8 +39,8 @@
 
 <div class="container">
     <div class="row centered">
-        <div class="col-lg-10 col-lg-offset-1"  ng-repeat="img in post.assets">
-                <img ng-if="$index > 0" ng-src="{{img.file_url.replace('original','large')}}" alt="" class="img-responsive" style="margin:20px 0 0 0;">
+        <div class="col-lg-10 col-lg-offset-1"  ng-repeat="img in post.assets" >
+                <img ng-show="$index != 0" ng-src="{{img.file_url.replace('original','large')}}" alt="" class="img-responsive" style="margin:20px 0 0 0;">
         </div>
     </div>
 </div>            
@@ -189,6 +189,7 @@
 </div>
 
 
+{{post.assets}}
 <!--  {{ post }}
 {{ usuariodelpost }}
 <br><br>
