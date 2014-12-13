@@ -51,7 +51,7 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
 
         function successPostCallback(data){
           // alert("edicion de usuario correcto");
-          // var r = JSON.stringify(data);
+          var r = JSON.stringify(data);
           // alert(r);
           toaster.pop('success', "Perfil actualizado", "Muy bien, has actualizado tu perfil!");
 
@@ -63,6 +63,7 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
           $cookies.userjson = r;
           $cookies.userthumb = data.file_url;
 
+          al
         }
       function errorCallback(getResponseHeaders){
           // alert('edicion de usuario- error!!');
