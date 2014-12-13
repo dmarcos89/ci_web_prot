@@ -231,20 +231,36 @@
 
 
   <div class="row">
-  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 post-image" ng-repeat="u in topusers" style="background-image:url({{ u.file_url+'?width=250' }}); height:300px;overflow:hidden; background-size: cover;">
-  	 <a href="#/user/{{u.id}}"></a>
-     <div class="overlay"></div>
-      <div class="info">
-       <div class="row">
-          <h3>{{ u.first_name + ' ' + u.last_name }}</h3>  
-        </div>
-        <div class="row">
-          <i class="fa fa-heart fa-1x"> {{ u.followers_quantity }} </i>
-        </div>
-      
+  	<div ng-repeat="u in topusers">
+      <div ng-if="u.login_type=='twitter'">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 post-image" style="background-image:url({{ u.file_url.replace('_normal','')}}); height:300px;overflow:hidden; background-size: cover;">
+      	 <a href="#/user/{{u.id}}"></a>
+         <div class="overlay"></div>
+          <div class="info">
+           <div class="row">
+              <h3>{{ u.first_name + ' ' + u.last_name }}</h3>  
+            </div>
+            <div class="row">
+              <i class="fa fa-heart fa-1x"> {{ u.followers_quantity }} </i>
+            </div>
+          </div>
+      	</div>
       </div>
-  	</div>
-
+      <div ng-if="u.login_type!='twitter'">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 post-image" style="background-image:url({{u.file_url+'?width=250'}}); height:300px;overflow:hidden; background-size: cover;">
+         <a href="#/user/{{u.id}}"></a>
+         <div class="overlay"></div>
+          <div class="info">
+           <div class="row">
+              <h3>{{ u.first_name + ' ' + u.last_name }}</h3>  
+            </div>
+            <div class="row">
+              <i class="fa fa-heart fa-1x"> {{ u.followers_quantity }} </i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   	<!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
   		<img src="http://lorempixel.com/400/400/people/2" alt="" class="img-responsive">
   	</div>
