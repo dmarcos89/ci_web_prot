@@ -26,7 +26,7 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
    
 
  $scope.editarPerfil = function(){
-      alert("editar perfil usuario");
+      // alert("editar perfil usuario");
 
       if($scope.foto === null){
         if($scope.password === ""){
@@ -44,7 +44,7 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
       }
 
 
-      alert(JSON.stringify(data));
+      // alert(JSON.stringify(data));
       // console.log(data);
       
       Users.update(data, successPostCallback, errorCallback);
@@ -63,7 +63,6 @@ angular.module('MainApp').controller('EditUserController', function($scope, $roo
           $cookies.userjson = r;
           $cookies.userthumb = data.file_url;
 
-          al
         }
       function errorCallback(getResponseHeaders){
           // alert('edicion de usuario- error!!');
