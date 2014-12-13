@@ -101,7 +101,7 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
       function errorCallback(getResponseHeaders){
           // alert('follow error');
           var r = JSON.stringify(getResponseHeaders);
-          alert(r);
+          // alert(r);
         }
 
     };
@@ -122,7 +122,7 @@ angular.module('MainApp').controller('ViewUser', function($scope, $rootScope ,$r
       function errorCallback(getResponseHeaders){
           // alert('follow error');
           var r = JSON.stringify(getResponseHeaders);
-          alert(r);
+          // alert(r);
         }
 
     };

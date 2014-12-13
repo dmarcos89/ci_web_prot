@@ -109,9 +109,9 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
         }
         
         function errorCallback(getResponseHeaders){
-          alert('error');
+          // alert('error');
           var r = JSON.stringify(getResponseHeaders);
-          alert(r);
+          // alert(r);
         }
 
 	  };
@@ -132,9 +132,9 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
         }
         
         function errorCallback(getResponseHeaders){
-          alert('error');
+          // alert('error');
           var r = JSON.stringify(getResponseHeaders);
-          alert(r);
+          // alert(r);
         }
 
     };
@@ -162,7 +162,7 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
       
       function errorCallback(getResponseHeaders){
         var r = JSON.stringify(getResponseHeaders);
-        alert(r);      
+        // alert(r);      
       }
 
 

@@ -133,7 +133,7 @@ $scope.getFile = function () {
                           function errorCallback(getResponseHeaders){
                                 // alert("error al subir foto");
                                 var r = JSON.stringify(getResponseHeaders);
-                                alert(r);
+                                // alert(r);
 
                                 ngProgress.complete();
                                 console.log(r);
