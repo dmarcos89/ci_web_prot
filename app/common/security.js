@@ -158,7 +158,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
        
       }
       function errorCallback(getResponseHeaders){
-        alert('error al hacer registro MANUAL');
+        // alert('error al hacer registro MANUAL');
         // alert(getResponseHeaders['data']);
           toaster.pop('error', "Ha ocurrido un error al iniciar sesion", getResponseHeaders['data']);
 
