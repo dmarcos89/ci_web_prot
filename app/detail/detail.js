@@ -3,7 +3,11 @@
 angular.module('MainApp').controller('PostById', function($scope, $cookies, $rootScope, Posts, Users, $routeParams, Favorite, $location, UserFavorites, Comments) {
 	  
 	  // $scope.msg = "Detalle de un post";
-	  var postid = $routeParams.postid;
+	 
+    $scope.obj = jQuery.parseJSON($cookies.userjson);
+    $scope.idusuariojson = $scope.obj.id;
+
+    var postid = $routeParams.postid;
 
 	  Posts.get({ Id: postid }, function(data) {
 	  	$scope.post = data;
@@ -28,6 +32,7 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
 
 
       });
+
 
 
 
@@ -169,5 +174,22 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
       $scope.textocomentario = "";
     };
 
+    $scope.borrarpost = function(){
+      // alert('eliminando post');
+
+      var post = { Id:postid };
+      alert(post);
+      Posts.remove(post, successPostCallback1, errorCallback1);
+      
+      function successPostCallback1(data){
+        alert('post borrado');
+        alert(data);  
+      }
+      
+      function errorCallback1(getResponseHeaders){
+        var r = JSON.stringify(getResponseHeaders);
+        // alert(r);      
+      }
+    };
 	
 	});

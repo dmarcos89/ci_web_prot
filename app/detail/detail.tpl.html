@@ -114,19 +114,27 @@
                 <p> {{ usuariodelpost.bio }} </p>
 
                 <!-- <button class="btn-default">Crea una historia</button> -->
-
-                
-
             </div>
         </div>
 
-        <div class="col-lg-12" style="margin-top:20px;">
+        <div class="col-lg-12" style="margin-top:20px;" ng-hide="idusuariojson === usuariodelpost.id">
             <div class="text-center">
                 <a href="" data-toggle="modal" data-target="#denunciar">Denunciar post</a>
             </div>
         </div>
     </div>
+
+
+    <div class="row" ng-show="idusuariojson === usuariodelpost.id">
+        <div class="col-lg-12" style="text-align:center;">
+            <btn ng-click="borrarpost()" class="btn btn-danger" style="margin-top:20px;">Eliminar post</btn>
+        </div>
+    </div>
+
+
 </div>
+
+
 
 
 <div class="totop" ng-click="nextPost()">
@@ -191,11 +199,11 @@
 </div>
 
 
-{{post.assets}}
-<!--  {{ post }}
-{{ usuariodelpost }}
+<!-- {{post.assets}} -->
+ <!-- {{ post }} -->
+<!-- usuario del post {{ usuariodelpost.id }}
 <br><br>
 {{userjson}}
 
 <br><br>
-{{userjson.first_name}} -->
+usuarios del json logueado {{idusuariojson}} -->
