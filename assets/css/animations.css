@@ -59,3 +59,35 @@
 }
 
 /* ------------------- START NGVIEW ANIMATION ------------------- */
+
+.animate.ng-enter,
+.animate.ng-leave {
+    position: absolute;
+}
+
+.animate.ng-enter {
+    -moz-transition: ease-out all 0.3s 0.4s;
+    -o-transition: ease-out all 0.3s 0.4s;
+    -webkit-transition: ease-out all 0.3s 0.4s;
+    transition: ease-out all 0.3s 0.4s;
+}
+
+
+.animate.ng-leave {
+    -moz-transition: 0.3s ease-out all;
+    -o-transition: 0.3s ease-out all;
+    -webkit-transition: 0.3s ease-out all;
+    transition: 0.3s ease-out all;
+}
+
+.animate.ng-enter,
+.animate.ng-leave.ng-leave-active {
+    left: 2em;
+    opacity: 0;
+}
+
+.animate.ng-leave,
+.animate.ng-enter.ng-enter-active {
+    left: 0;
+    opacity: 1;
+}

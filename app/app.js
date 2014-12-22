@@ -95,9 +95,13 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
         templateUrl: 'posts/busqueda.tpl.html',
         controller: 'SearchController'
       }).
-      when('/recuperarcontrasena/', {
-        templateUrl: 'user/passwordrecover.tpl.html',
-        controller: 'Passwordrecover'
+      when('/recuperarpassword/paso1', {
+        templateUrl: 'password/passwordrecover.tpl.html',
+        controller: 'PasswordrecoverStep1'
+      }).
+      when('/recuperarpassword/paso2/:token', {
+        templateUrl: 'password/recoverstep2.tpl.html',
+        controller: 'PasswordrecoverStep2'
       }).
       otherwise({
         redirectTo: '/home'

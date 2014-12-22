@@ -67,14 +67,13 @@
     <script src="common/assets.js"></script>
     <script src="common/categories.js"></script>
     <script src="posts/comments.js"></script>
+    <script src="password/passwordrecover.js"></script>
 
     <script>
         hello.init({ 
             twitter : 'nv6hhlpywFVppJCcX1ZRR9SNE'
         });
     </script>
-    
-    
     
     <!-- <base href="/"> -->
   </head>
@@ -83,10 +82,88 @@
 
         <div ng-include="'common/menu.tpl.html'"></div>
         <toaster-container></toaster-container>
+        
+        <div class="feedback">
+        <img src="../assets/img/feedback_button.png" alt="">
+        </div>
+        
+        <div class="feedbackform">
+            
+        </div>
+
         <div ng-view class="fade"></div>
         <div ng-include="'common/footer.tpl.html'"></div>
         
+
+
+
+        <!-- Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel"><b>Envianos tu feedback</b></h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        Nos esforzamos por crear el producto deseado por nuestros usuarios, por eso, nos interesa mucho tu opini&oacute;n. Completa el formulario a continuaci&oacute;n con tu sugerencia, duda o mensaje. 
+        </p>
+
+        <form class="form-horizontal">
+          <div class="form-group" >
+            <div class="col-sm-12">
+                <br>
+                <input type="text" class="form-control" name="email" id="email" placeholder="E-mail (opcional)">
+                <br>
+                <input type="text" class="form-control" name="pagina" id="pagina" placeholder="Secci&oacute;n o p&aacute;gina de la web visitada">
+                <br>
+                <textarea class="form-control" name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Escribe aqui tu mensaje"></textarea>
+            </div>
+          </div>
+        <form>
         
+        <p>
+            Muchas gracias,<br>
+            El equipo de Ciudad Invisible.
+        </p>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <style>
+        .feedback{
+            position: fixed;
+            top:40%;
+            right: 0;
+            float: left;
+            z-index: 10000000;
+        }
+        .feedback:hover{
+            cursor: pointer;
+        }
+
+        .feedbackform{
+            
+        }
+        </style>
+        
+        <script>
+        $('.feedback').click(function(){
+            $('#feedbackModal').modal('toggle');
+            $('.feedback').hide('slow');
+        });
+
+        $('#feedbackModal').on('hidden.bs.modal', function (e) {
+          $('.feedback').show('slow');
+        })
+        </script>
 
     </body>
     
