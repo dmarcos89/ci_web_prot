@@ -348,6 +348,10 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     $scope.searchtext = "";
   };
 
+  $scope.resetpasswordlink = function(){
+    $('#myModal').modal('hide');
+    $location.path('/recuperarpassword/paso1');
+  };
 
   $scope.noaccount = function(){
     
