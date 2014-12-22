@@ -3,9 +3,10 @@
 angular.module('MainApp').controller('PostById', function($scope, $cookies, $rootScope, Posts, Users, $routeParams, Favorite, $location, UserFavorites, Comments) {
 	  
 	  // $scope.msg = "Detalle de un post";
-	 
-    $scope.obj = jQuery.parseJSON($cookies.userjson);
-    $scope.idusuariojson = $scope.obj.id;
+	   if($cookies.userjson){
+      $scope.obj = jQuery.parseJSON($cookies.userjson);
+      $scope.idusuariojson = $scope.obj.id;
+    }
 
     var postid = $routeParams.postid;
 
