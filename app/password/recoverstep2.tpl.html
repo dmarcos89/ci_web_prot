@@ -1,0 +1,47 @@
+<!-- <header class="intro-section" style="background-image: url('../assets/img/tortuga.jpg'); margin-bottom:20px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading2">
+                    </div>
+                </div>
+            </div>
+        </div>
+</header> -->
+
+
+<div class="container" style="margin-top: 20px; margin-bottom:100px;">
+	<div class="row centered">
+		<div class="col-lg-12" ng-show="mostrar1">
+			<h2 style="margin-top:40px;">Hola {{obj.first_name}}, recupera aqu&iacute; tu contraseña</h2>
+			<hr>
+			
+			<p>Ingresa tu nueva contraseña </p>
+			<div class="input-group" style="float: none; margin: 0 auto;">
+	      		<input class="form-control" type="password" placeholder="Nueva contraseña" ng-model="pass">
+		      	<input class="form-control" style="margin-top:5px;" type="password" placeholder="Repite nuevamente" ng-model="repeat">
+				<!-- <span class="input-group-btn"> -->
+				<btn class="btn btn-primary" style="margin-top:5px;" ng-click="restablecer()">Finalizar</btn>
+				<!-- </span> -->
+		    </div>
+	      	
+		</div>
+
+		<div class="col-lg-12" ng-show="mostrar2">
+			<h2 style="margin-top:40px;">¡Excelente! Ya has modificado tu contraseña</h2>
+			<hr>
+			
+			<p>Vuelve a recorrer y conocer los encantos de tu ciudad</p>
+		    <div class="input-group" style="float: none; margin: 0 auto;">
+	      		<btn class="btn btn-primary" style="margin-top:5px;" ng-click="loginagain()">Iniciar sesi&oacute;n</btn>
+			</div>
+	      	
+		</div>
+	</div>
+	
+</div>
+
+
+<!-- <pre>{{ token }}</pre>
+<pre>{{ obj }}</pre>
+<pre>{{ obj2 }}</pre> -->
