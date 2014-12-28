@@ -56,26 +56,25 @@ angular.module('MainApp').controller('PasswordrecoverStep2', function($scope, $r
 			Accounts.save(data, successPostCallback, errorCallback);
 			
 			function successPostCallback(data){
-			    var r = JSON.stringify(data);
-			   	console.log(data);
-			   	$scope.obj2 = data;
-	    		$scope.mostrar1 = false;
-				$scope.mostrar2 = true;
+			     $scope.obj2 = data;
+			   	 $scope.mostrar1 = false;
+				 $scope.mostrar2 = true;
 		    }
+
 		    function errorCallback(getResponseHeaders){
 		    	alert(getResponseHeaders['data']);
 		    }
 
-	};
-
+    	}
+    };
 	
 	$scope.loginagain = function(){
 		$location.path('/home');
 		$('#myModal').modal('show');
-	};
+    };
 
 
-});
+  });
 
 
 
