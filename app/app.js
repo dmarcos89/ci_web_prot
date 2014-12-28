@@ -14,6 +14,7 @@ angular.module('MainApp',
     'toaster',
     'angular-parallax',
     'monospaced.elastic',
+    'socialLinks',
     'bm.bsTour',
     'app.config'
   ]
@@ -89,6 +90,10 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
       }).
       when('/equipo/', {
         templateUrl: 'statics/team.tpl.html',
+        controller: 'StaticPagesController'
+      }).
+      when('/contacto/', {
+        templateUrl: 'statics/contact.tpl.html',
         controller: 'StaticPagesController'
       }).
       when('/busqueda/:s', {
