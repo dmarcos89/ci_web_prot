@@ -26,11 +26,13 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
     $routeProvider.
       when('/home', {
         templateUrl: 'home/home.tpl.html',
-        controller: 'HomeController'
+        controller: 'HomeController',
+        title: 'Ciudad Invisible - Inicio'
       }).
       when('/explorar/populares', {
         templateUrl: 'posts/posts_populares.tpl.html',
-        controller: 'PopularesController'
+        controller: 'PopularesController',
+        title: 'Ciudad Invisible - Populares'
       }).
       when('/explorar/seguidores', {
         templateUrl: 'posts/posts_seguidores.tpl.html',
@@ -50,7 +52,8 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
       }).
       when('/post/:postid', {
         templateUrl: 'detail/detail.tpl.html',
-        controller: 'PostById'
+        controller: 'PostById',
+        title: 'Titulo de mi post'
       }).
       when('/user/:userid', {
         templateUrl: 'user/user.tpl.html',
@@ -132,7 +135,8 @@ angular.module('MainApp').run(['$rootScope', 'ngProgress', function($rootScope, 
       });
 
     // When route successfully changed.
-    $rootScope.$on('$routeChangeSuccess', function() {
+    $rootScope.$on('$routeChangeSuccess', function(event, currentRoute, previousRoute) {
+        $rootScope.title = currentRoute.title;
         ngProgress.complete();
       });
 
@@ -141,6 +145,8 @@ angular.module('MainApp').run(['$rootScope', 'ngProgress', function($rootScope, 
         ngProgress.reset();
       });
   }]);
+
+
 
 
 angular.module('MainApp').directive('script', function() {
