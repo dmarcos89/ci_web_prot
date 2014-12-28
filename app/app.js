@@ -14,7 +14,7 @@ angular.module('MainApp',
     'toaster',
     'angular-parallax',
     'monospaced.elastic',
-    'socialLinks',
+    '720kb.socialshare',
     'bm.bsTour',
     'app.config'
   ]
