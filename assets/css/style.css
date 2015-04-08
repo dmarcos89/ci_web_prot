@@ -1126,7 +1126,7 @@ background:white;
 
 .gradient {
 	position: absolute;
-	top: 0;
+	top: 40px;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -1140,10 +1140,10 @@ background:white;
 
 .gradient2 {
 	position: absolute;
-	top: 0;
+	top: 40px;
 	left: 0;
 	right: 0;
-	bottom: 26%;
+	bottom: 31%;
 	background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
 	background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.7)));
 	background: -webkit-linear-gradient(top, rgba(0,0,0,0),rgba(0,0,0,0.7));
