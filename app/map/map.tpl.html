@@ -25,6 +25,14 @@
 <div class="container-fluid">
      <div class="row">
         <div class="col-lg-12 mapcontainer">
+
+            <div class="mapinstruction">
+               <h3 style="color:black;">Disfruta de tu tour</h3>
+               <p ng-repeat="p in puntos | reverse">
+                   {{ p.title }}
+               </p>
+            </div>
+
             <map id="map-view" scrollwheel="false" center="Montevideo, Uruguay" zoom="14">
               <marker position="Montevideo, Uruguay" animation="Animation.BOUNCE" centered="true" draggable="true" on-dragend="dragEnd()">
             </map>  
@@ -32,3 +40,11 @@
         </div>
     </div>
 </div>
+
+
+<style>
+    .paseo{
+        position: absolute;
+        left: 20%
+    }
+</style>

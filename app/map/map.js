@@ -4,6 +4,7 @@ var lat_lng;
 var path;
 var service;
 var marcadores = new Array();
+
 angular.module('MainApp').controller('MapController', function($scope, $rootScope, Tour) {
 	  
 
@@ -32,6 +33,7 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
         // alert(r);
         // console.log(r);
         markers = data['posts'];
+        $scope.puntos = data['posts'];
         console.log(markers);
 
 
@@ -44,6 +46,7 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
 
         lat_lng = new Array();
         
+        var infoWindow = new google.maps.InfoWindow();
 
         var latlngbounds = new google.maps.LatLngBounds();
         for (i = 0; i < markers.length; i++) {
@@ -53,8 +56,16 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: $scope.map,
-                title: data.title
+                title: data.title,
+                posicion: i+1
             });
+
+            google.maps.event.addListener(marker, 'click', function(){
+                alert(this.posicion + ' - ' + this.title);
+                // infoWindow.setContent('<div class="row"><div class="col-lg-12"><h3 style="text-align:center;">'+marker.title+'</h3></div><div class="col-lg-7"><img class="img-responsive" style="width:100%;" src="'+marker.foto+'"></div><div class="col-lg-5"><p>'+marker.description.substring(0,200)+'...<a href="#/post/'+marker.postid+'">Leer mas</a></p></div>');
+                // infoWindow.open($scope.map, marker);
+              });
+
             marcadores.push(marker);
             latlngbounds.extend(marker.position);
         }
@@ -72,6 +83,8 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
  
         //Set the Path Stroke Color
         poly = new google.maps.Polyline({ map: $scope.map, strokeColor: '#4986E7' });
+
+
  
         //Loop and Draw Path Route between the Points on MAP
         for (var i = 0; i < lat_lng.length; i++) {
@@ -96,6 +109,11 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
         }
 
 //***********END ROUTING****************//
+            $scope.openInfoWindow = function(e, selectedMarker){
+        e.preventDefault();
+        google.maps.event.trigger(selectedMarker, 'click');
+      };
+
 
 
       }
