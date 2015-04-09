@@ -20,6 +20,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   $rootScope.userthumb = '';
   $scope.errormsg = '';
   $rootScope.cantnotif = 0;
+  $rootScope.notificaciones = '';
 
 
   
@@ -58,6 +59,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       // alert('b');
       console.log(data);
       $rootScope.cantnotif = data.length;
+      $rootScope.notificaciones = data;
     }
 
     function errorcall(getResponseHeaders){

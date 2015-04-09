@@ -189,31 +189,31 @@ angular.module('MainApp').controller('DashboardController', function($scope, $ti
 
 angular.module('MainApp').controller('NotificationsController', function($scope, $rootScope, Notifications, $timeout) {
 
-  $scope.notifs = '';
+  $scope.notifs = $rootScope.notificaciones;
 
-  var x = function(){
-      if($rootScope.isAuthenticated == true){
-        // console.log('a');
-        Notifications.query({ user_id: $rootScope.userid }, success, errorcall );
-        $timeout(x, 5000);
-      }else{
-        // console.log('no hay logueado. no chequeamos notif');
-        $timeout(x, 5000);
-      }
-    };
+  // var x = function(){
+  //     if($rootScope.isAuthenticated == true){
+  //       // console.log('a');
+  //       Notifications.query({ user_id: $rootScope.userid }, success, errorcall );
+  //       $timeout(x, 5000);
+  //     }else{
+  //       // console.log('no hay logueado. no chequeamos notif');
+  //       $timeout(x, 5000);
+  //     }
+  //   };
 
-    x();
+  //   x();
      
-    function success(data){
-      // alert('b');
-      // console.log(data);
-      $scope.notifs = data;
-    }
+  //   function success(data){
+  //     // alert('b');
+  //     // console.log(data);
+  //     $scope.notifs = data;
+  //   }
 
-    function errorcall(getResponseHeaders){
-      // alert('c');
-      console.log(getResponseHeaders);
-    }
+  //   function errorcall(getResponseHeaders){
+  //     // alert('c');
+  //     console.log(getResponseHeaders);
+  //   }
 
     
   });
