@@ -20,31 +20,34 @@ angular.module('MainApp',
   ]
 );
  
-angular.module('MainApp').config(['$routeProvider', function($routeProvider, $locationProvider) {
+angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
 
 
     $routeProvider.
       when('/home', {
         templateUrl: 'home/home.tpl.html',
         controller: 'HomeController',
-        title: 'Ciudad Invisible - Inicio'
+        title: 'Inicio'
       }).
       when('/explorar/populares', {
         templateUrl: 'posts/posts_populares.tpl.html',
         controller: 'PopularesController',
-        title: 'Ciudad Invisible - Populares'
+        title: 'Posteos Populares'
       }).
       when('/explorar/seguidores', {
         templateUrl: 'posts/posts_seguidores.tpl.html',
-        controller: 'FollowersPostsController'
+        controller: 'FollowersPostsController',
+        title: 'Posteos de seguidores'
       }).
       when('/explorar/mapa/', {
         templateUrl: 'map/map.tpl.html',
-        controller: 'MapController'
+        controller: 'MapController',
+        title: 'Arma tu ruta'
       }).
       when('/explorar/turuta/', {
         templateUrl: 'map/route.tpl.html',
-        controller: 'MapController'
+        controller: 'MapController',
+        title: 'Arma tu ruta'
       }).
       when('/crear', {
         templateUrl: 'create/create2.tpl.html',
@@ -53,63 +56,77 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider, $lo
       when('/post/:postid', {
         templateUrl: 'detail/detail.tpl.html',
         controller: 'PostById',
-        title: 'Titulo de mi post'
+        title: 'Ciudad invisible'
       }).
       when('/user/:userid', {
         templateUrl: 'user/user.tpl.html',
-        controller: 'ViewUser'
+        controller: 'ViewUser',
+        title: 'Detalle de usuario'
       }).
       when('/user/:userid/seguidores', {
         templateUrl: 'user/seguidores.tpl.html',
-        controller: 'ViewUser'
+        controller: 'ViewUser',
+        title: 'Perfil de usuario'
       }).
       when('/user/:userid/siguiendo', {
         templateUrl: 'user/siguiendo.tpl.html',
-        controller: 'ViewUser'
+        controller: 'ViewUser',
+        title: 'Perfil de usuario'
       }).
       when('/user/:userid/favoritos', {
         templateUrl: 'user/favoritos.tpl.html',
-        controller: 'ViewUser'
+        controller: 'ViewUser',
+        title: 'Perfil de usuario'
       }).
       when('/perfil/editar', {
         templateUrl: 'user/editar.tpl.html',
-        controller: 'ViewUser'
+        controller: 'ViewUser',
+        title: 'Editar perfil'
       }).
       when('/dashboard/', {
         templateUrl: 'user/dashboard.tpl.html',
-        controller: 'EditUserController'
+        controller: 'EditUserController',
+        title: 'Ciudad invisible'
       }).
       when('/notificaciones/:userid', {
         templateUrl: 'user/notificaciones.tpl.html',
-        controller: 'DashboardController'
+        controller: 'NotificationsController',
+        title: 'Ciudad invisible'
       }).
       when('/acerca/', {
         templateUrl: 'statics/about.tpl.html',
-        controller: 'StaticPagesController'
+        controller: 'StaticPagesController',
+        title: 'Acerca del proyecto'
       }).
       when('/ayuda/', {
         templateUrl: 'statics/help.tpl.html',
-        controller: 'StaticPagesController'
+        controller: 'StaticPagesController',
+        title: 'Ayuda'
       }).
       when('/equipo/', {
         templateUrl: 'statics/team.tpl.html',
-        controller: 'StaticPagesController'
+        controller: 'StaticPagesController',
+        title: 'El equipo'
       }).
       when('/contacto/', {
         templateUrl: 'statics/contact.tpl.html',
-        controller: 'StaticPagesController'
+        controller: 'StaticPagesController',
+        title: 'Contacto'
       }).
       when('/busqueda/:s', {
         templateUrl: 'posts/busqueda.tpl.html',
-        controller: 'SearchController'
+        controller: 'SearchController',
+        title: 'Busqueda'
       }).
       when('/recuperarpassword/paso1', {
         templateUrl: 'password/passwordrecover.tpl.html',
-        controller: 'PasswordrecoverStep1'
+        controller: 'PasswordrecoverStep1',
+        title: 'Recuperar contraseña'
       }).
       when('/recuperarpassword/paso2/:token', {
         templateUrl: 'password/recoverstep2.tpl.html',
-        controller: 'PasswordrecoverStep2'
+        controller: 'PasswordrecoverStep2',
+        title: 'Recuperar contraseña'
       }).
       otherwise({
         redirectTo: '/home'
@@ -143,6 +160,7 @@ angular.module('MainApp').run(['$rootScope', 'ngProgress', function($rootScope, 
     // When some error occured.
     $rootScope.$on('$routeChangeError', function() {
         ngProgress.reset();
+        ngProgress.complete();
       });
   }]);
 
