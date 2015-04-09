@@ -7,6 +7,7 @@ var marcadores = new Array();
 
 angular.module('MainApp').controller('MapController', function($scope, $rootScope, Tour) {
 	  
+      $scope.puntos = '';
 
       $scope.dragEnd = function(){
 

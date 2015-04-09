@@ -30,20 +30,24 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
   var fotos = [];
   $scope.imageSrc = [];
   var posicion = '';
+  var latitud2 = '';
+  var longitude2 = '';
 
   $scope.Create = function() {
 
-    var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: posicion['k'], longitude: posicion['B'], category: $scope.categories2, images: fotos}};            
+    var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: latitud2, longitude: longitude2, category: $scope.categories2, images: fotos}};            
 
+    console.log('data:')
     var r = JSON.stringify(data);
+    console.log(r);
     // alert(r);
 
       Posts2.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
           // alert("articulo creado correctamente");
-          // var r = JSON.stringify(data);
-          // alert(r);
+          var r = JSON.stringify(data);
+          console.log(r);
 
         $location.path('/home');
 
@@ -78,7 +82,11 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
 
   $scope.dragEnd = function(){
     // alert(this.getPosition());
-    posicion = this.getPosition();
+    var posicion = this.getPosition();
+    console.log(posicion['D']);
+    console.log(posicion['k']);
+    latitud2 = posicion['k'];
+    longitude2 = posicion['D'];
     // alert($scope.markers[0].position);
     // $scope.$parent.location = this.getPosition();
   };
@@ -115,11 +123,11 @@ $scope.getFile = function () {
                           Assets.save(foto, successPostCallback, errorCallback);
 
                               function successPostCallback(data){
-                                // alert("se subio foto correctamente");
+                                alert("se subio foto correctamente");
                                 var r = JSON.stringify(data);
                                 // alert(r);
                                 // alert(data);
-                                console.log(data);
+                                // console.log(data);
                                 // alert(data['0']);
                                 // alert(data['id']);
                                 var jsonfoto = data['id'];
@@ -127,11 +135,11 @@ $scope.getFile = function () {
                                 fotos.push(jsonfoto);
 
                                 ngProgress.complete();
-                                console.log(r);
+                                // console.log(r);
 
                               }
                           function errorCallback(getResponseHeaders){
-                                // alert("error al subir foto");
+                                alert("error al subir foto");
                                 var r = JSON.stringify(getResponseHeaders);
                                 // alert(r);
 
@@ -174,6 +182,13 @@ angular.module('MainApp').directive('backgroundImage', function(){
         'background': 'url(' + value +') no-repeat no-repeat center'
       });
     });
+  };
+});
+
+
+angular.module('MainApp').filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
   };
 });
 

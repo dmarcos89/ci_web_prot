@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 angular.module('MainApp').controller('PasswordrecoverStep1', function($scope, $rootScope ,$routeParams, Reset){
 	$scope.mostrarform = true;
 	$scope.texto1 = 'No te preocupes. Ingresa tu mail para poder reestablecerla.';

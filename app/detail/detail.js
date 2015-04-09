@@ -118,6 +118,7 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
           // alert('error');
           var r = JSON.stringify(getResponseHeaders);
           // alert(r);
+          console.log(r);
         }
 
 	  };

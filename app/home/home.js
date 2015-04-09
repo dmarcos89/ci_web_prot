@@ -44,8 +44,11 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
     } 
     
     for (var i = 0; i < $scope.todosposts.length; i++){
+      if($scope.todosposts[i].latitude != null && $scope.todosposts[i].longitude != null){
       createMarker($scope.todosposts[i]);
-      console.log($scope.todosposts[i]);
+      // console.log($scope.todosposts[i]);
+      console.log($scope.todosposts[i].latitude + ' - ' + $scope.todosposts[i].longitude);
+      }
     }
 
 
