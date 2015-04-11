@@ -13,3 +13,18 @@ angular.module('MainApp').factory('Notifications', function ($resource, CONFIG) 
     }
     );
   });
+
+
+angular.module('MainApp').factory('NotificationsView', function ($resource, CONFIG) {
+    return $resource(
+        // 'http://ciudadinvisible.herokuapp.com/posts/:Id.json',
+        CONFIG.API_URL+'notifications/:id',
+        // 'http://localhost:3000/posts/:Id.json',
+        {id: '@id' },
+        {
+      'update': {method: 'PUT'}
+      // "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true}
+ 
+    }
+    );
+  });

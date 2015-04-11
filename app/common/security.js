@@ -8,7 +8,7 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
        
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', 'toaster', '$timeout', 'Notifications' ,function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location, toaster, $timeout, Notifications){
+angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', 'toaster', '$timeout', 'Notifications', '$filter' ,function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location, toaster, $timeout, Notifications, $filter){
 
 
 
@@ -44,7 +44,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       if($rootScope.isAuthenticated == true){
         // console.log('a');
         Notifications.query({ user_id: $rootScope.userid }, success, errorcall );
-        console.log('a');
+        // console.log('a');
         $timeout(x, 5000);
       }else{
         console.log('no hay logueado. no chequeamos notif');
@@ -57,8 +57,9 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
     function success(data){
       // alert('b');
-      console.log(data);
-      $rootScope.cantnotif = data.length;
+      // console.log(data);
+      // $rootScope.cantnotif = data.length;
+      $rootScope.cantnotif = ($filter('filter')(data, { read: false })).length;
       $rootScope.notificaciones = data;
     }
 

@@ -187,33 +187,28 @@ angular.module('MainApp').controller('DashboardController', function($scope, $ti
   });
 
 
-angular.module('MainApp').controller('NotificationsController', function($scope, $rootScope, Notifications, $timeout) {
+angular.module('MainApp').controller('NotificationsController', function($scope, $rootScope, NotificationsView, $timeout, $location) {
 
-  $scope.notifs = $rootScope.notificaciones;
 
-  // var x = function(){
-  //     if($rootScope.isAuthenticated == true){
-  //       // console.log('a');
-  //       Notifications.query({ user_id: $rootScope.userid }, success, errorcall );
-  //       $timeout(x, 5000);
-  //     }else{
-  //       // console.log('no hay logueado. no chequeamos notif');
-  //       $timeout(x, 5000);
-  //     }
-  //   };
+  $scope.vernotif = function(idpost){
+    // alert(idpost);
 
-  //   x();
-     
-  //   function success(data){
-  //     // alert('b');
-  //     // console.log(data);
-  //     $scope.notifs = data;
-  //   }
+    var data = {id: idpost, read: true};
+    // alert(data);
+    NotificationsView.update(data, successPostCallback, errorCallback);
 
-  //   function errorcall(getResponseHeaders){
-  //     // alert('c');
-  //     console.log(getResponseHeaders);
-  //   }
+        function successPostCallback(data){
+          var r = JSON.stringify(data);
+          // console.log(r);
+          console.log('notificacion leida');
+          $location.path('/post/'+idpost);
+        }
+      function errorCallback(getResponseHeaders){
+          var r = JSON.stringify(getResponseHeaders);
+          console.log(r);
+        }
+
+  };  
 
     
   });

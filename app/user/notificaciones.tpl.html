@@ -4,10 +4,11 @@
             <!-- Sidebar Column -->
             <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-3">
                 <div class="list-group">
-                    <a href="" class="list-group-item active">Notificaciones</a>
-                    <a href="" class="list-group-item ">Ajustes de cuenta</a>
-                    <a href="" class="list-group-item">Perfil</a>
-                    <a href="" class="list-group-item">Redes sociales</a>
+                   
+                    <a href="" class="list-group-item " onClick="ga('send', 'event', 'Dashboard', 'click', 'Ajustes de cuenta');">Ajustes de cuenta</a>
+                    <a href="#/user/{{userid}}" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Perfil');">Perfil</a>
+                     <a href="#/notificaciones/{{userid}}" class="list-group-item active" onClick="ga('send', 'event', 'Dashboard', 'click', 'Notificaciones');">Notificaciones</a>
+                    <!-- <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Redes Sociales');">Redes sociales</a> -->
                 </div>
             </div>
             <!-- Content Column -->
@@ -16,9 +17,21 @@
                     <div class="list-group-item">
                     	<b style="font-size:24px;">Notificaciones</b>
                     </div>
-                    <div class="list-group-item" ng-repeat="n in notifs">
-                        <p> {{ n.title }}
-                        </p>
+                    <div class="list-group-item" ng-repeat="n in notificaciones | reverse" ng-style="n.read === false && {'background-color':'#FBFBEF'}">
+                        <div class="row">
+                            <div class="col-lg-1" >
+                               <i class="fa fa-heart fa-2x" style="color:gray" ng-show="n.notification_type == 'Favorite'"></i>
+                               <i class="fa fa-comments fa-2x" style="color:gray" ng-show="n.notification_type == 'Comment'"></i>
+                            </div>
+                            
+                            <div class="col-lg-9">
+                                <p style="font-size:14px;"> {{ n.title }} </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-block btn-primary" ng-click="vernotif(n.id)" >Ver</button>
+                            </div>
+                        </div>
+                        
                     </div>
                     <!-- <div class="list-group-item">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam inventore accusantium alias, culpa dolorum neque eligendi non iste voluptatum ipsum quo veritatis necessitatibus nostrum cumque maxime rem voluptate. Officiis, quia!</p>
@@ -38,3 +51,7 @@
 
         <!-- {{ userjson }} -->
 </div>
+
+<!-- <pre>
+    {{ notificaciones }}
+</pre> -->
