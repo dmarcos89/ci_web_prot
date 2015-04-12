@@ -78,7 +78,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       if($rootScope.isAuthenticated == true){
         // console.log('a');
         Draft.get({ Id: $rootScope.userid }, success1, errorcall1 );
-        console.log('draft');
+        console.log('draft check');
         $timeout(y, 5000);
       }else{
         console.log('no hay logueado.');
@@ -90,19 +90,20 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     
     
     function success1(data){
-      // alert('b');
-      console.log(data);
-      if(data != null){
+      console.log(JSON.stringify(data));
+      if(data.length>0){
         $rootScope.draft = data;
         $rootScope.haydraft = true;
+        console.log('hay draft');
       }else{
         $rootScope.haydraft = false;
+        console.log('no draft');
       }
     }
 
     function errorcall1(getResponseHeaders){
       // alert('c');
-      console.log(getResponseHeaders);
+      console.log(JSON.stringify(getResponseHeaders));
       $rootScope.haydraft = false;
     }
 
