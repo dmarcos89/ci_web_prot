@@ -57,7 +57,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
     function success(data){
       // alert('b');
-      console.log(JSON.stringify(data));
+      // console.log(JSON.stringify(data));
       // $rootScope.cantnotif = data.length;
       $rootScope.cantnotif = ($filter('filter')(data, { read: false })).length;
       $rootScope.notificaciones = data;
@@ -91,9 +91,13 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
     
     function success1(data){
       // alert('b');
-      // console.log(JSON.stringify(data));
-      $rootScope.draft = data;
-      $rootScope.haydraft = true;
+      console.log(data);
+      if(data != null){
+        $rootScope.draft = data;
+        $rootScope.haydraft = true;
+      }else{
+        $rootScope.haydraft = false;
+      }
     }
 
     function errorcall1(getResponseHeaders){
