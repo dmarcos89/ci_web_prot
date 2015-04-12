@@ -56,6 +56,7 @@ angular.module('MainApp').controller('EditController', function($scope, $rootSco
 
 		function success(data){
 			console.log(JSON.stringify(data));
+			$location.path('/post/'+draftaux.id);
 			toaster.pop('success', 'Draft actualizado', 'Excelente, tu post ya se se actualizó!!');
 		};
 
