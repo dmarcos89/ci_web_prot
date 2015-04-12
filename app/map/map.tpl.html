@@ -29,7 +29,7 @@
             <div class="mapinstruction" ng-show="puntos != ''">
                <h3 style="color:black;">Disfruta de tu tour</h3>
                <p ng-repeat="p in puntos | reverse">
-                   {{ p.title }}
+                   {{ p.post.id }} - {{ p.post.title }}
                </p>
             </div>
 
@@ -48,3 +48,7 @@
         left: 20%
     }
 </style>
+
+<pre>
+   {{puntos}} 
+</pre>

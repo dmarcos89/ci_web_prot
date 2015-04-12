@@ -48,6 +48,13 @@ angular.module('MainApp').factory('FollowersPosts', function ($resource, CONFIG)
     );
   });
 
+angular.module('MainApp').factory('Draft', function ($resource, CONFIG) {
+    return $resource(
+        CONFIG.API_URL+'last_draft_by_user/:Id.json',
+        {Id: '@Id'}
+    );
+  });
+
 
 angular.module('MainApp').factory('Favorite', function ($resource, CONFIG) {
     return $resource(

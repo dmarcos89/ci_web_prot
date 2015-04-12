@@ -12,7 +12,8 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
 
 	  Posts.get({ Id: postid }, function(data) {
 	  	$scope.post = data;
-
+      console.log(JSON.stringify(data));
+      
       var userid2 = data.user_id;
       Users.get({ Id: userid2 }, function(data3) {
         $scope.usuariodelpost = data3;
@@ -42,7 +43,7 @@ angular.module('MainApp').controller('PostById', function($scope, $cookies, $roo
       // });
 
 
-      var postidrelacionado = parseInt(postid) + 1; 
+      var postidrelacionado = parseInt(postid) - 1; 
       Posts.get({ Id: postidrelacionado }, function(data2) {
           $scope.postrelacionado = data2;
           // var userid2 = data2['user_id']

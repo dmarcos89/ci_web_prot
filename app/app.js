@@ -53,6 +53,10 @@ angular.module('MainApp').config(['$routeProvider', function($routeProvider) {
         templateUrl: 'create/create2.tpl.html',
         controller: 'CreateController'
       }).
+      when('/editar', {
+        templateUrl: 'create/editar.tpl.html',
+        controller: 'EditController'
+      }).
       when('/post/:postid', {
         templateUrl: 'detail/detail.tpl.html',
         controller: 'PostById',

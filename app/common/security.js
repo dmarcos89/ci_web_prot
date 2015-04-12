@@ -8,7 +8,7 @@ angular.module('Security').config(['FacebookProvider', function(FacebookProvider
        
       }]);
 
-angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', 'toaster', '$timeout', 'Notifications', '$filter' ,function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location, toaster, $timeout, Notifications, $filter){
+angular.module('Security').controller('LoginController', ['$scope', '$rootScope', 'Facebook', 'Login_Common', 'Login_Facebook', 'Login_Twitter', 'Register_Common', '$cookies', '$location', 'toaster', '$timeout', 'Notifications', '$filter', 'Draft' ,function($scope, $rootScope, Facebook, Login_Common, Login_Facebook, Login_Twitter, Register_Common, $cookies, $location, toaster, $timeout, Notifications, $filter, Draft){
 
 
 
@@ -38,7 +38,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
       });
 
-
+// START TICKS
   
     var x = function(){
       if($rootScope.isAuthenticated == true){
@@ -57,7 +57,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
 
     function success(data){
       // alert('b');
-      // console.log(data);
+      console.log(JSON.stringify(data));
       // $rootScope.cantnotif = data.length;
       $rootScope.cantnotif = ($filter('filter')(data, { read: false })).length;
       $rootScope.notificaciones = data;
@@ -67,6 +67,44 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
       // alert('c');
       console.log(getResponseHeaders);
     }
+
+
+
+
+    $rootScope.haydraft = false;
+    $rootScope.haydraft = '';
+
+    var y = function(){
+      if($rootScope.isAuthenticated == true){
+        // console.log('a');
+        Draft.get({ Id: $rootScope.userid }, success1, errorcall1 );
+        console.log('draft');
+        $timeout(y, 5000);
+      }else{
+        console.log('no hay logueado.');
+        $timeout(y, 5000);
+      }
+    };
+
+    y();
+    
+    
+    function success1(data){
+      // alert('b');
+      // console.log(JSON.stringify(data));
+      $rootScope.draft = data;
+      $rootScope.haydraft = true;
+    }
+
+    function errorcall1(getResponseHeaders){
+      // alert('c');
+      console.log(getResponseHeaders);
+      $rootScope.haydraft = false;
+    }
+
+
+
+    // END TICKS
 
 
   $scope.checkLogin = function(){

@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-3">
                 <div class="list-group">
                    
-                    <a href="" class="list-group-item " onClick="ga('send', 'event', 'Dashboard', 'click', 'Ajustes de cuenta');">Ajustes de cuenta</a>
+                    <a href="#/dashboard" class="list-group-item " onClick="ga('send', 'event', 'Dashboard', 'click', 'Ajustes de cuenta');">Ajustes de cuenta</a>
                     <a href="#/user/{{userid}}" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Perfil');">Perfil</a>
                      <a href="#/notificaciones/{{userid}}" class="list-group-item active" onClick="ga('send', 'event', 'Dashboard', 'click', 'Notificaciones');">Notificaciones</a>
                     <!-- <a href="" class="list-group-item" onClick="ga('send', 'event', 'Dashboard', 'click', 'Redes Sociales');">Redes sociales</a> -->
@@ -25,10 +25,10 @@
                             </div>
                             
                             <div class="col-lg-9">
-                                <p style="font-size:14px;"> {{ n.title }} </p>
+                                <p style="font-size:14px;"> {{ n.title }}  </p>
                             </div>
                             <div class="col-lg-2">
-                                <button class="btn btn-block btn-primary" ng-click="vernotif(n.id)" >Ver</button>
+                                <button class="btn btn-block btn-primary" ng-click="vernotif(n.post_id)" >Ver</button>
                             </div>
                         </div>
                         

@@ -3,6 +3,19 @@
 angular.module('MainApp').controller('CreateController', function($scope, $rootScope, $location, Posts2, fileReader, Assets, ngProgress, Categories, toaster, $filter) {
   
 
+  // Draft.get({ Id: 1 },success1,error1);
+
+  // function success1(data){
+  //   alert('1');
+  //   console.log(JSON.stringify(data));
+  // };
+
+  // function error1(getResponseHeaders){
+  //   alert('2');
+  //   console.log(JSON.stringify(getResponseHeaders));
+  // };
+
+
   $scope.categories2 = [];  
   $scope.selectCategorie = function () {
 
