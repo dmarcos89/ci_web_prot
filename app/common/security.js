@@ -289,6 +289,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         // alert('Good to see you, ' + response.name + ':' + response.email);
         var photoUrl = 'http://graph.facebook.com/';
         var data = {username: $scope.fullname, email: $scope.email, first_name: $scope.first_name, last_name: $scope.last_name, facebook_id: $scope.facebookid, avatar: photoUrl+$scope.facebookid+'/picture' };
+        console.log(data);
         Login_Facebook.save(data, successPostCallback, errorCallback);
 
         function successPostCallback(data){
@@ -308,8 +309,8 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         }
         function errorCallback(getResponseHeaders){
           // alert("login error al login con fb");
-          // var r = JSON.stringify(getResponseHeaders);
-          // alert(r);
+          var r = JSON.stringify(getResponseHeaders);
+          console.log(r);
           toaster.pop('error', "Error al iniciar sesion", 'Ha ocurrido un error al iniciar sesion con Facebook, intentalo nuevamente');
         }
 
