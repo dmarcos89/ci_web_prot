@@ -48,7 +48,7 @@ angular.module('MainApp').controller('CreateController', function($scope, $rootS
 
   $scope.Create = function() {
 
-    var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: latitud2, longitude: longitude2, category: $scope.categories2, images: fotos}};            
+    var data = {post:{title: $scope.title, user_id: $rootScope.userid, description: $scope.description, date: '2014-09-20T00:38:23.000Z' ,latitude: latitud2, longitude: longitude2, category: $scope.categories2, images: fotos, draft: false}};            
 
     console.log('data:')
     var r = JSON.stringify(data);
@@ -136,7 +136,7 @@ $scope.getFile = function () {
                           Assets.save(foto, successPostCallback, errorCallback);
 
                               function successPostCallback(data){
-                                alert("se subio foto correctamente");
+                                // alert("se subio foto correctamente");
                                 var r = JSON.stringify(data);
                                 // alert(r);
                                 // alert(data);
