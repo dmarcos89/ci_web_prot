@@ -56,7 +56,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
   
 
     function success(data){
-      // alert('b');
+      console.log('b');
       // console.log(JSON.stringify(data));
       // $rootScope.cantnotif = data.length;
       $rootScope.cantnotif = ($filter('filter')(data, { read: false })).length;

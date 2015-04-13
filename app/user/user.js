@@ -190,10 +190,10 @@ angular.module('MainApp').controller('DashboardController', function($scope, $ti
 angular.module('MainApp').controller('NotificationsController', function($scope, $rootScope, NotificationsView, $timeout, $location) {
 
 
-  $scope.vernotif = function(idpost){
+  $scope.vernotif = function(idpost, idnotif){
     // alert(idpost);
 
-    var data = {id: idpost, read: true};
+    var data = {id: idnotif, read: true};
     // alert(data);
     NotificationsView.update(data, successPostCallback, errorCallback);
 
