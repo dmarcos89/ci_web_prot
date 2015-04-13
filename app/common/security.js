@@ -178,7 +178,7 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
           $scope.errorshow = false;
         // $location.path('/dashboard');
 
-        toaster.pop('success', "Bienvenido a Ciudad Invisible", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae quo minima neque, quam.");
+        toaster.pop('success', "Bienvenido a Ciudad Invisible", "Que esperas para descubrir tu ciudad?");
 
       }
       function errorCallback(getResponseHeaders){

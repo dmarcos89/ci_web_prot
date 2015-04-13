@@ -2,7 +2,7 @@
 
 angular.module('MainApp').controller('EditController', function($scope, $rootScope, $location, Categories, toaster, $filter, Posts){
 	
-	toaster.pop('note', 'Editar Draft', 'Termina de editar el post que comenzaste en el teléfono!');
+	toaster.pop('note', 'Editar Borrador', 'Termina de editar el post que comenzaste en el teléfono!');
 
 	var draftaux = $rootScope.draft;
 	$scope.title = draftaux.title;
@@ -57,7 +57,7 @@ angular.module('MainApp').controller('EditController', function($scope, $rootSco
 		function success(data){
 			console.log(JSON.stringify(data));
 			$location.path('/post/'+draftaux.id);
-			toaster.pop('success', 'Draft actualizado', 'Excelente, tu post ya se se actualizó!!');
+			toaster.pop('success', 'Borrador actualizado', 'Excelente, tu post ya se se actualizó!!');
 		};
 
 		function error(getResponseHeaders){
