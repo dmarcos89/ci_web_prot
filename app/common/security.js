@@ -45,10 +45,10 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         // console.log('a');
         Notifications.query({ user_id: $rootScope.userid }, success, errorcall );
         // console.log('a');
-        $timeout(x, 5000);
+        $timeout(x, 10000);
       }else{
         console.log('no hay logueado. no chequeamos notif');
-        $timeout(x, 5000);
+        $timeout(x, 10000);
       }
     };
 
@@ -79,10 +79,10 @@ angular.module('Security').controller('LoginController', ['$scope', '$rootScope'
         // console.log('a');
         Draft.get({ Id: $rootScope.userid }, success1, errorcall1 );
         console.log('draft check');
-        $timeout(y, 5000);
+        $timeout(y, 10000);
       }else{
         console.log('no hay logueado.');
-        $timeout(y, 5000);
+        $timeout(y, 10000);
       }
     };
 
