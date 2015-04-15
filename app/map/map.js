@@ -101,7 +101,7 @@ angular.module('MainApp').controller('MapController', function($scope, $rootScop
                 service.route({
                     origin: src,
                     destination: des,
-                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                    travelMode: google.maps.DirectionsTravelMode.WALKING
                 }, function (result, status) {
                     if (status == google.maps.DirectionsStatus.OK) {
                         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
