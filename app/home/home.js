@@ -35,7 +35,7 @@ angular.module('MainApp').controller('HomeController', function($scope, PopularP
         //                   '</div>';
         
           google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent('<div class="row"><div class="col-lg-12"><h3 style="text-align:center;">'+marker.title+'</h3></div><div class="col-lg-7"><img class="img-responsive" style="width:100%;" src="'+marker.foto+'"></div><div class="col-lg-5"><p>'+marker.description.substring(0,200)+'...<a href="#/post/'+marker.postid+'">Leer mas</a></p></div>');
+            infoWindow.setContent('<div class="row" style="width:150px;"><div class="col-lg-12"><h5 style="text-align:center;">'+marker.title+'</h5><a href="#/post/'+marker.postid+'">Leer mas</a></div><div class="col-lg-12"><img class="img-responsive" style="width:100%;" src="'+marker.foto+'"></div>');
             infoWindow.open($scope.map, marker);
           });
         
