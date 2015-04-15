@@ -48,7 +48,7 @@ angular.module('MainApp').controller('EditController', function($scope, $rootSco
   };
 
 	$scope.guardar = function (){
-		var data = { Id: draftaux.id, title: $scope.title, description: $scope.description, latitude: latitud2, longitude: longitude2, category: $scope.categories2, draft: false }
+		var data = { Id: draftaux.id, title: $scope.title, description: $scope.description, latitude: latitud2, longitude: longitude2, draft: false }
 		console.log(JSON.stringify(data));
 
 		Posts.update(data, success, error);
